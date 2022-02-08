@@ -1,3 +1,59 @@
 ﻿body
 {
+    margin: 0;
+    background-color: grey;
 }
+
+/* NAVBAR CSS STARTS BELOW */
+
+.navigation-bar {
+    overflow: hidden;
+    background-color: #000000;
+    border-bottom: 0.35em solid purple;
+    height: 5em;
+}
+
+.navigation-bar a {
+    font-family: sans-serif;
+    float: right;
+    color: purple;
+    text-align: center;
+    padding-right: 2%;
+    padding-top: 30px;
+    text-decoration: none;
+    font-size: 150%;
+}
+
+.navigation-bar a:hover {
+    color: mediumpurple;
+    transition: 0.25s;
+}
+
+.navigation-bar h3 {
+    font-family: Calibri, sans-serif;
+    float: left;
+    text-align: center;
+    margin-top: 19px;
+    margin-left: -1.4%;
+    color: purple;
+    font-size: 220%;
+}
+
+.navigation-bar h3:hover {
+    cursor: default;
+}
+
+#logo {
+    float: left;
+    color: white;
+    margin-top: -14px;
+    padding-left: 1%;
+}
+
+.socialMedia {
+    float: right;
+    margin-top: -2.5px;
+    margin-left: -1.5%;
+}
+
+/* NAVBAR CSS ENDS HERE */
