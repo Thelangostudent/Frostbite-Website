@@ -16,7 +16,7 @@ body
     height: 4vw;
 }
 
-.navigation-bar a {
+.navMenuSelectable {
     font-family: sans-serif;
     float: right;
     color: purple;
@@ -32,9 +32,14 @@ body
     user-select: none; /* Standard */
 }
 
-.navigation-bar a:hover {
+.navMenuSelectable:hover {
     color: white;
     transition: 0.25s;
+}
+
+#logoText {
+    color: purple;
+    text-decoration: none;
 }
 
 .navigation-bar h3 {
@@ -53,7 +58,7 @@ body
 }
 
 .navigation-bar h3:hover {
-    cursor: default;
+    color: purple;
 }
 
 #logo {
