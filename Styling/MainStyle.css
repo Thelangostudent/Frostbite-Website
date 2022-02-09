@@ -1,16 +1,20 @@
-﻿body
+﻿/* BODY STARTS BELOW */
+body
 {
     margin: 0;
-    background-color: grey;
+    background-color: black;
 }
+/* BODY ENDS HERE */
 
-/* NAVBAR CSS STARTS BELOW */
 
+
+
+/* NAVBAR STARTS BELOW */
 .navigation-bar {
     overflow: hidden;
     background-color: #000000;
-    border-bottom: 0.35em solid purple;
-    height: 5em;
+    border-bottom: 0.35vw solid purple;
+    height: 4vw;
 }
 
 .navigation-bar a {
@@ -18,25 +22,25 @@
     float: right;
     color: purple;
     text-align: center;
-    padding-right: 2%;
-    padding-top: 30px;
+    margin-right: 2vw;
+    margin-top: 1.6vw;
     text-decoration: none;
-    font-size: 150%;
+    font-size: 1.25vw;
 }
 
 .navigation-bar a:hover {
-    color: mediumpurple;
+    color: white;
     transition: 0.25s;
 }
 
 .navigation-bar h3 {
-    font-family: Calibri, sans-serif;
+    font-family: X360, sans-serif;
     float: left;
     text-align: center;
-    margin-top: 19px;
-    margin-left: -1.4%;
+    margin-top: 0.85vw;
+    margin-left: -1.7vw;
     color: purple;
-    font-size: 220%;
+    font-size: 2vw;
 }
 
 .navigation-bar h3:hover {
@@ -46,14 +50,93 @@
 #logo {
     float: left;
     color: white;
-    margin-top: -14px;
-    padding-left: 1%;
+    margin-top: -0.75vw;
+    padding-left: 0.7vw;
+    width: 2.5vw;
+    height: 2.5vw;
 }
 
-.socialMedia {
+#logoFloat {
+    float: left;
+}
+
+#facebookLogo {
     float: right;
-    margin-top: -2.5px;
-    margin-left: -1.5%;
+    margin-top: -0.4vw;
+    padding-left: -1.8vw;
+    margin-right: -0.2vw;
+
+    height: 2vw;
+    width: 2vw;
 }
 
-/* NAVBAR CSS ENDS HERE */
+#instagramLogo {
+    float: right;
+    margin-top: -0.38vw;
+    margin-left: -1.5vw;
+    margin-right: 0.1vw;
+
+    height: 2vw;
+    width: 2vw;
+}
+
+#youtubeLogo {
+    float: right;
+    margin-top: -0.38vw;
+    margin-left: -1.5vw;
+    margin-right: -0.2vw;
+
+    height: 2vw;
+    width: 2vw;
+}
+/* NAVBAR ENDS HERE */
+
+
+
+/* FONT STARTS HERE */
+@font-face {
+    font-family: 'X360';
+    src: url('X360.ttf')format('truetype');
+}
+/* FONT ENDS HERE */
+
+
+
+/* BANNER STARTS HERE */
+#bannerText {
+    animation: fadeInAnimation ease 1.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        padding-top: 2.5vw;
+        opacity: 0;
+    }
+    100% {
+        padding-bottom: 0;
+        opacity: 1;
+    }
+}
+
+#frostbiteBannerNameBackground {
+    font-family: X360, sans-serif;
+    text-align: center;
+    font-size: 10vw;
+    color: black;
+    margin-top: -19.6vw;
+}
+
+#frostbiteBannerName {
+    font-family: X360, sans-serif;
+    text-align: center;
+    font-size: 10vw;
+    color: purple;
+    margin-top: -23vw;
+}
+
+#frostbiteBackground {
+    border-bottom: 0.35vw solid purple;
+}
+/* BANNER ENDS HERE */
