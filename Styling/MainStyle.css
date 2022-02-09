@@ -8,7 +8,6 @@ body
 
 
 
-
 /* NAVBAR STARTS BELOW */
 .navigation-bar {
     overflow: hidden;
@@ -26,6 +25,11 @@ body
     margin-top: 1.6vw;
     text-decoration: none;
     font-size: 1.25vw;
+
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 
 .navigation-bar a:hover {
@@ -41,6 +45,11 @@ body
     margin-left: -1.7vw;
     color: purple;
     font-size: 2vw;
+
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 
 .navigation-bar h3:hover {
@@ -54,6 +63,11 @@ body
     padding-left: 0.7vw;
     width: 2.5vw;
     height: 2.5vw;
+
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 
 #logoFloat {
@@ -68,6 +82,11 @@ body
 
     height: 2vw;
     width: 2vw;
+
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 
 #instagramLogo {
@@ -78,6 +97,11 @@ body
 
     height: 2vw;
     width: 2vw;
+
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 
 #youtubeLogo {
@@ -88,6 +112,11 @@ body
 
     height: 2vw;
     width: 2vw;
+
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 /* NAVBAR ENDS HERE */
 
@@ -107,6 +136,11 @@ body
     animation: fadeInAnimation ease 1.5s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
+
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 
 @keyframes fadeInAnimation {
@@ -138,5 +172,11 @@ body
 
 #frostbiteBackground {
     border-bottom: 0.35vw solid purple;
+
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 /* BANNER ENDS HERE */
+
