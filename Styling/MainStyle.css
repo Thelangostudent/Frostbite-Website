@@ -2,7 +2,7 @@
 body
 {
     margin: 0;
-    background-color: black;
+    background-color: #0c0c0d;
 }
 /* BODY ENDS HERE */
 
@@ -138,7 +138,7 @@ body
 
 /* BANNER STARTS HERE */
 #bannerText {
-    animation: fadeInAnimation ease 1.5s;
+    animation: fadeInTitleAnimation ease 1.5s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 
@@ -148,14 +148,15 @@ body
     user-select: none; /* Standard */
 }
 
-@keyframes fadeInAnimation {
+@keyframes fadeInTitleAnimation {
     0% {
-        padding-top: 2.5vw;
+        transform: translateY(2.5vw);
         opacity: 0;
     }
     100% {
-        padding-bottom: 0;
+        transform: translateY(0);
         opacity: 1;
+        visibility: visible;
     }
 }
 
@@ -163,7 +164,7 @@ body
     font-family: X360, sans-serif;
     text-align: center;
     font-size: 10vw;
-    color: black;
+    color: #0c0c0d;
     margin-top: -19.6vw;
 }
 
@@ -184,4 +185,40 @@ body
     user-select: none; /* Standard */
 }
 /* BANNER ENDS HERE */
+
+
+
+/* "ABOUT US" SECTION STARTS HERE */
+#aboutTitle {
+    color: white;
+    text-align: center;
+    font-size: 2.5vw;
+    margin-top: -0.5vw;
+    margin-bottom: 0.7vw;
+    font-family: sans-serif;
+    letter-spacing: 0.03vw;
+}
+
+.aboutText {
+    display: block;
+    color: white;
+    text-align: center;
+    font-size: 1.2vw;
+    font-family: sans-serif;
+    line-height: 1.9vw;
+
+    padding-left: 22.5vw;
+    padding-right: 22.5vw;
+}
+
+#aboutContainer {
+    visibility: hidden;
+
+    animation: fadeInTitleAnimation ease 1.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 0.5s;
+}
+/* "ABOUT US" SECTION ENDS HERE */
+
 
