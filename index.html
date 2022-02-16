@@ -1,13 +1,75 @@
 ﻿<!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="utf-8"/>
     <title>Frostbite</title>
     <link rel="stylesheet" href="Styling/MainStyle.css" type="text/css" />
+    <script src="Scripts/MainScript.js"></script>
+    <script src="Scripts/ScrollFade.js"></script>
     <title></title>
 </head>
 <body>
+
+<!-- NOTE: Database scripts below -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyDdmHsJu_s8rE1dkcB3oLyyTLJQOI1ZVAg",
+        authDomain: "frostbite-backend.firebaseapp.com",
+        projectId: "frostbite-backend",
+        storageBucket: "frostbite-backend.appspot.com",
+        messagingSenderId: "388567472682",
+        appId: "1:388567472682:web:893bbf2a74fe78bc4e8153",
+        measurementId: "G-CMP5CEZ81E",
+        databaseURL: "https://frostbite-backend-default-rtdb.europe-west1.firebasedatabase.app"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
+    const db = getDatabase();
+
+    document.body.onload = function() {getInfoFromServer()};
+    function getInfoFromServer(){
+
+        getTitleText();
+
+    }
+
+
+
+
+    //Gets the frostbite text from the server on load
+    function getTitleText(){
+        const userStatus = ref(db, 'titleText/titleTextContent');
+        onValue(userStatus, (snapshot) => {
+            document.getElementById("aboutText").innerHTML = snapshot.val();
+        });
+    }
+
+
+
+
+    //Sets a new frostbite text
+    //original text is below:
+    //"FROSTBITE first embarked on their musical voyage of discovery together as a         cohesive Rock Band in 2017. They where \"reborn\" early 2019 with some new members. Their origin goes         back earlier to when the band members grew up listening to a variety of music genres that played an         influential role in shaping their paths as musicians and ultimately led them together. As FROSTBITE,         they have collectively found their signature sound, and offer something different and unique to their         fans by creating and sharing original music they are proud to call their own."
+    document.getElementById("updateButton").onclick = function(){updateTitleText();}
+
+    function updateTitleText() {
+        set(ref(db, 'titleText'), {
+            titleTextContent: "new test text",
+        });
+    }
+
+
+
+
+
+
+</script>
 
 <div class="navigation-bar">
     <a id="logoFloat" href="index.html" class="navMenuSelectable"><img src="Pictures/frostbiteLogo.jpg" id="logo" draggable="false" alt="logo"></a>
@@ -24,9 +86,6 @@
     <a href="index.html" class="navMenuSelectable">HOME</a>
 </div>
 
-
-
-<!-- NOTE: Make react ish layout to maintain playable spotify song via display: none/block? discuss with group later, -Rorvik -->
 <div id="mainContent" style="display: block">
 
 <div id="banner">
@@ -41,20 +100,26 @@
 <div id="aboutContainer">
     <h3 id="aboutTitle">FROSTBITE: The Story</h3>
 
-    <a class="aboutText">FROSTBITE first embarked on their musical voyage of discovery together as a
-        cohesive Rock Band in 2017. They where "reborn" early 2019 with some new members. Their origin goes
-        back earlier to when the band members grew up listening to a variety of music genres that played an
-        influential role in shaping their paths as musicians and ultimately led them together. As FROSTBITE,
-        they have collectively found their signature sound, and offer something different and unique to their
-        fans by creating and sharing original music they are proud to call their own.
-    </a>
-
-    <a class="aboutText" style="margin-top: 0.6vw; margin-bottom: 2vw">For more information please get in touch.</a>
-</div>
+    <div class="item scrollFade">
+    <a id="aboutText"></a>
+    <a id="aboutTextEnd" style="margin-top: 0.6vw; margin-bottom: 2vw">For more information please get in touch.</a>
+    </div>
 
 </div>
 
 
+
+
+    <div class="item scrollFade">
+        <div class="alignInMiddle">
+         <button id="updateButton">REPLACE TEXT BUTTON</button>
+        </div>
+    </div>
+
+
+
+
+</div>
 
 </body>
 </html>
