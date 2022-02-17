@@ -12,14 +12,14 @@ body
 .navigation-bar {
     overflow: hidden;
     background-color: #000000;
-    border-bottom: 0.35vw solid purple;
+    border-bottom: 0.35vw solid #a14a95;
     height: 4vw;
 }
 
 .navMenuSelectable {
     font-family: sans-serif;
     float: right;
-    color: purple;
+    color: #a14a95;
     text-align: center;
     margin-right: 2vw;
     margin-top: 1.6vw;
@@ -41,7 +41,7 @@ body
 
 
 #logoText {
-    color: purple;
+    color: #a14a95;
     text-decoration: none;
 }
 
@@ -51,7 +51,7 @@ body
     text-align: center;
     margin-top: 0.85vw;
     margin-left: -1.7vw;
-    color: purple;
+    color: #a14a95;
     font-size: 2vw;
 
     -webkit-user-select: none; /* Safari */
@@ -61,7 +61,7 @@ body
 }
 
 .navigation-bar h3:hover {
-    color: purple;
+    color: #a14a95;
 }
 
 #logo {
@@ -132,7 +132,7 @@ body
     margin-right: 2.05vw;
     height: 1.7vw;
     width: 5.5vw;
-    background-color: purple;
+    background-color: #a14a95;
     float: right;
 }
 
@@ -188,12 +188,12 @@ body
     font-family: X360, sans-serif;
     text-align: center;
     font-size: 10vw;
-    color: purple;
+    color: #a14a95;
     margin-top: -23vw;
 }
 
 #frostbiteBackground {
-    border-bottom: 0.35vw solid purple;
+    border-bottom: 0.35vw solid #a14a95;
 
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
@@ -283,7 +283,7 @@ body
     text-align: center;
     background-color: #0c0c0d;
     color: white;
-    border-top: 0.35vw solid purple;
+    border-top: 0.35vw solid #a14a95;
 
     visibility: hidden;
 
@@ -322,24 +322,24 @@ body
     position: fixed;
     z-index: 1;
 
-    border-top: 0.35vw solid purple;
-    border-right: 0.35vw solid purple;
-    border-bottom: 0.35vw solid purple;
+    border-top: 0.35vw solid #a14a95;
+    border-right: 0.35vw solid #a14a95;
+    border-bottom: 0.35vw solid #a14a95;
     border-radius: 0.5vw;
 }
 
 #adminTitle {
     text-align: center;
-    color: purple;
+    color: #a14a95;
     font-size: 1.5vw;
     font-family: sans-serif;
 }
 
 #changeBackgroundImage {
     background-color: black;
-    color: purple;
+    color: #a14a95;
     font-size: 1vw;
-    border: 0.2vw solid purple;
+    border: 0.2vw solid #a14a95;
     padding: 0.5vw;
     border-radius: 0.5vw;
 }
@@ -353,10 +353,10 @@ body
 
 #logOutButton {
     background-color: black;
-    color: purple;
+    color: #a14a95;
     font-size: 1vw;
     margin-top: 20vw;
-    border: 0.2vw solid purple;
+    border: 0.2vw solid #a14a95;
     padding: 0.5vw;
     border-radius: 0.5vw;
 }
@@ -370,10 +370,10 @@ body
 
 #changeText {
     background-color: black;
-    color: purple;
+    color: #a14a95;
     font-size: 1vw;
     width: 8.1vw;
-    border: 0.2vw solid purple;
+    border: 0.2vw solid #a14a95;
     padding: 0.5vw;
     border-radius: 0.5vw;
     margin-top: 1vw;
