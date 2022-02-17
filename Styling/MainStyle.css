@@ -233,41 +233,11 @@ body
     animation-fill-mode: forwards;
     animation-delay: 0.5s;
 }
-/* "ABOUT US" SECTION ENDS HERE */
-
-
-
-/* TEST BUTTON STARTS HERE */
-#updateButton {
-    background-color: black;
-    border: 0.2vw solid white;
-    border-radius: 2vw;
-    color: white;
-    font-family: sans-serif;
-    font-size: 1.2vw;
-    padding: 0.7vw;
-    margin-top: 2vw;
-    margin-bottom: 10vw;
-
-    visibility: hidden;
-
-    animation: fadeInTitleAnimation ease 1.5s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    animation-delay: 1s;
-}
-
-#updateButton:hover {
-    cursor: pointer;
-    border-color: grey;
-    color: grey;
-    transition-duration: 0.25s;
-}
 
 .alignInMiddle{
     text-align: center;
 }
-/* TEST BUTTON ENDS HERE */
+/* "ABOUT US" SECTION ENDS HERE */
 
 
 
