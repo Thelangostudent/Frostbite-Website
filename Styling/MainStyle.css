@@ -39,6 +39,7 @@ body
     transition: 0.25s;
 }
 
+
 #logoText {
     color: purple;
     text-decoration: none;
@@ -83,12 +84,12 @@ body
 
 #facebookLogo {
     float: right;
-    margin-top: -0.4vw;
-    padding-left: -1.8vw;
-    margin-right: -0.2vw;
 
     height: 2vw;
     width: 2vw;
+
+    margin-right: -2.3vw;
+    margin-top: -0.33vw;
 
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
@@ -98,12 +99,12 @@ body
 
 #instagramLogo {
     float: right;
-    margin-top: -0.38vw;
-    margin-left: -1.5vw;
-    margin-right: 0.1vw;
 
     height: 2vw;
     width: 2vw;
+
+    margin-right: -2.05vw;
+    margin-top: -0.33vw;
 
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
@@ -113,18 +114,29 @@ body
 
 #youtubeLogo {
     float: right;
-    margin-top: -0.38vw;
-    margin-left: -1.5vw;
-    margin-right: -0.2vw;
 
     height: 2vw;
     width: 2vw;
+
+    margin-top: -0.33vw;
 
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
 }
+
+#backgroundSquare {
+    margin-top: 1.4vw;
+    margin-left: -8vw;
+    margin-right: 2.05vw;
+    height: 1.7vw;
+    width: 5.5vw;
+    background-color: purple;
+    float: right;
+}
+
+
 /* NAVBAR ENDS HERE */
 
 
@@ -166,8 +178,10 @@ body
     font-family: X360, sans-serif;
     text-align: center;
     font-size: 10vw;
-    color: #0c0c0d;
     margin-top: -19.6vw;
+    margin-left: -1vw;
+    color: transparent;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 
 #frostbiteBannerName {
@@ -259,3 +273,116 @@ body
     transition: opacity 0.4s ease-in-out;
 }
 /* SCROLL ANIMATION ENDS HERE */
+
+
+
+/* FOOTER STARTS HERE */
+#footer {
+    padding: 2vw;
+    margin-top: 5vw;
+    text-align: center;
+    background-color: #0c0c0d;
+    color: white;
+    border-top: 0.35vw solid purple;
+
+    visibility: hidden;
+
+    animation: fadeInTitleAnimation ease 1.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+}
+
+.footerText{
+    font-size: 1.2vw;
+}
+
+#emailLink {
+    color: white;
+    text-decoration: none;
+}
+
+#adminLogin {
+    cursor: pointer;
+    margin-left: 44vw;
+    margin-right: 44vw;
+}
+/* FOOTER ENDS HERE */
+
+
+
+/* ADMIN-CONTAINER STARTS HERE */
+#adminContainer {
+    display: none;
+    background-color: black;
+    margin-top: 7vw;
+    height: 35vw;
+    width: 15vw;
+
+    position: fixed;
+    z-index: 1;
+
+    border-top: 0.35vw solid purple;
+    border-right: 0.35vw solid purple;
+    border-bottom: 0.35vw solid purple;
+    border-radius: 0.5vw;
+}
+
+#adminTitle {
+    text-align: center;
+    color: purple;
+    font-size: 1.5vw;
+    font-family: sans-serif;
+}
+
+#changeBackgroundImage {
+    background-color: black;
+    color: purple;
+    font-size: 1vw;
+    border: 0.2vw solid purple;
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+}
+
+#changeBackgroundImage:hover {
+    cursor: pointer;
+    border-color: white;
+    color: white;
+    transition-duration: 0.25s;
+}
+
+#logOutButton {
+    background-color: black;
+    color: purple;
+    font-size: 1vw;
+    margin-top: 20vw;
+    border: 0.2vw solid purple;
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+}
+
+#logOutButton:hover {
+    cursor: pointer;
+    border-color: white;
+    color: white;
+    transition-duration: 0.25s;
+}
+
+#changeText {
+    background-color: black;
+    color: purple;
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid purple;
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-top: 1vw;
+}
+
+#changeText:hover {
+    cursor: pointer;
+    border-color: white;
+    color: white;
+    transition-duration: 0.25s;
+}
+/* ADMIN-CONTAINER ENDS HERE */
