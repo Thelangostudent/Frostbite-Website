@@ -400,10 +400,30 @@ body
     margin-top: 1vw;
 }
 
+
 #changeText:hover {
     cursor: pointer;
     border-color: white;
     color: white;
     transition-duration: 0.25s;
+}
+
+#addAlbumCover {
+    background-color: black;
+    color: #a14a95;
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid #a14a95;
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-top: 1vw;
+}
+
+#addAlbumCover:hover {
+    cursor: pointer;
+    border-color:white;
+    color:white;
+    transition-duration: 0.3s;
+
 }
 /* ADMIN-CONTAINER ENDS HERE */
