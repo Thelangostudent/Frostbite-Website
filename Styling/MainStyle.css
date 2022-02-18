@@ -154,7 +154,7 @@ body
     animation-delay: 1s;
     visibility: hidden;
 
-    margin-top: 1.5vh;
+    margin-top: 1.5vw;
 
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
