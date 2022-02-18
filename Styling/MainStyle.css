@@ -154,6 +154,8 @@ body
     animation-delay: 1s;
     visibility: hidden;
 
+    margin-top: 1.5vh;
+
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 
@@ -258,7 +260,7 @@ body
     animation: fadeInTitleAnimation ease 1.5s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
-    animation-delay: 0.5s;
+    animation-delay: 1.6s;
 }
 
 .alignInMiddle{
