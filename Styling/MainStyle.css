@@ -339,6 +339,14 @@ body
     border-right: 0.35vw solid #a14a95;
     border-bottom: 0.35vw solid #a14a95;
     border-radius: 0.5vw;
+
+    margin-left: -14vw;
+    transition-duration: 0.5s;
+}
+
+#adminContainer:hover{
+    margin-left: 0;
+    transition-duration: 0.5s;
 }
 
 #adminTitle {
