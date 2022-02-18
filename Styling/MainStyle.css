@@ -2,7 +2,7 @@
 body
 {
     margin: 0;
-    background-color: #0c0c0d;
+    background-color: black;
 }
 /* BODY ENDS HERE */
 
@@ -11,7 +11,7 @@ body
 /* NAVBAR STARTS BELOW */
 .navigation-bar {
     overflow: hidden;
-    background-color: #000000;
+    background-color: black;
     border-bottom: 0.35vw solid #a14a95;
     height: 4vw;
 }
@@ -135,8 +135,6 @@ body
     background-color: #a14a95;
     float: right;
 }
-
-
 /* NAVBAR ENDS HERE */
 
 
@@ -150,7 +148,7 @@ body
 
 
 
-/* BANNER STARTS HERE */
+/* BANNER (IMAGE) STARTS HERE */
 #bannerText {
     animation: fadeInTitleAnimation ease 1.5s;
     animation-iteration-count: 1;
