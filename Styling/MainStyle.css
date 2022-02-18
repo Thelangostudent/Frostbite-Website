@@ -219,6 +219,18 @@ body
 
 
 /*ALBUM COVER SECTION STARTS HERE*/
+#ourAlbums {
+    color: white;
+    text-align: center;
+    font-size: 2.5vw;
+    margin-top: -0.5vw;
+    margin-bottom: 0.7vw;
+    font-family: sans-serif;
+    letter-spacing: 0.03vw;
+}
+
+}
+
 #gridContainer{
 
 
