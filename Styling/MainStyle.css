@@ -211,7 +211,7 @@ body
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
 
-    animation: fadeInImageAnimation ease 4s;
+    animation: fadeInImageAnimation ease 10s;
 }
 /* BANNER ENDS HERE */
 
