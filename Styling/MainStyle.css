@@ -151,6 +151,9 @@ body
 /* BANNER (IMAGE) STARTS HERE */
 #bannerText {
     animation: fadeInTitleAnimation ease 1.5s;
+    animation-delay: 1s;
+    visibility: hidden;
+
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 
@@ -190,6 +193,16 @@ body
     margin-top: -23vw;
 }
 
+
+@keyframes fadeInImageAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 #frostbiteBackground {
     border-bottom: 0.35vw solid #a14a95;
 
@@ -197,6 +210,8 @@ body
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
+
+    animation: fadeInImageAnimation ease 4s;
 }
 /* BANNER ENDS HERE */
 
