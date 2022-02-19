@@ -18,7 +18,8 @@
     <h3 id="adminTitle">Admin menu</h3>
 
     <div class="alignInMiddle">
-    <button id="changeBackgroundImage">Change Image</button>
+        <button id="changeBackgroundImage">Change Banner</button>
+        <button id="backgroundToolTip">Recommended size is 1920x480</button>
     </div>
 
     <div class="alignInMiddle">
@@ -206,28 +207,28 @@
         input.type = 'file';
         input.accept = "image/png, image/jpg, image/jpeg, image/gif";
 
-        input.onchange = e => {
-            files = e.target.files;
-            reader = new FileReader();
-            reader.onload = function (){
+            input.onchange = e => {
+                files = e.target.files;
+                reader = new FileReader();
+                reader.onload = function () {
 
-                const storage = getStorage();
-                const imagesRef = refStorage(storage, 'bannerImage');
+                    const storage = getStorage();
+                    const imagesRef = refStorage(storage, 'bannerImage');
 
-                //uploads the new image to firebase
-                uploadBytes(imagesRef, files[0]).then((snapshot) => {
+                    //uploads the new image to firebase
+                    uploadBytes(imagesRef, files[0]).then((snapshot) => {
 
-                    //gets the new image from firebase and updates the banner
-                    getDownloadURL(refStorage(storage, 'bannerImage'))
-                        .then((url) => {
-                            document.getElementById("frostbiteBackground").src = url;
-                        })
+                        //gets the new image from firebase and updates the banner
+                        getDownloadURL(refStorage(storage, 'bannerImage'))
+                            .then((url) => {
+                                document.getElementById("frostbiteBackground").src = url;
+                            })
 
-                });
+                    });
+                }
+                reader.readAsDataURL((files[0]));
             }
-            reader.readAsDataURL((files[0]));
-        }
-        input.click();
+            input.click();
     }
 
     document.getElementById("changeText").onclick = function(){changeText();}

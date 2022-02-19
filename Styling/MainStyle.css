@@ -508,9 +508,32 @@ body
     transition-duration: 0.3s;
 
 }
+
+#backgroundToolTip {
+    background-color: black;
+    width: 17vw;
+    color: white;
+    font-size: 1vw;
+    border: 0.2vw solid white;
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-top: -2.5vw;
+    margin-left: 11.5vw;
+    margin-bottom: -0.04vw;
+
+    display: none;
+}
+
+#changeBackgroundImage:hover + #backgroundToolTip { display: block; }
+
+
+#toolTipAdmin {
+    color: white;
+    font-family: sans-serif;
+    font-size: 1vw;
+
+}
 /* ADMIN-CONTAINER ENDS HERE */
-
-
 
 
 
@@ -532,4 +555,5 @@ body
     transition: opacity 0.5s ease-in-out;
 }
 /* SCROLL ANIMATION ENDS HERE */
+
 
