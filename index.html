@@ -6,7 +6,6 @@
 
     <title>Frostbite</title>
     <link rel="stylesheet" href="Styling/MainStyle.css" type="text/css" />
-    <script src="Scripts/MainScript.js"></script>
     <script src="Scripts/ScrollFade.js"></script>
     <title></title>
 </head>
@@ -23,12 +22,18 @@
     </div>
 
     <div class="alignInMiddle">
-        <button id="changeText">Change Text</button>
+        <button id="changeText">Change Story</button>
     </div>
 
     <div class="alignInMiddle">
         <button id= "addAlbumCover"> Add Album Cover</button>
     </div>
+
+    <div class="alignInMiddle">
+        <button id="changeYouTubeURL">Change YT Video</button>
+    </div>
+
+
 
     <div class="alignInMiddle">
     <button id="logOutButton">Log Out</button>
@@ -48,9 +53,9 @@
     <a href="https://www.instagram.com/frostbite.band/" class="navMenuSelectable"><img  id="instagramLogo" src="Pictures/InstagramInverted.png" draggable="false" alt="Instagram"></a>
     <a href="https://www.facebook.com/band.frostbite" class="navMenuSelectable"><img id="facebookLogo" src="Pictures/FacebookInverted.png" draggable="false" alt="FaceBook"></a>
 
-    <a href="index.html" style="margin-right: 1vw;" class="navMenuSelectable">TICKETS</a>
-    <a href="index.html" class="navMenuSelectable">VIDEO</a>
-    <a href="index.html" class="navMenuSelectable">ALBUMS</a>
+    <a href="tickets.html" style="margin-right: 1vw;" class="navMenuSelectable">TICKETS</a>
+    <a href="#youtubePreviewContainer" class="navMenuSelectable">VIDEO</a>
+    <a href="#albumCovers" class="navMenuSelectable">ALBUMS</a>
     <a href="#aboutTitle" class="navMenuSelectable">ABOUT</a>
     <a href="index.html" class="navMenuSelectable">HOME</a>
 </div>
@@ -88,6 +93,18 @@
                 <img id="testCover" src="Pictures/testCover.png" alt="testCover" height="10%" width="10%" />
                </div>
              </div>
+
+        </div>
+    </div>
+
+    <div id="youtubePreviewContainer">
+        <div class="item scrollFade">
+
+            <h3 id="youtubePreviewTitle"> Video </h3>
+
+            <div class="alignInMiddle">
+            <iframe id="youtubePreviewVideo" src="https://www.youtube.com/embed/rykIs0XlA8Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
 
         </div>
     </div>
@@ -139,6 +156,7 @@
         getBannerImage();
         getTitleText();
         getUserStatus();
+        getYouTubeVideoURL();
     }
 
     //Gets the frostbite text from the server on load
@@ -170,6 +188,13 @@
                 document.getElementById("frostbiteBackground").src = url;
                 console.log("Image updated!")
             })
+    }
+
+    function getYouTubeVideoURL(){
+        const userStatus = ref(db, 'youtubeURL/youtubeURLContent');
+        onValue(userStatus, (snapshot) => {
+            document.getElementById("youtubePreviewVideo").src = "https://www.youtube.com/embed/" + snapshot.val();
+        });
     }
 
     //<--------------------------------------------------------- ADMIN FUNCTIONS ---------------------------------------------------------------------------------------->
@@ -212,7 +237,7 @@
     document.getElementById("changeText").onclick = function(){changeText();}
     function changeText() {
 
-        let newText = prompt("Please paste the new text:");
+        let newText = prompt("Please paste the new story text:");
         if (newText == null || newText === "") {
             //closed
         } else {
@@ -221,6 +246,21 @@
             });
         }
     }
+
+    document.getElementById("changeYouTubeURL").onclick = function(){changeYouTubeURL();}
+    function changeYouTubeURL() {
+
+        let newURL = prompt("Please enter the new YouTube URL-ID (the letters after 'watch?v=')");
+        if (newURL == null || newURL === "") {
+            //closed
+        } else {
+            set(ref(db, 'youtubeURL'), {
+                youtubeURLContent: newURL,
+            });
+        }
+    }
+
+    //<--------------------------------------------------------- LOGIN/LOGOUT ---------------------------------------------------------------------------------------->
 
     document.getElementById("adminLogin").onclick = function(){getEmailAndPassword();}
     function getEmailAndPassword() {
@@ -265,7 +305,6 @@
     }
 
     //<--------------------------------------------------------------- TBA ------------------------------------------------------------------------------------------>
-
 
     //const email = "admin@outlook.com"
     //const password = "123Password123";
