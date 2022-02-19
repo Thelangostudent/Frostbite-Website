@@ -300,13 +300,26 @@ body
     letter-spacing: 0.03vw;
 }
 
-#gridContainer{
+#gridContainer {
+    display: grid;
+    place-items: center;
+    grid-template-columns: auto ;
+    grid-template-rows: auto;
+    place-content: center;
+    grid-gap: 10px;
+    text-align: center;
 
-
+    grid-auto-flow: column;
+    
 }
 
 .coverGridItem{
-
+    grid-column-start: auto;
+    grid-column-end: auto;
+    grid-row-start: auto;
+    grid-row-end: auto;
+    place-self: center;
+    block-size: 100px;
 
 }
 
