@@ -172,11 +172,9 @@
         const auth = getAuth();
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                console.log("Update: You are logged in!");
                 document.getElementById("adminContainer").style.display = "block";
 
             } else {
-                console.log("Update: You are not logged in!");
                 document.getElementById("adminContainer").style.display = "none";
             }
         });
@@ -186,7 +184,6 @@
         getDownloadURL(refStorage(storage, 'bannerImage'))
             .then((url) => {
                 document.getElementById("frostbiteBackground").src = url;
-                console.log("Image updated!")
             })
     }
 
@@ -224,7 +221,6 @@
                     getDownloadURL(refStorage(storage, 'bannerImage'))
                         .then((url) => {
                             document.getElementById("frostbiteBackground").src = url;
-                            console.log("Image updated!")
                         })
 
                 });
@@ -293,14 +289,12 @@
 
     document.getElementById("logOutButton").onclick = function(){logOut();}
     function logOut(){
-        console.log("Logout activated");
 
         const auth = getAuth();
         signOut(auth).then(() => {
-            console.log("User is logged out")
+            alert("Successfully logged out")
         }).catch((error) => {
-            console.log("Logout failed")
-            console.log(error);
+            alert(error);
         });
     }
 
