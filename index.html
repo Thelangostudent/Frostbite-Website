@@ -44,9 +44,9 @@
 
     <div id="backgroundSquare"></div>
 
-    <a href="https://www.youtube.com" class="navMenuSelectable"><img  id="youtubeLogo" src="Pictures/YoutubeInverted.png" draggable="false" alt="YouTube"></a>
-    <a href="https://www.instagram.com" class="navMenuSelectable"><img  id="instagramLogo" src="Pictures/InstagramInverted.png" draggable="false" alt="Instagram"></a>
-    <a href="https://www.facebook.com" class="navMenuSelectable"><img id="facebookLogo" src="Pictures/FacebookInverted.png" draggable="false" alt="FaceBook"></a>
+    <a href="https://www.youtube.com/channel/UCmt3wU22pVtUPqhoHVcOQ-g/featured" class="navMenuSelectable"><img  id="youtubeLogo" src="Pictures/YoutubeInverted.png" draggable="false" alt="YouTube"></a>
+    <a href="https://www.instagram.com/frostbite.band/" class="navMenuSelectable"><img  id="instagramLogo" src="Pictures/InstagramInverted.png" draggable="false" alt="Instagram"></a>
+    <a href="https://www.facebook.com/band.frostbite" class="navMenuSelectable"><img id="facebookLogo" src="Pictures/FacebookInverted.png" draggable="false" alt="FaceBook"></a>
 
     <a href="tickets.html" style="margin-right: 1vw;" class="navMenuSelectable">TICKETS</a>
     <a href="#aboutTitle" class="navMenuSelectable">ABOUT</a>
@@ -68,34 +68,41 @@
         </div>
     </div>
 
-    <div id="albumCovers">
-        <h3 id="ourAlbums">  Albums </h3>
-
-        <div id="gridContainer">
-            <div class="coverGridItem">
-                <img id="testCover" src="Pictures/testCover.png" alt="testCover" height="10%" width="10%" />
-
-
-            </div>
-        </div>
-    </div>
-
     <div id="aboutContainer">
+        <div class="item scrollFade">
         <h3 id="aboutTitle">FROSTBITE: The Story</h3>
 
-        <div class="item scrollFade">
             <a id="aboutText"></a>
             <a id="aboutTextEnd" style="margin-top: 0.6vw; margin-bottom: 2vw">For more information please get in touch.</a>
         </div>
-
     </div>
+
+    <!-- I put the albums below the story, adding animation to the album images made the page lag a bit, so now they are out of sight when the page is loaded -->
+    <div id="albumCovers">
+        <div class="item scrollFade">
+
+          <h3 id="ourAlbums">  Albums </h3>
+
+             <div id="gridContainer">
+               <div class="coverGridItem">
+                <img id="testCover" src="Pictures/testCover.png" alt="testCover" height="10%" width="10%" />
+               </div>
+             </div>
+
+        </div>
+    </div>
+
+    <!--<div id="spotifyEmbed"></div>
+        <iframe style="border-radius:0.5vw" src="https://open.spotify.com/embed/artist/0rIROc9qyjwndVoDFa2WD0?utm_source=generator" width="25%" height="400" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+    </div>-->
+
 </div>
     <!--------------------------------------------------------------- FOOTER --------------------------------------------------------------------------------------------->
 
 <div class="item scrollFade">
     <footer id="footer">
         <h3 class="footerText">© Copyright 2022 Frostbite. All rights reserved.</h3>
-        <h3 class="footerText"><a id="emailLink" href="mailto:post@frostbiteband.com">post@frostbiteband.com</a></h3>
+        <h3 class="footerText"><a id="emailLink" href="mailto:frostbite.band@hotmail.com">post@frostbiteband.com</a></h3>
         <div id="adminLogin"><h3 class="footerText">admin login</h3></div>
     </footer>
 </div>

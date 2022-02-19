@@ -149,34 +149,6 @@ body
 
 
 /* BANNER (IMAGE) STARTS HERE */
-#bannerText {
-    animation: fadeInTitleAnimation ease 1.5s;
-    animation-delay: 1s;
-    visibility: hidden;
-
-    margin-top: 1.5vw;
-
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+/Edge */
-    user-select: none; /* Standard */
-}
-
-@keyframes fadeInTitleAnimation {
-    0% {
-        transform: translateY(2.5vw);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
-    }
-}
-
 #frostbiteBannerNameBackground {
     font-family: X360, sans-serif;
     text-align: center;
@@ -195,6 +167,17 @@ body
     margin-top: -23vw;
 }
 
+@keyframes fadeInTitleAnimation {
+    0% {
+        transform: translateY(2.5vw);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+}
 
 @keyframes fadeInImageAnimation {
     0% {
@@ -202,55 +185,74 @@ body
     }
     100% {
         opacity: 1;
+        visibility: visible;
     }
+}
+#bannerText {
+    margin-top: 1.5vw;
+
+    animation: fadeInTitleAnimation ease 1s;
+    animation-delay: 2s;
+    visibility: hidden;
+
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 
 #frostbiteBackground {
     border-bottom: 0.35vw solid #a14a95;
+
+    animation: fadeInImageAnimation ease 5s;
+    animation-delay: 1s;
+    visibility: hidden;
+
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
 
-    animation: fadeInImageAnimation ease 10s;
 }
 /* BANNER ENDS HERE */
 
 
-/*ALBUM COVER SECTION STARTS HERE*/
-#ourAlbums {
-    color: white;
-    text-align: center;
-    font-size: 2.5vw;
-    margin-top: -0.5vw;
-    margin-bottom: 0.7vw;
-    font-family: sans-serif;
-    letter-spacing: 0.03vw;
-}
-
-}
-
-#gridContainer{
-
-
-}
-
-.coverGridItem{
-
-
-}
-
-/*ALBUM COVER SECTION ENDS HERE*/
-
-
 
 /* "ABOUT US" SECTION STARTS HERE */
+@keyframes fadeInAboutAnimation {
+    0% {
+        transform: translateY(2.5vw);
+        opacity: 0;
+        visibility: visible;
+
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+#aboutContainer {
+    visibility: hidden;
+
+    animation: fadeInAboutAnimation ease 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 2.4s;
+}
+
 #aboutTitle {
     color: white;
     text-align: center;
     font-size: 2.5vw;
-    margin-top: -0.5vw;
+    margin-top: -4.5vh;
     margin-bottom: 0.7vw;
     font-family: sans-serif;
     letter-spacing: 0.03vw;
@@ -280,19 +282,44 @@ body
     padding-right: 22.5vw;
 }
 
-#aboutContainer {
-    visibility: hidden;
-
-    animation: fadeInTitleAnimation ease 1.5s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    animation-delay: 1.6s;
-}
-
 .alignInMiddle{
     text-align: center;
 }
 /* "ABOUT US" SECTION ENDS HERE */
+
+
+
+/*ALBUM COVER SECTION STARTS HERE*/
+#ourAlbums {
+    color: white;
+    text-align: center;
+    font-size: 2.5vw;
+    margin-top: -0.5vw;
+    margin-bottom: 0.7vw;
+    font-family: sans-serif;
+    letter-spacing: 0.03vw;
+}
+
+#gridContainer{
+
+
+}
+
+.coverGridItem{
+
+
+}
+
+#albumCovers {
+    margin-top: 10vw;
+    visibility: hidden;
+
+    animation: fadeInTitleAnimation ease 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 2.4s;
+}
+/*ALBUM COVER SECTION ENDS HERE*/
 
 
 
@@ -311,7 +338,7 @@ body
     pointer-events: all;
 }
 .scrollFade--animate {
-    transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
 }
 /* SCROLL ANIMATION ENDS HERE */
 
@@ -328,10 +355,10 @@ body
 
     visibility: hidden;
 
-    animation: fadeInTitleAnimation ease 1.5s;
+    animation: fadeInTitleAnimation ease 1s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
-    animation-delay: 1s;
+    animation-delay: 2.4s;
 }
 
 .footerText{

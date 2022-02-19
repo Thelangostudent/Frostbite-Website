@@ -22,10 +22,7 @@ function scrollFade() {
 			element.classList.add('scrollFade--hidden');
 		}
 
-		if (rect.top <= fadeOutPoint) {
-			element.classList.remove('scrollFade--visible');
-			element.classList.add('scrollFade--hidden');
-		}
+
 	}
 }
 
