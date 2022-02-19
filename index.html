@@ -23,6 +23,10 @@
     </div>
 
     <div class="alignInMiddle">
+        <button id="toggleBannerText">Overlay: ON</button>
+    </div>
+
+    <div class="alignInMiddle">
         <button id="changeText">Change Story</button>
     </div>
 
@@ -94,7 +98,7 @@
                 <img id="testCover" src="Pictures/testCover.png" alt="testCover" height="100%" width="100%" />
                </div>
                 <div class="coverGridItem">
-                    <img id="testCover2" src="Pictures/testCover2.png" alt="testCover2" height="100%", width="100%" />
+                    <img id="testCover2" src="Pictures/testCover2.png" alt="testCover2" height="100%" width="100%" />
                 </div>
              </div>
 
@@ -158,6 +162,7 @@
     document.body.onload = function() {getInfoFromServer()};
     function getInfoFromServer(){
         getBannerImage();
+        getBannerTextStatus();
         getTitleText();
         getUserStatus();
         getYouTubeVideoURL();
@@ -198,6 +203,29 @@
         });
     }
 
+    function getBannerTextStatus(){
+        const bannerTextStatus = ref(db, 'toggleBannerStatus/status');
+        onValue(bannerTextStatus, (snapshot) => {
+
+            let toggleStatus = snapshot.val();
+            let bannerText = document.getElementById("bannerText");
+            let aboutTitle = document.getElementById("aboutTitle");
+            let toggleButton = document.getElementById("toggleBannerText");
+
+            console.log(snapshot.val());
+
+            if (toggleStatus === "ON"){
+                bannerText.style.display = "block";
+                aboutTitle.style.marginTop = "-1.5vw"
+                toggleButton.innerHTML = "Overlay: ON"
+            } else {
+                bannerText.style.display = "none";
+                aboutTitle.style.marginTop = "0.9vw"
+                toggleButton.innerHTML = "Overlay: OFF"
+            }
+        });
+    }
+
     //<--------------------------------------------------------- ADMIN FUNCTIONS ---------------------------------------------------------------------------------------->
 
     document.getElementById("changeBackgroundImage").onclick = function(e){changeBackgroundImage();}
@@ -232,6 +260,25 @@
                 reader.readAsDataURL((files[0]));
             }
             input.click();
+    }
+
+    document.getElementById("toggleBannerText").onclick = function(){toggleBannerTitle();}
+    function toggleBannerTitle(){
+        let status = document.getElementById("toggleBannerText").innerHTML;
+
+        if (status === "Overlay: ON"){
+            set(ref(db, 'toggleBannerStatus'), {
+                status: "OFF",
+            });
+            document.getElementById("toggleBannerText").innerHTML = "Overlay: OFF"
+
+        } else {
+            set(ref(db, 'toggleBannerStatus'), {
+                status: "ON",
+            });
+            document.getElementById("toggleBannerText").innerHTML = "Overlay: ON"
+        }
+
     }
 
     document.getElementById("changeText").onclick = function(){changeText();}

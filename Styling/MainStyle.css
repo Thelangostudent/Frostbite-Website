@@ -452,10 +452,14 @@ body
     background-color: black;
     color: #a14a95;
     font-size: 1vw;
-    margin-top: 10vw;
     border: 0.2vw solid #a14a95;
     padding: 0.5vw;
     border-radius: 0.5vw;
+    position: absolute;
+    bottom: 0;
+
+    margin-left: -2.5vw;
+    margin-bottom: 1.5vw;
 }
 
 #logOutButton:hover {
@@ -535,6 +539,25 @@ body
     margin-bottom: -0.04vw;
 
     display: none;
+}
+
+#toggleBannerText {
+    background-color: black;
+    color: #a14a95;
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid #a14a95;
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-top: 1vw;
+}
+
+#toggleBannerText:hover {
+    cursor: pointer;
+    border-color:white;
+    color:white;
+    transition-duration: 0.3s;
+
 }
 
 #changeBackgroundImage:hover + #backgroundToolTip { display: block; }
