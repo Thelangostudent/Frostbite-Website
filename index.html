@@ -229,7 +229,6 @@
         });
     }
 
-    //Main outline colour: #a14a95
     function setOutlineColour(){
         const newOutlineColour = ref(db, 'outlineColour/HexCode');
         onValue(newOutlineColour, (snapshot) => {
@@ -243,7 +242,7 @@
     document.getElementById("changeOutlineColour").onclick = function(){changeOutlineColour();}
     function changeOutlineColour(){
 
-        let newOutlineColour = prompt("Please enter the new HEX colour code");
+        let newOutlineColour = prompt("Please enter the new HEX colour code (example: #a14a95)");
 
         if (newOutlineColour != null) {
             set(ref(db, 'outlineColour'), {
