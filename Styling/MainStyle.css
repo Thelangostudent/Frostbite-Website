@@ -14,6 +14,8 @@ body
 }
 /* BODY ENDS HERE */
 
+
+
 /* NAVBAR STARTS BELOW */
 .navigation-bar {
     overflow: hidden;
@@ -438,6 +440,7 @@ body
     border: 0.2vw solid var(--outlineColor);
     padding: 0.5vw;
     border-radius: 0.5vw;
+    margin-top: 1vw;
 }
 
 #changeBackgroundImage:hover {
@@ -567,7 +570,6 @@ body
     border: 0.2vw solid var(--outlineColor);
     padding: 0.5vw;
     border-radius: 0.5vw;
-    margin-bottom: 1vw;
 }
 
 #changeOutlineColour:hover {
