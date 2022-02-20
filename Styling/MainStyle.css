@@ -5,6 +5,12 @@ body
     background-color: black;
     --outlineColor: black;
 
+    animation: fadeInImageAnimation ease 5s;
+    animation-delay: 1s;
+    visibility: hidden;
+
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
 /* BODY ENDS HERE */
 
@@ -206,13 +212,6 @@ body
 
 #frostbiteBackground {
     border-bottom: 0.35vw solid var(--outlineColor);
-
-    animation: fadeInImageAnimation ease 5s;
-    animation-delay: 1s;
-    visibility: hidden;
-
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
 
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
