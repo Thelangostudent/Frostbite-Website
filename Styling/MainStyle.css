@@ -3,23 +3,23 @@ body
 {
     margin: 0;
     background-color: black;
+    --outlineColor: black;
+
 }
 /* BODY ENDS HERE */
-
-
 
 /* NAVBAR STARTS BELOW */
 .navigation-bar {
     overflow: hidden;
     background-color: black;
-    border-bottom: 0.35vw solid #a14a95;
+    border-bottom: 0.35vw solid var(--outlineColor);
     height: 4vw;
 }
 
 .navMenuSelectable {
     font-family: sans-serif;
     float: right;
-    color: #a14a95;
+    color: var(--outlineColor);
     text-align: center;
     margin-right: 2vw;
     margin-top: 1.6vw;
@@ -41,7 +41,7 @@ body
 
 
 #logoText {
-    color: #a14a95;
+    color: var(--outlineColor);
     text-decoration: none;
 }
 
@@ -51,7 +51,7 @@ body
     text-align: center;
     margin-top: 0.85vw;
     margin-left: -1.7vw;
-    color: #a14a95;
+    color: var(--outlineColor);
     font-size: 2vw;
 
     -webkit-user-select: none; /* Safari */
@@ -61,7 +61,7 @@ body
 }
 
 .navigation-bar h3:hover {
-    color: #a14a95;
+    color: var(--outlineColor);
 }
 
 #logo {
@@ -132,7 +132,7 @@ body
     margin-right: 2.05vw;
     height: 1.7vw;
     width: 5.5vw;
-    background-color: #a14a95;
+    background-color: var(--outlineColor);
     float: right;
 }
 /* NAVBAR ENDS HERE */
@@ -163,7 +163,7 @@ body
     font-family: X360, sans-serif;
     text-align: center;
     font-size: 10vw;
-    color: #a14a95;
+    color: var(--outlineColor);
     margin-top: -23vw;
 }
 
@@ -205,7 +205,7 @@ body
 }
 
 #frostbiteBackground {
-    border-bottom: 0.35vw solid #a14a95;
+    border-bottom: 0.35vw solid var(--outlineColor);
 
     animation: fadeInImageAnimation ease 5s;
     animation-delay: 1s;
@@ -372,7 +372,7 @@ body
     text-align: center;
     background-color: black;
     color: white;
-    border-top: 0.35vw solid #a14a95;
+    border-top: 0.35vw solid var(--outlineColor);
 
     visibility: hidden;
 
@@ -411,9 +411,9 @@ body
     position: fixed;
     z-index: 1;
 
-    border-top: 0.35vw solid #a14a95;
-    border-right: 0.35vw solid #a14a95;
-    border-bottom: 0.35vw solid #a14a95;
+    border-top: 0.35vw solid var(--outlineColor);
+    border-right: 0.35vw solid var(--outlineColor);
+    border-bottom: 0.35vw solid var(--outlineColor);
     border-radius: 0.5vw;
 
     margin-left: -14vw;
@@ -427,16 +427,16 @@ body
 
 #adminTitle {
     text-align: center;
-    color: #a14a95;
+    color: var(--outlineColor);
     font-size: 1.5vw;
     font-family: sans-serif;
 }
 
 #changeBackgroundImage {
     background-color: black;
-    color: #a14a95;
+    color: var(--outlineColor);
     font-size: 1vw;
-    border: 0.2vw solid #a14a95;
+    border: 0.2vw solid var(--outlineColor);
     padding: 0.5vw;
     border-radius: 0.5vw;
 }
@@ -450,9 +450,9 @@ body
 
 #logOutButton {
     background-color: black;
-    color: #a14a95;
+    color: var(--outlineColor);
     font-size: 1vw;
-    border: 0.2vw solid #a14a95;
+    border: 0.2vw solid var(--outlineColor);
     padding: 0.5vw;
     border-radius: 0.5vw;
     position: absolute;
@@ -471,10 +471,10 @@ body
 
 #changeText {
     background-color: black;
-    color: #a14a95;
+    color: var(--outlineColor);
     font-size: 1vw;
     width: 8.1vw;
-    border: 0.2vw solid #a14a95;
+    border: 0.2vw solid var(--outlineColor);
     padding: 0.5vw;
     border-radius: 0.5vw;
     margin-top: 1vw;
@@ -490,10 +490,10 @@ body
 
 #addAlbumCover {
     background-color: black;
-    color: #a14a95;
+    color: var(--outlineColor);
     font-size: 1vw;
     width: 8.1vw;
-    border: 0.2vw solid #a14a95;
+    border: 0.2vw solid var(--outlineColor);
     padding: 0.5vw;
     border-radius: 0.5vw;
     margin-top: 1vw;
@@ -509,10 +509,10 @@ body
 
 #changeYouTubeURL {
     background-color: black;
-    color: #a14a95;
+    color: var(--outlineColor);
     font-size: 1vw;
     width: 8.1vw;
-    border: 0.2vw solid #a14a95;
+    border: 0.2vw solid var(--outlineColor);
     padding: 0.5vw;
     border-radius: 0.5vw;
     margin-top: 1vw;
@@ -543,16 +543,35 @@ body
 
 #toggleBannerText {
     background-color: black;
-    color: #a14a95;
+    color: var(--outlineColor);
     font-size: 1vw;
     width: 8.1vw;
-    border: 0.2vw solid #a14a95;
+    border: 0.2vw solid var(--outlineColor);
     padding: 0.5vw;
     border-radius: 0.5vw;
     margin-top: 1vw;
 }
 
 #toggleBannerText:hover {
+    cursor: pointer;
+    border-color:white;
+    color:white;
+    transition-duration: 0.3s;
+
+}
+
+#changeOutlineColour {
+    background-color: black;
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-bottom: 1vw;
+}
+
+#changeOutlineColour:hover {
     cursor: pointer;
     border-color:white;
     color:white;

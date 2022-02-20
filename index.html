@@ -18,6 +18,10 @@
     <h3 id="adminTitle">Admin menu</h3>
 
     <div class="alignInMiddle">
+        <button id="changeOutlineColour">Change Outline Colour</button>
+    </div>
+
+    <div class="alignInMiddle">
         <button id="changeBackgroundImage">Change Banner</button>
         <button id="backgroundToolTip">Recommended size is 1920x480</button>
     </div>
@@ -162,10 +166,39 @@
     document.body.onload = function() {getInfoFromServer()};
     function getInfoFromServer(){
         getBannerImage();
+        setOutlineColour();
         getBannerTextStatus();
         getTitleText();
         getUserStatus();
         getYouTubeVideoURL();
+    }
+
+    function getBannerImage(){
+        getDownloadURL(refStorage(storage, 'bannerImage'))
+            .then((url) => {
+                document.getElementById("frostbiteBackground").src = url;
+            })
+    }
+
+    function getBannerTextStatus(){
+        const bannerTextStatus = ref(db, 'toggleBannerStatus/status');
+        onValue(bannerTextStatus, (snapshot) => {
+
+            let toggleStatus = snapshot.val();
+            let bannerText = document.getElementById("bannerText");
+            let aboutTitle = document.getElementById("aboutTitle");
+            let toggleButton = document.getElementById("toggleBannerText");
+
+            if (toggleStatus === "ON"){
+                bannerText.style.display = "block";
+                aboutTitle.style.marginTop = "-1.5vw"
+                toggleButton.innerHTML = "Overlay: ON"
+            } else {
+                bannerText.style.display = "none";
+                aboutTitle.style.marginTop = "0.9vw"
+                toggleButton.innerHTML = "Overlay: OFF"
+            }
+        });
     }
 
     //Gets the frostbite text from the server on load
@@ -173,6 +206,13 @@
         const userStatus = ref(db, 'titleText/titleTextContent');
         onValue(userStatus, (snapshot) => {
             document.getElementById("aboutText").innerHTML = snapshot.val();
+        });
+    }
+
+    function getYouTubeVideoURL(){
+        const userStatus = ref(db, 'youtubeURL/youtubeURLContent');
+        onValue(userStatus, (snapshot) => {
+            document.getElementById("youtubePreviewVideo").src = "https://www.youtube.com/embed/" + snapshot.val();
         });
     }
 
@@ -189,44 +229,28 @@
         });
     }
 
-    function getBannerImage(){
-        getDownloadURL(refStorage(storage, 'bannerImage'))
-            .then((url) => {
-                document.getElementById("frostbiteBackground").src = url;
-            })
-    }
-
-    function getYouTubeVideoURL(){
-        const userStatus = ref(db, 'youtubeURL/youtubeURLContent');
-        onValue(userStatus, (snapshot) => {
-            document.getElementById("youtubePreviewVideo").src = "https://www.youtube.com/embed/" + snapshot.val();
-        });
-    }
-
-    function getBannerTextStatus(){
-        const bannerTextStatus = ref(db, 'toggleBannerStatus/status');
-        onValue(bannerTextStatus, (snapshot) => {
-
-            let toggleStatus = snapshot.val();
-            let bannerText = document.getElementById("bannerText");
-            let aboutTitle = document.getElementById("aboutTitle");
-            let toggleButton = document.getElementById("toggleBannerText");
-
-            console.log(snapshot.val());
-
-            if (toggleStatus === "ON"){
-                bannerText.style.display = "block";
-                aboutTitle.style.marginTop = "-1.5vw"
-                toggleButton.innerHTML = "Overlay: ON"
-            } else {
-                bannerText.style.display = "none";
-                aboutTitle.style.marginTop = "0.9vw"
-                toggleButton.innerHTML = "Overlay: OFF"
-            }
+    //Main outline colour: #a14a95
+    function setOutlineColour(){
+        const newOutlineColour = ref(db, 'outlineColour/HexCode');
+        onValue(newOutlineColour, (snapshot) => {
+            const bodyElement = document.getElementsByTagName("BODY")[0];
+            bodyElement.style.setProperty('--outlineColor', snapshot.val());
         });
     }
 
     //<--------------------------------------------------------- ADMIN FUNCTIONS ---------------------------------------------------------------------------------------->
+
+    document.getElementById("changeOutlineColour").onclick = function(){changeOutlineColour();}
+    function changeOutlineColour(){
+
+        let newOutlineColour = prompt("Please enter the new HEX colour code");
+
+        if (newOutlineColour != null) {
+            set(ref(db, 'outlineColour'), {
+                HexCode: newOutlineColour,
+            });
+        }
+    }
 
     document.getElementById("changeBackgroundImage").onclick = function(e){changeBackgroundImage();}
     function changeBackgroundImage(){
