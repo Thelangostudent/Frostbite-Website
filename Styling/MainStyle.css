@@ -306,7 +306,7 @@ body
     grid-template-columns: auto ;
     grid-template-rows: auto;
     place-content: center;
-    grid-gap: 10px;
+    grid-gap: 1vw;
     text-align: center;
 
     grid-auto-flow: column;
@@ -319,7 +319,7 @@ body
     grid-row-start: auto;
     grid-row-end: auto;
     place-self: center;
-    block-size: 100px;
+    block-size: 10vw;
 
 }
 
@@ -453,7 +453,7 @@ body
     grid-template-columns: auto ;
     grid-template-rows: auto;
     place-content: center;
-    grid-gap: 10px;
+    grid-gap: 1vw;
     text-align: center;
 
     grid-auto-flow: column;
