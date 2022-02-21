@@ -67,36 +67,6 @@
     <a href="#albumCovers" class="navMenuSelectable">ALBUMS</a>
     <a href="#aboutTitle" class="navMenuSelectable">ABOUT</a>
 
-    <!--<div class="dropdown">
-        <button class="dropbtn">EDIT</button>
-        <div class="dropdown-content">
-            <div class="alignInMiddle">
-                <button id="changeBackgroundImage">Change Banner</button>
-
-            </div>
-
-            <div class="alignInMiddle">
-                <button id="changeText">Change Story</button>
-            </div>
-
-            <div class="alignInMiddle">
-                <button id= "addAlbumCover"> Add Album Cover</button>
-            </div>
-
-            <div class="alignInMiddle">
-                <button id="changeYouTubeURL">Change YT Video</button>
-            </div>
-        </div>
-    </div>-->
-
-
-
-
-
-
-
-
-
 </div>
 
 <!--------------------------------------------------------------- LOGIN POP-UP ----------------------------------------------------------------------------------------->
@@ -122,6 +92,14 @@
 
 </div>
 
+<!--------------------------------------------------------------- INFO POP-UP ----------------------------------------------------------------------------------------->
+
+<div id="popUpInfo">
+    <div class="alignInMiddle">
+        <h3 id="popUpInfoText"></h3>
+    </div>
+</div>
+
 <!--------------------------------------------------------------- MAIN CONTAINER ----------------------------------------------------------------------------------------->
 
 <div id="mainContent" style="display: block">
@@ -144,7 +122,6 @@
         </div>
     </div>
 
-    <!-- I put the albums below the story, adding animation to the album images made the page lag a bit, so now they are out of sight when the page is loaded -->
     <div id="albumCovers">
         <div class="item scrollFade">
 
@@ -173,6 +150,10 @@
 
         </div>
     </div>
+
+    <!--<div id="spotifyEmbed"></div>
+        <iframe style="border-radius:0.5vw" src="https://open.spotify.com/embed/artist/0rIROc9qyjwndVoDFa2WD0?utm_source=generator" width="25%" height="400" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+    </div>-->
 
     <div id="tickets">
         <div class="item scrollFade">
@@ -203,12 +184,8 @@
         </div>
     </div>
 
-
-    <!--<div id="spotifyEmbed"></div>
-        <iframe style="border-radius:0.5vw" src="https://open.spotify.com/embed/artist/0rIROc9qyjwndVoDFa2WD0?utm_source=generator" width="25%" height="400" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-    </div>-->
-
 </div>
+
     <!--------------------------------------------------------------- FOOTER --------------------------------------------------------------------------------------------->
 
 <div class="item scrollFade">
@@ -243,6 +220,9 @@
     const firebase = initializeApp(firebaseConfig);
     const db = getDatabase();
     const storage = getStorage();
+
+    const popUpInfoWindow = document.getElementById("popUpInfo");
+    const popUpWindowText = document.getElementById("popUpInfoText");
 
     //<--------------------------------------------------------- ONLOAD FUNCTIONS ---------------------------------------------------------------------------------------->
 
@@ -413,7 +393,16 @@
         }
     }
 
+    function enablePopUpWindow(text){
+        popUpWindowText.innerHTML = text;
+
+        document.body.removeChild(popUpInfoWindow);
+        document.body.appendChild(popUpInfoWindow);
+        popUpInfoWindow.style.animation = "dropDown 3s"
+    }
+
     //<--------------------------------------------------------- LOGIN/LOGOUT ---------------------------------------------------------------------------------------->
+
     document.getElementById("acceptSignInButton").onclick = function(){getEmailAndPassword();}
     function getEmailAndPassword(){
 
@@ -421,17 +410,20 @@
         let password = document.getElementById("loginPassword").value;
 
         if (email === "" || password === ""){
-            alert("The fields cannot be empty!")
+            enablePopUpWindow("The fields cannot be empty!");
+
         } else {
             logIn(email, password);
         }
     }
 
     function logIn(email, password){
+
         const auth = getAuth();
         signInWithEmailAndPassword(auth, email, password)
             .then((userInfo) => {
-                alert("Successfully logged in");
+                enablePopUpWindow("Successfully logged in");
+
                 document.getElementById("adminContainer").style.display = "block";
                 document.getElementById("adminLogin").style.display = "none";
                 document.getElementById("popUpLogin").style.display = "none";
@@ -440,7 +432,7 @@
                 document.getElementById("loginPassword").value = "";
             })
             .catch((error) => {
-                alert("Wrong email or password!");
+                enablePopUpWindow("Wrong email/password!");
                 document.getElementById("adminContainer").style.display = "none";
             });
     }
@@ -450,10 +442,10 @@
 
         const auth = getAuth();
         signOut(auth).then(() => {
-            alert("Successfully logged out")
+            enablePopUpWindow("Successfully logged out");
             document.getElementById("adminLogin").style.display = "block";
         }).catch((error) => {
-            alert(error);
+            enablePopUpWindow(error);
         });
     }
 
