@@ -688,9 +688,9 @@ body
         margin-top: -1.5vw;
         padding-left: 2vw;
         padding-right: 2vw;
-        margin-bottom: 2vw;
         min-width: 1px;
         display: flex;
+        margin-bottom: 1.3vw;
     }
 }
 
