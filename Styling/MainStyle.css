@@ -577,7 +577,6 @@ body
     border-color:white;
     color:white;
     transition-duration: 0.3s;
-
 }
 
 #changeBackgroundImage:hover + #backgroundToolTip { display: block; }
@@ -611,5 +610,109 @@ body
     transition: opacity 0.5s ease-in-out;
 }
 /* SCROLL ANIMATION ENDS HERE */
+
+
+
+/* POP UP LOGIN STARTS HERE */
+#popUpLogin {
+    color: white;
+    background-color: black;
+    border: 0.35vw solid var(--outlineColor);
+    border-radius: 0.5vw;
+    display: none;
+
+    position: fixed;
+
+    z-index: 1;
+    width: 25vw;
+    height: 15.5vw;
+
+    font-size: 2vw;
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#loginEmailText {
+    text-align: left;
+    font-size: 1.5vw;
+    padding-left: 1vw;
+    padding-right: 2.1vw;
+}
+
+#loginEmail {
+    height: 1.5vw;
+    font-size: 1vw;
+}
+
+#loginPasswordText {
+    text-align: left;
+    font-size: 1.5vw;
+    margin-right: 1vw;
+}
+
+#loginPassword {
+    height: 1.5vw;
+    font-size: 1vw;
+}
+
+#emailContainer {
+    padding-left: 2vw;
+    padding-right: 2vw;
+    display: flex;
+}
+
+#passwordContainer {
+    margin-top: -1.5vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    margin-bottom: -1vw;
+
+    display: flex;
+}
+
+#signInText {
+    margin-top: 0.8vw;
+    font-size: 2vw;
+    text-align: center;
+}
+
+#acceptSignInButton {
+    background-color: black;
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-left: 0.5vw;
+}
+
+#acceptSignInButton:hover {
+    cursor: pointer;
+    border-color:white;
+    color:white;
+    transition-duration: 0.3s;
+}
+
+#cancelSignInButton {
+    background-color: black;
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-right: 0.5vw;
+}
+
+#cancelSignInButton:hover {
+    cursor: pointer;
+    border-color:white;
+    color:white;
+    transition-duration: 0.3s;
+}
+/* POP UP LOGIN ENDS HERE */
 
 

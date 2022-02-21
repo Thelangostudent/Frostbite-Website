@@ -69,6 +69,29 @@
     <a href="index.html" class="navMenuSelectable">HOME</a>
 </div>
 
+<!--------------------------------------------------------------- LOGIN POP-UP ----------------------------------------------------------------------------------------->
+
+<div id="popUpLogin">
+
+    <h3 id="signInText"> Sign in: </h3>
+
+    <div id="emailContainer">
+    <label id="loginEmailText" for="loginEmail">Email:</label>
+    <input type="text" id="loginEmail" name="loginEmail"><br><br>
+    </div>
+
+    <div id="passwordContainer">
+    <label id="loginPasswordText" for="loginPassword">Password:</label>
+    <input type="password" id="loginPassword" name="loginPassword"><br><br>
+    </div>
+
+    <div class="alignInMiddle">
+        <button id="cancelSignInButton">Cancel</button>
+        <button id="acceptSignInButton">Continue</button>
+    </div>
+
+</div>
+
 <!--------------------------------------------------------------- MAIN CONTAINER ----------------------------------------------------------------------------------------->
 
 <div id="mainContent" style="display: block">
@@ -222,7 +245,7 @@
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 document.getElementById("adminContainer").style.display = "block";
-
+                document.getElementById("adminLogin").style.display = "none";
             } else {
                 document.getElementById("adminContainer").style.display = "none";
             }
@@ -331,19 +354,16 @@
     }
 
     //<--------------------------------------------------------- LOGIN/LOGOUT ---------------------------------------------------------------------------------------->
+    document.getElementById("acceptSignInButton").onclick = function(){getEmailAndPassword();}
+    function getEmailAndPassword(){
 
-    document.getElementById("adminLogin").onclick = function(){getEmailAndPassword();}
-    function getEmailAndPassword() {
-        let email = prompt("Please enter your email address:");
-        if (email == null || email === "") {
-            //closed
+        let email = document.getElementById("loginEmail").value;
+        let password = document.getElementById("loginPassword").value;
+
+        if (email === "" || password === ""){
+            alert("The fields cannot be empty!")
         } else {
-            let password = prompt("Please enter your password:");
-            if (password == null || password === "") {
-                //closed
-            } else {
-                logIn(email, password);
-            }
+            logIn(email, password);
         }
     }
 
@@ -353,10 +373,14 @@
             .then((userInfo) => {
                 alert("Successfully logged in");
                 document.getElementById("adminContainer").style.display = "block";
+                document.getElementById("adminLogin").style.display = "none";
+                document.getElementById("popUpLogin").style.display = "none";
+
+                document.getElementById("loginEmail").value = "";
+                document.getElementById("loginPassword").value = "";
             })
             .catch((error) => {
-                const errorMessage = error.message;
-                alert(errorMessage);
+                alert("Wrong email or password");
                 document.getElementById("adminContainer").style.display = "none";
             });
     }
@@ -367,9 +391,22 @@
         const auth = getAuth();
         signOut(auth).then(() => {
             alert("Successfully logged out")
+            document.getElementById("adminLogin").style.display = "block";
         }).catch((error) => {
             alert(error);
         });
+    }
+
+    document.getElementById("cancelSignInButton").onclick = function(){cancelSignIn();}
+    function cancelSignIn(){
+        document.getElementById("popUpLogin").style.display = "none";
+        document.getElementById("loginEmail").value = "";
+        document.getElementById("loginPassword").value = "";
+    }
+
+    document.getElementById("adminLogin").onclick = function(){showSignInWindow();}
+    function showSignInWindow(){
+        document.getElementById("popUpLogin").style.display = "block";
     }
 
     //<--------------------------------------------------------------- TBA ------------------------------------------------------------------------------------------>
