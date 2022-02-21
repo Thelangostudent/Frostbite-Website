@@ -760,7 +760,6 @@ body
     display: flex;
     min-width: 1px;
     margin-bottom: -1vw;
-
 }
 
 #passwordContainer {
@@ -856,18 +855,13 @@ body
     top: 10%;
     transform: translate(-50%, -50%);
 
-    margin-top: -10vw;
-}
-
-#popUpInfoText {
-    top: 50%;
-    left: 50%;
+    margin-top: -100vw;
 }
 
 /* 5 second animation */
 @keyframes dropDown  {
     0% {
-        margin-top: -10vw;
+        margin-top: -100vw;
     }
 
     25% {
@@ -879,10 +873,85 @@ body
     }
 
     100% {
-        margin-top: -10vw;
+        margin-top: -100vw;
     }
 
 }
 /* POP UP INFO ENDS HERE */
+
+
+
+/* POP UP ADMIN VALUE STARTS HERE */
+#popUpAdminValue {
+    color: white;
+    background-color: black;
+    border: 0.35vw solid var(--outlineColor);
+    border-radius: 0.5vw;
+    display: none;
+
+    position: fixed;
+
+    z-index: 1;
+    width: 50vw;
+    height: 10vw;
+
+    font-size: 1.5vw;
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#newValueContainer {
+    margin-bottom: -0.8vw;
+}
+
+#popUpAdminValueText {
+    margin-top: 1vw;
+    margin-bottom: 0.7vw;
+}
+
+#newValueContainerValue {
+    height: 1.5vw;
+    font-size: 1vw;
+    width: 40vw;
+}
+
+#acceptNewValueButton {
+    background-color: black;
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-left: 5vw;
+}
+
+#acceptNewValueButton:hover {
+    cursor: pointer;
+    border-color:white;
+    color:white;
+    transition-duration: 0.3s;
+}
+
+#cancelNewValueButton {
+    background-color: black;
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-right: 5vw;
+}
+
+#cancelNewValueButton:hover {
+    cursor: pointer;
+    border-color:white;
+    color:white;
+    transition-duration: 0.3s;
+}
+/* POP UP ADMIN VALUE STARTS HERE */
 
 

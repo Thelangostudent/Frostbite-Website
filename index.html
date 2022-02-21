@@ -92,6 +92,25 @@
 
 </div>
 
+<!--------------------------------------------------------- ADMIN-EDIT (VALUE) POP-UP ------------------------------------------------------------------------------------------->
+
+<div id="popUpAdminValue">
+
+    <div class="alignInMiddle">
+    <h3 id="popUpAdminValueText">Enter the new YouTube URL-ID (the letters after 'watch?v=')</h3>
+
+    <div id="newValueContainer">
+        <label id="newValueContainerLabel" for="newValueContainerValue"></label>
+        <input type="text" id="newValueContainerValue" name="newValueContainerValue"><br><br>
+    </div>
+
+        <button id="cancelNewValueButton">Cancel</button>
+        <button id="acceptNewValueButton">Accept</button>
+
+</div>
+
+</div>
+
 <!---------------------------------------------------------------- INFO POP-UP ------------------------------------------------------------------------------------------->
 
 <div id="popUpInfo">
@@ -161,7 +180,7 @@
             <h3 id="ticket_title"> Tickets </h3>
 
             <div class="alignInMiddle">
-                <h2 id="ticket_placeholder">Stay Tuned </h2>
+                <h2 id="ticket_placeholder">Stay Tuned (Coming Soon)</h2>
             </div>
 
         </div>
@@ -305,12 +324,30 @@
     document.getElementById("changeOutlineColour").onclick = function(){changeOutlineColour();}
     function changeOutlineColour(){
 
-        let newOutlineColour = prompt("Please enter the new HEX colour code (example: #a14a95)");
+        showPopUpAdminValueWindow("Enter the new HEX colour code (example: #a14a95)")
+        document.getElementById("acceptNewValueButton").onclick = function(){confirmColourChange();}
 
-        if (newOutlineColour != null) {
-            set(ref(db, 'outlineColour'), {
-                HexCode: newOutlineColour,
-            });
+    }
+
+    function confirmColourChange(){
+        let newOutlineColour = document.getElementById("newValueContainerValue").value;
+
+        const reg = /^#([0-9a-f]{3}){1,2}$/i;
+        const isValidHex = reg.test(newOutlineColour);
+
+        if(isValidHex === true) {
+            if (newOutlineColour === "") {
+                enablePopUpWindow("Field cannot be empty!");
+            } else {
+                set(ref(db, 'outlineColour'), {
+                    HexCode: newOutlineColour,
+                });
+                enablePopUpWindow("Colour updated!");
+                closeNewValueContainerWindow();
+                resetNewAdminValue();
+            }
+        } else {
+            enablePopUpWindow("Not a valid HEX colour!");
         }
     }
 
@@ -370,26 +407,44 @@
     document.getElementById("changeText").onclick = function(){changeText();}
     function changeText() {
 
-        let newText = prompt("Please paste the new story text:");
-        if (newText == null || newText === "") {
-            //closed
+        showPopUpAdminValueWindow("Please copy & paste your new story text here")
+        document.getElementById("acceptNewValueButton").onclick = function(){confirmChangeText();}
+
+    }
+
+    function confirmChangeText(){
+        let newText = document.getElementById("newValueContainerValue").value;
+        if (newText === "") {
+            enablePopUpWindow("Field cannot be empty!");
         } else {
             set(ref(db, 'titleText'), {
                 titleTextContent: newText,
             });
+            enablePopUpWindow("Story updated!");
+            closeNewValueContainerWindow();
+            resetNewAdminValue();
         }
     }
 
     document.getElementById("changeYouTubeURL").onclick = function(){changeYouTubeURL();}
     function changeYouTubeURL() {
 
-        let newURL = prompt("Please enter the new YouTube URL-ID (the letters after 'watch?v=')");
-        if (newURL == null || newURL === "") {
-            //closed
+        showPopUpAdminValueWindow("Enter the new YouTube URL-ID (the letters after 'watch?v=')")
+        document.getElementById("acceptNewValueButton").onclick = function(){confirmYouTubeURL();}
+
+    }
+
+    function confirmYouTubeURL(){
+        let newURL = document.getElementById("newValueContainerValue").value;
+        if (newURL === "") {
+            enablePopUpWindow("Field cannot be empty!");
         } else {
             set(ref(db, 'youtubeURL'), {
                 youtubeURLContent: newURL,
             });
+            enablePopUpWindow("Video updated!");
+            closeNewValueContainerWindow();
+            resetNewAdminValue();
         }
     }
 
@@ -398,7 +453,25 @@
 
         document.body.removeChild(popUpInfoWindow);
         document.body.appendChild(popUpInfoWindow);
-        popUpInfoWindow.style.animation = "dropDown 3s"
+        popUpInfoWindow.style.animation = "dropDown 3.25s"
+    }
+
+    function showPopUpAdminValueWindow(descriptionOfFeature){
+        let newValueContainer = document.getElementById("popUpAdminValue");
+        newValueContainer.style.display = "block";
+
+        let popUpAdminValueText = document.getElementById("popUpAdminValueText");
+        popUpAdminValueText.innerHTML = descriptionOfFeature;
+    }
+
+    document.getElementById("cancelNewValueButton").onclick = function(){closeNewValueContainerWindow();}
+    function closeNewValueContainerWindow(){
+        document.getElementById("popUpAdminValue").style.display = "none";
+        resetNewAdminValue();
+    }
+
+    function resetNewAdminValue(){
+        document.getElementById("newValueContainerValue").value = "";
     }
 
     //<--------------------------------------------------------- LOGIN/LOGOUT ---------------------------------------------------------------------------------------->
