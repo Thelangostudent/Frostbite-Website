@@ -661,6 +661,9 @@ body
     padding-left: 2vw;
     padding-right: 2vw;
     display: flex;
+    min-width: 1px;
+    margin-bottom: -1vw;
+
 }
 
 #passwordContainer {
@@ -668,8 +671,27 @@ body
     padding-left: 2vw;
     padding-right: 2vw;
     margin-bottom: -1vw;
-
+    min-width: 1px;
     display: flex;
+}
+
+@-moz-document url-prefix() {
+    #emailContainer {
+        padding-left: 2vw;
+        padding-right: 2vw;
+        display: flex;
+        min-width: 1px;
+        margin-bottom: 2vw;
+    }
+
+    #passwordContainer {
+        margin-top: -1.5vw;
+        padding-left: 2vw;
+        padding-right: 2vw;
+        margin-bottom: 2vw;
+        min-width: 1px;
+        display: flex;
+    }
 }
 
 #signInText {
