@@ -148,10 +148,10 @@
 
              <div id="gridContainer">
                <div class="coverGridItem">
-                <img id="testCover" src="Pictures/testCover.png" alt="testCover" height="100%" width="100%" />
+                <img id="testCover" src="Pictures/testCover.png" alt="testCover" height="181" width="187" />
                </div>
                 <div class="coverGridItem">
-                    <img id="testCover2" src="Pictures/testCover2.png" alt="testCover2" height="100%" width="100%" />
+                    <img id="testCover2" src="Pictures/testCover2.png" alt="testCover2" height="181" width="187" />
                 </div>
              </div>
 
@@ -252,6 +252,7 @@
         getTitleText();
         getUserStatus();
         getYouTubeVideoURL();
+        getAlbums();
     }
 
     function getBannerImage(){
@@ -259,6 +260,28 @@
             .then((url) => {
                 document.getElementById("frostbiteBackground").src = url;
             })
+    }
+
+    //gets the album covers from firebase.
+    function getAlbums() {
+
+
+        getDownloadURL(refStorage(storage, 'AlbumCovers/Album0.png'))
+            .then((url) => {
+                const divElement = document.createElement("div");
+                const addAlbum = document.createElement("img");
+
+                addAlbum.src = url;
+                addAlbum.width = "187";
+                addAlbum.height = "181";
+                divElement.appendChild(addAlbum);
+                divElement.className = "coverGridItem";
+
+                document.getElementById("gridContainer").appendChild(divElement);
+
+            })
+
+
     }
 
     function getBannerTextStatus(){
