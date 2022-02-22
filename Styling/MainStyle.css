@@ -310,6 +310,8 @@ body
         grid-gap: 1vw;
         text-align: center;
         grid-auto-flow: row;
+
+       
     }
 
 }
@@ -330,16 +332,31 @@ body
 }
 
 
+@media screen and (max-width: 1000px) {
 
-.coverGridItem{
-    grid-column-start: auto;
-    grid-column-end: auto;
-    grid-row-start: auto;
-    grid-row-end: auto;
-    place-self: center;
-    block-size: 10vw;
-
+    .coverGridItem {
+        grid-column-start: auto;
+        grid-column-end: auto;
+        grid-row-start: auto;
+        grid-row-end: auto;
+        place-self: center;
+        block-size: 5vw;
+    }
 }
+
+@media screen and (min-width: 1200px) {
+
+    coverGridItem {
+        grid-column-start: auto;
+        grid-column-end: auto;
+        grid-row-start: auto;
+        grid-row-end: auto;
+        place-self: center;
+        block-size: 10vw;
+    }
+}
+
+
 
 #albumCovers {
     margin-top: 10vw;
