@@ -341,8 +341,7 @@ body
         grid-row-end: auto;
         place-self: center;
         block-size: 20vw;
-        
-       
+        width: 1%;
     }
 }
 
@@ -355,7 +354,6 @@ body
         grid-row-end: auto;
         place-self: center;
         block-size: 10vw;
-        width: 1%;
     }
 }
 
