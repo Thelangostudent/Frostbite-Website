@@ -316,7 +316,7 @@ body
 
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1001px) {
 
     #gridContainer {
         display: grid;
@@ -340,13 +340,13 @@ body
         grid-row-start: auto;
         grid-row-end: auto;
         place-self: center;
-        block-size: 5vw;
+        block-size: 1vw;
     }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1001px) {
 
-    coverGridItem {
+    .coverGridItem {
         grid-column-start: auto;
         grid-column-end: auto;
         grid-row-start: auto;
