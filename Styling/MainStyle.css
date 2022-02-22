@@ -367,7 +367,6 @@ body
 
 /*TICKETS STARTS HERE*/
 #ticket_title {
-
     color: white;
     text-align: center;
     font-size: 3.0vw;
@@ -379,12 +378,6 @@ body
 
 #tickets {
     margin-top: 10vw;
-    visibility: hidden;
-
-    animation: fadeInTitleAnimation ease 1s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    animation-delay: 2.4s;
 }
 
 #ticket_placeholder {
@@ -399,45 +392,11 @@ body
 
 
 /*SOCIALS STARTS HERE*/
-#youtubeSocials {
-    align-items: center;
-
-    height: 4vw;
-    width: 6vw;
-
-    margin-top: -0.33vw;
-
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+/Edge */
-    user-select: none; /* Standard */
-}
-
-#spotifySocials {
-    align-items: center;
-
-    height: 4vw;
-    width: 6vw;
-
-    margin-top: -0.33vw;
-
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+/Edge */
-    user-select: none; /* Standard */
-}
-
-#socials {
+#socialsContainer {
     margin-top: 10vw;
-    visibility: hidden;
-
-    animation: fadeInTitleAnimation ease 1s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    animation-delay: 2.4s;
 }
 
-#socials_title {
+#socialsTitle {
     color: white;
     text-align: center;
     font-size: 3.0vw;
@@ -447,17 +406,32 @@ body
     letter-spacing: 0.03vw;
 }
 
-#socialsContainer {
-    display: grid;
-    place-items: center;
-    grid-template-columns: auto ;
-    grid-template-rows: auto;
-    place-content: center;
-    grid-gap: 1vw;
-    text-align: center;
+#socialsYoutube {
+    width: 16vw;
+    height: 15vw;
+    padding-right: 1vw;
+}
 
-    grid-auto-flow: column;
+#socialsSpotify {
+    width: 15vw;
+    height: 15vw;
+    padding-left: 1vw;
+}
+    
+#socialsSquareYoutube {
+    margin-left: 33.7vw;
+    margin-bottom: -11vw;
+    width: 13vw;
+    height: 10vw;
+    background-color: var(--outlineColor);
+}
 
+#socialsSquareSpotify {
+    margin-left: 52.5vw;
+    margin-bottom: -13vw;
+    width: 12vw;
+    height: 12vw;
+    background-color: var(--outlineColor);
 }
 /*SOCIALS END HERE*/
 
