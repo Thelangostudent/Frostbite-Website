@@ -355,7 +355,7 @@ body
         grid-row-end: auto;
         place-self: center;
         block-size: 10vw;
-        width: 10%;
+        width: 1%;
     }
 }
 
