@@ -383,6 +383,7 @@ body
 #ticket_placeholder {
     margin-top: 1.0vw;
     margin-bottom: 2vw;
+    font-size: 1.75vw;
     font-family: sans-serif;
     text-align: center;
     color: white;
@@ -400,8 +401,7 @@ body
     color: white;
     text-align: center;
     font-size: 3.0vw;
-    margin-top: -0.5vw;
-    margin-bottom: 4vw;
+    margin-bottom: 3.25vw;
     font-family: sans-serif;
     letter-spacing: 0.03vw;
 }
