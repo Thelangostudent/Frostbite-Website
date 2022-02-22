@@ -311,7 +311,6 @@ body
         text-align: center;
         grid-auto-flow: row;
     }
-
 }
 
 @media screen and (min-width: 1001px) {
@@ -326,7 +325,6 @@ body
         text-align: center;
         grid-auto-flow: column;
     }
-
 }
 
 
@@ -355,17 +353,8 @@ body
     }
 }
 
-
-
-
 #albumCovers {
     margin-top: 10vw;
-    visibility: hidden;
-
-    animation: fadeInTitleAnimation ease 1s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    animation-delay: 2.4s;
 }
 /*ALBUM COVER SECTION ENDS HERE*/
 
