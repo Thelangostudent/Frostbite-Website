@@ -340,7 +340,8 @@ body
         grid-row-start: auto;
         grid-row-end: auto;
         place-self: center;
-        block-size: 1vw;
+        block-size: 20vw;
+       
     }
 }
 
