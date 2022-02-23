@@ -268,7 +268,7 @@
         let totalAlbumsToLoad = 0;
         let currentLoadingAlbum = 0;
 
-        const howManyAlbums = ref(db, 'howManyAlbums');
+        const howManyAlbums = ref(db, 'howManyAlbums/howManyAlbums');
         onValue(howManyAlbums, (snapshot) => {
             totalAlbumsToLoad = snapshot.val();
 
@@ -520,7 +520,7 @@
 
        let totalAlbumsToLoad = 0;
 
-        const howManyAlbums = ref(db, 'howManyAlbums');
+        const howManyAlbums = ref(db, 'howManyAlbums/howManyAlbums');
         onValue(howManyAlbums, (snapshot) => {
             totalAlbumsToLoad = snapshot.val();
 
@@ -553,6 +553,9 @@
             input.click();
 
             totalAlbumsToLoad = totalAlbumsToLoad++;
+            set(ref(db, 'howManyAlbums'), {
+                howManyAlbums: totalAlbumsToLoad,
+            });
             //reloads the albums
             getAlbums();
 
