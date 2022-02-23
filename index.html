@@ -523,6 +523,7 @@
         const howManyAlbums = ref(db, 'howManyAlbums/howManyAlbums');
         onValue(howManyAlbums, (snapshot) => {
             totalAlbumsToLoad = snapshot.val();
+            let albums = totalAlbumsToLoad + 1;
 
             const input = document.createElement('input');
             input.type = 'file';
@@ -532,7 +533,7 @@
                 imageFiles = fileFromPC.target.files;
                 reader = new FileReader();
                 reader.onload = function () {
-
+                  
                     const storage = getStorage();
                     //.png is temporary, it is just to remian compatible with already uploaded files.
                     const imagesRef = refStorage(storage, 'AlbumCovers/album' + totalAlbumsToLoad + '.png');
@@ -541,7 +542,9 @@
                     //uploads the new image to firebase
                     uploadBytes(imagesRef, imageFiles[0])
 
+                   
 
+                   
 
                 }
 
@@ -551,12 +554,15 @@
             input.click();
 
             set(ref(db, 'howManyAlbums'), {
-                howManyAlbums: totalAlbumsToLoad + 1,
+                howManyAlbums: albums,
             });
             //reloads the albums
             getAlbums();
-
+           
         });
+
+       
+
 
     }
 
