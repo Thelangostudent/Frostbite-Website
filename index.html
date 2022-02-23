@@ -272,30 +272,32 @@
         onValue(howManyAlbums, (snapshot) => {
             totalAlbumsToLoad = snapshot.val();
 
+            console.log('totalAlbums: ' + totalAlbumsToLoad);
+
+            while (totalAlbumsToLoad >= currentLoadingAlbum) {
+
+                getDownloadURL(refStorage(storage, 'AlbumCovers/Album' + currentLoadingAlbum + '.png'))
+                    .then((url) => {
+                        const divElement = document.createElement("div");
+                        const addAlbum = document.createElement("img");
+
+                        addAlbum.src = url;
+                        addAlbum.className = "albumImage";
+
+                        divElement.appendChild(addAlbum);
+                        divElement.className = "coverGridItem";
+
+                        document.getElementById("gridContainer").appendChild(divElement);
+
+
+                    })
+                currentLoadingAlbum++;
+
+            }
+
         });
 
-        console.log('totalAlbums: ' + totalAlbumsToLoad);
-
-        while (totalAlbumsToLoad >= currentLoadingAlbum) {
-
-            getDownloadURL(refStorage(storage, 'AlbumCovers/Album' + currentLoadingAlbum + '.png'))
-                .then((url) => {
-                    const divElement = document.createElement("div");
-                    const addAlbum = document.createElement("img");
-
-                    addAlbum.src = url;
-                    addAlbum.className = "albumImage";
-
-                    divElement.appendChild(addAlbum);
-                    divElement.className = "coverGridItem";
-
-                    document.getElementById("gridContainer").appendChild(divElement);
-
-                   
-                })
-            currentLoadingAlbum++;
-            
-        }
+       
     }
 
     function getBannerTextStatus(){
