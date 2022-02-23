@@ -526,63 +526,14 @@
         document.getElementById("newValueContainerValue").value = "";
     }
 
-<<<<<<< HEAD
-    // uploads image to firebase and updates the number of album number in db.
-    document.getElementById("addAlbumCover").onclick = function (fileFromPC) { uploadNewAlbumImage();}
-    function uploadNewAlbumImage() {
-        let imageFiles = [];
-        let reader;
 
-       let totalAlbumsToLoad = 0;
-
-        const howManyAlbums = ref(db, 'howManyAlbums/howManyAlbums');
-        onValue(howManyAlbums, (snapshot) => {
-            totalAlbumsToLoad = snapshot.val();
-            let albums = totalAlbumsToLoad + 1;
-
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = "image/png, image/jpg, image/jpeg, image/gif";
-
-            input.onchange = fileFromPC => {
-                imageFiles = fileFromPC.target.files;
-                reader = new FileReader();
-                reader.onload = function () {
-                  
-                    const storage = getStorage();
-                    //.png is temporary, it is just to remian compatible with already uploaded files.
-                    const imagesRef = refStorage(storage, 'AlbumCovers/album' + totalAlbumsToLoad + '.png');
-                    console.log(imagesRef);
-
-                    //uploads the new image to firebase
-                    uploadBytes(imagesRef, imageFiles[0])
-
-                   
-
-                   
-
-                }
-
-
-                reader.readAsDataURL((imageFiles[0]));
-            }
-            input.click();
-
-            set(ref(db, 'howManyAlbums'), {
-                howManyAlbums: albums,
-            });
-            //reloads the albums
-            getAlbums();
-           
-        });
-
+    
        
 
 
-    }
+    
 
-=======
->>>>>>> 8668f0896f315f32cc284ba5e1cfcb0965f9aa6d
+
     //<--------------------------------------------------------- LOGIN/LOGOUT ---------------------------------------------------------------------------------------->
 
     document.getElementById("acceptSignInButton").onclick = function(){getEmailAndPassword();}
