@@ -542,11 +542,6 @@
                     uploadBytes(imagesRef, imageFiles[0])
 
 
-                    
-                    set(ref(db, 'howManyAlbums'), {
-                        howManyAlbums: totalAlbumsToLoad +1,
-                    });
-
 
                 }
 
@@ -555,7 +550,9 @@
             }
             input.click();
 
-          
+            set(ref(db, 'howManyAlbums'), {
+                howManyAlbums: totalAlbumsToLoad + 1,
+            });
             //reloads the albums
             getAlbums();
 
