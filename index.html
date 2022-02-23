@@ -534,7 +534,8 @@
                 reader.onload = function () {
 
                     const storage = getStorage();
-                    const imagesRef = refStorage(storage, 'AlbumCovers/Album' + totalAlbumsToLoad);
+                    //.png is temporary, it is just to remian compatible with already uploaded files.
+                    const imagesRef = refStorage(storage, 'AlbumCovers/Album' + totalAlbumsToLoad +'.png');
 
                     //uploads the new image to firebase
                     uploadBytes(imagesRef, imageFiles[0])
