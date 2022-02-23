@@ -505,10 +505,48 @@
     }
 
     // uploads image to firebase and updates the number of album number in db.
-    document.getElementById("addAlbumCover").onclick = function () { uploadNewAlbumImage();}
+    document.getElementById("addAlbumCover").onclick = function (fileFromPC) { uploadNewAlbumImage();}
     function uploadNewAlbumImage() {
+        let imageFiles = [];
+        let reader;
 
+       let totalAlbumsToLoad = 0;
 
+        const howManyAlbums = ref(db, 'howManyAlbums');
+        onValue(howManyAlbums, (snapshot) => {
+            totalAlbumsToLoad = snapshot.val();
+
+        });
+
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = "image/png, image/jpg, image/jpeg, image/gif";
+
+        input.onchange = fileFromPC => {
+            imageFiles = fileFromPC.target.imageFiles;
+            reader = new FileReader();
+            reader.onload = function () {
+
+                const storage = getStorage();
+                const imagesRef = refStorage(storage, 'AlbumCovers/Album' + totalAlbumsToLoad);
+
+                //uploads the new image to firebase
+                uploadBytes(imagesRef, imageFiles[0])
+
+                    
+                   
+
+               
+            }
+            
+
+            reader.readAsDataURL((files[0]));
+        }
+        input.click();
+
+        totalAlbumsToLoad = totalAlbumsToLoad++;
+        //reloads the albums
+        getAlbums();
     }
 
     //<--------------------------------------------------------- LOGIN/LOGOUT ---------------------------------------------------------------------------------------->
