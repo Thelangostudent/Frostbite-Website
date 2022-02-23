@@ -264,19 +264,35 @@
 
     //gets one album cover from firebase
     function getAlbums() {
-        getDownloadURL(refStorage(storage, 'AlbumCovers/Album0.png'))
-            .then((url) => {
-                const divElement = document.createElement("div");
-                const addAlbum = document.createElement("img");
+        let totalAlbumsToLoad = 0;
+        let currentLoadingAlbum = 0;
 
-                addAlbum.src = url;
-                addAlbum.className = "albumImage";
+        const howManyAlbums = ref(db, 'howManyAlbums');
+        onValue(howManyAlbums, (snapshot) => {
+            totalAlbumsToLoad = snapshot.val();
 
-                divElement.appendChild(addAlbum);
-                divElement.className = "coverGridItem";
+        });
 
-                document.getElementById("gridContainer").appendChild(divElement);
-            })
+        while (totalAlbumsToLoad >= currentLoadingAlbum) {
+
+            getDownloadURL(refStorage(storage, 'AlbumCovers/Album' + currentLoadingAlbum + '.png'))
+                .then((url) => {
+                    const divElement = document.createElement("div");
+                    const addAlbum = document.createElement("img");
+
+                    addAlbum.src = url;
+                    addAlbum.className = "albumImage";
+
+                    divElement.appendChild(addAlbum);
+                    divElement.className = "coverGridItem";
+
+                    document.getElementById("gridContainer").appendChild(divElement);
+                })
+            currentLoadingAlbum++;
+        }
+
+
+       
     }
 
     function getBannerTextStatus(){
