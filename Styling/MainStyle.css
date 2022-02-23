@@ -304,13 +304,10 @@ body
 @media screen and (max-width: 1000px) {
     #gridContainer {
         display: grid;
-        place-items: center;
-        grid-template-columns: repeat(2,0fr);
-       
+        grid-template-columns: repeat(2, 0fr);
         place-content: center;
-        grid-gap: 1vw;
-        text-align: center;
-        grid-auto-flow: row;
+        row-gap: 4vw;
+        column-gap: 1vw;
     }
 }
 
