@@ -147,12 +147,6 @@
           <h3 id="ourAlbums"> Albums </h3>
 
              <div id="gridContainer">
-               <!----<div class="coverGridItem">
-                <img class="albumImage" src="Pictures/testCover.png" alt="testCover"/>
-               </div>
-                <div class="coverGridItem">
-                    <img class="albumImage" src="Pictures/testCover2.png" alt="testCover2"/>
-                </div>-->
              </div>
 
         </div>
@@ -221,7 +215,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
     import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
     import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut} from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js';
-    import { getStorage, ref as refStorage, uploadBytes, getDownloadURL} from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-storage.js';
+    import { getStorage, ref as refStorage, uploadBytes, getDownloadURL, listAll} from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-storage.js';
 
     const firebaseConfig = {
         apiKey: "AIzaSyDdmHsJu_s8rE1dkcB3oLyyTLJQOI1ZVAg",
@@ -263,41 +257,44 @@
             })
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     //gets album covers from firebase
     function getAlbums() {
-        let totalAlbumsToLoad = 0;
-        let currentLoadingAlbum = 0;
 
-        const howManyAlbums = ref(db, 'howManyAlbums/howManyAlbums');
-        onValue(howManyAlbums, (snapshot) => {
-            totalAlbumsToLoad = snapshot.val();
+        const listRef = refStorage(storage, 'AlbumCovers');
 
-            console.log('totalAlbums: ' + totalAlbumsToLoad);
+        listAll(listRef)
+            .then((res) => {
+                res.items.forEach((itemRef) => {
+                    getDownloadURL(itemRef)
+                        .then((url) => {
+                            const divElement = document.createElement("div");
+                            const addAlbum = document.createElement("img");
 
-            while (totalAlbumsToLoad > currentLoadingAlbum) {
+                            addAlbum.src = url;
+                            addAlbum.className = "albumImage";
 
-                getDownloadURL(refStorage(storage, 'AlbumCovers/album' + currentLoadingAlbum + '.png'))
-                    .then((url) => {
-                        const divElement = document.createElement("div");
-                        const addAlbum = document.createElement("img");
+                            divElement.appendChild(addAlbum);
+                            divElement.className = "coverGridItem";
 
-                        addAlbum.src = url;
-                        addAlbum.className = "albumImage";
-
-                        divElement.appendChild(addAlbum);
-                        divElement.className = "coverGridItem";
-
-                        document.getElementById("gridContainer").appendChild(divElement);
-
-
-                    })
-                currentLoadingAlbum++;
-
-            }
-
+                            document.getElementById("gridContainer").appendChild(divElement);
+                        })
+                });
+            }).catch((error) => {
+            enablePopUpWindow(error);
         });
-
-       
     }
 
     function getBannerTextStatus(){
@@ -464,6 +461,36 @@
         }
     }
 
+    // uploads an album image to firebase
+    document.getElementById("addAlbumCover").onclick = function (fileFromPC) { uploadNewAlbumImage();}
+    function uploadNewAlbumImage() {
+        let files = [];
+        let reader;
+
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = "image/png, image/jpg, image/jpeg, image/gif";
+
+        input.onchange = e => {
+            files = e.target.files;
+            reader = new FileReader();
+            reader.onload = function () {
+
+                const storage = getStorage();
+                const imagesRef = refStorage(storage, 'AlbumCovers/' + files[0].name);
+
+                uploadBytes(imagesRef, files[0]).then((snapshot) => {
+                    const gridToReset = document.getElementById("gridContainer");
+                    gridToReset.innerHTML = '';
+
+                    getAlbums();
+                });
+            }
+            reader.readAsDataURL((files[0]));
+        }
+        input.click();
+    }
+
     document.getElementById("changeYouTubeURL").onclick = function(){changeYouTubeURL();}
     function changeYouTubeURL() {
 
@@ -512,6 +539,7 @@
         document.getElementById("newValueContainerValue").value = "";
     }
 
+<<<<<<< HEAD
     // uploads image to firebase and updates the number of album number in db.
     document.getElementById("addAlbumCover").onclick = function (fileFromPC) { uploadNewAlbumImage();}
     function uploadNewAlbumImage() {
@@ -566,6 +594,8 @@
 
     }
 
+=======
+>>>>>>> 8668f0896f315f32cc284ba5e1cfcb0965f9aa6d
     //<--------------------------------------------------------- LOGIN/LOGOUT ---------------------------------------------------------------------------------------->
 
     document.getElementById("acceptSignInButton").onclick = function(){getEmailAndPassword();}
