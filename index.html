@@ -398,6 +398,7 @@
                         getDownloadURL(refStorage(storage, 'bannerImage'))
                             .then((url) => {
                                 document.getElementById("frostbiteBackground").src = url;
+                                enablePopUpWindow("Banner updated!");
                             })
 
                     });
@@ -469,8 +470,9 @@
                 uploadBytes(imagesRef, files[0]).then((snapshot) => {
                     const gridToReset = document.getElementById("gridContainer");
                     gridToReset.innerHTML = '';
-
                     getAlbums();
+
+                    enablePopUpWindow("Album added!");
                 });
             }
             reader.readAsDataURL((files[0]));
