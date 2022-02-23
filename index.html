@@ -524,37 +524,38 @@
         onValue(howManyAlbums, (snapshot) => {
             totalAlbumsToLoad = snapshot.val();
 
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = "image/png, image/jpg, image/jpeg, image/gif";
+
+            input.onchange = fileFromPC => {
+                imageFiles = fileFromPC.target.imageFiles;
+                reader = new FileReader();
+                reader.onload = function () {
+
+                    const storage = getStorage();
+                    const imagesRef = refStorage(storage, 'AlbumCovers/Album' + totalAlbumsToLoad);
+
+                    //uploads the new image to firebase
+                    uploadBytes(imagesRef, imageFiles[0])
+
+
+
+
+
+                }
+
+
+                reader.readAsDataURL((imageFiles[0]));
+            }
+            input.click();
+
+            totalAlbumsToLoad = totalAlbumsToLoad++;
+            //reloads the albums
+            getAlbums();
+
         });
 
-        const input = document.createElement('input');
-        input.type = 'file';
-        input.accept = "image/png, image/jpg, image/jpeg, image/gif";
-
-        input.onchange = fileFromPC => {
-            imageFiles = fileFromPC.target.imageFiles;
-            reader = new FileReader();
-            reader.onload = function () {
-
-                const storage = getStorage();
-                const imagesRef = refStorage(storage, 'AlbumCovers/Album' + totalAlbumsToLoad);
-
-                //uploads the new image to firebase
-                uploadBytes(imagesRef, imageFiles[0])
-
-                    
-                   
-
-               
-            }
-            
-
-            reader.readAsDataURL((imageFiles[0]));
-        }
-        input.click();
-
-        totalAlbumsToLoad = totalAlbumsToLoad++;
-        //reloads the albums
-        getAlbums();
     }
 
     //<--------------------------------------------------------- LOGIN/LOGOUT ---------------------------------------------------------------------------------------->
