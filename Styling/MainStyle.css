@@ -305,7 +305,7 @@ body
     #gridContainer {
         display: grid;
         place-items: center;
-        grid-template-columns: minmax(0,1fr);
+        grid-template-columns: repeat(2,0fr);
         grid-template-rows: minmax(0,1fr);
         place-content: center;
         grid-gap: 1vw;
