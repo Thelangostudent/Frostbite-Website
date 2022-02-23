@@ -336,7 +336,7 @@ body
         grid-row-start: auto;
         grid-row-end: auto;
         place-self: center;
-        block-size: 9vw;
+        block-size: 25vw;
         width: 21%;
     }
 }
