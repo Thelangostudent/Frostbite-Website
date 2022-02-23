@@ -300,65 +300,29 @@ body
     letter-spacing: 0.03vw;
 }
 
-@media screen and (max-width: 1000px) {
-    #gridContainer {
-        display: grid;
-        place-items: center;
-        grid-template-columns: minmax(0,1fr);
-        grid-template-rows: minmax(0,1fr);
-        place-content: center;
-        grid-gap: 1vw;
-        text-align: center;
-        grid-auto-flow: row;
-    }
+#gridContainer {
+    display: grid;
+    place-items: center;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    place-content: center;
+    grid-gap: 1vw;
+    text-align: center;
+    grid-auto-flow: column;
 }
 
-@media screen and (min-width: 1001px) {
-
-    #gridContainer {
-        display: grid;
-        place-items: center;
-        grid-template-columns: auto;
-        grid-template-rows: auto;
-        place-content: center;
-        grid-gap: 1vw;
-        text-align: center;
-        grid-auto-flow: column;
-    }
+.coverGridItem {
+    grid-column-start: auto;
+    grid-column-end: auto;
+    grid-row-start: auto;
+    grid-row-end: auto;
+    place-self: center;
+    block-size: 10vw;
 }
 
-
-@media screen and (max-width: 1000px) {
-
-    .coverGridItem {
-        grid-column-start: span;
-        grid-column-end: span;
-        grid-row-start: auto;
-        grid-row-end: auto;
-        place-self: center;
-        block-size: 10vw;
-        width: 21%;
-    }
-}
-
-@media screen and (max-width: 1000px) {
-
-    .albumImage {
-       height: 10vw;
-       width: 10vw;
-    }
-}
-
-@media screen and (min-width: 1001px) {
-
-    .coverGridItem {
-        grid-column-start: auto;
-        grid-column-end: auto;
-        grid-row-start: auto;
-        grid-row-end: auto;
-        place-self: center;
-        block-size: 10vw;
-    }
+.albumImage {
+    height: 10vw;
+    width: 10vw;
 }
 
 #albumCovers {
