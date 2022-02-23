@@ -276,7 +276,7 @@
 
             while (totalAlbumsToLoad >= currentLoadingAlbum) {
 
-                getDownloadURL(refStorage(storage, 'AlbumCovers/Album' + currentLoadingAlbum + '.png'))
+                getDownloadURL(refStorage(storage, 'AlbumCovers/album' + currentLoadingAlbum + '.png'))
                     .then((url) => {
                         const divElement = document.createElement("div");
                         const addAlbum = document.createElement("img");
@@ -529,13 +529,13 @@
             input.accept = "image/png, image/jpg, image/jpeg, image/gif";
 
             input.onchange = fileFromPC => {
-                imageFiles = fileFromPC.target.imageFiles;
+                imageFiles = fileFromPC.target.files;
                 reader = new FileReader();
                 reader.onload = function () {
 
                     const storage = getStorage();
                     //.png is temporary, it is just to remian compatible with already uploaded files.
-                    const imagesRef = refStorage(storage, 'AlbumCovers/Album' + totalAlbumsToLoad + '.png');
+                    const imagesRef = refStorage(storage, 'AlbumCovers/album' + totalAlbumsToLoad + '.png');
                     console.log(imagesRef);
 
                     //uploads the new image to firebase
