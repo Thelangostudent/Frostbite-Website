@@ -535,7 +535,8 @@
 
                     const storage = getStorage();
                     //.png is temporary, it is just to remian compatible with already uploaded files.
-                    const imagesRef = refStorage(storage, 'AlbumCovers/Album' + totalAlbumsToLoad +'.png');
+                    const imagesRef = refStorage(storage, 'AlbumCovers/Album' + totalAlbumsToLoad + '.png');
+                    console.log(imagesRef);
 
                     //uploads the new image to firebase
                     uploadBytes(imagesRef, imageFiles[0])
