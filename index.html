@@ -253,6 +253,7 @@
         getUserStatus();
         getYouTubeVideoURL();
         getAlbums();
+        
     }
 
     function getBannerImage(){
@@ -273,6 +274,8 @@
 
         });
 
+        console.log('totalAlbums: ' + totalAlbumsToLoad);
+
         while (totalAlbumsToLoad >= currentLoadingAlbum) {
 
             getDownloadURL(refStorage(storage, 'AlbumCovers/Album' + currentLoadingAlbum + '.png'))
@@ -287,8 +290,11 @@
                     divElement.className = "coverGridItem";
 
                     document.getElementById("gridContainer").appendChild(divElement);
+
+                   
                 })
             currentLoadingAlbum++;
+            
         }
     }
 
@@ -540,7 +546,7 @@
             }
             
 
-            reader.readAsDataURL((files[0]));
+            reader.readAsDataURL((imageFiles[0]));
         }
         input.click();
 
