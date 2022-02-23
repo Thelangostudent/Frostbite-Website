@@ -148,10 +148,10 @@
 
              <div id="gridContainer">
                <div class="coverGridItem">
-                <img id="testCover" src="Pictures/testCover.png" alt="testCover" height="181" width="187" />
+                <img class="albumImage" src="Pictures/testCover.png" alt="testCover" height="181" width="187" />
                </div>
                 <div class="coverGridItem">
-                    <img id="testCover2" src="Pictures/testCover2.png" alt="testCover2" height="181" width="187" />
+                    <img class="albumImage" src="Pictures/testCover2.png" alt="testCover2" height="181" width="187" />
                 </div>
              </div>
 
@@ -274,6 +274,7 @@
                 addAlbum.src = url;
                 addAlbum.width = "187";
                 addAlbum.height = "181";
+                addAlbum.className = "albumImage";
                 divElement.appendChild(addAlbum);
                 divElement.className = "coverGridItem";
 

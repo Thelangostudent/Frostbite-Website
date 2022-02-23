@@ -341,6 +341,14 @@ body
     }
 }
 
+@media screen and (max-width: 1000px) {
+
+    .albumImage {
+       height: 10vw;
+       width: 10vw;
+    }
+}
+
 @media screen and (min-width: 1001px) {
 
     .coverGridItem {
