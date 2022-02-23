@@ -274,7 +274,7 @@
 
             console.log('totalAlbums: ' + totalAlbumsToLoad);
 
-            while (totalAlbumsToLoad >= currentLoadingAlbum) {
+            while (totalAlbumsToLoad > currentLoadingAlbum) {
 
                 getDownloadURL(refStorage(storage, 'AlbumCovers/album' + currentLoadingAlbum + '.png'))
                     .then((url) => {
