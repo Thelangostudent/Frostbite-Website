@@ -1,14 +1,11 @@
 ﻿/* BODY STARTS BELOW */
-body
-{
+body {
     margin: 0;
-    background-color: black;
+    background-color: #1c1c1c;
     --outlineColor: black;
-
     animation: fadeInImageAnimation ease 5s;
     animation-delay: 1s;
     visibility: hidden;
-
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
@@ -19,11 +16,10 @@ body
 /* NAVBAR STARTS BELOW */
 .navigation-bar {
     overflow: hidden;
-    background-color: black;
+    background-color: #1c1c1c;
     border-bottom: 0.35vw solid var(--outlineColor);
     height: 4vw;
     width: 100%;
-
     position: fixed;
     z-index: 1;
 }
@@ -471,7 +467,7 @@ body
     padding: 2vw;
     margin-top: 5vw;
     text-align: center;
-    background-color: black;
+    background-color: #0f0f0f;
     color: white;
     border-top: 0.35vw solid var(--outlineColor);
 }
