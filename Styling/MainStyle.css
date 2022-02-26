@@ -22,6 +22,10 @@ body
     background-color: black;
     border-bottom: 0.35vw solid var(--outlineColor);
     height: 4vw;
+    width: 100%;
+
+    position: fixed;
+    z-index: 1;
 }
 
 .navMenuSelectable {
@@ -160,8 +164,8 @@ body
     font-family: X360, sans-serif;
     text-align: center;
     font-size: 10vw;
-    margin-top: -19.6vw;
     margin-left: -1vw;
+    margin-top: -17vw;
     color: transparent;
     text-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
@@ -195,9 +199,8 @@ body
         visibility: visible;
     }
 }
-#bannerText {
-    margin-top: 0.7vw;
 
+#bannerText {
     animation: fadeInTitleAnimation ease 1s;
     animation-delay: 2s;
     visibility: hidden;
@@ -211,7 +214,13 @@ body
     user-select: none; /* Standard */
 }
 
-#frostbiteBackground {
+#backgroundPara {
+    background-image: url("../Pictures/bannerPlaceholder.png");
+    background-position: center 4vw;
+    background-attachment:scroll;
+    background-size: contain;
+
+    background-repeat: no-repeat;
     border-bottom: 0.35vw solid var(--outlineColor);
 
     -webkit-user-select: none; /* Safari */
@@ -219,6 +228,8 @@ body
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
 
+    height: 27vw;
+    width: 100%;
 }
 /* BANNER ENDS HERE */
 
@@ -246,13 +257,13 @@ body
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     animation-delay: 2.4s;
+    margin-top: -2vw;
 }
 
 #aboutTitle {
     color: white;
     text-align: center;
     font-size: 2.5vw;
-    margin-top: -1.5vw;
     margin-bottom: 0.7vw;
     font-family: sans-serif;
     letter-spacing: 0.03vw;
@@ -830,7 +841,7 @@ body
 
     position: fixed;
 
-    z-index: 1;
+    z-index: 3;
     width: 25vw;
     height: 5vw;
 

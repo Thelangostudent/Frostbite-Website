@@ -9,7 +9,7 @@
     <script src="Scripts/ScrollFade.js"></script>
     <title></title>
 </head>
-<body>
+<body id="body">
 
 <!---------------------------------------------------------------- ADMIN MENU -------------------------------------------------------------------------------------------->
 
@@ -119,17 +119,17 @@
     </div>
 </div>
 
+<div id="backgroundPara">
+
+</div>
+
 <!--------------------------------------------------------------- MAIN CONTAINER ----------------------------------------------------------------------------------------->
 
-<div id="mainContent" style="display: block">
+<div id="mainContent">
 
-    <div id="banner">
-        <img id="frostbiteBackground" src="Pictures/bannerPlaceholder.png" height=100% width=100% draggable="false" alt="Frostbite Background" class="largePictureDisplay"/>
-
-        <div id="bannerText">
-            <h3 id="frostbiteBannerNameBackground">FROSTBITE</h3>
-            <h3 id="frostbiteBannerName">FROSTBITE</h3>
-        </div>
+    <div id="bannerText">
+        <h3 id="frostbiteBannerNameBackground">FROSTBITE</h3>
+        <h3 id="frostbiteBannerName">FROSTBITE</h3>
     </div>
 
     <div id="aboutContainer">
@@ -198,7 +198,7 @@
 
 </div>
 
-    <!--------------------------------------------------------------- FOOTER --------------------------------------------------------------------------------------------->
+<!--------------------------------------------------------------- FOOTER --------------------------------------------------------------------------------------------->
 
 <div class="item scrollFade">
     <footer id="footer">
@@ -210,7 +210,26 @@
 
 <script type="module">
 
-    //<----------------------------------------------------- DATABASE CONFIGURATION ------------------------------------------------------------------------------------->
+//<----------------------------------------------------- PARALLAX EFFECT --------------------------------------------------------------------------------------------->
+
+    document.getElementById("body").onscroll = function para() {
+        const scrolltotop = document.scrollingElement.scrollTop;
+        const target = document.getElementById("backgroundPara");
+        const xvalue = "center";
+        const factor = 0.5;
+        const windowWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        const yvalue = (windowWidth * 0.040) + (scrolltotop * factor);
+        target.style.backgroundPosition = xvalue + " " + yvalue + "px";
+    }
+
+    window.onresize = function fixImage(){
+        const doc = document.documentElement;
+        const left = (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0);
+        const top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+        window.scroll(left+1, top+1);
+    }
+
+//<----------------------------------------------------- DATABASE CONFIGURATION ------------------------------------------------------------------------------------->
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
     import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
@@ -236,7 +255,7 @@
     const popUpInfoWindow = document.getElementById("popUpInfo");
     const popUpWindowText = document.getElementById("popUpInfoText");
 
-    //<--------------------------------------------------------- ONLOAD FUNCTIONS ---------------------------------------------------------------------------------------->
+//<--------------------------------------------------------- ONLOAD FUNCTIONS ---------------------------------------------------------------------------------------->
 
     document.body.onload = function() {getInfoFromServer()};
     function getInfoFromServer(){
@@ -253,7 +272,8 @@
     function getBannerImage(){
         getDownloadURL(refStorage(storage, 'bannerImage'))
             .then((url) => {
-                document.getElementById("frostbiteBackground").src = url;
+                const backgroundPara = document.getElementById('backgroundPara');
+                backgroundPara.style.backgroundImage = "url('" + url + "')";
             })
     }
 
@@ -341,7 +361,7 @@
         });
     }
 
-    //<--------------------------------------------------------- ADMIN FUNCTIONS ---------------------------------------------------------------------------------------->
+//<--------------------------------------------------------- ADMIN FUNCTIONS ---------------------------------------------------------------------------------------->
 
     document.getElementById("changeOutlineColour").onclick = function(){changeOutlineColour();}
     function changeOutlineColour(){
@@ -397,10 +417,10 @@
                         //gets the new image from firebase and updates the banner
                         getDownloadURL(refStorage(storage, 'bannerImage'))
                             .then((url) => {
-                                document.getElementById("frostbiteBackground").src = url;
+                                const backgroundPara = document.getElementById('backgroundPara');
+                                backgroundPara.style.backgroundImage = "url('" + url + "')";
                                 enablePopUpWindow("Banner updated!");
                             })
-
                     });
                 }
                 reader.readAsDataURL((files[0]));
@@ -529,7 +549,7 @@
         document.getElementById("newValueContainerValue").value = "";
     }
 
-    //<--------------------------------------------------------- LOGIN/LOGOUT ---------------------------------------------------------------------------------------->
+//<--------------------------------------------------------- LOGIN/LOGOUT ---------------------------------------------------------------------------------------->
 
     document.getElementById("acceptSignInButton").onclick = function(){getEmailAndPassword();}
     function getEmailAndPassword(){
@@ -589,7 +609,7 @@
         document.getElementById("popUpLogin").style.display = "block";
     }
 
-    //<--------------------------------------------------------------- TBA ------------------------------------------------------------------------------------------>
+//<--------------------------------------------------------------- TBA ------------------------------------------------------------------------------------------>
 
     /*const email = "admin@outlook.com"
     const password = "123Password123";
