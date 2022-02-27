@@ -161,7 +161,7 @@
     <div id="albumCovers">
         <div class="item scrollFade">
 
-            <h3 id="ourAlbums"> Albums & Singles </h3>
+            <h3 id="ourAlbums"> Singles & Albums </h3>
 
             <div id="gridContainer">
             </div>
@@ -311,7 +311,7 @@
             })
     }
 
-    //gets album covers from firebase
+    //gets album and single covers from firebase
     function getAlbums() {
 
         const gridToReset = document.getElementById("gridContainer");
@@ -343,7 +343,7 @@
                         })
                 });
             }).catch((error) => {
-            enablePopUpWindow("Unable to fetch albums");
+            enablePopUpWindow("Unable to fetch covers");
         });
     }
 
@@ -627,7 +627,7 @@
     // uploads an album to firebase
     document.getElementById("addAlbumCover").onclick = function () {
 
-        showPopUpAdminValueWindow("Please enter the single/album URL:")
+        showPopUpAdminValueWindow("Please enter the full single/album URL:")
 
         document.getElementById("acceptNewValueButton").onclick = function () {
             uploadNewAlbumImage();
