@@ -1,8 +1,9 @@
 ﻿/* BODY STARTS BELOW */
 body {
     margin: 0;
-    background-color: #1c1c1c;
     --outlineColor: black;
+    --backgroundColour: black;
+    background-color: var(--backgroundColour);
     animation: fadeInImageAnimation ease 5s;
     animation-delay: 1s;
     visibility: hidden;
@@ -16,7 +17,7 @@ body {
 /* NAVBAR STARTS BELOW */
 .navigation-bar {
     overflow: hidden;
-    background-color: #1c1c1c;
+    background-color: var(--backgroundColour);
     border-bottom: 0.35vw solid var(--outlineColor);
     height: 4vw;
     width: 100%;
@@ -467,7 +468,7 @@ body {
     padding: 2vw;
     margin-top: 5vw;
     text-align: center;
-    background-color: #0f0f0f;
+    background-color: var(--backgroundColour);
     color: white;
     border-top: 0.35vw solid var(--outlineColor);
 }
@@ -493,7 +494,7 @@ body {
 /* ADMIN-CONTAINER STARTS HERE */
 #adminContainer {
     display: none;
-    background-color: black;
+    background-color: var(--backgroundColour);
     margin-top: 7vw;
     height: 35vw;
     width: 15vw;
@@ -508,11 +509,19 @@ body {
 
     margin-left: -14vw;
     transition-duration: 0.5s;
+
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 #adminContainer:hover{
     margin-left: 0;
     transition-duration: 0.5s;
+
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: visible;
 }
 
 #adminTitle {
@@ -523,7 +532,7 @@ body {
 }
 
 #changeBackgroundImage {
-    background-color: black;
+    background-color: var(--backgroundColour);
     color: var(--outlineColor);
     font-size: 1vw;
     border: 0.2vw solid var(--outlineColor);
@@ -540,18 +549,16 @@ body {
 }
 
 #logOutButton {
-    background-color: black;
+    background-color: var(--backgroundColour);
     color: var(--outlineColor);
     font-size: 1vw;
+    width: 8.1vw;
     border: 0.2vw solid var(--outlineColor);
     padding: 0.5vw;
     border-radius: 0.5vw;
-    position: absolute;
-    bottom: 0;
-
-    margin-left: -2.5vw;
-    margin-bottom: 1.5vw;
+    margin-top: 1vw;
 }
+
 
 #logOutButton:hover {
     cursor: pointer;
@@ -561,7 +568,7 @@ body {
 }
 
 #changeText {
-    background-color: black;
+    background-color: var(--backgroundColour);
     color: var(--outlineColor);
     font-size: 1vw;
     width: 8.1vw;
@@ -580,7 +587,7 @@ body {
 }
 
 #addAlbumCover {
-    background-color: black;
+    background-color: var(--backgroundColour);
     color: var(--outlineColor);
     font-size: 1vw;
     width: 8.1vw;
@@ -599,7 +606,7 @@ body {
 }
 
 #changeYouTubeURL {
-    background-color: black;
+    background-color: var(--backgroundColour);
     color: var(--outlineColor);
     font-size: 1vw;
     width: 8.1vw;
@@ -614,11 +621,10 @@ body {
     border-color:white;
     color:white;
     transition-duration: 0.3s;
-
 }
 
 #backgroundToolTip {
-    background-color: black;
+    background-color: var(--backgroundColour);
     width: 17vw;
     color: white;
     font-size: 1vw;
@@ -628,12 +634,13 @@ body {
     margin-top: -2.5vw;
     margin-left: 11.5vw;
     margin-bottom: -0.04vw;
+    position: fixed;
 
     display: none;
 }
 
 #toggleBannerText {
-    background-color: black;
+    background-color: var(--backgroundColour);
     color: var(--outlineColor);
     font-size: 1vw;
     width: 8.1vw;
@@ -652,13 +659,14 @@ body {
 }
 
 #changeOutlineColour {
-    background-color: black;
+    background-color: var(--backgroundColour);
     color: var(--outlineColor);
     font-size: 1vw;
     width: 8.1vw;
     border: 0.2vw solid var(--outlineColor);
     padding: 0.5vw;
     border-radius: 0.5vw;
+    margin-top: 1vw;
 }
 
 #changeOutlineColour:hover {
@@ -668,7 +676,24 @@ body {
     transition-duration: 0.3s;
 }
 
-#changeBackgroundImage:hover + #backgroundToolTip { display: block; }
+#changeBackgroundColour {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+}
+
+#changeBackgroundColour:hover {
+    cursor: pointer;
+    border-color:white;
+    color:white;
+    transition-duration: 0.3s;
+}
+
+#changeBackgroundImage:hover + #backgroundToolTip { display: block;}
 
 
 #toolTipAdmin {
@@ -705,7 +730,7 @@ body {
 /* POP UP LOGIN STARTS HERE */
 #popUpLogin {
     color: white;
-    background-color: black;
+    background-color: var(--backgroundColour);
     border: 0.35vw solid var(--outlineColor);
     border-radius: 0.5vw;
     display: none;
@@ -789,7 +814,7 @@ body {
 }
 
 #acceptSignInButton {
-    background-color: black;
+    background-color: var(--backgroundColour);
     color: var(--outlineColor);
     font-size: 1vw;
     width: 8.1vw;
@@ -807,7 +832,7 @@ body {
 }
 
 #cancelSignInButton {
-    background-color: black;
+    background-color: var(--backgroundColour);
     color: var(--outlineColor);
     font-size: 1vw;
     width: 8.1vw;
@@ -830,7 +855,7 @@ body {
 /* POP UP INFO STARTS HERE */
 #popUpInfo{
     color: white;
-    background-color: black;
+    background-color: var(--backgroundColour);
     border: 0.35vw solid var(--outlineColor);
     border-radius: 0.5vw;
     display: block;
@@ -876,7 +901,7 @@ body {
 /* POP UP ADMIN VALUE STARTS HERE */
 #popUpAdminValue {
     color: white;
-    background-color: black;
+    background-color: var(--backgroundColour);
     border: 0.35vw solid var(--outlineColor);
     border-radius: 0.5vw;
     display: none;
@@ -910,7 +935,7 @@ body {
 }
 
 #acceptNewValueButton {
-    background-color: black;
+    background-color: var(--backgroundColour);
     color: var(--outlineColor);
     font-size: 1vw;
     width: 8.1vw;
@@ -928,7 +953,7 @@ body {
 }
 
 #cancelNewValueButton {
-    background-color: black;
+    background-color: var(--backgroundColour);
     color: var(--outlineColor);
     font-size: 1vw;
     width: 8.1vw;

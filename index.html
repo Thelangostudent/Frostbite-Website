@@ -18,6 +18,10 @@
     <h3 id="adminTitle">Admin menu</h3>
 
     <div class="alignInMiddle">
+        <button id="changeBackgroundColour">Change Background Colour</button>
+    </div>
+
+    <div class="alignInMiddle">
         <button id="changeOutlineColour">Change Outline Colour</button>
     </div>
 
@@ -35,7 +39,7 @@
     </div>
 
     <div class="alignInMiddle">
-        <button id= "addAlbumCover"> Add Album Cover</button>
+        <button id="addAlbumCover"> Add Album Cover</button>
     </div>
 
     <div class="alignInMiddle">
@@ -43,24 +47,32 @@
     </div>
 
 
-
     <div class="alignInMiddle">
-    <button id="logOutButton">Log Out</button>
+        <button id="logOutButton">Log Out</button>
     </div>
+
+    <br>
 
 </div>
 
 <!------------------------------------------------------------------- NAVBAR --------------------------------------------------------------------------------------------->
 
 <div class="navigation-bar">
-    <a id="logoFloat" href="index.html" class="navMenuSelectable"><img src="Pictures/frostbiteLogo.jpg" id="logo" draggable="false" alt="logo"></a>
+    <a id="logoFloat" href="index.html" class="navMenuSelectable"><img src="Pictures/frostbiteLogo.jpg" id="logo"
+                                                                       draggable="false" alt="logo"></a>
     <h3><a id="logoText" href="index.html"> FROSTBITE </a></h3>
 
     <div id="backgroundSquare"></div>
 
-    <a href="https://www.youtube.com/channel/UCmt3wU22pVtUPqhoHVcOQ-g/featured" class="navMenuSelectable"><img  id="youtubeLogo" src="Pictures/YoutubeInverted.png" draggable="false" alt="YouTube"></a>
-    <a href="https://www.instagram.com/frostbite.band/" class="navMenuSelectable"><img  id="instagramLogo" src="Pictures/InstagramInverted.png" draggable="false" alt="Instagram"></a>
-    <a href="https://www.facebook.com/band.frostbite" class="navMenuSelectable"><img id="facebookLogo" src="Pictures/FacebookInverted.png" draggable="false" alt="FaceBook"></a>
+    <a href="https://www.youtube.com/channel/UCmt3wU22pVtUPqhoHVcOQ-g/featured" class="navMenuSelectable">
+        <canvas id="youtubeLogo" draggable="false" width="100" height="100"></canvas>
+    </a>
+    <a href="https://www.instagram.com/frostbite.band/" class="navMenuSelectable">
+        <canvas id="instagramLogo" draggable="false" width="100" height="100"></canvas>
+    </a>
+    <a href="https://www.facebook.com/band.frostbite" class="navMenuSelectable">
+        <canvas id="facebookLogo" draggable="false" width="100" height="100"></canvas>
+    </a>
 
     <a href="#tickets" style="margin-right: 1vw;" class="navMenuSelectable">TICKETS</a>
     <a href="#youtubePreviewContainer" class="navMenuSelectable">VIDEO</a>
@@ -76,13 +88,13 @@
     <h3 id="signInText"> Sign in: </h3>
 
     <div id="emailContainer">
-    <label id="loginEmailText" for="loginEmail">Email:</label>
-    <input type="text" id="loginEmail" name="loginEmail"><br><br>
+        <label id="loginEmailText" for="loginEmail">Email:</label>
+        <input type="text" id="loginEmail" name="loginEmail"><br><br>
     </div>
 
     <div id="passwordContainer">
-    <label id="loginPasswordText" for="loginPassword">Password:</label>
-    <input type="password" id="loginPassword" name="loginPassword"><br><br>
+        <label id="loginPasswordText" for="loginPassword">Password:</label>
+        <input type="password" id="loginPassword" name="loginPassword"><br><br>
     </div>
 
     <div class="alignInMiddle">
@@ -97,17 +109,17 @@
 <div id="popUpAdminValue">
 
     <div class="alignInMiddle">
-    <h3 id="popUpAdminValueText">Enter the new YouTube URL-ID (the letters after 'watch?v=')</h3>
+        <h3 id="popUpAdminValueText">Enter the new YouTube URL-ID (the letters after 'watch?v=')</h3>
 
-    <div id="newValueContainer">
-        <label id="newValueContainerLabel" for="newValueContainerValue"></label>
-        <input type="text" id="newValueContainerValue" name="newValueContainerValue"><br><br>
-    </div>
+        <div id="newValueContainer">
+            <label id="newValueContainerLabel" for="newValueContainerValue"></label>
+            <input type="text" id="newValueContainerValue" name="newValueContainerValue"><br><br>
+        </div>
 
         <button id="cancelNewValueButton">Cancel</button>
         <button id="acceptNewValueButton">Accept</button>
 
-</div>
+    </div>
 
 </div>
 
@@ -134,20 +146,21 @@
 
     <div id="aboutContainer">
         <div class="item scrollFade">
-        <h3 id="aboutTitle">FROSTBITE: The Story</h3>
+            <h3 id="aboutTitle">FROSTBITE: The Story</h3>
 
             <a id="aboutText"></a>
-            <a id="aboutTextEnd" style="margin-top: 0.6vw; margin-bottom: 2vw">For more information please get in touch.</a>
+            <a id="aboutTextEnd" style="margin-top: 0.6vw; margin-bottom: 2vw">For more information please get in
+                touch.</a>
         </div>
     </div>
 
     <div id="albumCovers">
         <div class="item scrollFade">
 
-          <h3 id="ourAlbums"> Albums </h3>
+            <h3 id="ourAlbums"> Albums </h3>
 
-             <div id="gridContainer">
-             </div>
+            <div id="gridContainer">
+            </div>
 
         </div>
     </div>
@@ -158,15 +171,11 @@
             <h3 id="youtubePreviewTitle"> Video </h3>
 
             <div class="alignInMiddle">
-            <iframe id="youtubePreviewVideo" src="https://www.youtube.com/embed/rykIs0XlA8Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe id="youtubePreviewVideo" src="https://www.youtube.com/embed/rykIs0XlA8Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
 
         </div>
     </div>
-
-    <!--<div id="spotifyEmbed"></div>
-        <iframe style="border-radius:0.5vw" src="https://open.spotify.com/embed/artist/0rIROc9qyjwndVoDFa2WD0?utm_source=generator" width="25%" height="400" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-    </div>-->
 
     <div id="tickets">
         <div class="item scrollFade">
@@ -184,33 +193,37 @@
         <div class="item scrollFade">
             <div class="alignInMiddle">
 
-            <h3 id="socialsTitle"> Listen On </h3>
+                <h3 id="socialsTitle"> Listen On </h3>
 
                 <div id="socialsSquareYoutube"></div>
                 <div id="socialsSquareSpotify"></div>
 
-                <a href="https://www.youtube.com/channel/UCmt3wU22pVtUPqhoHVcOQ-g"><img src="Pictures/socialsYoutubeImage.png" id="socialsYoutube" alt="YouTube" draggable="false"></a>
-                <a href="https://open.spotify.com/artist/0rIROc9qyjwndVoDFa2WD0"><img src="Pictures/socialsSpotifyImage.png" id="socialsSpotify" alt="Spotify" draggable="false"></a>
-
+                <a href="https://www.youtube.com/channel/UCmt3wU22pVtUPqhoHVcOQ-g"><canvas id="socialsYoutube" draggable="false" width="1000" height="1000"></canvas></a>
+                <a href="https://open.spotify.com/artist/0rIROc9qyjwndVoDFa2WD0"><canvas id="socialsSpotify" draggable="false" width="1000" height="1000"></canvas></a>
             </div>
         </div>
     </div>
 
 </div>
 
+<!--<div id="spotifyEmbed"></div>
+    <iframe style="border-radius:0.5vw" src="https://open.spotify.com/embed/artist/0rIROc9qyjwndVoDFa2WD0?utm_source=generator" width="25%" height="400" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+</div>-->
+
 <!--------------------------------------------------------------- FOOTER --------------------------------------------------------------------------------------------->
 
 <div class="item scrollFade">
     <footer id="footer">
         <h3 class="footerText">© Copyright 2022 Frostbite. All rights reserved.</h3>
-        <h3 class="footerText"><a id="emailLink" href="mailto:frostbite.band@hotmail.com">post@frostbiteband.com</a></h3>
+        <h3 class="footerText"><a id="emailLink" href="mailto:frostbite.band@hotmail.com">post@frostbiteband.com</a>
+        </h3>
         <div id="adminLogin"><h3 class="footerText">admin login</h3></div>
     </footer>
 </div>
 
 <script type="module">
 
-//<----------------------------------------------------- PARALLAX EFFECT --------------------------------------------------------------------------------------------->
+    //<----------------------------------------------------- PARALLAX EFFECT --------------------------------------------------------------------------------------------->
 
     document.getElementById("body").onscroll = function para() {
         const scrolltotop = document.scrollingElement.scrollTop;
@@ -222,19 +235,31 @@
         target.style.backgroundPosition = xvalue + " " + yvalue + "px";
     }
 
-    window.onresize = function fixImage(){
+    window.onresize = function fixImage() {
         const doc = document.documentElement;
         const left = (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0);
         const top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
-        window.scroll(left+1, top+1);
+        window.scroll(left + 1, top + 1);
     }
 
-//<----------------------------------------------------- DATABASE CONFIGURATION ------------------------------------------------------------------------------------->
+    //<----------------------------------------------------- DATABASE CONFIGURATION ------------------------------------------------------------------------------------->
 
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-    import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
-    import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut} from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js';
-    import { getStorage, ref as refStorage, uploadBytes, getDownloadURL, listAll} from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-storage.js';
+    import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+    import {getDatabase, ref, set, onValue} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
+    import {
+        createUserWithEmailAndPassword,
+        getAuth,
+        signInWithEmailAndPassword,
+        onAuthStateChanged,
+        signOut
+    } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js';
+    import {
+        getStorage,
+        ref as refStorage,
+        uploadBytes,
+        getDownloadURL,
+        listAll
+    } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-storage.js';
 
     const firebaseConfig = {
         apiKey: "AIzaSyDdmHsJu_s8rE1dkcB3oLyyTLJQOI1ZVAg",
@@ -255,21 +280,25 @@
     const popUpInfoWindow = document.getElementById("popUpInfo");
     const popUpWindowText = document.getElementById("popUpInfoText");
 
-//<--------------------------------------------------------- ONLOAD FUNCTIONS ---------------------------------------------------------------------------------------->
+    //<--------------------------------------------------------- ONLOAD FUNCTIONS ---------------------------------------------------------------------------------------->
 
-    document.body.onload = function() {getInfoFromServer()};
-    function getInfoFromServer(){
+    document.body.onload = function () {
+        getInfoFromServer()
+    };
+
+    function getInfoFromServer() {
         getBannerImage();
-        setOutlineColour();
+        getOutlineColour();
         getBannerTextStatus();
         getTitleText();
         getUserStatus();
         getYouTubeVideoURL();
         getAlbums();
-        
+        getBackgroundColour();
+        getBackgroundColourForImages();
     }
 
-    function getBannerImage(){
+    function getBannerImage() {
         getDownloadURL(refStorage(storage, 'bannerImage'))
             .then((url) => {
                 const backgroundPara = document.getElementById('backgroundPara');
@@ -304,7 +333,7 @@
         });
     }
 
-    function getBannerTextStatus(){
+    function getBannerTextStatus() {
         const bannerTextStatus = ref(db, 'toggleBannerStatus/status');
         onValue(bannerTextStatus, (snapshot) => {
 
@@ -313,7 +342,7 @@
             let aboutTitle = document.getElementById("aboutTitle");
             let toggleButton = document.getElementById("toggleBannerText");
 
-            if (toggleStatus === "ON"){
+            if (toggleStatus === "ON") {
                 bannerText.style.display = "block";
                 aboutTitle.style.marginTop = "-1.5vw"
                 toggleButton.innerHTML = "Overlay: ON"
@@ -326,14 +355,14 @@
     }
 
     //Gets the frostbite text from the server on load
-    function getTitleText(){
+    function getTitleText() {
         const userStatus = ref(db, 'titleText/titleTextContent');
         onValue(userStatus, (snapshot) => {
             document.getElementById("aboutText").innerHTML = snapshot.val();
         });
     }
 
-    function getYouTubeVideoURL(){
+    function getYouTubeVideoURL() {
         const userStatus = ref(db, 'youtubeURL/youtubeURLContent');
         onValue(userStatus, (snapshot) => {
             document.getElementById("youtubePreviewVideo").src = "https://www.youtube.com/embed/" + snapshot.val();
@@ -341,7 +370,7 @@
     }
 
     //gets the user status (logged in/logged out) and displays the admin menu accordingly
-    function getUserStatus(){
+    function getUserStatus() {
         const auth = getAuth();
         onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -353,7 +382,7 @@
         });
     }
 
-    function setOutlineColour(){
+    function getOutlineColour() {
         const newOutlineColour = ref(db, 'outlineColour/HexCode');
         onValue(newOutlineColour, (snapshot) => {
             const bodyElement = document.getElementsByTagName("BODY")[0];
@@ -361,23 +390,124 @@
         });
     }
 
-//<--------------------------------------------------------- ADMIN FUNCTIONS ---------------------------------------------------------------------------------------->
-
-    document.getElementById("changeOutlineColour").onclick = function(){changeOutlineColour();}
-    function changeOutlineColour(){
-
-        showPopUpAdminValueWindow("Enter the new HEX colour code (example: #a14a95)")
-        document.getElementById("acceptNewValueButton").onclick = function(){confirmColourChange();}
-
+    function getBackgroundColour() {
+        const newBackgroundColour = ref(db, 'backgroundColour/HexCode');
+        onValue(newBackgroundColour, (snapshot) => {
+            const bodyElement = document.getElementsByTagName("BODY")[0];
+            bodyElement.style.setProperty('--backgroundColour', snapshot.val());
+        });
     }
 
-    function confirmColourChange(){
+    function getBackgroundColourForImages() {
+
+        let youtubeImage = "./Pictures/YoutubeInverted.png";
+        let instagramImage = "./Pictures/InstagramInverted.png";
+        let facebookImage = "./Pictures/FacebookInverted.png";
+
+        let youtubeSocials = "./Pictures/socialsYoutubeImage.png";
+        let spotifySocials = "./Pictures/socialsSpotifyImage.png";
+
+        const newBackgroundColour = ref(db, 'backgroundColour/HexCode');
+        onValue(newBackgroundColour, (snapshot) => {
+
+            const r = hex_to_RGB(snapshot.val()).r
+            const g = hex_to_RGB(snapshot.val()).g;
+            const b = hex_to_RGB(snapshot.val()).b;
+
+            updateBackgroundColour(youtubeImage, r, g, b, "youtubeLogo");
+            updateBackgroundColour(instagramImage, r, g, b, "instagramLogo");
+            updateBackgroundColour(facebookImage, r, g, b, "facebookLogo");
+
+            updateBackgroundColour(youtubeSocials, r, g, b, "socialsYoutube");
+            updateBackgroundColour(spotifySocials, r, g, b, "socialsSpotify");
+        });
+    }
+
+    function updateBackgroundColour(imgSrc, R, G, B, canvasElement) {
+
+        const canvas = document.getElementById(canvasElement);
+        const ctx = canvas.getContext('2d');
+
+        let img = new Image();
+        img.src = imgSrc;
+
+        img.onload = () => {
+            ctx.drawImage(img, 0, 0);
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const data = imageData.data;
+
+            for (let i = 0; i < data.length; i += 4) {
+                data[i] = R;
+                data[i + 1] = G;
+                data[i + 2] = B;
+            }
+            ctx.putImageData(imageData, 0, 0);
+        }
+    }
+
+    function hex_to_RGB(hex) {
+        const m = hex.match(/^#?([\da-f]{2})([\da-f]{2})([\da-f]{2})$/i);
+        return {
+            r: parseInt(m[1], 16),
+            g: parseInt(m[2], 16),
+            b: parseInt(m[3], 16)
+        };
+    }
+
+    //<--------------------------------------------------------- ADMIN FUNCTIONS ---------------------------------------------------------------------------------------->
+
+    document.getElementById("changeBackgroundColour").onclick = function () {
+        changeBackgroundColour();
+    }
+
+    function changeBackgroundColour(){
+        showPopUpAdminValueWindow("Enter the new HEX colour code (example: #a14a95)")
+        document.getElementById("acceptNewValueButton").onclick = function () {
+            confirmColourChangeBackground();
+        }
+    }
+
+    function confirmColourChangeBackground(){
         let newOutlineColour = document.getElementById("newValueContainerValue").value;
 
         const reg = /^#([0-9a-f]{3}){1,2}$/i;
         const isValidHex = reg.test(newOutlineColour);
 
-        if(isValidHex === true) {
+        if (isValidHex === true) {
+            if (newOutlineColour === "") {
+                enablePopUpWindow("Field cannot be empty!");
+            } else {
+                set(ref(db, 'backgroundColour'), {
+                    HexCode: newOutlineColour,
+                });
+                enablePopUpWindow("Colour updated!");
+                closeNewValueContainerWindow();
+                resetNewAdminValue();
+            }
+        } else {
+            enablePopUpWindow("Not a valid HEX colour!");
+        }
+    }
+
+    document.getElementById("changeOutlineColour").onclick = function () {
+        changeOutlineColour();
+    }
+
+    function changeOutlineColour() {
+
+        showPopUpAdminValueWindow("Enter the new HEX colour code (example: #a14a95)")
+        document.getElementById("acceptNewValueButton").onclick = function () {
+            confirmColourChange();
+        }
+    }
+
+    function confirmColourChange() {
+        let newOutlineColour = document.getElementById("newValueContainerValue").value;
+
+        const reg = /^#([0-9a-f]{3}){1,2}$/i;
+        const isValidHex = reg.test(newOutlineColour);
+
+        if (isValidHex === true) {
             if (newOutlineColour === "") {
                 enablePopUpWindow("Field cannot be empty!");
             } else {
@@ -393,8 +523,11 @@
         }
     }
 
-    document.getElementById("changeBackgroundImage").onclick = function(e){changeBackgroundImage();}
-    function changeBackgroundImage(){
+    document.getElementById("changeBackgroundImage").onclick = function (e) {
+        changeBackgroundImage();
+    }
+
+    function changeBackgroundImage() {
 
         let files = [];
         let reader;
@@ -403,36 +536,39 @@
         input.type = 'file';
         input.accept = "image/png, image/jpg, image/jpeg, image/gif";
 
-            input.onchange = e => {
-                files = e.target.files;
-                reader = new FileReader();
-                reader.onload = function () {
+        input.onchange = e => {
+            files = e.target.files;
+            reader = new FileReader();
+            reader.onload = function () {
 
-                    const storage = getStorage();
-                    const imagesRef = refStorage(storage, 'bannerImage');
+                const storage = getStorage();
+                const imagesRef = refStorage(storage, 'bannerImage');
 
-                    //uploads the new image to firebase
-                    uploadBytes(imagesRef, files[0]).then((snapshot) => {
+                //uploads the new image to firebase
+                uploadBytes(imagesRef, files[0]).then((snapshot) => {
 
-                        //gets the new image from firebase and updates the banner
-                        getDownloadURL(refStorage(storage, 'bannerImage'))
-                            .then((url) => {
-                                const backgroundPara = document.getElementById('backgroundPara');
-                                backgroundPara.style.backgroundImage = "url('" + url + "')";
-                                enablePopUpWindow("Banner updated!");
-                            })
-                    });
-                }
-                reader.readAsDataURL((files[0]));
+                    //gets the new image from firebase and updates the banner
+                    getDownloadURL(refStorage(storage, 'bannerImage'))
+                        .then((url) => {
+                            const backgroundPara = document.getElementById('backgroundPara');
+                            backgroundPara.style.backgroundImage = "url('" + url + "')";
+                            enablePopUpWindow("Banner updated!");
+                        })
+                });
             }
-            input.click();
+            reader.readAsDataURL((files[0]));
+        }
+        input.click();
     }
 
-    document.getElementById("toggleBannerText").onclick = function(){toggleBannerTitle();}
-    function toggleBannerTitle(){
+    document.getElementById("toggleBannerText").onclick = function () {
+        toggleBannerTitle();
+    }
+
+    function toggleBannerTitle() {
         let status = document.getElementById("toggleBannerText").innerHTML;
 
-        if (status === "Overlay: ON"){
+        if (status === "Overlay: ON") {
             set(ref(db, 'toggleBannerStatus'), {
                 status: "OFF",
             });
@@ -447,15 +583,20 @@
 
     }
 
-    document.getElementById("changeText").onclick = function(){changeText();}
+    document.getElementById("changeText").onclick = function () {
+        changeText();
+    }
+
     function changeText() {
 
         showPopUpAdminValueWindow("Please copy & paste your new story text here")
-        document.getElementById("acceptNewValueButton").onclick = function(){confirmChangeText();}
+        document.getElementById("acceptNewValueButton").onclick = function () {
+            confirmChangeText();
+        }
 
     }
 
-    function confirmChangeText(){
+    function confirmChangeText() {
         let newText = document.getElementById("newValueContainerValue").value;
         if (newText === "") {
             enablePopUpWindow("Field cannot be empty!");
@@ -470,7 +611,10 @@
     }
 
     // uploads an album image to firebase
-    document.getElementById("addAlbumCover").onclick = function (fileFromPC) { uploadNewAlbumImage();}
+    document.getElementById("addAlbumCover").onclick = function (fileFromPC) {
+        uploadNewAlbumImage();
+    }
+
     function uploadNewAlbumImage() {
         let files = [];
         let reader;
@@ -500,15 +644,20 @@
         input.click();
     }
 
-    document.getElementById("changeYouTubeURL").onclick = function(){changeYouTubeURL();}
+    document.getElementById("changeYouTubeURL").onclick = function () {
+        changeYouTubeURL();
+    }
+
     function changeYouTubeURL() {
 
         showPopUpAdminValueWindow("Enter the new YouTube URL-ID (the letters after 'watch?v=')")
-        document.getElementById("acceptNewValueButton").onclick = function(){confirmYouTubeURL();}
+        document.getElementById("acceptNewValueButton").onclick = function () {
+            confirmYouTubeURL();
+        }
 
     }
 
-    function confirmYouTubeURL(){
+    function confirmYouTubeURL() {
         let newURL = document.getElementById("newValueContainerValue").value;
         if (newURL === "") {
             enablePopUpWindow("Field cannot be empty!");
@@ -523,7 +672,7 @@
         }
     }
 
-    function enablePopUpWindow(text){
+    function enablePopUpWindow(text) {
         popUpWindowText.innerHTML = text;
 
         document.body.removeChild(popUpInfoWindow);
@@ -531,7 +680,7 @@
         popUpInfoWindow.style.animation = "dropDown 3.25s"
     }
 
-    function showPopUpAdminValueWindow(descriptionOfFeature){
+    function showPopUpAdminValueWindow(descriptionOfFeature) {
         let newValueContainer = document.getElementById("popUpAdminValue");
         newValueContainer.style.display = "block";
 
@@ -539,25 +688,31 @@
         popUpAdminValueText.innerHTML = descriptionOfFeature;
     }
 
-    document.getElementById("cancelNewValueButton").onclick = function(){closeNewValueContainerWindow();}
-    function closeNewValueContainerWindow(){
+    document.getElementById("cancelNewValueButton").onclick = function () {
+        closeNewValueContainerWindow();
+    }
+
+    function closeNewValueContainerWindow() {
         document.getElementById("popUpAdminValue").style.display = "none";
         resetNewAdminValue();
     }
 
-    function resetNewAdminValue(){
+    function resetNewAdminValue() {
         document.getElementById("newValueContainerValue").value = "";
     }
 
-//<--------------------------------------------------------- LOGIN/LOGOUT ---------------------------------------------------------------------------------------->
+    //<--------------------------------------------------------- LOGIN/LOGOUT ---------------------------------------------------------------------------------------->
 
-    document.getElementById("acceptSignInButton").onclick = function(){getEmailAndPassword();}
-    function getEmailAndPassword(){
+    document.getElementById("acceptSignInButton").onclick = function () {
+        getEmailAndPassword();
+    }
+
+    function getEmailAndPassword() {
 
         let email = document.getElementById("loginEmail").value;
         let password = document.getElementById("loginPassword").value;
 
-        if (email === "" || password === ""){
+        if (email === "" || password === "") {
             enablePopUpWindow("The fields cannot be empty!");
 
         } else {
@@ -565,7 +720,7 @@
         }
     }
 
-    function logIn(email, password){
+    function logIn(email, password) {
 
         const auth = getAuth();
         signInWithEmailAndPassword(auth, email, password)
@@ -585,8 +740,11 @@
             });
     }
 
-    document.getElementById("logOutButton").onclick = function(){logOut();}
-    function logOut(){
+    document.getElementById("logOutButton").onclick = function () {
+        logOut();
+    }
+
+    function logOut() {
 
         const auth = getAuth();
         signOut(auth).then(() => {
@@ -597,19 +755,25 @@
         });
     }
 
-    document.getElementById("cancelSignInButton").onclick = function(){cancelSignIn();}
-    function cancelSignIn(){
+    document.getElementById("cancelSignInButton").onclick = function () {
+        cancelSignIn();
+    }
+
+    function cancelSignIn() {
         document.getElementById("popUpLogin").style.display = "none";
         document.getElementById("loginEmail").value = "";
         document.getElementById("loginPassword").value = "";
     }
 
-    document.getElementById("adminLogin").onclick = function(){showSignInWindow();}
-    function showSignInWindow(){
+    document.getElementById("adminLogin").onclick = function () {
+        showSignInWindow();
+    }
+
+    function showSignInWindow() {
         document.getElementById("popUpLogin").style.display = "block";
     }
 
-//<--------------------------------------------------------------- TBA ------------------------------------------------------------------------------------------>
+    //<--------------------------------------------------------------- TBA ------------------------------------------------------------------------------------------>
 
     /*const email = "admin@outlook.com"
     const password = "123Password123";
@@ -628,20 +792,20 @@
             });
     }*/
 
-/*
-        function checkIfLoggedIn(){
-            console.log("Checking for users")
+    /*
+            function checkIfLoggedIn(){
+                console.log("Checking for users")
 
-            const auth = getAuth();
-            onAuthStateChanged(auth, (user) => {
-                if (user) {
-                    console.log("Update: You are logged in!");
-                } else {
-                    console.log("Update: You are not logged in!");
-                }
-            });
-        }
-    */
+                const auth = getAuth();
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        console.log("Update: You are logged in!");
+                    } else {
+                        console.log("Update: You are not logged in!");
+                    }
+                });
+            }
+        */
 
 </script>
 
