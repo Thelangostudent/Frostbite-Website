@@ -302,8 +302,6 @@ body {
     color: white;
     text-align: center;
     font-size: 2.5vw;
-    margin-top: -0.5vw;
-    margin-bottom: 2.5vw;
     font-family: sans-serif;
     letter-spacing: 0.03vw;
 }
@@ -360,7 +358,6 @@ body {
 
     border: 0.25vw solid var(--backgroundColour);
     border-radius: 1vw;
-
 }
 
 .albumImage:hover {
@@ -369,7 +366,7 @@ body {
 }
 
 #albumCovers {
-    padding-top: 10vw;
+    padding-top: 10.5vw;
     margin-bottom: 3vw;
 }
 /*ALBUM COVER SECTION ENDS HERE*/
@@ -381,14 +378,13 @@ body {
     color: white;
     text-align: center;
     font-size: 2.5vw;
-    margin-top: -0.5vw;
     margin-bottom: 2vw;
     font-family: sans-serif;
     letter-spacing: 0.03vw;
 }
 
 #youtubePreviewContainer {
-    margin-top: 10vw;
+    margin-top: 12vw;
 }
 
 #youtubePreviewVideo {
@@ -452,7 +448,7 @@ body {
     margin-bottom: 2.25vw;
     font-family: sans-serif;
     letter-spacing: 0.03vw;
-    margin-top: 8vw;
+    margin-top: 12vw;
 }
 /*LISTEN ENDS HERE*/
 
@@ -463,14 +459,13 @@ body {
     color: white;
     text-align: center;
     font-size: 2.5vw;
-    margin-top: -0.5vw;
     margin-bottom: 2vw;
     font-family: sans-serif;
     letter-spacing: 0.03vw;
 }
 
 #tickets {
-    margin-top: 11vw;
+    margin-top: 12vw;
 }
 
 #ticket_placeholder {
