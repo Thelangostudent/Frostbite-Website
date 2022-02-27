@@ -511,8 +511,8 @@ body {
     transition-duration: 0.5s;
 
     overflow: scroll;
-    overflow-x: hidden;
     overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 #adminContainer:hover{
@@ -520,8 +520,8 @@ body {
     transition-duration: 0.5s;
 
     overflow: scroll;
-    overflow-x: hidden;
     overflow-y: visible;
+    overflow-x: hidden;
 }
 
 #adminTitle {
@@ -625,17 +625,17 @@ body {
 
 #backgroundToolTip {
     background-color: var(--backgroundColour);
-    width: 17vw;
-    color: white;
-    font-size: 1vw;
-    border: 0.2vw solid white;
+    width: 33vw;
+    color: var(--outlineColor);
+    font-size: 2vw;
+    border: 0.2vw solid var(--outlineColor);
     padding: 0.5vw;
     border-radius: 0.5vw;
-    margin-top: -2.5vw;
-    margin-left: 11.5vw;
-    margin-bottom: -0.04vw;
-    position: fixed;
+    margin-top: -22.5vw;
+    margin-left: 34.5vw;
+    z-index: 110;
 
+    position: fixed;
     display: none;
 }
 
@@ -655,7 +655,6 @@ body {
     border-color:white;
     color:white;
     transition-duration: 0.3s;
-
 }
 
 #changeOutlineColour {
