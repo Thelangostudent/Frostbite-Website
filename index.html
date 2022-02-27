@@ -76,7 +76,7 @@
 
     <a href="#tickets" style="margin-right: 1vw;" class="navMenuSelectable">TICKETS</a>
     <a href="#youtubePreviewContainer" class="navMenuSelectable">VIDEO</a>
-    <a href="#albumCovers" class="navMenuSelectable">ALBUMS</a>
+    <a href="#albumCovers" class="navMenuSelectable">MUSIC</a>
     <a href="#aboutTitle" class="navMenuSelectable">ABOUT</a>
 
 </div>
@@ -157,7 +157,7 @@
     <div id="albumCovers">
         <div class="item scrollFade">
 
-            <h3 id="ourAlbums"> Albums </h3>
+            <h3 id="ourAlbums"> Albums & Singles </h3>
 
             <div id="gridContainer">
             </div>
@@ -316,13 +316,21 @@
                 res.items.forEach((itemRef) => {
                     getDownloadURL(itemRef)
                         .then((url) => {
+                            const nameToFile = itemRef.name.toString();
+                            const albumURL_Decoded = nameToFile.replace(/Ø/g, "/");
+                            console.log(albumURL_Decoded);
+
+
                             const divElement = document.createElement("div");
                             const addAlbum = document.createElement("img");
+                            const aHref = document.createElement("a");
 
                             addAlbum.src = url;
                             addAlbum.className = "albumImage";
+                            aHref.href = albumURL_Decoded;
 
-                            divElement.appendChild(addAlbum);
+                            divElement.appendChild(aHref);
+                            aHref.appendChild(addAlbum);
                             divElement.className = "coverGridItem";
 
                             document.getElementById("gridContainer").appendChild(divElement);
@@ -611,37 +619,51 @@
     }
 
     // uploads an album image to firebase
-    document.getElementById("addAlbumCover").onclick = function (fileFromPC) {
-        uploadNewAlbumImage();
+    document.getElementById("addAlbumCover").onclick = function () {
+
+        showPopUpAdminValueWindow("Please enter the album URL:")
+
+        document.getElementById("acceptNewValueButton").onclick = function () {
+            uploadNewAlbumImage();
+        }
     }
 
     function uploadNewAlbumImage() {
-        let files = [];
-        let reader;
+        let newAlbumURL = document.getElementById("newValueContainerValue").value;
+        if (newAlbumURL === "") {
+            enablePopUpWindow("Field cannot be empty!");
+        } else {
+            let files = [];
+            let reader;
 
-        const input = document.createElement('input');
-        input.type = 'file';
-        input.accept = "image/png, image/jpg, image/jpeg, image/gif";
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = "image/png, image/jpg, image/jpeg, image/gif";
 
-        input.onchange = e => {
-            files = e.target.files;
-            reader = new FileReader();
-            reader.onload = function () {
+            input.onchange = e => {
+                files = e.target.files;
+                reader = new FileReader();
+                reader.onload = function () {
 
-                const storage = getStorage();
-                const imagesRef = refStorage(storage, 'AlbumCovers/' + files[0].name);
+                    const albumURL_Encoded = newAlbumURL.replace(/\//g, "Ø");
 
-                uploadBytes(imagesRef, files[0]).then((snapshot) => {
-                    const gridToReset = document.getElementById("gridContainer");
-                    gridToReset.innerHTML = '';
-                    getAlbums();
+                    const storage = getStorage();
+                    const imagesRef = refStorage(storage, 'AlbumCovers/' + albumURL_Encoded);
 
-                    enablePopUpWindow("Album added!");
-                });
+                    uploadBytes(imagesRef, files[0]).then((snapshot) => {
+                        const gridToReset = document.getElementById("gridContainer");
+                        gridToReset.innerHTML = '';
+                        getAlbums();
+                        closeNewValueContainerWindow();
+                        resetNewAdminValue();
+
+                        enablePopUpWindow("Album added!");
+                    });
+                }
+                reader.readAsDataURL((files[0]));
             }
-            reader.readAsDataURL((files[0]));
+            input.click();
         }
-        input.click();
     }
 
     document.getElementById("changeYouTubeURL").onclick = function () {

@@ -312,7 +312,7 @@ body {
 @media screen and (max-width: 1000px) {
     #gridContainer {
         display: grid;
-        grid-template-columns: repeat(2, 0fr);
+        grid-template-columns: repeat(3, 0fr);
         place-content: center;
         row-gap: 4vw;
         column-gap: 1vw;
@@ -327,7 +327,6 @@ body {
         grid-row-end: auto;
         place-self: center;
         block-size: 10vw;
-        width: 21%;
     }
 }
 
@@ -338,7 +337,7 @@ body {
         grid-template-columns: repeat(4, 0fr);
         place-content: center;
         row-gap: 4vw;
-        column-gap: 1vw;
+        column-gap: 0.25vw;
     }
 }
 
@@ -358,6 +357,15 @@ body {
     width: 10vw;
     margin-left: 2vw;
     margin-right: 2vw;
+
+    border: 0.25vw solid var(--backgroundColour);
+    border-radius: 1vw;
+
+}
+
+.albumImage:hover {
+    border: 0.25vw solid var(--outlineColor);
+    border-radius: 1vw;
 }
 
 #albumCovers {
