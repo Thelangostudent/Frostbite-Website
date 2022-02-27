@@ -382,7 +382,7 @@ body {
     text-align: center;
     font-size: 2.5vw;
     margin-top: -0.5vw;
-    margin-bottom: 1vw;
+    margin-bottom: 2vw;
     font-family: sans-serif;
     letter-spacing: 0.03vw;
 }
@@ -399,43 +399,16 @@ body {
 
 
 
-/*TICKETS STARTS HERE*/
-#ticket_title {
-    color: white;
-    text-align: center;
-    font-size: 2.5vw;
-    margin-top: -0.5vw;
-    margin-bottom: 2vw;
-    font-family: sans-serif;
-    letter-spacing: 0.03vw;
-}
-
-#tickets {
-    margin-top: 10vw;
-}
-
-#ticket_placeholder {
-    margin-top: 1.0vw;
-    margin-bottom: 2vw;
-    font-size: 1.75vw;
-    font-family: sans-serif;
-    text-align: center;
-    color: white;
-}
-/*TICKETS END HERE*/
-
-
-
 /*SOCIALS STARTS HERE*/
 #socialsContainer {
-    margin-top: 10vw;
+    margin-top: 12vw;
 }
 
 #socialsTitle {
     color: white;
     text-align: center;
     font-size: 2.5vw;
-    margin-bottom: 3.25vw;
+    margin-bottom: 2.25vw;
     font-family: sans-serif;
     letter-spacing: 0.03vw;
 }
@@ -451,7 +424,7 @@ body {
     height: 15vw;
     padding-left: 1vw;
 }
-    
+
 #socialsSquareYoutube {
     margin-left: 33.7vw;
     margin-bottom: -11vw;
@@ -467,7 +440,48 @@ body {
     height: 12vw;
     background-color: var(--outlineColor);
 }
-/*SOCIALS END HERE*/
+/*SOCIALS ENDS HERE*/
+
+
+
+/*LISTEN STARTS HERE*/
+#listenTitle {
+    color: white;
+    text-align: center;
+    font-size: 2.5vw;
+    margin-bottom: 2.25vw;
+    font-family: sans-serif;
+    letter-spacing: 0.03vw;
+    margin-top: 8vw;
+}
+/*LISTEN ENDS HERE*/
+
+
+
+/*TICKETS STARTS HERE*/
+#ticket_title {
+    color: white;
+    text-align: center;
+    font-size: 2.5vw;
+    margin-top: -0.5vw;
+    margin-bottom: 2vw;
+    font-family: sans-serif;
+    letter-spacing: 0.03vw;
+}
+
+#tickets {
+    margin-top: 11vw;
+}
+
+#ticket_placeholder {
+    margin-top: 1.0vw;
+    margin-bottom: 25vw;
+    font-size: 1.75vw;
+    font-family: sans-serif;
+    text-align: center;
+    color: white;
+}
+/*TICKETS ENDS HERE*/
 
 
 

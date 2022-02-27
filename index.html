@@ -78,11 +78,12 @@
         <canvas id="facebookLogo" draggable="false" width="100" height="100"></canvas>
     </a>
 
-    <a href="#scrollToSocials" style="margin-right: 1vw;" class="navMenuSelectable">SOCIALS</a>
-    <a href="#scrollToTickets" class="navMenuSelectable">TICKETS</a>
+    <a href="#scrollToTickets" style="margin-right: 1vw;" class="navMenuSelectable">TICKETS</a>
+    <a href="#scrollToListen" class="navMenuSelectable">LISTEN</a>
+    <a href="#scrollToSocials" class="navMenuSelectable">SOCIALS</a>
     <a href="#scrollToVideo" class="navMenuSelectable">VIDEO</a>
     <a href="#albumCovers" class="navMenuSelectable">MUSIC</a>
-    <a href="#bannerText" class="navMenuSelectable">ABOUT</a>
+    <a href="#top" class="navMenuSelectable">ABOUT</a>
 
 </div>
 
@@ -151,7 +152,7 @@
 
     <div id="aboutContainer">
         <div class="item scrollFade">
-            <h3 id="aboutTitle">FROSTBITE: The Story</h3>
+            <h3 id="aboutTitle">FROSTBITE: THE STORY</h3>
             <a id="aboutText" style="margin-bottom: 2vw"></a>
         </div>
     </div>
@@ -159,7 +160,7 @@
     <div id="albumCovers">
         <div class="item scrollFade">
 
-            <h3 id="ourAlbums"> Singles & Albums </h3>
+            <h3 id="ourAlbums"> SINGLES & ALBUMS </h3>
 
             <div id="gridContainer">
             </div>
@@ -168,11 +169,10 @@
     </div>
 
     <br id="scrollToVideo">
-
     <div id="youtubePreviewContainer">
         <div class="item scrollFade">
 
-            <h3 id="youtubePreviewTitle"> Video </h3>
+            <h3 id="youtubePreviewTitle"> VIDEO </h3>
 
             <div class="alignInMiddle">
                 <iframe id="youtubePreviewVideo" src="https://www.youtube.com/embed/rykIs0XlA8Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -181,12 +181,34 @@
         </div>
     </div>
 
-    <br id="scrollToTickets">
+    <br id="scrollToSocials">
+    <div id="socialsContainer">
+        <div class="item scrollFade">
+            <div class="alignInMiddle">
 
+                <h3 id="socialsTitle"> SOCIALS </h3>
+
+                <div id="socialsSquareYoutube"></div>
+                <div id="socialsSquareSpotify"></div>
+
+                <a href="https://www.youtube.com/channel/UCmt3wU22pVtUPqhoHVcOQ-g"><canvas id="socialsYoutube" draggable="false" width="1000" height="1000"></canvas></a>
+                <a href="https://open.spotify.com/artist/0rIROc9qyjwndVoDFa2WD0"><canvas id="socialsSpotify" draggable="false" width="1000" height="1000"></canvas></a>
+
+            </div>
+        </div>
+    </div>
+
+    <br id="scrollToListen">
+    <div class="alignInMiddle">
+        <h3 id="listenTitle"> LISTEN </h3>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/0rIROc9qyjwndVoDFa2WD0?utm_source=generator&theme=0" width="25%" height="400" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+    </div>
+
+    <br id="scrollToTickets">
     <div id="tickets">
         <div class="item scrollFade">
 
-            <h3 id="ticket_title"> Tickets </h3>
+            <h3 id="ticket_title"> TICKETS </h3>
 
             <div class="alignInMiddle">
                 <h2 id="ticket_placeholder">Stay Tuned (Coming Soon)</h2>
@@ -195,28 +217,7 @@
         </div>
     </div>
 
-    <br id="scrollToSocials">
-
-    <div id="socialsContainer">
-        <div class="item scrollFade">
-            <div class="alignInMiddle">
-
-                <h3 id="socialsTitle"> Listen On </h3>
-
-                <div id="socialsSquareYoutube"></div>
-                <div id="socialsSquareSpotify"></div>
-
-                <a href="https://www.youtube.com/channel/UCmt3wU22pVtUPqhoHVcOQ-g"><canvas id="socialsYoutube" draggable="false" width="1000" height="1000"></canvas></a>
-                <a href="https://open.spotify.com/artist/0rIROc9qyjwndVoDFa2WD0"><canvas id="socialsSpotify" draggable="false" width="1000" height="1000"></canvas></a>
-            </div>
-        </div>
-    </div>
-
 </div>
-
-<!--<div id="spotifyEmbed"></div>
-    <iframe style="border-radius:0.5vw" src="https://open.spotify.com/embed/artist/0rIROc9qyjwndVoDFa2WD0?utm_source=generator" width="25%" height="400" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-</div>-->
 
 <!--------------------------------------------------------------- FOOTER --------------------------------------------------------------------------------------------->
 
