@@ -610,7 +610,24 @@ body {
     border-color:white;
     color:white;
     transition-duration: 0.3s;
+}
 
+#deleteAlbumCover {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-top: 1vw;
+}
+
+#deleteAlbumCover:hover {
+    cursor: pointer;
+    border-color:white;
+    color:white;
+    transition-duration: 0.3s;
 }
 
 #changeYouTubeURL {

@@ -39,7 +39,11 @@
     </div>
 
     <div class="alignInMiddle">
-        <button id="addAlbumCover"> Add Album Cover</button>
+        <button id="addAlbumCover">Add Single/Album Cover</button>
+    </div>
+
+    <div class="alignInMiddle">
+        <button id="deleteAlbumCover">Delete Single/Album Cover</button>
     </div>
 
     <div class="alignInMiddle">
@@ -258,7 +262,8 @@
         ref as refStorage,
         uploadBytes,
         getDownloadURL,
-        listAll
+        listAll,
+        deleteObject
     } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-storage.js';
 
     const firebaseConfig = {
@@ -309,6 +314,9 @@
     //gets album covers from firebase
     function getAlbums() {
 
+        const gridToReset = document.getElementById("gridContainer");
+        gridToReset.innerHTML = '';
+
         const listRef = refStorage(storage, 'AlbumCovers');
 
         listAll(listRef)
@@ -318,8 +326,6 @@
                         .then((url) => {
                             const nameToFile = itemRef.name.toString();
                             const albumURL_Decoded = nameToFile.replace(/Ø/g, "/");
-                            console.log(albumURL_Decoded);
-
 
                             const divElement = document.createElement("div");
                             const addAlbum = document.createElement("img");
@@ -337,7 +343,7 @@
                         })
                 });
             }).catch((error) => {
-            enablePopUpWindow(error);
+            enablePopUpWindow("Unable to fetch albums");
         });
     }
 
@@ -618,10 +624,10 @@
         }
     }
 
-    // uploads an album image to firebase
+    // uploads an album to firebase
     document.getElementById("addAlbumCover").onclick = function () {
 
-        showPopUpAdminValueWindow("Please enter the album URL:")
+        showPopUpAdminValueWindow("Please enter the single/album URL:")
 
         document.getElementById("acceptNewValueButton").onclick = function () {
             uploadNewAlbumImage();
@@ -651,8 +657,6 @@
                     const imagesRef = refStorage(storage, 'AlbumCovers/' + albumURL_Encoded);
 
                     uploadBytes(imagesRef, files[0]).then((snapshot) => {
-                        const gridToReset = document.getElementById("gridContainer");
-                        gridToReset.innerHTML = '';
                         getAlbums();
                         closeNewValueContainerWindow();
                         resetNewAdminValue();
@@ -663,6 +667,38 @@
                 reader.readAsDataURL((files[0]));
             }
             input.click();
+        }
+    }
+
+    document.getElementById("deleteAlbumCover").onclick = function () {
+        deleteAlbum();
+    }
+
+    function deleteAlbum(){
+        showPopUpAdminValueWindow("Please enter the single/album URL")
+        document.getElementById("acceptNewValueButton").onclick = function () {
+            confirmDeleteAlbum();
+        }
+    }
+
+    function confirmDeleteAlbum(){
+        let albumToDelete = document.getElementById("newValueContainerValue").value;
+        if (albumToDelete === "") {
+            enablePopUpWindow("Field cannot be empty!");
+        } else {
+            const urlToConvert = albumToDelete.replace(/\//g, "Ø");
+
+            const storage = getStorage();
+            const albumRef = refStorage(storage, 'AlbumCovers/' + urlToConvert);
+
+            deleteObject(albumRef).then(() => {
+                enablePopUpWindow("Single/Album deleted!");
+                getAlbums();
+            }).catch((error) => {
+                enablePopUpWindow("Unable to find album");
+            });
+            closeNewValueContainerWindow();
+            resetNewAdminValue();
         }
     }
 
@@ -773,7 +809,7 @@
             enablePopUpWindow("Successfully logged out");
             document.getElementById("adminLogin").style.display = "block";
         }).catch((error) => {
-            enablePopUpWindow(error);
+            enablePopUpWindow("Unable to log out");
         });
     }
 
