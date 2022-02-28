@@ -668,10 +668,26 @@
         }
     }
 
+    function isValidHttpUrl(string) {
+        let url;
+
+        try {
+            url = new URL(string);
+        } catch (_) {
+            return false;
+        }
+
+        return url.protocol === "http:" || url.protocol === "https:";
+    }
+
     function uploadNewAlbumImage() {
         let newAlbumURL = document.getElementById("newValueContainerValue").value;
+        let isValid = isValidHttpUrl(newAlbumURL);
+
         if (newAlbumURL === "") {
             enablePopUpWindow("Field cannot be empty!");
+        } else if (isValid === false){
+            enablePopUpWindow("URL is invalid!");
         } else {
             let files = [];
             let reader;
