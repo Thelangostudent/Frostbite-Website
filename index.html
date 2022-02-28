@@ -716,7 +716,6 @@
                 const albumURL_Decoded_indexRemoved = albumURL_Decoded.substring(1);
 
                 if (albumToDelete === albumURL_Decoded_indexRemoved) {
-                    console.log("MATCH FOUND");
 
                     const albumRef = refStorage(storage, 'AlbumCovers/' + element.name);
 
@@ -726,6 +725,7 @@
                     }).catch((error) => {
                         enablePopUpWindow("Unable to delete album");
                     });
+
                     closeNewValueContainerWindow();
                     resetNewAdminValue();
                 } else {
