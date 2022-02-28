@@ -721,7 +721,6 @@
 
                     deleteObject(albumRef).then(() => {
                         enablePopUpWindow("Single/Album deleted!");
-                        getAlbums();
                     }).catch((error) => {
                         enablePopUpWindow("Unable to delete album");
                     });
@@ -732,7 +731,7 @@
                     enablePopUpWindow("Unable to find album");
                 }
             }
-
+            getAlbums();
         }
     }
 
