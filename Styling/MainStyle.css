@@ -315,9 +315,7 @@ body {
         row-gap: 4vw;
         column-gap: 1vw;
     }
-}
 
-@media screen and (max-width: 1000px) {
     .coverGridItem {
         grid-column-start: span;
         grid-column-end: span;
@@ -337,9 +335,7 @@ body {
         row-gap: 4vw;
         column-gap: 0.25vw;
     }
-}
 
-@media screen and (min-width: 1001px) {
     .coverGridItem {
         grid-column-start: auto;
         grid-column-end: auto;
@@ -449,6 +445,20 @@ body {
     font-family: sans-serif;
     letter-spacing: 0.03vw;
     margin-top: 12vw;
+}
+
+/* for phone */
+@media screen and (max-width: 1000px) {
+    #spotifyEmbed {
+        width: 50%;
+    }
+}
+
+/* for pc */
+@media screen and (min-width: 1001px) {
+    #spotifyEmbed {
+        width: 25%;
+    }
 }
 /*LISTEN ENDS HERE*/
 
