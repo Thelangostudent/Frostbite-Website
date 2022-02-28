@@ -77,9 +77,10 @@ body {
     float: left;
     color: var(--textColour);
     margin-top: -0.75vw;
-    padding-left: 0.7vw;
-    width: 2.5vw;
+    margin-left: 0.5vw;
+
     height: 2.5vw;
+    width: 2.5vw;
 
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
