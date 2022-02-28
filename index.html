@@ -704,39 +704,35 @@
         }
     }
 
-    function confirmDeleteAlbum(){
+    async function confirmDeleteAlbum(){
         let albumToDelete = document.getElementById("newValueContainerValue").value;
         if (albumToDelete === "") {
             enablePopUpWindow("Field cannot be empty!");
         } else {
 
+            for (const element of array) {
+                const nameToFile = element.name.toString();
+                const albumURL_Decoded = nameToFile.replace(/Ø/g, "/");
+                const albumURL_Decoded_indexRemoved = albumURL_Decoded.substring(1);
 
-            /*console.log(albumURL_Encoded);
-                                console.log(array[0].name);
+                if (albumToDelete === albumURL_Decoded_indexRemoved) {
+                    console.log("MATCH FOUND");
 
-                                let index = 0;
-                                while (index < array.length){
-                                    if (albumURL_Encoded === array[index].name){
-                                        console.log("MATCH FOUND");
-                                    }
-                                    index++;
-                                }*/
+                    const albumRef = refStorage(storage, 'AlbumCovers/' + element.name);
 
+                    deleteObject(albumRef).then(() => {
+                        enablePopUpWindow("Single/Album deleted!");
+                        getAlbums();
+                    }).catch((error) => {
+                        enablePopUpWindow("Unable to delete album");
+                    });
+                    closeNewValueContainerWindow();
+                    resetNewAdminValue();
+                } else {
+                    enablePopUpWindow("Unable to find album");
+                }
+            }
 
-            const encodedURL = albumToDelete.replace(/\//g, "Ø");
-
-            const storage = getStorage();
-            const albumRef = refStorage(storage, 'AlbumCovers/' + encodedURL);
-
-
-            deleteObject(albumRef).then(() => {
-                enablePopUpWindow("Single/Album deleted!");
-                getAlbums();
-            }).catch((error) => {
-                enablePopUpWindow("Unable to find album");
-            });
-            closeNewValueContainerWindow();
-            resetNewAdminValue();
         }
     }
 
