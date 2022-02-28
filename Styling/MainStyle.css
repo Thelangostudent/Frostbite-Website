@@ -670,7 +670,7 @@ body {
     border: 0.2vw solid var(--outlineColor);
     padding: 0.5vw;
     border-radius: 0.5vw;
-    margin-top: -22.5vw;
+    margin-top: -29.5vw;
     margin-left: 33.1vw;
     z-index: 110;
 
@@ -731,7 +731,7 @@ body {
     transition-duration: 0.3s;
 }
 
-#changeBackgroundImage:hover + #backgroundToolTip { display: block;}
+#changeBackgroundImage:hover + #backgroundToolTip { display: block; }
 
 
 #toolTipAdmin {
