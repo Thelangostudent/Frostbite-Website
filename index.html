@@ -325,33 +325,43 @@
         gridToReset.innerHTML = '';
 
         const listRef = refStorage(storage, 'AlbumCovers');
+        const array = [];
 
         listAll(listRef)
             .then((res) => {
+
                 res.items.forEach((itemRef) => {
-                    getDownloadURL(itemRef)
-                        .then((url) => {
-                            const nameToFile = itemRef.name.toString();
-                            const albumURL_Decoded = nameToFile.replace(/Ø/g, "/");
-
-                            const divElement = document.createElement("div");
-                            const addAlbum = document.createElement("img");
-                            const aHref = document.createElement("a");
-
-                            addAlbum.src = url;
-                            addAlbum.className = "albumImage";
-                            aHref.href = albumURL_Decoded;
-
-                            divElement.appendChild(aHref);
-                            aHref.appendChild(addAlbum);
-                            divElement.className = "coverGridItem";
-
-                            document.getElementById("gridContainer").appendChild(divElement);
-                        })
+                    array[array.length] = itemRef;
                 });
-            }).catch((error) => {
+
+            }).then(() => {
+            createAlbumElements(array);
+        }).catch((error) => {
             enablePopUpWindow("Unable to fetch covers");
         });
+    }
+
+    async function createAlbumElements(array){
+        for (const element of array) {
+            let url = await getDownloadURL(element);
+
+            const nameToFile = element.name.toString();
+            const albumURL_Decoded = nameToFile.replace(/Ø/g, "/");
+
+            const divElement = document.createElement("div");
+            const addAlbum = document.createElement("img");
+            const aHref = document.createElement("a");
+
+            addAlbum.src = url;
+            addAlbum.className = "albumImage";
+            aHref.href = albumURL_Decoded;
+
+            divElement.appendChild(aHref);
+            aHref.appendChild(addAlbum);
+            divElement.className = "coverGridItem";
+
+            document.getElementById("gridContainer").appendChild(divElement);
+        }
     }
 
     function getBannerTextStatus() {
