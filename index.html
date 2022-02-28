@@ -661,7 +661,7 @@
     // uploads an album to firebase
     document.getElementById("addAlbumCover").onclick = function () {
 
-        showPopUpAdminValueWindow("Please enter the full single/album URL:")
+        showPopUpAdminValueWindow("Enter the full spotify URL to the album you want to add:")
 
         document.getElementById("acceptNewValueButton").onclick = function () {
             uploadNewAlbumImage();
@@ -710,7 +710,7 @@
     }
 
     function deleteAlbum(){
-        showPopUpAdminValueWindow("Please enter the single/album URL")
+        showPopUpAdminValueWindow("Enter the full URL to the album you want to delete:")
         document.getElementById("acceptNewValueButton").onclick = function () {
             confirmDeleteAlbum();
         }
