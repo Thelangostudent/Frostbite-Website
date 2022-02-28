@@ -318,14 +318,16 @@
             })
     }
 
+    let array = [];
     //gets album and single covers from firebase
     function getAlbums() {
+
+        array = [];
 
         const gridToReset = document.getElementById("gridContainer");
         gridToReset.innerHTML = '';
 
         const listRef = refStorage(storage, 'AlbumCovers');
-        const array = [];
 
         listAll(listRef)
             .then((res) => {
@@ -347,6 +349,7 @@
 
             const nameToFile = element.name.toString();
             const albumURL_Decoded = nameToFile.replace(/Ø/g, "/");
+            const albumURL_Decoded_indexRemoved = albumURL_Decoded.substring(1);
 
             const divElement = document.createElement("div");
             const addAlbum = document.createElement("img");
@@ -354,13 +357,15 @@
 
             addAlbum.src = url;
             addAlbum.className = "albumImage";
-            aHref.href = albumURL_Decoded;
+            aHref.href = albumURL_Decoded_indexRemoved;
 
             divElement.appendChild(aHref);
             aHref.appendChild(addAlbum);
             divElement.className = "coverGridItem";
 
-            document.getElementById("gridContainer").appendChild(divElement);
+            //document.getElementById("gridContainer").appendChild(divElement);
+            document.getElementById("gridContainer").insertBefore(divElement, document.getElementById("gridContainer").firstChild);
+
         }
     }
 
@@ -669,9 +674,10 @@
                 reader.onload = function () {
 
                     const albumURL_Encoded = newAlbumURL.replace(/\//g, "Ø");
+                    const albumURL_Encoded_withIndex = (array.length + 1) + albumURL_Encoded;
 
                     const storage = getStorage();
-                    const imagesRef = refStorage(storage, 'AlbumCovers/' + albumURL_Encoded);
+                    const imagesRef = refStorage(storage, 'AlbumCovers/' + albumURL_Encoded_withIndex);
 
                     uploadBytes(imagesRef, files[0]).then((snapshot) => {
                         getAlbums();
@@ -703,10 +709,25 @@
         if (albumToDelete === "") {
             enablePopUpWindow("Field cannot be empty!");
         } else {
-            const urlToConvert = albumToDelete.replace(/\//g, "Ø");
+
+
+            /*console.log(albumURL_Encoded);
+                                console.log(array[0].name);
+
+                                let index = 0;
+                                while (index < array.length){
+                                    if (albumURL_Encoded === array[index].name){
+                                        console.log("MATCH FOUND");
+                                    }
+                                    index++;
+                                }*/
+
+
+            const encodedURL = albumToDelete.replace(/\//g, "Ø");
 
             const storage = getStorage();
-            const albumRef = refStorage(storage, 'AlbumCovers/' + urlToConvert);
+            const albumRef = refStorage(storage, 'AlbumCovers/' + encodedURL);
+
 
             deleteObject(albumRef).then(() => {
                 enablePopUpWindow("Single/Album deleted!");
