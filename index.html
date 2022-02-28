@@ -22,7 +22,11 @@
     </div>
 
     <div class="alignInMiddle">
-        <button id="changeOutlineColour">Change Outline Colour</button>
+        <button id="changeOutlineColour">Change Outline/Button Colour</button>
+    </div>
+
+    <div class="alignInMiddle">
+        <button id="changeTextColour">Change Text/Hover Colour</button>
     </div>
 
     <div class="alignInMiddle">
@@ -79,7 +83,7 @@
     </a>
 
     <a href="#scrollToTickets" style="margin-right: 1vw;" class="navMenuSelectable">TICKETS</a>
-    <a href="#scrollToGallery" class="navMenuSelectable">LIVE GALLERY</a>
+    <a href="#scrollToGallery" class="navMenuSelectable">GALLERY</a>
     <a href="#scrollToListen" class="navMenuSelectable">LISTEN</a>
     <a href="#scrollToSocials" class="navMenuSelectable">SOCIALS</a>
     <a href="#scrollToVideo" class="navMenuSelectable">VIDEO</a>
@@ -210,7 +214,7 @@
     <br id="scrollToGallery">
     <div id="gallery">
         <div class="item scrollFade">
-            <h3 id="gallery_title"> LIVE GALLERY</h3>
+            <h3 id="gallery_title"> GALLERY </h3>
 
             <div class="alignInMiddle">
                 <h2 id="galleryPlaceHolder"> TBA </h2>
@@ -227,7 +231,7 @@
             <h3 id="ticket_title"> TICKETS </h3>
 
             <div class="alignInMiddle">
-                <h2 id="ticket_placeholder">Stay Tuned (Coming Soon)</h2>
+                <h2 id="ticket_placeholder"> TBA </h2>
             </div>
 
         </div>
@@ -327,6 +331,7 @@
         getBackgroundColour();
         getBackgroundColourForImages();
         checkIfMobile();
+        getTextColour();
     }
 
     let isMobile = false;
@@ -460,6 +465,14 @@
         });
     }
 
+    function getTextColour() {
+        const newTextColour = ref(db, 'textColour/HexCode');
+        onValue(newTextColour, (snapshot) => {
+            const bodyElement = document.getElementsByTagName("BODY")[0];
+            bodyElement.style.setProperty('--textColour', snapshot.val());
+        });
+    }
+
     function getBackgroundColourForImages() {
 
         let youtubeImage = "./Pictures/YoutubeInverted.png";
@@ -575,6 +588,40 @@
             } else {
                 set(ref(db, 'outlineColour'), {
                     HexCode: newOutlineColour,
+                });
+                enablePopUpWindow("Colour updated!");
+                closeNewValueContainerWindow();
+                resetNewAdminValue();
+            }
+        } else {
+            enablePopUpWindow("Not a valid HEX colour!");
+        }
+    }
+
+    document.getElementById("changeTextColour").onclick = function () {
+        changeTextColour();
+    }
+
+    function changeTextColour() {
+
+        showPopUpAdminValueWindow("Enter the new HEX colour code (example: #ffffff)")
+        document.getElementById("acceptNewValueButton").onclick = function () {
+            confirmColourChangeOnText();
+        }
+    }
+
+    function confirmColourChangeOnText() {
+        let newTextColour = document.getElementById("newValueContainerValue").value;
+
+        const reg = /^#([0-9a-f]{3}){1,2}$/i;
+        const isValidHex = reg.test(newTextColour);
+
+        if (isValidHex === true) {
+            if (newTextColour === "") {
+                enablePopUpWindow("Field cannot be empty!");
+            } else {
+                set(ref(db, 'textColour'), {
+                    HexCode: newTextColour,
                 });
                 enablePopUpWindow("Colour updated!");
                 closeNewValueContainerWindow();
