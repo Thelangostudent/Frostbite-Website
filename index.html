@@ -221,7 +221,7 @@
 
         </div>
     </div>
-   
+
 
     <br id="scrollToTickets">
     <div id="tickets">
@@ -335,9 +335,9 @@
 
     let isMobile = false;
     function checkIfMobile(){
-            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-                isMobile = true;
-            }
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            isMobile = true;
+        }
     }
 
     function getBannerImage() {
@@ -361,11 +361,9 @@
 
         listAll(listRef)
             .then((res) => {
-
                 res.items.forEach((itemRef) => {
                     array[array.length] = itemRef;
                 });
-
             }).then(() => {
             createAlbumElements(array);
         }).catch((error) => {
@@ -373,21 +371,35 @@
         });
     }
 
-    async function createAlbumElements(array){
-        for (const element of array) {
-            let url = await getDownloadURL(element);
 
+    async function createAlbumElements(array){
+
+        let sortedArray = [];
+
+        for (const element of array) {
             const nameToFile = element.name.toString();
             const albumURL_Decoded = nameToFile.replace(/Ø/g, "/");
-            const albumURL_Decoded_indexRemoved = albumURL_Decoded.substring(1);
+            const dateToConvert = albumURL_Decoded.substring(1, 19);
 
+            let musicLink = albumURL_Decoded.substring(19);
+            let dateToSet = dateToConvert.toDate("dd/mm/yyyy hh:ii:ss");
+            let imageUrl = await getDownloadURL(element);
+
+            sortedArray.push({musicLink: musicLink, date: dateToSet, image: imageUrl})
+        }
+
+        sortedArray.sort(function(a,b) {
+            return a.date - b.date;
+        });
+
+        for (const element of sortedArray) {
             const divElement = document.createElement("div");
             const addAlbum = document.createElement("img");
             const aHref = document.createElement("a");
 
-            addAlbum.src = url;
+            aHref.href = element.musicLink;
+            addAlbum.src = element.image;
             addAlbum.className = "albumImage";
-            aHref.href = albumURL_Decoded_indexRemoved;
 
             divElement.appendChild(aHref);
             aHref.appendChild(addAlbum);
@@ -395,9 +407,35 @@
 
             //document.getElementById("gridContainer").appendChild(divElement);
             document.getElementById("gridContainer").insertBefore(divElement, document.getElementById("gridContainer").firstChild);
-
         }
     }
+
+    String.prototype.toDate = function(format)
+    {
+        const normalized = this.replace(/[^a-zA-Z0-9]/g, '-');
+        const normalizedFormat= format.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-');
+        const formatItems     = normalizedFormat.split('-');
+        const dateItems       = normalized.split('-');
+
+        const monthIndex  = formatItems.indexOf("mm");
+        const dayIndex    = formatItems.indexOf("dd");
+        const yearIndex   = formatItems.indexOf("yyyy");
+        const hourIndex     = formatItems.indexOf("hh");
+        const minutesIndex  = formatItems.indexOf("ii");
+        const secondsIndex  = formatItems.indexOf("ss");
+
+        const today = new Date();
+
+        const year  = yearIndex>-1  ? dateItems[yearIndex]    : today.getFullYear();
+        const month = monthIndex>-1 ? dateItems[monthIndex]-1 : today.getMonth()-1;
+        const day   = dayIndex>-1   ? dateItems[dayIndex]     : today.getDate();
+
+        const hour    = hourIndex>-1      ? dateItems[hourIndex]    : today.getHours();
+        const minute  = minutesIndex>-1   ? dateItems[minutesIndex] : today.getMinutes();
+        const second  = secondsIndex>-1   ? dateItems[secondsIndex] : today.getSeconds();
+
+        return new Date(year,month,day,hour,minute,second);
+    };
 
     function getBannerTextStatus() {
         const bannerTextStatus = ref(db, 'toggleBannerStatus/status');
@@ -734,7 +772,7 @@
     // uploads an album to firebase
     document.getElementById("addAlbumCover").onclick = function () {
 
-        showPopUpAdminValueWindow("Enter the full spotify URL to the album you want to add:")
+        showPopUpAdminValueWindow("Enter the full spotify URL to the single/album you want to add:")
 
         document.getElementById("acceptNewValueButton").onclick = function () {
             uploadNewAlbumImage();
@@ -753,6 +791,16 @@
         return url.protocol === "http:" || url.protocol === "https:";
     }
 
+    // For todays date;
+    Date.prototype.today = function () {
+        return ((this.getDate() < 10)?"0":"") + this.getDate() +"/"+(((this.getMonth()+1) < 10)?"0":"") + (this.getMonth()+1) +"/"+ this.getFullYear();
+    }
+
+    // For the time now
+    Date.prototype.timeNow = function () {
+        return ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes() +":"+ ((this.getSeconds() < 10)?"0":"") + this.getSeconds();
+    }
+
     function uploadNewAlbumImage() {
         let newAlbumURL = document.getElementById("newValueContainerValue").value;
         let isValid = isValidHttpUrl(newAlbumURL);
@@ -762,35 +810,55 @@
         } else if (isValid === false){
             enablePopUpWindow("URL is invalid!");
         } else {
-            let files = [];
-            let reader;
 
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = "image/png, image/jpg, image/jpeg, image/gif";
+            let alreadyAdded = "false";
+            for (const element of array) {
+                const nameToFile = element.name.toString();
+                const albumURL_Decoded = nameToFile.replace(/Ø/g, "/");
+                const albumURL_Decoded_timeRemoved = albumURL_Decoded.substring(19);
 
-            input.onchange = e => {
-                files = e.target.files;
-                reader = new FileReader();
-                reader.onload = function () {
-
-                    const albumURL_Encoded = newAlbumURL.replace(/\//g, "Ø");
-                    const albumURL_Encoded_withIndex = (array.length + 1) + albumURL_Encoded;
-
-                    const storage = getStorage();
-                    const imagesRef = refStorage(storage, 'AlbumCovers/' + albumURL_Encoded_withIndex);
-
-                    uploadBytes(imagesRef, files[0]).then((snapshot) => {
-                        getAlbums();
-                        closeNewValueContainerWindow();
-                        resetNewAdminValue();
-
-                        enablePopUpWindow("Album added!");
-                    });
+                if (newAlbumURL === albumURL_Decoded_timeRemoved) {
+                    enablePopUpWindow("Single/Album already added!");
+                    alreadyAdded = "true";
                 }
-                reader.readAsDataURL((files[0]));
             }
-            input.click();
+
+            if (alreadyAdded === "false") {
+                let files = [];
+                let reader;
+
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = "image/png, image/jpg, image/jpeg, image/gif";
+
+                input.onchange = e => {
+                    files = e.target.files;
+                    reader = new FileReader();
+                    reader.onload = function () {
+
+                        const newDate = new Date();
+                        const datetime = newDate.today() + " " + newDate.timeNow();
+                        //fake a date below to test
+                        //const datetime = "03/06/2022:13:33:30";
+
+                        const albumPathToEncode = datetime + newAlbumURL;
+                        const albumURL_Encoded = albumPathToEncode.replace(/\//g, "Ø");
+
+                        const storage = getStorage();
+                        const imagesRef = refStorage(storage, 'AlbumCovers/' + albumURL_Encoded);
+
+                        uploadBytes(imagesRef, files[0]).then((snapshot) => {
+                            getAlbums();
+                            closeNewValueContainerWindow();
+                            resetNewAdminValue();
+
+                            enablePopUpWindow("Single/Album added!");
+                        });
+                    }
+                    reader.readAsDataURL((files[0]));
+                }
+                input.click();
+            }
         }
     }
 
@@ -799,7 +867,7 @@
     }
 
     function deleteAlbum(){
-        showPopUpAdminValueWindow("Enter the full URL to the album you want to delete:")
+        showPopUpAdminValueWindow("Enter the full URL to the single/album you want to delete:")
         document.getElementById("acceptNewValueButton").onclick = function () {
             confirmDeleteAlbum();
         }
@@ -810,29 +878,29 @@
         if (albumToDelete === "") {
             enablePopUpWindow("Field cannot be empty!");
         } else {
-
             for (const element of array) {
                 const nameToFile = element.name.toString();
                 const albumURL_Decoded = nameToFile.replace(/Ø/g, "/");
-                const albumURL_Decoded_indexRemoved = albumURL_Decoded.substring(1);
+                const albumURL_Decoded_timeRemoved = albumURL_Decoded.substring(19);
 
-                if (albumToDelete === albumURL_Decoded_indexRemoved) {
+                if (albumToDelete === albumURL_Decoded_timeRemoved) {
 
                     const albumRef = refStorage(storage, 'AlbumCovers/' + element.name);
 
                     deleteObject(albumRef).then(() => {
                         enablePopUpWindow("Single/Album deleted!");
+                        getAlbums();
                     }).catch((error) => {
-                        enablePopUpWindow("Unable to delete album");
+                        enablePopUpWindow("Unable to delete single/album");
                     });
 
                     closeNewValueContainerWindow();
                     resetNewAdminValue();
+
                 } else {
-                    enablePopUpWindow("Unable to find album");
+                    enablePopUpWindow("Unable to find single/album");
                 }
             }
-            getAlbums();
         }
     }
 
