@@ -395,19 +395,23 @@
         for (const element of sortedArray) {
             const divElement = document.createElement("div");
             const addAlbum = document.createElement("img");
-            const aHref = document.createElement("a");
 
-            aHref.href = element.musicLink;
             addAlbum.src = element.image;
             addAlbum.className = "albumImage";
 
-            divElement.appendChild(aHref);
-            aHref.appendChild(addAlbum);
+            addAlbum.onclick = function() { openInNewTab(element.musicLink) }
+            divElement.appendChild(addAlbum);
+
             divElement.className = "coverGridItem";
 
+            //reverts the order
             //document.getElementById("gridContainer").appendChild(divElement);
             document.getElementById("gridContainer").insertBefore(divElement, document.getElementById("gridContainer").firstChild);
         }
+    }
+
+    function openInNewTab(link){
+        window.open(link);
     }
 
     String.prototype.toDate = function(format)

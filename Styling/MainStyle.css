@@ -349,6 +349,8 @@ body {
 .albumImage:hover {
     border: 0.25vw solid var(--outlineColor);
     border-radius: 1vw;
+    cursor: pointer;
+    transition: 0.25s;
 }
 
 #albumCovers {
