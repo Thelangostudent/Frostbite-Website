@@ -381,7 +381,7 @@
         for (const element of array) {
             const nameToFile = element.name.toString();
             const albumURL_Decoded = nameToFile.replace(/Ø/g, "/");
-            const dateToConvert = albumURL_Decoded.substring(1, 19);
+            const dateToConvert = albumURL_Decoded.substring(0, 19);
 
             let musicLink = albumURL_Decoded.substring(19);
             let dateToSet = dateToConvert.toDate("dd/mm/yyyy hh:ii:ss");
