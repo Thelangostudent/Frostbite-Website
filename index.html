@@ -63,6 +63,18 @@
 
 </div>
 
+<!---------------------------------------------------------------- COOKIE POPUP ------------------------------------------------------------------------------------------>
+
+<div id="cookieContainer">
+    <div class="alignInMiddle">
+        <h2> This website uses cookies. By clicking 'Accept', you agree to the storing of cookies on your device for analytical purposes.</h2>
+        <h2> Read more about how your data is used <a id="cookiePreferenceButton">here</a></h2>
+
+        <button id="consentCookieDenyButton">Reject All</button>
+        <button id="consentCookieAcceptButton">Accept All</button>
+    </div>
+</div>
+
 <!------------------------------------------------------------------- NAVBAR --------------------------------------------------------------------------------------------->
 
 <div class="navigation-bar">
@@ -328,7 +340,6 @@
     };
 
     function getInfoFromServer() {
-        getAnalytics();
         getBannerImage();
         getOutlineColour();
         getBannerTextStatus();
@@ -340,6 +351,7 @@
         getBackgroundColourForImages();
         checkIfMobile();
         getTextColour();
+        checkConsentStatus();
     }
 
     let isMobile = false;
@@ -1054,6 +1066,55 @@
 
     function showSignInWindow() {
         document.getElementById("popUpLogin").style.display = "block";
+    }
+
+    //<--------------------------------------------------------- COOKIE CONSENT ------------------------------------------------------------------------------------->
+
+        function checkConsentStatus(){
+
+        //localStorage.clear();
+
+        const consentStatus = localStorage.getItem('consent');
+        const cookieContainer = document.getElementById("cookieContainer");
+
+        console.log(consentStatus);
+
+        if (consentStatus === "accepted"){
+
+            getAnalytics(firebase);
+            cookieContainer.style.display = "none";
+            console.log("STATUS: accepted");
+
+        } else if (consentStatus === "denied") {
+
+            cookieContainer.style.display = "none";
+            console.log("STATUS: denied");
+
+        } else if (consentStatus === null){
+
+            cookieContainer.style.display = "block";
+            console.log("null, showing popup");
+
+        }
+    }
+
+    document.getElementById("consentCookieAcceptButton").onclick = function () {
+        cookieAccept();
+    }
+
+    function cookieAccept(){
+        localStorage.setItem('consent', 'accepted');
+        document.getElementById("cookieContainer").style.display = "none";
+        getAnalytics(firebase);
+    }
+
+    document.getElementById("consentCookieDenyButton").onclick = function () {
+        cookieDeny();
+    }
+
+    function cookieDeny(){
+        localStorage.setItem('consent', 'denied');
+        document.getElementById("cookieContainer").style.display = "none";
     }
 
     //<--------------------------------------------------------------- TBA ------------------------------------------------------------------------------------------>
