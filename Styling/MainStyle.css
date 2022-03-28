@@ -454,8 +454,9 @@ body {
 }
 /*LISTEN ENDS HERE*/
 
-/*LIVE IMAGE GALLERI STARTS HERE*/
 
+
+/*LIVE IMAGE GALLERY STARTS HERE*/
 #gallery {
     margin-top: 12vw;
 }
@@ -478,7 +479,9 @@ body {
     letter-spacing: 0.03vw;
 }
 
-/*LIVE IMAGE TICKEST END HERE*/
+/*LIVE IMAGE GALLERY END HERE*/
+
+
 
 /*TICKETS STARTS HERE*/
 #ticket_title {
@@ -1055,16 +1058,17 @@ body {
 #cookieContainer{
 
     background-color: var(--backgroundColour);
-    border: 0.2vw solid var(--outlineColor);
+    border-top: 0.35vw solid var(--outlineColor);
     color:var(--textColour);
-    font-size: 0.9vw;
+    font-size: 0.7vw;
+    font-family: sans-serif;
 
     display: none;
 
     position: fixed;
     bottom: 0;
     width: 99.5%;
-    height: 10vw;
+    height: 9vw;
     z-index: 1;
 
     animation: fadeInTitleAnimation ease 1s;
@@ -1085,6 +1089,7 @@ body {
     border-radius: 0.5vw;
     margin-right: 1vw;
     margin-left: 1vw;
+    margin-top: 0.3vw;
 }
 
 #consentCookieAcceptButton:hover {
@@ -1103,6 +1108,7 @@ body {
     padding: 0.5vw;
     border-radius: 0.5vw;
     margin-right: 1vw;
+    margin-top: 0.3vw;
 }
 
 #consentCookieDenyButton:hover {
@@ -1115,6 +1121,65 @@ body {
 #cookiePreferenceButton {
     color: dodgerblue;
     cursor: pointer;
+}
+
+#privacyPolicyContainer{
+
+    background-color: var(--backgroundColour);
+    border: 0.35vw solid var(--outlineColor);
+    border-radius: 1vw;
+    color:var(--textColour);
+    font-size: 0.9vw;
+
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: none;
+
+    position: fixed;
+    bottom: 10vw;
+    width: 45vw;
+    height: 30vw;
+    z-index: 1;
+
+}
+
+#consentCookieAcceptButtonPrivacyTab {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-right: 1vw;
+    margin-left: 1vw;
+}
+
+#consentCookieAcceptButtonPrivacyTab:hover {
+    cursor: pointer;
+    border-color:var(--textColour);
+    color:var(--textColour);
+    transition-duration: 0.3s;
+}
+
+#consentCookieDenyButtonPrivacyTab {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-right: 1vw;
+}
+
+#consentCookieDenyButtonPrivacyTab:hover {
+    cursor: pointer;
+    border-color:var(--textColour);
+    color:var(--textColour);
+    transition-duration: 0.3s;
 }
 /* COOKIE CSS ENDS HERE */
 

@@ -75,6 +75,21 @@
     </div>
 </div>
 
+    <div id="privacyPolicyContainer">
+        <div class="alignInMiddle">
+
+
+            <h2> Privacy Policy</h2>
+            <h2> Stuff</h2>
+
+
+        <button id="consentCookieDenyButtonPrivacyTab">Reject All</button>
+        <button id="consentCookieAcceptButtonPrivacyTab">Accept All</button>
+       </div>
+    </div>
+
+
+
 <!------------------------------------------------------------------- NAVBAR --------------------------------------------------------------------------------------------->
 
 <div class="navigation-bar">
@@ -228,13 +243,13 @@
             <h3 id="gallery_title"> GALLERY </h3>
 
             <div class="alignInMiddle">
-                /**
+                <!--
                 This gallery will be a slideshow of images.
                 Site visitor should be able to click on an arrow (back and forth between images).
                 Otherwise change image on a timer.
 
                 if no images, have a placeholder instead.
-                */
+                -->
                 <h2 id="galleryPlaceHolder"> TBA </h2>
             </div>
 
@@ -1072,7 +1087,8 @@
 
         function checkConsentStatus(){
 
-        //localStorage.clear();
+        //TODO: REMOVE clear
+        localStorage.clear();
 
         const consentStatus = localStorage.getItem('consent');
         const cookieContainer = document.getElementById("cookieContainer");
@@ -1101,6 +1117,10 @@
     document.getElementById("consentCookieAcceptButton").onclick = function () {
         cookieAccept();
     }
+    document.getElementById("consentCookieAcceptButtonPrivacyTab").onclick = function () {
+        cookieAccept();
+        document.getElementById("privacyPolicyContainer").style.display = "none";
+    }
 
     function cookieAccept(){
         localStorage.setItem('consent', 'accepted');
@@ -1111,11 +1131,26 @@
     document.getElementById("consentCookieDenyButton").onclick = function () {
         cookieDeny();
     }
+    document.getElementById("consentCookieDenyButtonPrivacyTab").onclick = function () {
+        cookieDeny();
+        document.getElementById("privacyPolicyContainer").style.display = "none";
+    }
 
     function cookieDeny(){
         localStorage.setItem('consent', 'denied');
         document.getElementById("cookieContainer").style.display = "none";
     }
+
+    document.getElementById("cookiePreferenceButton").onclick = function () {
+        showPrivacyPolicy();
+    }
+
+    function showPrivacyPolicy(){
+        console.log("show privacy policy here");
+        document.getElementById("privacyPolicyContainer").style.display = "block";
+        document.getElementById("cookieContainer").style.display = "none";
+    }
+
 
     //<--------------------------------------------------------------- TBA ------------------------------------------------------------------------------------------>
 
