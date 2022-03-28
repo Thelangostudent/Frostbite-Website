@@ -484,8 +484,12 @@
         const auth = getAuth();
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                document.getElementById("adminContainer").style.display = "block";
-                document.getElementById("adminLogin").style.display = "none";
+
+                if (user.email === "admin@outlook.com") {
+                    document.getElementById("adminContainer").style.display = "block";
+                    document.getElementById("adminLogin").style.display = "none";
+                }
+
             } else {
                 document.getElementById("adminContainer").style.display = "none";
             }
