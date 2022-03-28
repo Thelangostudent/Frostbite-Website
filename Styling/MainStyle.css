@@ -533,6 +533,12 @@ body {
     margin-left: 44vw;
     margin-right: 44vw;
 }
+
+#cookieSettingsButton {
+    cursor: pointer;
+    margin-left: 43vw;
+    margin-right: 43vw;
+}
 /* FOOTER ENDS HERE */
 
 

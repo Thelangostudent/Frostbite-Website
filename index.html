@@ -68,7 +68,7 @@
 <div id="cookieContainer">
     <div class="alignInMiddle">
         <h2> This website uses cookies. By clicking 'Accept', you agree to the storing of cookies on your device for analytical purposes.</h2>
-        <h2> Read more about how your data is used <a id="cookiePreferenceButton">here</a></h2>
+        <h2> Read more about how your data is used <a id="cookiePreferenceButton">here</a>.</h2>
 
         <button id="consentCookieDenyButton">Reject All</button>
         <button id="consentCookieAcceptButton">Accept All</button>
@@ -80,7 +80,7 @@
 
 
             <h2> Privacy Policy</h2>
-            <h2> Stuff</h2>
+            <h2> Stuff </h2>
 
 
         <button id="consentCookieDenyButtonPrivacyTab">Reject All</button>
@@ -276,10 +276,13 @@
 
 <div class="item scrollFade">
     <footer id="footer">
+
         <h3 class="footerText">© Copyright 2022 Frostbite. All rights reserved.</h3>
-        <h3 class="footerText"><a id="emailLink" href="mailto:frostbite.band@hotmail.com">post@frostbiteband.com</a>
-        </h3>
+        <h3 class="footerText"><a id="emailLink" href="mailto:frostbite.band@hotmail.com">post@frostbiteband.com</a></h3>
+
+        <div id="cookieSettingsButton"><h3 class="footerText">cookie settings</h3></div>
         <div id="adminLogin"><h3 class="footerText">admin login</h3></div>
+
     </footer>
 </div>
 
@@ -1151,6 +1154,9 @@
         document.getElementById("cookieContainer").style.display = "none";
     }
 
+    document.getElementById("cookieSettingsButton").onclick = function () {
+        showPrivacyPolicy();
+    }
 
     //<--------------------------------------------------------------- TBA ------------------------------------------------------------------------------------------>
 
