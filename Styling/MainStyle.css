@@ -55,7 +55,7 @@ body {
 }
 
 .navigation-bar h3 {
-    font-family: X360, sans-serif;
+    font-family: mainFont, sans-serif;
     float: left;
     text-align: center;
     margin-top: 0.85vw;
@@ -151,8 +151,8 @@ body {
 
 /* FONT STARTS HERE */
 @font-face {
-    font-family: 'X360';
-    src: url('X360.ttf')format('truetype');
+    font-family: 'mainFont';
+    src: url('mainFont.ttf')format('truetype');
 }
 /* FONT ENDS HERE */
 
@@ -160,7 +160,7 @@ body {
 
 /* BANNER (IMAGE) STARTS HERE */
 #frostbiteBannerNameBackground {
-    font-family: X360, sans-serif;
+    font-family: mainFont, sans-serif;
     text-align: center;
     font-size: 10vw;
     margin-left: -1vw;
@@ -170,7 +170,7 @@ body {
 }
 
 #frostbiteBannerName {
-    font-family: X360, sans-serif;
+    font-family: mainFont, sans-serif;
     text-align: center;
     font-size: 10vw;
     color: var(--outlineColor);
