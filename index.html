@@ -59,6 +59,9 @@
         <button id="changeYouTubeURL">Change YT Video</button>
     </div>
 
+    <div class="alignInMiddle">
+        <button id="changeLogo">Change Logo</button>
+    </div>
 
     <div class="alignInMiddle">
         <button id="logOutButton">Log Out</button>
@@ -386,6 +389,11 @@
         }
     }
 
+    //gets the current logo from firebase WIP
+    function getLogo() {
+
+    }
+
     function getBannerImage() {
         getDownloadURL(refStorage(storage, 'bannerImage'))
             .then((url) => {
@@ -652,6 +660,14 @@
         document.getElementById("acceptNewValueButton").onclick = function () {
             confirmColourChangeBackground();
         }
+    }
+
+    /**
+     * Uploads the new logo to firebase (replaces the existing one)
+     * WIP (currently a stub).
+     * */
+    function uploadNewLogo() {
+
     }
 
     function confirmColourChangeBackground(){

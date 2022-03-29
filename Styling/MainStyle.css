@@ -807,6 +807,23 @@ body {
     color:var(--textColour);
     transition-duration: 0.3s;
 }
+#changeLogo {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-top: 1vw;
+}
+
+#changeLogo:hover {
+    cursor: pointer;
+    border-color:var(--textColour);
+    color:var(--textColour);
+    transition-duration: 0.3s;
+}
 /* ADMIN-CONTAINER ENDS HERE */
 
 
