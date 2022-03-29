@@ -517,6 +517,7 @@ body {
     background-color: var(--backgroundColour);
     color: var(--textColour);
     border-top: 0.35vw solid var(--outlineColor);
+    font-family: sans-serif;
 }
 
 .footerText{
@@ -1078,7 +1079,6 @@ body {
 
 
 /* COOKIE CSS STARTS HERE */
-
 #cookieContainer{
 
     background-color: var(--backgroundColour);
@@ -1153,8 +1153,8 @@ body {
     border: 0.35vw solid var(--outlineColor);
     border-radius: 1vw;
     color:var(--textColour);
-    font-size: 0.9vw;
-
+    font-size: 0.8vw;
+    font-family: sans-serif;
 
     left: 50%;
     transform: translateX(-50%);
@@ -1162,9 +1162,9 @@ body {
     display: none;
 
     position: fixed;
-    bottom: 10vw;
+    top: 14vw;
     width: 45vw;
-    height: 30vw;
+    height: 18vw;
     z-index: 1;
 
 }
@@ -1204,6 +1204,13 @@ body {
     border-color:var(--textColour);
     color:var(--textColour);
     transition-duration: 0.3s;
+}
+
+#privacyText {
+    padding-left: 3vw;
+    padding-right: 4vw;
+    text-align: left;
+    margin-bottom: 1vw;
 }
 /* COOKIE CSS ENDS HERE */
 

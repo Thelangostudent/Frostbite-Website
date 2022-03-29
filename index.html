@@ -83,10 +83,12 @@
     <div id="privacyPolicyContainer">
         <div class="alignInMiddle">
 
-
-            <h2> Privacy Policy</h2>
-            <h2> Stuff </h2>
-
+            <div id="privacyText">
+                <h2> Privacy Policy</h2>
+                <h2> We use cookies, web beacons and other similar technologies from Google for measurement services and marketing purposes. We collect information such as what
+                     browser/device you use, your location, and the total amount of time you have spent on our website. The information is collected through Google Analytics.
+                     You can opt out of this at any time by clicking on the "Reject all" button found below.</h2>
+            </div>
 
         <button id="consentCookieDenyButtonPrivacyTab">Reject All</button>
         <button id="consentCookieAcceptButtonPrivacyTab">Accept All</button>
@@ -1103,29 +1105,26 @@
 
         function checkConsentStatus(){
 
-        //TODO: REMOVE clear
-        localStorage.clear();
+        //test reset
+        //localStorage.clear();
 
         const consentStatus = localStorage.getItem('consent');
         const cookieContainer = document.getElementById("cookieContainer");
 
-        console.log(consentStatus);
+        //console.log(consentStatus);
 
         if (consentStatus === "accepted"){
 
             getAnalytics(firebase);
             cookieContainer.style.display = "none";
-            console.log("STATUS: accepted");
 
         } else if (consentStatus === "denied") {
 
             cookieContainer.style.display = "none";
-            console.log("STATUS: denied");
 
         } else if (consentStatus === null){
 
             cookieContainer.style.display = "block";
-            console.log("null, showing popup");
 
         }
     }
@@ -1162,7 +1161,6 @@
     }
 
     function showPrivacyPolicy(){
-        console.log("show privacy policy here");
         document.getElementById("privacyPolicyContainer").style.display = "block";
         document.getElementById("cookieContainer").style.display = "none";
     }
