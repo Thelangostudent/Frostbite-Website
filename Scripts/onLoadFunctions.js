@@ -189,7 +189,7 @@ function getUserStatus() {
     onAuthStateChanged(auth, (user) => {
         if (user) {
 
-            if (user.email === "admin@outlook.com") {
+            if (user.email === "frostbite.band@hotmail.com") {
                 document.getElementById("adminContainer").style.display = "block";
                 document.getElementById("adminLogin").style.display = "none";
             }
