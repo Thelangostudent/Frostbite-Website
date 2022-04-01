@@ -511,12 +511,14 @@ body {
     }
 
     .card {
-        position: absolute;
+        position: relative;
         top: 0;
         left: 0;
         height: 16vh;
         width: 24vw;
 
+        margin-left: 1vw;
+        margin-right: 1vw;
         box-sizing: border-box;
 
     }
