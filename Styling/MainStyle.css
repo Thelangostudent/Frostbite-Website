@@ -10,6 +10,7 @@ body {
     visibility: hidden;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
+
 }
 /* BODY ENDS HERE */
 
@@ -428,6 +429,13 @@ body {
 
 
 
+
+
+
+
+
+
+
 /*LISTEN STARTS HERE*/
 #listenTitle {
     color: var(--textColour);
@@ -459,6 +467,7 @@ body {
 /*LIVE IMAGE GALLERY STARTS HERE*/
 #gallery {
     margin-top: 12vw;
+
 }
 
 #gallery_title {
@@ -477,6 +486,85 @@ body {
     margin-bottom: 2vw;
     font-family: sans-serif;
     letter-spacing: 0.03vw;
+}
+
+
+.galleryImage:hover {
+    border: 0.25vw solid var(--outlineColor);
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+@media screen and (min-width: 1001px) {
+
+    #card-container {
+        position: relative;
+        top: 50%;
+        left: 50%;
+
+        height: 16vh;
+        width: 24vw;
+
+        margin-top: 12vh;
+
+        display: flex;
+    }
+
+    .card {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 16vh;
+        width: 24vw;
+
+        box-sizing: border-box;
+
+    }
+}
+
+/* #card-container {
+        display: grid;
+        grid-auto-flow: column;
+        place-content: center;
+        row-gap: 4vw;
+        column-gap: 0.25vw;
+        background-color: white;
+        position: absolute;
+    }*/
+/*
+.card {
+        grid-column-start: auto;
+        grid-column-end: auto;
+        grid-row-start: auto;
+        grid-row-end: auto;
+        align-self: center;
+        block-size: 10vw 7vh;
+
+}*/
+
+/*.gallery-container {
+    margin: 2vh;
+    padding: 0;
+    position: relative;
+    height: 50vh;
+    width: 50vw;
+    background-color: #919191;
+}*/
+
+.left-wall {
+    position: relative;
+    left: 0;
+    width: 25.0%;
+    height: 100%;
+    z-index: 1;
+}
+
+.right-wall {
+    position: relative;
+    right: 0;
+    width: 25.0%;
+    height: 100%;
+    z-index: 2;
 }
 
 /*LIVE IMAGE GALLERY END HERE*/

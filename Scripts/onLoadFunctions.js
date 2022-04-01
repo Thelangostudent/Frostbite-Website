@@ -4,15 +4,12 @@ import {db, storage} from './firebaseInitialization.js'
 import {enablePopUpWindow} from "./adminFunctions.js";
 import {checkConsentStatus} from "./cookieLogic.js";
 
-import {ref, onValue} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
+import {onValue, ref} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
+import {getAuth, onAuthStateChanged,} from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js';
 import {
-    getAuth,
-    onAuthStateChanged,
-} from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js';
-import {
-    ref as refStorage,
     getDownloadURL,
     listAll,
+    ref as refStorage,
 } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-storage.js';
 
 //<--------------------------------------------------------- ONLOAD FUNCTIONS ---------------------------------------------------------------------------------------->
@@ -23,12 +20,14 @@ document.body.onload = function () {
 
 function getInfoFromServer() {
     getBannerImage();
+
     getOutlineColour();
     getBannerTextStatus();
     getTitleText();
     getUserStatus();
     getYouTubeVideoURL();
     getAlbums();
+    getLiveGalleryImages();
     getBackgroundColour();
     getBackgroundColourForImages();
     checkIfMobile();
@@ -76,6 +75,28 @@ function getAlbums() {
     });
 }
 
+let array2 = [];
+
+//gets images from FB storage. WIP.
+function getLiveGalleryImages() {
+    array2 = [];
+
+    const cardGridToReset = document.getElementById("card-container");
+    cardGridToReset.innerHTML = '';
+
+    const listReference = refStorage(storage, 'LiveGallery');
+
+    listAll(listReference)
+        .then((res) => {
+            res.items.forEach((itemReference) => {
+                array2[array2.length] = itemReference;
+            });
+        }).then(() => {
+        createGalleryElements(array2).then(() => "done");
+    }).catch(() => {
+        enablePopUpWindow("Unable to fetch images");
+    });
+}
 
 async function createAlbumElements(array) {
 
@@ -114,6 +135,41 @@ async function createAlbumElements(array) {
         //reverts the order
         //document.getElementById("gridContainer").appendChild(divElement);
         document.getElementById("gridContainer").insertBefore(divElement, document.getElementById("gridContainer").firstChild);
+    }
+}
+
+async function createGalleryElements(array2) {
+
+    let sortedArray2 = [];
+
+    for (const element of array2) {
+
+        let musicLink = element.name.toString();
+
+        let imageUrl = await getDownloadURL(element);
+
+        sortedArray2.push({musicLink: musicLink, image: imageUrl})
+    }
+
+
+    for (const element of sortedArray2) {
+        const divElement2 = document.createElement("div");
+        const addGallery = document.createElement("img");
+
+        addGallery.src = element.image;
+        addGallery.className = "galleryImage";
+        addGallery.style.width = `24vw`;
+        addGallery.style.height = `16vh`;
+        addGallery.onclick = function () {
+            openInNewTab(element.musicLink)
+        }
+        divElement2.appendChild(addGallery);
+
+        divElement2.className = "card";
+
+        //reverts the order
+        //document.getElementById("gridContainer").appendChild(divElement);
+        document.getElementById("card-container").insertBefore(divElement2, document.getElementById("card-container").firstChild);
     }
 }
 
@@ -293,11 +349,7 @@ function hex_to_RGB(hex) {
     };
 }
 
-//gets images from FB storage. WIP.
-function getLiveGalleryImages() {
 
-
-}
 
 //<----------------------------------------------------------- EXPORTS ------------------------------------------------------------------------------------------>
 
