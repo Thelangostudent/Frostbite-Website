@@ -498,9 +498,11 @@ body {
 @media screen and (min-width: 1001px) {
 
     #card-container {
+
         position: relative;
         top: 50%;
-        left: 50%;
+        left: 12%;
+        right: 12%;
 
         height: 16vh;
         width: 24vw;
