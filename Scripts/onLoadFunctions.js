@@ -138,6 +138,7 @@ async function createAlbumElements(array) {
     }
 }
 
+
 async function createGalleryElements(array2) {
 
     let sortedArray2 = [];
@@ -171,6 +172,12 @@ async function createGalleryElements(array2) {
         //document.getElementById("gridContainer").appendChild(divElement);
         document.getElementById("card-container").insertBefore(divElement2, document.getElementById("card-container").firstChild);
     }
+
+    import {order_cards, card_container} from "./gallery.js";
+
+    let card_width = parseFloat(getComputedStyle(card_container.children[0]).width);
+    order_cards(card_width);
+
 }
 
 function openInNewTab(link) {

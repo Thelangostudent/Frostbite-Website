@@ -2,13 +2,6 @@
 // all the cards
 const card_container = document.getElementById('card-container');
 
-let card_width = 0
-// width of each card
-setTimeout(() => {
-    card_width = parseFloat(getComputedStyle(card_container.children[0]).width);
-},5000)
-
-
 // total number of cards
 const total_number_of_cards = card_container.children.length - 1;
 
@@ -18,8 +11,6 @@ const middle_card = Math.floor(total_number_of_cards / 2);
 // this is to prevent user spamming the next button so animation timing doesnt get messed up
 let animation_in_progress = false;
 
-// offset of cards
-let card_offset = card_width * (1/3);
 
 // scale for making cards appear smaller and smaller the further away from the center card
 let card_scale = 0.95;
@@ -28,7 +19,7 @@ let card_scale = 0.95;
 /**
  order the cards where there are equal amount of cards on either side of the middle card
  */
-function order_cards() {
+function order_cards(card_width) {
     // how many cards left to the middle card which is the number of the middle card
     let counter_left = middle_card;
 
@@ -57,11 +48,12 @@ function order_cards() {
     }
 }
 
+export {order_cards, card_container};
 
 /**
  * make the cards overlap a little to give it a stacking look like a deck of cards that is spread out
  */
-function offset_cards() {
+/*function offset_cards() {
     // how many cards left to the middle card which is the number of the middle card
     let counter_left = middle_card;
 
@@ -80,12 +72,12 @@ function offset_cards() {
             counter_right++;
         }
     }
-}
+}*/
 
 /**
  * make the cards look smaller the farther away from the centre they are
  */
-function scale_cards() {
+/*function scale_cards() {
     // how many cards left to the middle card which is the number of the middle card
     let counter_left = middle_card;
 
@@ -106,14 +98,14 @@ function scale_cards() {
             card_container.children[i].style.transform = `scale(1)`;
         }
     }
-}
+}*/
 
 
 /**
  * make the cards have more depth by making them look like they are stacked upon each other, where middle card
  * is at the top and the rest are spread out like pyramid of cards looked from above
  */
-function cascade_cards() {
+/*function cascade_cards() {
     for (let i = 0; i <= total_number_of_cards; i++) {
         if (i <= middle_card) {
             card_container.children[i].style.zIndex = i;
@@ -121,10 +113,9 @@ function cascade_cards() {
             card_container.children[i].style.zIndex = -1.0 * i;
         }
     }
-}
+}*/
 
-
-order_cards();
+// order_cards();
 // offset_cards();
 // cascade_cards();
 // scale_cards();
