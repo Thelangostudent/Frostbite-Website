@@ -2,8 +2,12 @@
 // all the cards
 const card_container = document.getElementById('card-container');
 
+let card_width = 0
 // width of each card
-const card_width = parseFloat(getComputedStyle(card_container.children[0]).width);
+setTimeout(() => {
+    card_width = parseFloat(getComputedStyle(card_container.children[0]).width);
+},5000)
+
 
 // total number of cards
 const total_number_of_cards = card_container.children.length - 1;
