@@ -161,7 +161,7 @@ async function createGalleryElements(array2) {
         addGallery.src = element.image;
         addGallery.className = "galleryImage";
         addGallery.style.width = `24vw`;
-        addGallery.style.height = `16vh`;
+        addGallery.style.height = `16vw`;
         addGallery.onclick = function () {
             openInNewTab(element.musicLink)
         }
