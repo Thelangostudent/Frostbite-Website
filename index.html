@@ -16,7 +16,8 @@
     <script type="module" src="Scripts/adminFunctions.js"></script>
     <script type="module" src="Scripts/authorizationLogic.js"></script>
     <script type="module" src="Scripts/cookieLogic.js"></script>
-    <script type="module" src="Scripts/gallery.js"></script>
+
+
 
 </head>
 <body id="body">
@@ -259,45 +260,50 @@
 
     <br id="scrollToGallery">
     <div id="gallery">
-        <div class="item scrollFade">
+
             <h3 id="gallery_title"> GALLERY </h3>
 
-                <!--<div class="card"><img src="Pictures/right-arrow-angle-pink.png" width="300" height="200"></div>-->
-                <!--
-                This gallery will be a slideshow of images.
-                Site visitor should be able to click on an arrow (back and forth between images).
-                Otherwise change image on a timer.
+            <!--<div class="card"><img src="Pictures/right-arrow-angle-pink.png" width="300" height="200"></div>-->
+            <!--
+            This gallery will be a slideshow of images.
+            Site visitor should be able to click on an arrow (back and forth between images).
+            Otherwise change image on a timer.
 
-                if no images, have a placeholder instead.
+            if no images, have a placeholder instead.
 
-                <div class="gallery-container">
-                <div class="card-container">
+            <div class="gallery-container">
+            <div class="card-container">
 
-                    <div class="card" style="background-color: aqua"></div>
-                    <div class="card" style="background-color: red"></div>
-                    <div class="card" style="background-color: blue"></div>
-                    <div class="card" style="background-color: violet"></div>
-                    <div class="card" style="background-color: yellow"></div>
-                    <div class="card" style="background-color: green"></div>
-                    <div class="card" style="background-color: white"></div>
-                    <div class="card" style="background-color: darkslategrey"></div>
-                    <div class="card" style="background-color: orangered"></div>
-                </div>
+                <div class="card" style="background-color: aqua"></div>
+                <div class="card" style="background-color: red"></div>
+                <div class="card" style="background-color: blue"></div>
+                <div class="card" style="background-color: violet"></div>
+                <div class="card" style="background-color: yellow"></div>
+                <div class="card" style="background-color: green"></div>
+                <div class="card" style="background-color: white"></div>
+                <div class="card" style="background-color: darkslategrey"></div>
+                <div class="card" style="background-color: orangered"></div>
+            </div>
 
-                <div class="left-wall" style="background-color: #111111"></div>
-                <div class="right-wall" style="background-color: #111111"></div>
-                </div> -->
-
-
-                <div id="card-container">
-
-                </div>
+            <div class="left-wall" style="background-color: #111111"></div>
+            <div class="right-wall" style="background-color: #111111"></div>
+            </div> -->
 
 
-        </div>
+            <div id="card-container">
+
+            </div>
+            <div class="left-wall" style="background-color: #141414">
+                <button id="arrow-left"><img src="Pictures/right-arrow-angle-pink.png" alt="" width="50vw" height="50vw"></button>
+            </div>
+            <div class="right-wall" style="background-color: #141414">
+                <button id="arrow-right"><img src="Pictures/right-arrow-angle-pink.png" alt="" width="50vw" height="50vw"></button>
+            </div>
+
+
     </div>
 
-
+    <script type="module" src="Scripts/gallery.js"></script>
     <br id="scrollToTickets">
     <div id="tickets">
         <div class="item scrollFade">

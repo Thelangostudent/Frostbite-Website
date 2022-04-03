@@ -467,6 +467,7 @@ body {
 /*LIVE IMAGE GALLERY STARTS HERE*/
 #gallery {
     margin-top: 12vw;
+    position: relative;
 
 }
 
@@ -556,19 +557,52 @@ body {
 }*/
 
 .left-wall {
-    position: relative;
+    position: absolute;
     left: 0;
-    width: 25.0%;
+    top: 0;
+    width: 15.0%;
     height: 100%;
-    z-index: 1;
+    margin-top: 5vw;
+
+
+}
+
+.left-wall :first-child {
+    align-items: center;
+}
+
+#arrow-left {
+    position: absolute;
+
+    right: 0;
+    top: 50%;
+    margin-right: 2vw;
+    border: none;
+    color: var(--outlineColor);
+    background: transparent;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
 }
 
 .right-wall {
-    position: relative;
+    position: absolute;
     right: 0;
-    width: 25.0%;
+    top: 0;
+    width: 15.0%;
     height: 100%;
-    z-index: 2;
+    margin-top: 5vw;
+
+}
+
+#arrow-right {
+    position: absolute;
+
+    left: 0;
+    top: 50%;
+    margin-left: 2vw;
+    border: none;
+    color: var(--outlineColor);
+    background: transparent;
 }
 
 /*LIVE IMAGE GALLERY END HERE*/

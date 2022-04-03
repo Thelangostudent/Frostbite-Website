@@ -29,14 +29,14 @@ function order_cards(card_width) {
 
     for (let i = 0; i <= total_number_of_cards; i++) {
         if (i < middle_card) {
-            card_container.children[i].style.left = `-${(card_width + 20) * counter_left}px`;
+            card_container.children[i].style.left = `-${(card_width + 10) * counter_left}vw`;
 
             // minus minus since we are moving to the "left"
             counter_left--;
             console.log("card moved to the left")
         } else if (i > middle_card) {
 
-            card_container.children[i].style.left = `${(card_width + 20) * counter_right}px`;
+            card_container.children[i].style.left = `${(card_width + 10) * counter_right}vw`;
 
             // minus minus since we are moving to the "left"
             counter_right++;
@@ -121,19 +121,65 @@ export {order_cards, card_container};
 // scale_cards();
 
 
-window.addEventListener('keyup', event => {
-    if (event.key === 'a') {
-        previous_card()
-    } else if (event.key === 'd') {
-        next_card()
-    }
-})
+const next = document.getElementById('arrow-right')
 
+next.addEventListener('click', ()=> {
+    if (!animation_in_progress) {
+
+        animation_in_progress = true;
+        // the left of the last card in the deck (which is where the first card will appear during next card movement)
+        let last_cards_left = card_container.children[total_number_of_cards].style.left;
+        let last_card_zIndex = card_container.children[total_number_of_cards].style.zIndex;
+        let last_card_transform = card_container.children[total_number_of_cards].style.transform;
+
+
+
+
+        for (let i = total_number_of_cards; i > 0; i--) {
+
+            // current card moves to the left and the rest to the left of current card do the same
+            let card = card_container.children[i];
+            let current_scale = card.style.transform; //parse scale out of 'transform'
+
+            current_scale = current_scale.substring(current_scale.lastIndexOf('(') +1, current_scale.lastIndexOf(')'));
+            current_scale = parseFloat(current_scale);
+
+            card.style.transitionDuration = '1.0s';
+            card.style.left = card_container.children[i - 1].style.left;
+            card.style.transform = card_container.children[i - 1].style.transform;
+            card.style.zIndex = card_container.children[i - 1].style.zIndex;
+
+
+
+        }
+
+        // special case of when the left-most card gets to moved to the far right
+
+        card_container.children[0].style.transitionDuration = '0.2s'
+        card_container.children[0].style.transform = `scale(0)`
+
+        setTimeout(() => {
+            card_container.children[0].style.zIndex = last_card_zIndex; //visual shift
+            card_container.children[0].style.transitionDuration = '0.0s';
+            card_container.children[0].style.left = last_cards_left; //visual shift
+
+            card_container.append(card_container.children[0]); //DOM tree shift
+
+            // when it disappears on the left (transform = `scale(0)`) it should pop out on the right
+            setTimeout(() => {
+                card_container.children[total_number_of_cards].style.transitionDuration = '0.3s'
+                card_container.children[total_number_of_cards].style.transform = last_card_transform;
+
+
+            }, 10)
+            animation_in_progress = false;
+        },700);
+    }});
 
 /**
  * logic for arriving at the next card of the current card active
  */
-function next_card(){
+/*function next_card(){
     if (!animation_in_progress) {
 
         animation_in_progress = true;
@@ -177,7 +223,7 @@ function next_card(){
             }, 10)
         },700)
     }
-}
+}*/
 
 /**
  * logic for arriving at the previous card of the current card that is active
