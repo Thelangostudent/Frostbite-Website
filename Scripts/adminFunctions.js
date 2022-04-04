@@ -1,7 +1,7 @@
 //<----------------------------------------------------------- IMPORTS ------------------------------------------------------------------------------------------>
 
 import {db, storage, popUpInfoWindow, popUpWindowText} from './firebaseInitialization.js'
-import {array, getAlbums} from './onLoadFunctions.js'
+import {albumArray, getAlbums, getLiveGalleryImages} from './onLoadFunctions.js'
 
 import {ref, set} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
 import {
@@ -202,16 +202,6 @@ function confirmChangeText() {
     }
 }
 
-// uploads an album to firebase
-document.getElementById("addAlbumCover").onclick = function () {
-
-    showPopUpAdminValueWindow("Enter the full spotify URL to the single/album you want to add:")
-
-    document.getElementById("acceptNewValueButton").onclick = function () {
-        uploadNewAlbumImage();
-    }
-}
-
 function isValidHttpUrl(string) {
     let url;
 
@@ -224,7 +214,7 @@ function isValidHttpUrl(string) {
     return url.protocol === "http:" || url.protocol === "https:";
 }
 
-// For todays date;
+// For today's date;
 Date.prototype.today = function () {
     return ((this.getDate() < 10) ? "0" : "") + this.getDate() + "/" + (((this.getMonth() + 1) < 10) ? "0" : "") + (this.getMonth() + 1) + "/" + this.getFullYear();
 }
@@ -232,6 +222,16 @@ Date.prototype.today = function () {
 // For the time now
 Date.prototype.timeNow = function () {
     return ((this.getHours() < 10) ? "0" : "") + this.getHours() + ":" + ((this.getMinutes() < 10) ? "0" : "") + this.getMinutes() + ":" + ((this.getSeconds() < 10) ? "0" : "") + this.getSeconds();
+}
+
+// uploads an album to firebase
+document.getElementById("addAlbumCover").onclick = function () {
+
+    showPopUpAdminValueWindow("Enter the full spotify URL to the single/album you want to add:")
+
+    document.getElementById("acceptNewValueButton").onclick = function () {
+        uploadNewAlbumImage();
+    }
 }
 
 function uploadNewAlbumImage() {
@@ -245,7 +245,7 @@ function uploadNewAlbumImage() {
     } else {
 
         let alreadyAdded = "false";
-        for (const element of array) {
+        for (const element of albumArray) {
             const nameToFile = element.name.toString();
             const albumURL_Decoded = nameToFile.replace(/Ø/g, "/");
             const albumURL_Decoded_timeRemoved = albumURL_Decoded.substring(19);
@@ -311,7 +311,7 @@ async function confirmDeleteAlbum() {
     if (albumToDelete === "") {
         enablePopUpWindow("Field cannot be empty!");
     } else {
-        for (const element of array) {
+        for (const element of albumArray) {
             const nameToFile = element.name.toString();
             const albumURL_Decoded = nameToFile.replace(/Ø/g, "/");
             const albumURL_Decoded_timeRemoved = albumURL_Decoded.substring(19);
@@ -365,11 +365,54 @@ function confirmYouTubeURL() {
     }
 }
 
-//uploads live image to FireBase. WIP
-function uploadLiveImage() {
 
+
+
+document.getElementById("addLiveImage").onclick = function () {
+    uploadGalleryImage();
+}
+
+//uploads gallery image to FireBase
+function uploadGalleryImage() {
+
+    let files = [];
+    let reader;
+
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = "image/png, image/jpg, image/jpeg, image/gif";
+
+    input.onchange = e => {
+        files = e.target.files;
+        reader = new FileReader();
+        reader.onload = function () {
+
+            const newDate = new Date();
+            const datetime = newDate.today() + " " + newDate.timeNow();
+            //fake a date below to test
+            //const datetime = "03/06/2022:13:33:30";
+
+            const fileName = "GalleryImage"
+
+            const galleryImagePathToEncode = datetime + fileName;
+            const galleryImage_Encoded = galleryImagePathToEncode.replace(/\//g, "Ø");
+
+            const storage = getStorage();
+            const imagesRef = refStorage(storage, 'LiveGallery/' + galleryImage_Encoded);
+
+            uploadBytes(imagesRef, files[0]).then(() => {
+                getLiveGalleryImages();
+                enablePopUpWindow("Gallery Image added!");
+            });
+        }
+        reader.readAsDataURL((files[0]));
+    }
+    input.click();
 
 }
+
+
+
 
 function enablePopUpWindow(text) {
     popUpWindowText.innerHTML = text;
