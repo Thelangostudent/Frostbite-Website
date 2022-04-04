@@ -408,8 +408,12 @@ function uploadGalleryImage() {
 
 }
 
+document.getElementById("deleteLiveImage").onclick = function () {
+    deleteGalleryImage();
+}
+
 function deleteGalleryImage() {
-    showPopUpAdminValueWindow("Enter the full URL to the gallery image you want to delete:")
+    showPopUpAdminValueWindow('Enter the full URL to the gallery image you want to delete:');
     document.getElementById("acceptNewValueButton").onclick = function () {
         confirmDeleteGalleryImage().then(() => "done");
     }
@@ -417,15 +421,15 @@ function deleteGalleryImage() {
 
 async function confirmDeleteGalleryImage() {
     let galleryImageToDelete = document.getElementById("newValueContainerValue").value;
+
     if (galleryImageToDelete === "") {
         enablePopUpWindow("Field cannot be empty!");
     } else {
         for (const element of galleryArray) {
-            const nameToFile = element.name.toString();
-            const galleryImageURL_Decoded = nameToFile.replace(/Ø/g, "/");
-            const galleryImageURL_Decoded_timeRemoved = galleryImageURL_Decoded.substring(19);
 
-            if (galleryImageToDelete === galleryImageURL_Decoded_timeRemoved) {
+            let imageUrl = await getDownloadURL(element);
+
+            if (galleryImageToDelete === imageUrl) {
 
                 const galleryImageRef = refStorage(storage, 'LiveGallery/' + element.name);
 
@@ -438,11 +442,13 @@ async function confirmDeleteGalleryImage() {
 
                 closeNewValueContainerWindow();
                 resetNewAdminValue();
+                return;
 
-            } else {
-                enablePopUpWindow("Unable to find gallery image");
             }
         }
+
+        enablePopUpWindow("Unable to find gallery image");
+
     }
 }
 
