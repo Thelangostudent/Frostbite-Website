@@ -20,7 +20,6 @@ document.body.onload = function () {
 
 function getInfoFromServer() {
     getBannerImage();
-
     getOutlineColour();
     getBannerTextStatus();
     getTitleText();
@@ -398,4 +397,4 @@ function hex_to_RGB(hex) {
 
 //<----------------------------------------------------------- EXPORTS ------------------------------------------------------------------------------------------>
 
-export {isMobile, albumArray, getAlbums, getLiveGalleryImages};
+export {isMobile, albumArray, getAlbums, getLiveGalleryImages, galleryArray};

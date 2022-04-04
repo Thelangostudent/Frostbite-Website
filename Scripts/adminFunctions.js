@@ -1,7 +1,7 @@
 //<----------------------------------------------------------- IMPORTS ------------------------------------------------------------------------------------------>
 
 import {db, storage, popUpInfoWindow, popUpWindowText} from './firebaseInitialization.js'
-import {albumArray, getAlbums, getLiveGalleryImages} from './onLoadFunctions.js'
+import {albumArray, galleryArray, getAlbums, getLiveGalleryImages} from './onLoadFunctions.js'
 
 import {ref, set} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
 import {
@@ -365,9 +365,6 @@ function confirmYouTubeURL() {
     }
 }
 
-
-
-
 document.getElementById("addLiveImage").onclick = function () {
     uploadGalleryImage();
 }
@@ -410,6 +407,46 @@ function uploadGalleryImage() {
     input.click();
 
 }
+
+function deleteGalleryImage() {
+    showPopUpAdminValueWindow("Enter the full URL to the gallery image you want to delete:")
+    document.getElementById("acceptNewValueButton").onclick = function () {
+        confirmDeleteGalleryImage().then(() => "done");
+    }
+}
+
+async function confirmDeleteGalleryImage() {
+    let galleryImageToDelete = document.getElementById("newValueContainerValue").value;
+    if (galleryImageToDelete === "") {
+        enablePopUpWindow("Field cannot be empty!");
+    } else {
+        for (const element of galleryArray) {
+            const nameToFile = element.name.toString();
+            const galleryImageURL_Decoded = nameToFile.replace(/Ø/g, "/");
+            const galleryImageURL_Decoded_timeRemoved = galleryImageURL_Decoded.substring(19);
+
+            if (galleryImageToDelete === galleryImageURL_Decoded_timeRemoved) {
+
+                const galleryImageRef = refStorage(storage, 'LiveGallery/' + element.name);
+
+                deleteObject(galleryImageRef).then(() => {
+                    enablePopUpWindow("Gallery Image deleted!");
+                    getLiveGalleryImages();
+                }).catch(() => {
+                    enablePopUpWindow("Unable to delete gallery image");
+                });
+
+                closeNewValueContainerWindow();
+                resetNewAdminValue();
+
+            } else {
+                enablePopUpWindow("Unable to find gallery image");
+            }
+        }
+    }
+}
+
+
 
 
 
