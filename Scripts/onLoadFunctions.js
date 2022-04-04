@@ -115,11 +115,6 @@ async function createAlbumElements(array) {
     }
 }
 
-
-
-
-
-
 let galleryArray = [];
 
 //gets images from FB storage. WIP.
@@ -209,12 +204,6 @@ function changeCurrentSlide(slideToFocus) {
     slideIndex = slideToFocus;
     showSlides();
 }
-
-
-
-
-
-
 
 function openInNewTab(link) {
     window.open(link);
