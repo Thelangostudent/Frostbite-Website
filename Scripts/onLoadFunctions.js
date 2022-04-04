@@ -245,6 +245,11 @@ function getYouTubeVideoURL() {
     });
 }
 
+function getTicketLinks(){
+
+
+}
+
 //gets the user status (logged in/logged out) and displays the admin menu accordingly
 function getUserStatus() {
     const auth = getAuth();
