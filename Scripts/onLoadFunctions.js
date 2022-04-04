@@ -75,29 +75,6 @@ function getAlbums() {
     });
 }
 
-let array2 = [];
-
-//gets images from FB storage. WIP.
-function getLiveGalleryImages() {
-    array2 = [];
-
-    const cardGridToReset = document.getElementById("card-container");
-    cardGridToReset.innerHTML = '';
-
-    const listReference = refStorage(storage, 'LiveGallery');
-
-    listAll(listReference)
-        .then((res) => {
-            res.items.forEach((itemReference) => {
-                array2[array2.length] = itemReference;
-            });
-        }).then(() => {
-        createGalleryElements(array2).then(() => "done");
-    }).catch(() => {
-        enablePopUpWindow("Unable to fetch images");
-    });
-}
-
 async function createAlbumElements(array) {
 
     let sortedArray = [];
@@ -138,46 +115,95 @@ async function createAlbumElements(array) {
     }
 }
 
-import {order_cards, card_container} from "./gallery.js";
 
-async function createGalleryElements(array2) {
 
-    let sortedArray2 = [];
 
-    for (const element of array2) {
 
-        let musicLink = element.name.toString();
+
+let galleryArray = [];
+
+//gets images from FB storage. WIP.
+function getLiveGalleryImages() {
+    galleryArray = [];
+
+    const galleryToReset = document.getElementById("galleryImages");
+    const dotsToReset = document.getElementById("dots");
+    galleryToReset.innerHTML = '';
+    dotsToReset.innerHTML = '';
+
+    const listRef = refStorage(storage, 'LiveGallery');
+
+    listAll(listRef)
+        .then((res) => {
+            res.items.forEach((itemRef) => {
+                galleryArray[galleryArray.length] = itemRef;
+            });
+        }).then(() => {
+        createGalleryElements(galleryArray).then(() => "done");
+    }).catch(() => {
+        enablePopUpWindow("Unable to fetch images");
+    });
+}
+
+async function createGalleryElements(galleryArray) {
+
+    let galleryPaths = [];
+
+    for (const element of galleryArray) {
 
         let imageUrl = await getDownloadURL(element);
+        galleryPaths.push({image: imageUrl})
 
-        sortedArray2.push({musicLink: musicLink, image: imageUrl})
     }
 
+    for (const element of galleryPaths) {
 
-    for (const element of sortedArray2) {
-        const divElement2 = document.createElement("div");
-        const addGallery = document.createElement("img");
+        const galleryElement = document.createElement("div");
+        const image = document.createElement("img");
 
-        addGallery.src = element.image;
-        addGallery.className = "galleryImage";
-        addGallery.style.width = `24vw`;
-        addGallery.style.height = `16vw`;
-        addGallery.onclick = function () {
-            openInNewTab(element.musicLink)
-        }
-        divElement2.appendChild(addGallery);
+        image.src = element.image;
+        image.className = "galleryImage";
 
-        divElement2.className = "card";
+        galleryElement.appendChild(image);
+
+        galleryElement.className = "imageSlide fade";
 
         //reverts the order
-        //document.getElementById("gridContainer").appendChild(divElement);
-        document.getElementById("card-container").insertBefore(divElement2, document.getElementById("card-container").firstChild);
+        document.getElementById("galleryImages").appendChild(galleryElement);
+        //document.getElementById("card-container").insertBefore(galleryElement, document.getElementById("card-container").firstChild);
+
+        const dot = document.createElement("span");
+        dot.className = "dot";
+        document.getElementById("dots").appendChild(dot);
+
     }
 
-    let card_width = parseFloat(getComputedStyle(card_container.children[0]).width);
-    order_cards(card_width);
+    let slideIndex = 0;
+    showSlides();
 
+    function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("imageSlide");
+        let dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+        setTimeout(showSlides, 3750); // Change image every 3.75 seconds
+    }
 }
+
+
+
+
+
+
 
 function openInNewTab(link) {
     window.open(link);

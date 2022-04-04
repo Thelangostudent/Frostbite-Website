@@ -12,8 +12,8 @@ body {
     animation-fill-mode: forwards;
 
 }
-/* BODY ENDS HERE */
 
+/* BODY ENDS HERE */
 
 
 /* NAVBAR STARTS BELOW */
@@ -146,17 +146,17 @@ body {
     background-color: var(--outlineColor);
     float: right;
 }
-/* NAVBAR ENDS HERE */
 
+/* NAVBAR ENDS HERE */
 
 
 /* FONT STARTS HERE */
 @font-face {
     font-family: 'mainFont';
-    src: url('mainFont.ttf')format('truetype');
+    src: url('mainFont.ttf') format('truetype');
 }
-/* FONT ENDS HERE */
 
+/* FONT ENDS HERE */
 
 
 /* BANNER (IMAGE) STARTS HERE */
@@ -167,7 +167,7 @@ body {
     margin-left: -1vw;
     margin-top: -17vw;
     color: transparent;
-    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 #frostbiteBannerName {
@@ -217,7 +217,7 @@ body {
 #backgroundPara {
     background-image: url("../Pictures/bannerPlaceholder.png");
     background-position: center 4vw;
-    background-attachment:scroll;
+    background-attachment: scroll;
     background-size: contain;
 
     background-repeat: no-repeat;
@@ -231,8 +231,8 @@ body {
     height: 27vw;
     width: 100%;
 }
-/* BANNER ENDS HERE */
 
+/* BANNER ENDS HERE */
 
 
 /* "ABOUT US" SECTION STARTS HERE */
@@ -281,11 +281,11 @@ body {
     padding-right: 22.5vw;
 }
 
-.alignInMiddle{
+.alignInMiddle {
     text-align: center;
 }
-/* "ABOUT US" SECTION ENDS HERE */
 
+/* "ABOUT US" SECTION ENDS HERE */
 
 
 /*ALBUM COVER SECTION STARTS HERE*/
@@ -358,8 +358,8 @@ body {
     padding-top: 10.5vw;
     margin-bottom: 3vw;
 }
-/*ALBUM COVER SECTION ENDS HERE*/
 
+/*ALBUM COVER SECTION ENDS HERE*/
 
 
 /*YOUTUBE PREVIEW STARTS HERE*/
@@ -380,8 +380,8 @@ body {
     width: 50vw;
     height: 25vw;
 }
-/*YOUTUBE PREVIEW ENDS HERE*/
 
+/*YOUTUBE PREVIEW ENDS HERE*/
 
 
 /*SOCIALS STARTS HERE*/
@@ -425,15 +425,8 @@ body {
     height: 12vw;
     background-color: var(--outlineColor);
 }
+
 /*SOCIALS ENDS HERE*/
-
-
-
-
-
-
-
-
 
 
 /*LISTEN STARTS HERE*/
@@ -460,15 +453,18 @@ body {
         width: 25%;
     }
 }
-/*LISTEN ENDS HERE*/
 
+/*LISTEN ENDS HERE*/
 
 
 /*LIVE IMAGE GALLERY STARTS HERE*/
 #gallery {
     margin-top: 12vw;
+<<<<<<< HEAD
     position: relative;
 
+=======
+>>>>>>> a12641798e468b474a956a3ac0c56bc3d2eb9e64
 }
 
 #gallery_title {
@@ -480,82 +476,29 @@ body {
     letter-spacing: 0.03vw;
 }
 
-#galleryPlaceHolder {
-    color: var(--textColour);
+#galleryImages {
     text-align: center;
-    font-size: 1.75vw;
-    margin-bottom: 2vw;
-    font-family: sans-serif;
-    letter-spacing: 0.03vw;
-}
 
-
-.galleryImage:hover {
-    border: 0.25vw solid var(--outlineColor);
-    cursor: pointer;
-    transition: 0.25s;
-}
-
-@media screen and (min-width: 1001px) {
-
-    #card-container {
-
-        position: relative;
-        top: 50%;
-        left: 12%;
-        right: 12%;
-
-        height: 16vw;
-        width: 24vw;
-
-        margin-top: 12vh;
-
-        display: flex;
-    }
-
-    .card {
-        position: relative;
-        top: 0;
-        left: 0;
-        height: 16vw;
-        width: 24vw;
-
-        margin-left: 1vw;
-        margin-right: 1vw;
-        box-sizing: border-box;
-
-    }
-}
-
-/* #card-container {
-        display: grid;
-        grid-auto-flow: column;
-        place-content: center;
-        row-gap: 4vw;
-        column-gap: 0.25vw;
-        background-color: white;
-        position: absolute;
-    }*/
-/*
-.card {
-        grid-column-start: auto;
-        grid-column-end: auto;
-        grid-row-start: auto;
-        grid-row-end: auto;
-        align-self: center;
-        block-size: 10vw 7vh;
-
-}*/
-
-/*.gallery-container {
-    margin: 2vh;
-    padding: 0;
     position: relative;
-    height: 50vh;
-    width: 50vw;
-    background-color: #919191;
-}*/
+    margin: auto;
+    max-width: 80vw;
+}
 
+.dot {
+    height: 1vw;
+    width: 1vw;
+    margin: 1vw 0.5vw 0.5vw;
+    background-color: #bbb;
+    border-radius: 50vw;
+    display: inline-block;
+    transition: var(--outlineColor) 0.6s ease;
+}
+
+.active {
+    background-color: var(--outlineColor);
+}
+
+<<<<<<< HEAD
 .left-wall {
     position: absolute;
     left: 0;
@@ -603,10 +546,24 @@ body {
     border: none;
     color: var(--outlineColor);
     background: transparent;
+=======
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
 }
 
-/*LIVE IMAGE GALLERY END HERE*/
+@keyframes fade {
+    from {opacity: .5}
+    to {opacity: 1}
+>>>>>>> a12641798e468b474a956a3ac0c56bc3d2eb9e64
+}
 
+.galleryImage {
+    max-width: 50vw;
+    max-height: 30vw;
+
+}
+/*LIVE IMAGE GALLERY END HERE*/
 
 
 /*TICKETS STARTS HERE*/
@@ -631,8 +588,8 @@ body {
     text-align: center;
     color: var(--textColour);
 }
-/*TICKETS ENDS HERE*/
 
+/*TICKETS ENDS HERE*/
 
 
 /* FOOTER STARTS HERE */
@@ -646,7 +603,7 @@ body {
     font-family: sans-serif;
 }
 
-.footerText{
+.footerText {
     font-size: 1.2vw;
 }
 
@@ -666,8 +623,8 @@ body {
     margin-left: 43vw;
     margin-right: 43vw;
 }
-/* FOOTER ENDS HERE */
 
+/* FOOTER ENDS HERE */
 
 
 /* ADMIN-CONTAINER STARTS HERE */
@@ -694,7 +651,7 @@ body {
     overflow-x: hidden;
 }
 
-#adminContainer:hover{
+#adminContainer:hover {
     margin-left: 0;
     transition-duration: 0.5s;
 
@@ -759,8 +716,8 @@ body {
 
 #addAlbumCover:hover {
     cursor: pointer;
-    border-color:var(--textColour);
-    color:var(--textColour);
+    border-color: var(--textColour);
+    color: var(--textColour);
     transition-duration: 0.3s;
 }
 
@@ -777,8 +734,8 @@ body {
 
 #deleteAlbumCover:hover {
     cursor: pointer;
-    border-color:var(--textColour);
-    color:var(--textColour);
+    border-color: var(--textColour);
+    color: var(--textColour);
     transition-duration: 0.3s;
 }
 
@@ -795,8 +752,8 @@ body {
 
 #changeYouTubeURL:hover {
     cursor: pointer;
-    border-color:var(--textColour);
-    color:var(--textColour);
+    border-color: var(--textColour);
+    color: var(--textColour);
     transition-duration: 0.3s;
 }
 
@@ -829,8 +786,8 @@ body {
 
 #toggleBannerText:hover {
     cursor: pointer;
-    border-color:var(--textColour);
-    color:var(--textColour);
+    border-color: var(--textColour);
+    color: var(--textColour);
     transition-duration: 0.3s;
 }
 
@@ -847,8 +804,8 @@ body {
 
 #changeOutlineColour:hover {
     cursor: pointer;
-    border-color:var(--textColour);
-    color:var(--textColour);
+    border-color: var(--textColour);
+    color: var(--textColour);
     transition-duration: 0.3s;
 }
 
@@ -864,12 +821,14 @@ body {
 
 #changeBackgroundColour:hover {
     cursor: pointer;
-    border-color:var(--textColour);
-    color:var(--textColour);
+    border-color: var(--textColour);
+    color: var(--textColour);
     transition-duration: 0.3s;
 }
 
-#changeBackgroundImage:hover + #backgroundToolTip { display: block; }
+#changeBackgroundImage:hover + #backgroundToolTip {
+    display: block;
+}
 
 
 #toolTipAdmin {
@@ -911,8 +870,8 @@ body {
 
 #changeTextColour:hover {
     cursor: pointer;
-    border-color:var(--textColour);
-    color:var(--textColour);
+    border-color: var(--textColour);
+    color: var(--textColour);
     transition-duration: 0.3s;
 }
 
@@ -929,10 +888,11 @@ body {
 
 #addLiveImage:hover {
     cursor: pointer;
-    border-color:var(--textColour);
-    color:var(--textColour);
+    border-color: var(--textColour);
+    color: var(--textColour);
     transition-duration: 0.3s;
 }
+
 #changeLogo {
     background-color: var(--backgroundColour);
     color: var(--outlineColor);
@@ -946,12 +906,12 @@ body {
 
 #changeLogo:hover {
     cursor: pointer;
-    border-color:var(--textColour);
-    color:var(--textColour);
+    border-color: var(--textColour);
+    color: var(--textColour);
     transition-duration: 0.3s;
 }
-/* ADMIN-CONTAINER ENDS HERE */
 
+/* ADMIN-CONTAINER ENDS HERE */
 
 
 /* SCROLL ANIMATION STARTS HERE */
@@ -959,20 +919,23 @@ body {
     opacity: 1;
     pointer-events: all;
 }
+
 .scrollFade--hidden {
     opacity: 0;
     pointer-events: none;
 }
+
 .scrollFade--visible {
     display: block;
     opacity: 1;
     pointer-events: all;
 }
+
 .scrollFade--animate {
     transition: opacity 0.5s ease-in-out;
 }
-/* SCROLL ANIMATION ENDS HERE */
 
+/* SCROLL ANIMATION ENDS HERE */
 
 
 /* POP UP LOGIN STARTS HERE */
@@ -1074,8 +1037,8 @@ body {
 
 #acceptSignInButton:hover {
     cursor: pointer;
-    border-color:var(--textColour);
-    color:var(--textColour);
+    border-color: var(--textColour);
+    color: var(--textColour);
     transition-duration: 0.3s;
 }
 
@@ -1092,16 +1055,16 @@ body {
 
 #cancelSignInButton:hover {
     cursor: pointer;
-    border-color:var(--textColour);
-    color:var(--textColour);
+    border-color: var(--textColour);
+    color: var(--textColour);
     transition-duration: 0.3s;
 }
+
 /* POP UP LOGIN ENDS HERE */
 
 
-
 /* POP UP INFO STARTS HERE */
-#popUpInfo{
+#popUpInfo {
     color: var(--textColour);
     background-color: var(--backgroundColour);
     border: 0.35vw solid var(--outlineColor);
@@ -1125,7 +1088,7 @@ body {
 }
 
 /* 5 second animation */
-@keyframes dropDown  {
+@keyframes dropDown {
     0% {
         margin-top: -100vw;
     }
@@ -1143,8 +1106,8 @@ body {
     }
 
 }
-/* POP UP INFO ENDS HERE */
 
+/* POP UP INFO ENDS HERE */
 
 
 /* POP UP ADMIN VALUE STARTS HERE */
@@ -1196,8 +1159,8 @@ body {
 
 #acceptNewValueButton:hover {
     cursor: pointer;
-    border-color:var(--textColour);
-    color:var(--textColour);
+    border-color: var(--textColour);
+    color: var(--textColour);
     transition-duration: 0.3s;
 }
 
@@ -1214,20 +1177,20 @@ body {
 
 #cancelNewValueButton:hover {
     cursor: pointer;
-    border-color:var(--textColour);
-    color:var(--textColour);
+    border-color: var(--textColour);
+    color: var(--textColour);
     transition-duration: 0.3s;
 }
+
 /* POP UP ADMIN VALUE ENDS HERE */
 
 
-
 /* COOKIE CSS STARTS HERE */
-#cookieContainer{
+#cookieContainer {
 
     background-color: var(--backgroundColour);
     border-top: 0.35vw solid var(--outlineColor);
-    color:var(--textColour);
+    color: var(--textColour);
     font-size: 0.7vw;
     font-family: sans-serif;
 
@@ -1262,8 +1225,8 @@ body {
 
 #consentCookieAcceptButton:hover {
     cursor: pointer;
-    border-color:var(--textColour);
-    color:var(--textColour);
+    border-color: var(--textColour);
+    color: var(--textColour);
     transition-duration: 0.3s;
 }
 
@@ -1281,8 +1244,8 @@ body {
 
 #consentCookieDenyButton:hover {
     cursor: pointer;
-    border-color:var(--textColour);
-    color:var(--textColour);
+    border-color: var(--textColour);
+    color: var(--textColour);
     transition-duration: 0.3s;
 }
 
@@ -1291,12 +1254,12 @@ body {
     cursor: pointer;
 }
 
-#privacyPolicyContainer{
+#privacyPolicyContainer {
 
     background-color: var(--backgroundColour);
     border: 0.35vw solid var(--outlineColor);
     border-radius: 1vw;
-    color:var(--textColour);
+    color: var(--textColour);
     font-size: 0.8vw;
     font-family: sans-serif;
 
@@ -1327,8 +1290,8 @@ body {
 
 #consentCookieAcceptButtonPrivacyTab:hover {
     cursor: pointer;
-    border-color:var(--textColour);
-    color:var(--textColour);
+    border-color: var(--textColour);
+    color: var(--textColour);
     transition-duration: 0.3s;
 }
 
@@ -1345,8 +1308,8 @@ body {
 
 #consentCookieDenyButtonPrivacyTab:hover {
     cursor: pointer;
-    border-color:var(--textColour);
-    color:var(--textColour);
+    border-color: var(--textColour);
+    color: var(--textColour);
     transition-duration: 0.3s;
 }
 
@@ -1356,5 +1319,6 @@ body {
     text-align: left;
     margin-bottom: 1vw;
 }
+
 /* COOKIE CSS ENDS HERE */
 
