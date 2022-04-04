@@ -446,6 +446,25 @@ async function confirmDeleteGalleryImage() {
     }
 }
 
+/**
+ * initialises a popup window that asks the admin two things:
+ * General info (date,place, eventname etc...)
+ * The hyperlink to the ticket sales site
+ * */
+function addNewTicketButton(){
+
+
+}
+
+/**
+ * Removes a ticket button by removing the info related to a button.
+ * FB is called and the info is removed.
+ * The original hyperlink is used as the identifier for which button to remove.
+ * */
+function deleteTicketButton(){
+
+
+}
 
 
 

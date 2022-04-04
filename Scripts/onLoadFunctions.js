@@ -278,7 +278,13 @@ function getYouTubeVideoURL() {
     });
 }
 
-function getTicketLinks(){
+/**
+ * Gets all the ticket buttons from FB.
+ * The info stored on FB regarding the tickets is:
+ * Relevant text (date, place and other info).
+ * The Hyperlink that sends you to the ticket sales site.
+ * */
+function getTicketButtonLinks(){
 
 
 }
