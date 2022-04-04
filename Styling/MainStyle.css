@@ -460,11 +460,6 @@ body {
 /*LIVE IMAGE GALLERY STARTS HERE*/
 #gallery {
     margin-top: 12vw;
-<<<<<<< HEAD
-    position: relative;
-
-=======
->>>>>>> a12641798e468b474a956a3ac0c56bc3d2eb9e64
 }
 
 #gallery_title {
@@ -498,55 +493,6 @@ body {
     background-color: var(--outlineColor);
 }
 
-<<<<<<< HEAD
-.left-wall {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 15.0%;
-    height: 100%;
-    margin-top: 5vw;
-
-
-}
-
-.left-wall :first-child {
-    align-items: center;
-}
-
-#arrow-left {
-    position: absolute;
-
-    right: 0;
-    top: 50%;
-    margin-right: 2vw;
-    border: none;
-    color: var(--outlineColor);
-    background: transparent;
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-}
-
-.right-wall {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 15.0%;
-    height: 100%;
-    margin-top: 5vw;
-
-}
-
-#arrow-right {
-    position: absolute;
-
-    left: 0;
-    top: 50%;
-    margin-left: 2vw;
-    border: none;
-    color: var(--outlineColor);
-    background: transparent;
-=======
 .fade {
     animation-name: fade;
     animation-duration: 1.5s;
@@ -555,7 +501,6 @@ body {
 @keyframes fade {
     from {opacity: .5}
     to {opacity: 1}
->>>>>>> a12641798e468b474a956a3ac0c56bc3d2eb9e64
 }
 
 .galleryImage {
