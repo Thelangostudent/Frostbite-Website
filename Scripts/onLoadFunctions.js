@@ -52,11 +52,11 @@ function getBannerImage() {
 }
 
 //gets album and single covers from firebase
-let array = [];
+let albumArray = [];
 
 function getAlbums() {
 
-    array = [];
+    albumArray = [];
 
     const gridToReset = document.getElementById("gridContainer");
     gridToReset.innerHTML = '';
@@ -66,20 +66,20 @@ function getAlbums() {
     listAll(listRef)
         .then((res) => {
             res.items.forEach((itemRef) => {
-                array[array.length] = itemRef;
+                albumArray[albumArray.length] = itemRef;
             });
         }).then(() => {
-        createAlbumElements(array).then(() => "done");
+        createAlbumElements(albumArray).then(() => "done");
     }).catch(() => {
         enablePopUpWindow("Unable to fetch covers");
     });
 }
 
-async function createAlbumElements(array) {
+async function createAlbumElements(albumArray) {
 
     let sortedArray = [];
 
-    for (const element of array) {
+    for (const element of albumArray) {
         const nameToFile = element.name.toString();
         const albumURL_Decoded = nameToFile.replace(/Ø/g, "/");
         const dateToConvert = albumURL_Decoded.substring(0, 19);
@@ -117,7 +117,7 @@ async function createAlbumElements(array) {
 
 let galleryArray = [];
 
-//gets images from FB storage. WIP.
+//gets images from FB storage
 function getLiveGalleryImages() {
     galleryArray = [];
 
@@ -134,27 +134,35 @@ function getLiveGalleryImages() {
                 galleryArray[galleryArray.length] = itemRef;
             });
         }).then(() => {
+        clearTimeout(timeout);
         createGalleryElements(galleryArray).then(() => "done");
     }).catch(() => {
         enablePopUpWindow("Unable to fetch images");
     });
 }
 
-
 let slideIndex = 0;
-
 async function createGalleryElements(galleryArray) {
 
-    let galleryPaths = [];
+    let sortedGalleryPaths = [];
 
     for (const element of galleryArray) {
 
-        let imageUrl = await getDownloadURL(element);
-        galleryPaths.push({image: imageUrl})
+        const nameToFile = element.name.toString();
+        const galleryImageURL_Decoded = nameToFile.replace(/Ø/g, "/");
+        const dateToConvert = galleryImageURL_Decoded.substring(0, 19);
 
+        let dateToSet = dateToConvert.toDate("dd/mm/yyyy hh:ii:ss");
+        let imageUrl = await getDownloadURL(element);
+
+        sortedGalleryPaths.push({image: imageUrl, date: dateToSet})
     }
 
-    for (const element of galleryPaths) {
+    sortedGalleryPaths.sort(function (a, b) {
+        return a.date - b.date;
+    });
+
+    for (const element of sortedGalleryPaths) {
 
         const galleryElement = document.createElement("div");
         const image = document.createElement("img");
@@ -167,12 +175,12 @@ async function createGalleryElements(galleryArray) {
         galleryElement.className = "imageSlide fade";
 
         //reverts the order
-        document.getElementById("galleryImages").appendChild(galleryElement);
-        //document.getElementById("card-container").insertBefore(galleryElement, document.getElementById("card-container").firstChild);
+        //document.getElementById("galleryImages").appendChild(galleryElement);
+        document.getElementById("galleryImages").insertBefore(galleryElement, document.getElementById("galleryImages").firstChild);
 
         const dot = document.createElement("span");
         dot.className = "dot";
-        dot.onclick = function(){changeCurrentSlide(galleryPaths.indexOf(element))};
+        dot.onclick = function(){changeCurrentSlide(sortedGalleryPaths.indexOf(element))};
         dot.style.cursor = "pointer";
         document.getElementById("dots").appendChild(dot);
 
@@ -390,4 +398,4 @@ function hex_to_RGB(hex) {
 
 //<----------------------------------------------------------- EXPORTS ------------------------------------------------------------------------------------------>
 
-export {isMobile, array, getAlbums};
+export {isMobile, albumArray, getAlbums, getLiveGalleryImages};
