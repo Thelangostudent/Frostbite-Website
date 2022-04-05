@@ -38,7 +38,7 @@ function getInfoFromServer() {
 let isMobile = false;
 
 function checkIfMobile() {
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    if (window.matchMedia('(max-device-width: 1000px)').matches) {
         isMobile = true;
     }
 }
