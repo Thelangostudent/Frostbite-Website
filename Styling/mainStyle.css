@@ -178,6 +178,28 @@ body {
     margin-top: -23vw;
 }
 
+@media only screen and (max-device-width: 768px){
+    #frostbiteBannerNameBackground {
+        font-family: mainFont, sans-serif;
+        text-align: center;
+        font-size: 10vw;
+        margin-left: -1vw;
+        margin-top: -12vw;
+        color: transparent;
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+
+    #frostbiteBannerName {
+        font-family: mainFont, sans-serif;
+        text-align: center;
+        font-size: 10vw;
+        color: var(--outlineColor);
+        margin-top: -18vw;
+    }
+
+}
+
+
 @keyframes fadeInTitleAnimation {
     0% {
         transform: translateY(2.5vw);
