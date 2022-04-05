@@ -328,6 +328,12 @@ function getTicketButtonLink() {
         }
     );
 
+    if (document.getElementById("ticketButton").innerHTML == "Invisible") {
+
+        document.getElementById("ticketButton").hidden = true;
+
+    }
+
 
 
 }
@@ -351,7 +357,11 @@ function getTicketButtonLink2() {
         }
     );
 
+    if (document.getElementById("ticketButton2").innerHTML == "Invisible") {
 
+        document.getElementById("ticketButton2").hidden = true;
+
+    }
 
 }
 
@@ -375,7 +385,11 @@ function getTicketButtonLink3() {
         }
     );
 
+    if (document.getElementById("ticketButton3").innerHTML == "Invisible") {
 
+        document.getElementById("ticketButton3").hidden = true;
+
+    }
 
 }
 
