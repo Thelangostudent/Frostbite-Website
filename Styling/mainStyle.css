@@ -465,7 +465,7 @@ body {
 /* for phone */
 @media screen and (max-width: 1000px) {
     #spotifyEmbed {
-        width: 65%;
+        width: 85%;
     }
 }
 
