@@ -471,7 +471,7 @@ async function confirmDeleteGalleryImage() {
  * The admin will be able to choose which button this will apply to.
  *
  */
-/
+
 function ticketButtonPopUp() {
 
 
