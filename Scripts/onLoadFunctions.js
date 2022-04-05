@@ -32,6 +32,7 @@ function getInfoFromServer() {
     checkIfMobile();
     getTextColour();
     checkConsentStatus();
+    getTicketButtonLink();
 }
 
 let isMobile = false;
@@ -278,13 +279,55 @@ function getYouTubeVideoURL() {
     });
 }
 
+// array of ticketbuttons, is to be sourced from FB. See getTicketButtonLinks.
+let ticketButtonArray = [];
+
 /**
  * Gets all the ticket buttons from FB.
  * The info stored on FB regarding the tickets is:
  * Relevant text (date, place and other info).
  * The Hyperlink that sends you to the ticket sales site.
  * */
-function getTicketButtonLinks(){
+function getTicketButtonLinks() {
+    ticketButtonArray = [];
+    const buttonText = "placeHolder";
+    const buttonLink = "placeHolder.com";
+
+    const buttonRef =   ref(db,'ticketButtons');
+
+    /***
+    onValue(buttonRef,(snapshot) =>{
+        ticketButtonArray = snapshot.
+
+    })
+   ***/
+
+
+}
+
+/**
+ * Backup method to getTicketButtonLinks in case
+ * implemementing multiple buttons takes too long
+ * */
+function getTicketButtonLink() {
+
+
+
+    const buttonHyperLinkRef =   ref(db,'ticketButtons/ticketButton/hyperlink');
+    const buttonDescriptionRef = ref(db,'ticketButtons/ticketButton/description');
+
+
+    onValue(buttonHyperLinkRef, (snapshot) => {
+        document.getElementById("ticketButton").setAttribute("formaction",snapshot.val()) ;
+    });
+
+
+    onValue(buttonDescriptionRef, (snapshot) => {
+
+        document.getElementById("ticketButton").innerHTML = snapshot.val();
+        }
+    );
+
 
 
 }
