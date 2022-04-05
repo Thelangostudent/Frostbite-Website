@@ -332,6 +332,53 @@ function getTicketButtonLink() {
 
 }
 
+function getTicketButtonLink2() {
+
+
+
+    const buttonHyperLinkRef =   ref(db,'ticketButtons/ticketButton/hyperlink');
+    const buttonDescriptionRef = ref(db,'ticketButtons/ticketButton/description');
+
+
+    onValue(buttonHyperLinkRef, (snapshot) => {
+        document.getElementById("ticketButton2").setAttribute("formaction",snapshot.val()) ;
+    });
+
+
+    onValue(buttonDescriptionRef, (snapshot) => {
+
+            document.getElementById("ticketButton2").innerHTML = snapshot.val();
+        }
+    );
+
+
+
+}
+
+
+function getTicketButtonLink3() {
+
+
+
+    const buttonHyperLinkRef =   ref(db,'ticketButtons/ticketButton/hyperlink');
+    const buttonDescriptionRef = ref(db,'ticketButtons/ticketButton/description');
+
+
+    onValue(buttonHyperLinkRef, (snapshot) => {
+        document.getElementById("ticketButton3").setAttribute("formaction",snapshot.val()) ;
+    });
+
+
+    onValue(buttonDescriptionRef, (snapshot) => {
+
+            document.getElementById("ticketButton3").innerHTML = snapshot.val();
+        }
+    );
+
+
+
+}
+
 //gets the user status (logged in/logged out) and displays the admin menu accordingly
 function getUserStatus() {
     const auth = getAuth();
