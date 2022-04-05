@@ -1,0 +1,1333 @@
+/* BODY STARTS BELOW */
+body {
+    margin: 0;
+    --outlineColor: black;
+    --backgroundColour: black;
+    --textColour: black;
+    background-color: green;
+    animation: fadeInImageAnimation ease 5s;
+    animation-delay: 1s;
+    visibility: hidden;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+}
+
+/* BODY ENDS HERE */
+
+
+/* NAVBAR STARTS BELOW */
+.navigation-bar {
+    overflow: hidden;
+    background-color: var(--backgroundColour);
+    border-bottom: 0.35vw solid var(--outlineColor);
+    height: 4vw;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+}
+
+.navMenuSelectable {
+    font-family: sans-serif;
+    float: right;
+    color: var(--outlineColor);
+    text-align: center;
+    margin-right: 2vw;
+    margin-top: 1.6vw;
+    text-decoration: none;
+    font-size: 1.25vw;
+
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+
+
+}
+
+.navMenuSelectable:hover {
+    color: var(--textColour);
+    transition: 0.25s;
+}
+
+#logoText {
+    color: var(--outlineColor);
+    text-decoration: none;
+}
+
+.navigation-bar h3 {
+    font-family: mainFont, sans-serif;
+    float: left;
+    text-align: center;
+    margin-top: 0.85vw;
+    margin-left: -1.7vw;
+    color: var(--outlineColor);
+    font-size: 2vw;
+
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+.navigation-bar h3:hover {
+    color: var(--outlineColor);
+}
+
+#logo {
+    float: left;
+    color: var(--textColour);
+    margin-top: -0.75vw;
+    margin-left: 0.5vw;
+
+    height: 2.5vw;
+    width: 2.5vw;
+
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+#logoFloat {
+    float: left;
+}
+
+#facebookLogo {
+    float: right;
+
+    height: 2vw;
+    width: 2vw;
+
+    margin-right: -2.3vw;
+    margin-top: -0.33vw;
+
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+#instagramLogo {
+    float: right;
+
+    height: 2vw;
+    width: 2vw;
+
+    margin-right: -2.05vw;
+    margin-top: -0.33vw;
+
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+#youtubeLogo {
+    float: right;
+
+    height: 2vw;
+    width: 2vw;
+
+    margin-top: -0.33vw;
+
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+#backgroundSquare {
+    margin-top: 1.4vw;
+    margin-left: -8vw;
+    margin-right: 2.05vw;
+    height: 1.7vw;
+    width: 5.5vw;
+    background-color: var(--outlineColor);
+    float: right;
+}
+
+/* NAVBAR ENDS HERE */
+
+
+/* FONT STARTS HERE */
+@font-face {
+    font-family: 'mainFont';
+    src: url('mainFont.ttf') format('truetype');
+}
+
+/* FONT ENDS HERE */
+
+
+/* BANNER (IMAGE) STARTS HERE */
+#frostbiteBannerNameBackground {
+    font-family: mainFont, sans-serif;
+    text-align: center;
+    font-size: 10vw;
+    margin-left: -1vw;
+    margin-top: -17vw;
+    color: transparent;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+#frostbiteBannerName {
+    font-family: mainFont, sans-serif;
+    text-align: center;
+    font-size: 10vw;
+    color: var(--outlineColor);
+    margin-top: -23vw;
+}
+
+@keyframes fadeInTitleAnimation {
+    0% {
+        transform: translateY(2.5vw);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes fadeInImageAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+#bannerText {
+    animation: fadeInTitleAnimation ease 1s;
+    animation-delay: 2s;
+    visibility: hidden;
+
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+#backgroundPara {
+    background-image: url("../Pictures/bannerPlaceholder.png");
+    background-position: center 4vw;
+    background-attachment: scroll;
+    background-size: contain;
+
+    background-repeat: no-repeat;
+    border-bottom: 0.35vw solid var(--outlineColor);
+
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+
+    height: 27vw;
+    width: 100%;
+}
+
+/* BANNER ENDS HERE */
+
+
+/* "ABOUT US" SECTION STARTS HERE */
+@keyframes fadeInAboutAnimation {
+    0% {
+        transform: translateY(2.5vw);
+        opacity: 0;
+        visibility: visible;
+
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+#aboutContainer {
+    visibility: hidden;
+
+    animation: fadeInAboutAnimation ease 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 2.4s;
+    margin-top: -2vw;
+}
+
+#aboutTitle {
+    color: var(--textColour);
+    text-align: center;
+    font-size: 2.5vw;
+    margin-bottom: 0.7vw;
+    font-family: sans-serif;
+    letter-spacing: 0.03vw;
+}
+
+#aboutText {
+    display: block;
+    color: var(--textColour);
+    text-align: center;
+    font-size: 1.2vw;
+    font-family: sans-serif;
+    line-height: 1.9vw;
+
+    padding-left: 22.5vw;
+    padding-right: 22.5vw;
+}
+
+.alignInMiddle {
+    text-align: center;
+}
+
+/* "ABOUT US" SECTION ENDS HERE */
+
+
+/*ALBUM COVER SECTION STARTS HERE*/
+#ourAlbums {
+    color: var(--textColour);
+    text-align: center;
+    font-size: 2.5vw;
+    font-family: sans-serif;
+    letter-spacing: 0.03vw;
+}
+
+/* for phone */
+@media screen and (max-width: 1000px) {
+    #gridContainer {
+        display: grid;
+        grid-template-columns: repeat(3, 0fr);
+        place-content: center;
+        row-gap: 4vw;
+        column-gap: 1vw;
+    }
+
+    .coverGridItem {
+        grid-column-start: span;
+        grid-column-end: span;
+        grid-row-start: auto;
+        grid-row-end: auto;
+        place-self: center;
+        block-size: 10vw;
+    }
+}
+
+/* for pc */
+@media screen and (min-width: 1001px) {
+    #gridContainer {
+        display: grid;
+        grid-template-columns: repeat(4, 0fr);
+        place-content: center;
+        row-gap: 4vw;
+        column-gap: 0.25vw;
+    }
+
+    .coverGridItem {
+        grid-column-start: auto;
+        grid-column-end: auto;
+        grid-row-start: auto;
+        grid-row-end: auto;
+        place-self: center;
+        block-size: 10vw;
+    }
+}
+
+.albumImage {
+    height: 10vw;
+    width: 10vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
+
+    border: 0.25vw solid var(--backgroundColour);
+    border-radius: 1vw;
+}
+
+.albumImage:hover {
+    border: 0.25vw solid var(--outlineColor);
+    border-radius: 1vw;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+#albumCovers {
+    padding-top: 10.5vw;
+    margin-bottom: 3vw;
+}
+
+/*ALBUM COVER SECTION ENDS HERE*/
+
+
+/*YOUTUBE PREVIEW STARTS HERE*/
+#youtubePreviewTitle {
+    color: var(--textColour);
+    text-align: center;
+    font-size: 2.5vw;
+    margin-bottom: 2vw;
+    font-family: sans-serif;
+    letter-spacing: 0.03vw;
+}
+
+#youtubePreviewContainer {
+    margin-top: 12vw;
+}
+
+#youtubePreviewVideo {
+    width: 50vw;
+    height: 25vw;
+}
+
+/*YOUTUBE PREVIEW ENDS HERE*/
+
+
+/*SOCIALS STARTS HERE*/
+#socialsContainer {
+    margin-top: 12vw;
+}
+
+#socialsTitle {
+    color: var(--textColour);
+    text-align: center;
+    font-size: 2.5vw;
+    margin-bottom: 2.25vw;
+    font-family: sans-serif;
+    letter-spacing: 0.03vw;
+}
+
+#socialsYoutube {
+    width: 16vw;
+    height: 15vw;
+    padding-right: 1vw;
+}
+
+#socialsSpotify {
+    width: 15vw;
+    height: 15vw;
+    padding-left: 1vw;
+}
+
+#socialsSquareYoutube {
+    margin-left: 33.7vw;
+    margin-bottom: -11vw;
+    width: 13vw;
+    height: 10vw;
+    background-color: var(--outlineColor);
+}
+
+#socialsSquareSpotify {
+    margin-left: 52.5vw;
+    margin-bottom: -13vw;
+    width: 12vw;
+    height: 12vw;
+    background-color: var(--outlineColor);
+}
+
+/*SOCIALS ENDS HERE*/
+
+
+/*LISTEN STARTS HERE*/
+#listenTitle {
+    color: var(--textColour);
+    text-align: center;
+    font-size: 2.5vw;
+    margin-bottom: 2.25vw;
+    font-family: sans-serif;
+    letter-spacing: 0.03vw;
+    margin-top: 12vw;
+}
+
+/* for phone */
+@media screen and (max-width: 1000px) {
+    #spotifyEmbed {
+        width: 50%;
+    }
+}
+
+/* for pc */
+@media screen and (min-width: 1001px) {
+    #spotifyEmbed {
+        width: 25%;
+    }
+}
+
+/*LISTEN ENDS HERE*/
+
+
+/*LIVE IMAGE GALLERY STARTS HERE*/
+#gallery {
+    margin-top: 12vw;
+}
+
+#gallery_title {
+    color: var(--textColour);
+    text-align: center;
+    font-size: 2.5vw;
+    margin-bottom: 2vw;
+    font-family: sans-serif;
+    letter-spacing: 0.03vw;
+}
+
+#galleryImages {
+    text-align: center;
+
+    position: relative;
+    margin: auto;
+    max-width: 80vw;
+}
+
+.dot {
+    height: 1vw;
+    width: 1vw;
+    margin: 1vw 0.5vw 0.5vw;
+    background-color: #bbb;
+    border-radius: 50vw;
+    display: inline-block;
+    transition: var(--outlineColor) 0.6s ease;
+}
+
+.active {
+    background-color: var(--outlineColor);
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .5}
+    to {opacity: 1}
+}
+
+.galleryImage {
+    max-width: 50vw;
+    max-height: 30vw;
+
+}
+/*LIVE IMAGE GALLERY END HERE*/
+
+
+/*TICKETS STARTS HERE*/
+#ticket_title {
+    color: var(--textColour);
+    text-align: center;
+    font-size: 2.5vw;
+    margin-bottom: 2vw;
+    font-family: sans-serif;
+    letter-spacing: 0.03vw;
+}
+
+#tickets {
+    margin-top: 12vw;
+}
+
+#ticket_placeholder {
+    margin-top: 1.0vw;
+    margin-bottom: 25vw;
+    font-size: 1.75vw;
+    font-family: sans-serif;
+    text-align: center;
+    color: var(--textColour);
+}
+
+#ticketButtonList {
+    display: grid;
+    grid-template-columns: repeat(1,0fr);
+    place-content: center;
+    row-gap: 20px;
+
+}
+
+.ticketButton {
+    color: var(--textColour);
+    background-color: black;
+    border: solid black;
+    font-size: 1.2vw;
+    padding: 0.5vw;
+    border-radius: 2vw;
+    margin-top: 1vw;
+}
+
+#ticketButton {
+    color: var(--textColour);
+    background-color: black;
+    border: solid black;
+    font-size: 1.2vw;
+    padding: 0.5vw;
+    border-radius: 2vw;
+    margin-top: 1vw;
+}
+
+
+/*TICKETS ENDS HERE*/
+
+
+/* FOOTER STARTS HERE */
+#footer {
+    padding: 2vw;
+    margin-top: 5vw;
+    text-align: center;
+    background-color: var(--backgroundColour);
+    color: var(--textColour);
+    border-top: 0.35vw solid var(--outlineColor);
+    font-family: sans-serif;
+}
+
+.footerText {
+    font-size: 1.2vw;
+}
+
+#emailLink {
+    color: var(--textColour);
+    text-decoration: none;
+}
+
+#adminLogin {
+    cursor: pointer;
+    margin-left: 44vw;
+    margin-right: 44vw;
+}
+
+#cookieSettingsButton {
+    cursor: pointer;
+    margin-left: 43vw;
+    margin-right: 43vw;
+}
+
+/* FOOTER ENDS HERE */
+
+
+/* ADMIN-CONTAINER STARTS HERE */
+#adminContainer {
+    display: none;
+    background-color: var(--backgroundColour);
+    margin-top: 7vw;
+    height: 35vw;
+    width: 15vw;
+
+    position: fixed;
+    z-index: 1;
+
+    border-top: 0.35vw solid var(--outlineColor);
+    border-right: 0.35vw solid var(--outlineColor);
+    border-bottom: 0.35vw solid var(--outlineColor);
+    border-radius: 0.5vw;
+
+    margin-left: -14vw;
+    transition-duration: 0.5s;
+
+    overflow: scroll;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+#adminContainer:hover {
+    margin-left: 0;
+    transition-duration: 0.5s;
+
+    overflow: scroll;
+    overflow-y: visible;
+    overflow-x: hidden;
+}
+
+#adminTitle {
+    text-align: center;
+    color: var(--outlineColor);
+    font-size: 1.5vw;
+    font-family: sans-serif;
+}
+
+#changeBackgroundImage {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-top: 1vw;
+}
+
+#changeBackgroundImage:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.25s;
+}
+
+#changeText {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-top: 1vw;
+}
+
+
+#changeText:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.25s;
+}
+
+#addAlbumCover {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-top: 1vw;
+}
+
+#addAlbumCover:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.3s;
+}
+
+#deleteAlbumCover {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-top: 1vw;
+}
+
+#deleteAlbumCover:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.3s;
+}
+
+#changeYouTubeURL {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-top: 1vw;
+}
+
+#changeYouTubeURL:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.3s;
+}
+
+#backgroundToolTip {
+    background-color: var(--backgroundColour);
+    width: 33vw;
+    color: var(--outlineColor);
+    font-size: 2vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-top: -29.5vw;
+    margin-left: 33.1vw;
+    z-index: 110;
+
+    position: fixed;
+    display: none;
+}
+
+#toggleBannerText {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-top: 1vw;
+}
+
+#toggleBannerText:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.3s;
+}
+
+#changeOutlineColour {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-top: 1vw;
+}
+
+#changeOutlineColour:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.3s;
+}
+
+#changeBackgroundColour {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+}
+
+#changeBackgroundColour:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.3s;
+}
+
+#changeBackgroundImage:hover + #backgroundToolTip {
+    display: block;
+}
+
+
+#toolTipAdmin {
+    color: var(--textColour);
+    font-family: sans-serif;
+    font-size: 1vw;
+
+}
+
+#logOutButton {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-top: 1vw;
+}
+
+
+#logOutButton:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.25s;
+}
+
+#changeTextColour {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-top: 1vw;
+}
+
+#changeTextColour:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.3s;
+}
+
+#addLiveImage {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-top: 1vw;
+}
+
+#addLiveImage:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.3s;
+}
+
+#deleteLiveImage {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-top: 1vw;
+}
+
+#deleteLiveImage:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.3s;
+}
+
+#addTicketButton {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-top: 1vw;
+}
+
+#addTicketButton:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.3s;
+}
+
+#deleteTicketButton {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-top: 1vw;
+}
+
+#deleteTicketButton:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.3s;
+}
+/* ADMIN-CONTAINER ENDS HERE */
+
+
+/* SCROLL ANIMATION STARTS HERE */
+.scrollFade {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.scrollFade--hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.scrollFade--visible {
+    display: block;
+    opacity: 1;
+    pointer-events: all;
+}
+
+.scrollFade--animate {
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* SCROLL ANIMATION ENDS HERE */
+
+
+/* POP UP LOGIN STARTS HERE */
+#popUpLogin {
+    color: var(--textColour);
+    background-color: var(--backgroundColour);
+    border: 0.35vw solid var(--outlineColor);
+    border-radius: 0.5vw;
+    display: none;
+
+    position: fixed;
+
+    z-index: 1;
+    width: 25vw;
+    height: 15.5vw;
+
+    font-size: 2vw;
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#loginEmailText {
+    text-align: left;
+    font-size: 1.5vw;
+    padding-left: 1vw;
+    padding-right: 2.1vw;
+}
+
+#loginEmail {
+    height: 1.5vw;
+    font-size: 1vw;
+}
+
+#loginPasswordText {
+    text-align: left;
+    font-size: 1.5vw;
+    margin-right: 1vw;
+}
+
+#loginPassword {
+    height: 1.5vw;
+    font-size: 1vw;
+}
+
+#emailContainer {
+    padding-left: 2vw;
+    padding-right: 2vw;
+    display: flex;
+    min-width: 1px;
+    margin-bottom: -1vw;
+}
+
+#passwordContainer {
+    margin-top: -1.5vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    margin-bottom: -1vw;
+    min-width: 1px;
+    display: flex;
+}
+
+@-moz-document url-prefix() {
+    #emailContainer {
+        padding-left: 2vw;
+        padding-right: 2vw;
+        display: flex;
+        min-width: 1px;
+        margin-bottom: 2vw;
+    }
+
+    #passwordContainer {
+        margin-top: -1.5vw;
+        padding-left: 2vw;
+        padding-right: 2vw;
+        min-width: 1px;
+        display: flex;
+        margin-bottom: 1.3vw;
+    }
+}
+
+#signInText {
+    margin-top: 0.8vw;
+    font-size: 2vw;
+    text-align: center;
+}
+
+#acceptSignInButton {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-left: 0.5vw;
+}
+
+#acceptSignInButton:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.3s;
+}
+
+#cancelSignInButton {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-right: 0.5vw;
+}
+
+#cancelSignInButton:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.3s;
+}
+
+/* POP UP LOGIN ENDS HERE */
+
+
+/* POP UP INFO STARTS HERE */
+#popUpInfo {
+    color: var(--textColour);
+    background-color: var(--backgroundColour);
+    border: 0.35vw solid var(--outlineColor);
+    border-radius: 0.5vw;
+    display: block;
+
+    position: fixed;
+
+    z-index: 3;
+    width: 25vw;
+    height: 5vw;
+
+    font-size: 1.5vw;
+    font-family: sans-serif;
+
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, -50%);
+
+    margin-top: -100vw;
+}
+
+/* 5 second animation */
+@keyframes dropDown {
+    0% {
+        margin-top: -100vw;
+    }
+
+    25% {
+        margin-top: 0;
+    }
+
+    75% {
+        margin-top: 0;
+    }
+
+    100% {
+        margin-top: -100vw;
+    }
+
+}
+
+/* POP UP INFO ENDS HERE */
+
+
+/* POP UP ADMIN VALUE STARTS HERE */
+#popUpAdminValue {
+    color: var(--textColour);
+    background-color: var(--backgroundColour);
+    border: 0.35vw solid var(--outlineColor);
+    border-radius: 0.5vw;
+    display: none;
+
+    position: fixed;
+
+    z-index: 1;
+    width: 50vw;
+    height: 10vw;
+
+    font-size: 1.5vw;
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#newValueContainer {
+    margin-bottom: -0.8vw;
+}
+
+#popUpAdminValueText {
+    margin-top: 1vw;
+    margin-bottom: 0.7vw;
+}
+
+#newValueContainerValue {
+    height: 1.5vw;
+    font-size: 1vw;
+    width: 40vw;
+}
+
+#acceptNewValueButton {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-left: 5vw;
+}
+
+#acceptNewValueButton:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.3s;
+}
+
+#cancelNewValueButton {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-right: 5vw;
+}
+
+#cancelNewValueButton:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.3s;
+}
+
+/* POP UP ADMIN VALUE ENDS HERE */
+
+
+/* COOKIE CSS STARTS HERE */
+#cookieContainer {
+
+    background-color: var(--backgroundColour);
+    border-top: 0.35vw solid var(--outlineColor);
+    color: var(--textColour);
+    font-size: 0.7vw;
+    font-family: sans-serif;
+
+    display: none;
+
+    position: fixed;
+    bottom: 0;
+    width: 99.5%;
+    height: 9vw;
+    z-index: 1;
+
+    animation: fadeInTitleAnimation ease 1s;
+    animation-delay: 4s;
+    visibility: hidden;
+
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+#consentCookieAcceptButton {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-right: 1vw;
+    margin-left: 1vw;
+    margin-top: 0.3vw;
+}
+
+#consentCookieAcceptButton:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.3s;
+}
+
+#consentCookieDenyButton {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-right: 1vw;
+    margin-top: 0.3vw;
+}
+
+#consentCookieDenyButton:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.3s;
+}
+
+#cookiePreferenceButton {
+    color: dodgerblue;
+    cursor: pointer;
+}
+
+#privacyPolicyContainer {
+
+    background-color: var(--backgroundColour);
+    border: 0.35vw solid var(--outlineColor);
+    border-radius: 1vw;
+    color: var(--textColour);
+    font-size: 0.8vw;
+    font-family: sans-serif;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: none;
+
+    position: fixed;
+    top: 14vw;
+    width: 45vw;
+    height: 18vw;
+    z-index: 1;
+
+}
+
+#consentCookieAcceptButtonPrivacyTab {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-right: 1vw;
+    margin-left: 1vw;
+}
+
+#consentCookieAcceptButtonPrivacyTab:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.3s;
+}
+
+#consentCookieDenyButtonPrivacyTab {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-right: 1vw;
+}
+
+#consentCookieDenyButtonPrivacyTab:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.3s;
+}
+
+#privacyText {
+    padding-left: 3vw;
+    padding-right: 4vw;
+    text-align: left;
+    margin-bottom: 1vw;
+}
+
+/* COOKIE CSS ENDS HERE */
+
