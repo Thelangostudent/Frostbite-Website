@@ -38,8 +38,7 @@ function getInfoFromServer() {
 let isMobile = false;
 
 function checkIfMobile() {
-    const userAgentLower = navigator.userAgent.toLowerCase();
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || /(ipad|tablet|(android(?!.*mobile))|(windows(?!.*phone)(.*touch))|kindle|playbook|silk|(puffin(?!.*(IP|AP|WP))))/.test(userAgentLower)){
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
         isMobile = true;
     }
 }

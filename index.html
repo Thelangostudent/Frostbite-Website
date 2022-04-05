@@ -6,32 +6,7 @@
 
     <title>Frostbite</title>
     <link id="favicon" rel="icon" type="image/x-icon">
-
-    <script>
-        selectCSS();
-        function selectCSS() {
-
-            const userAgentLower = navigator.userAgent.toLowerCase();
-            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || /(ipad|tablet|(android(?!.*mobile))|(windows(?!.*phone)(.*touch))|kindle|playbook|silk|(puffin(?!.*(IP|AP|WP))))/.test(userAgentLower)){
-                const mobileCSS = document.createElement('link');
-
-                mobileCSS.href = 'Styling/mobileCSS.css';
-                mobileCSS.rel = 'stylesheet';
-                mobileCSS.type = 'text/css';
-
-                document.getElementsByTagName( "head" )[0].appendChild( mobileCSS );
-
-            } else {
-                const computerCSS = document.createElement('link');
-
-                computerCSS.href = 'Styling/computerCSS.css';
-                computerCSS.rel = 'stylesheet';
-                computerCSS.type = 'text/css';
-
-                document.getElementsByTagName( "head" )[0].appendChild( computerCSS );
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="Styling/mainStyle.css" type="text/css"/>
 
     <script src="Scripts/scrollFade.js"></script>
 
