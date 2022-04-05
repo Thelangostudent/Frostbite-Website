@@ -184,7 +184,7 @@ body {
         text-align: center;
         font-size: 10vw;
         margin-left: -1vw;
-        margin-top: -12vw;
+        margin-top: -16vw;
         color: transparent;
         text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     }
@@ -194,7 +194,7 @@ body {
         text-align: center;
         font-size: 10vw;
         color: var(--outlineColor);
-        margin-top: -18vw;
+        margin-top: -21vw;
     }
 
 }
@@ -465,7 +465,7 @@ body {
 /* for phone */
 @media screen and (max-width: 1000px) {
     #spotifyEmbed {
-        width: 50%;
+        width: 85%;
     }
 }
 
