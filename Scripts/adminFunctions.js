@@ -466,12 +466,23 @@ async function confirmDeleteGalleryImage() {
     }
 }
 
+/***
+ * popup window that asks the admin what description and hyperlink to use.
+ * The admin will be able to choose which button this will apply to.
+ *
+ */
+/
+function ticketButtonPopUp() {
+
+
+}
+
 /**
- * initialises a popup window that asks the admin two things:
+ * Recieves the info from the popup screen.
  * General info (date,place, eventname etc...)
  * The hyperlink to the ticket sales site
  * */
-function addNewTicketButton() {
+function changeTicketButton(buttonText,hyperLink,whichButton) {
 
 
 }
