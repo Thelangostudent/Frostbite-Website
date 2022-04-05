@@ -133,20 +133,25 @@ function changeBackgroundImage() {
         reader = new FileReader();
         reader.onload = function () {
 
-            const storage = getStorage();
-            const imagesRef = refStorage(storage, 'bannerImage');
+            if (files[0].size > 200000) {
+                enablePopUpWindow("File too large! Max 200kb");
+            } else {
 
-            //uploads the new image to firebase
-            uploadBytes(imagesRef, files[0]).then(() => {
+                const storage = getStorage();
+                const imagesRef = refStorage(storage, 'bannerImage');
 
-                //gets the new image from firebase and updates the banner
-                getDownloadURL(refStorage(storage, 'bannerImage'))
-                    .then((url) => {
-                        const backgroundPara = document.getElementById('backgroundPara');
-                        backgroundPara.style.backgroundImage = "url('" + url + "')";
-                        enablePopUpWindow("Banner updated!");
-                    })
-            });
+                //uploads the new image to firebase
+                uploadBytes(imagesRef, files[0]).then(() => {
+
+                    //gets the new image from firebase and updates the banner
+                    getDownloadURL(refStorage(storage, 'bannerImage'))
+                        .then((url) => {
+                            const backgroundPara = document.getElementById('backgroundPara');
+                            backgroundPara.style.backgroundImage = "url('" + url + "')";
+                            enablePopUpWindow("Banner updated!");
+                        })
+                });
+            }
         }
         reader.readAsDataURL((files[0]));
     }
@@ -269,24 +274,29 @@ function uploadNewAlbumImage() {
                 reader = new FileReader();
                 reader.onload = function () {
 
-                    const newDate = new Date();
-                    const datetime = newDate.today() + " " + newDate.timeNow();
-                    //fake a date below to test
-                    //const datetime = "03/06/2022:13:33:30";
+                    if (files[0].size > 200000) {
+                        enablePopUpWindow("File too large! Max 200kb");
+                    } else {
 
-                    const albumPathToEncode = datetime + newAlbumURL;
-                    const albumURL_Encoded = albumPathToEncode.replace(/\//g, "Ø");
+                        const newDate = new Date();
+                        const datetime = newDate.today() + " " + newDate.timeNow();
+                        //fake a date below to test
+                        //const datetime = "03/06/2022:13:33:30";
 
-                    const storage = getStorage();
-                    const imagesRef = refStorage(storage, 'AlbumCovers/' + albumURL_Encoded);
+                        const albumPathToEncode = datetime + newAlbumURL;
+                        const albumURL_Encoded = albumPathToEncode.replace(/\//g, "Ø");
 
-                    uploadBytes(imagesRef, files[0]).then(() => {
-                        getAlbums();
-                        closeNewValueContainerWindow();
-                        resetNewAdminValue();
+                        const storage = getStorage();
+                        const imagesRef = refStorage(storage, 'AlbumCovers/' + albumURL_Encoded);
 
-                        enablePopUpWindow("Single/Album added!");
-                    });
+                        uploadBytes(imagesRef, files[0]).then(() => {
+                            getAlbums();
+                            closeNewValueContainerWindow();
+                            resetNewAdminValue();
+
+                            enablePopUpWindow("Single/Album added!");
+                        });
+                    }
                 }
                 reader.readAsDataURL((files[0]));
             }
@@ -384,28 +394,32 @@ function uploadGalleryImage() {
         reader = new FileReader();
         reader.onload = function () {
 
-            const newDate = new Date();
-            const datetime = newDate.today() + " " + newDate.timeNow();
-            //fake a date below to test
-            //const datetime = "03/06/2022:13:33:30";
+            if (files[0].size > 200000) {
+                enablePopUpWindow("File too large! Max 200kb");
+            } else {
 
-            const fileName = "GalleryImage"
+                const newDate = new Date();
+                const datetime = newDate.today() + " " + newDate.timeNow();
+                //fake a date below to test
+                //const datetime = "03/06/2022:13:33:30";
 
-            const galleryImagePathToEncode = datetime + fileName;
-            const galleryImage_Encoded = galleryImagePathToEncode.replace(/\//g, "Ø");
+                const fileName = "GalleryImage"
 
-            const storage = getStorage();
-            const imagesRef = refStorage(storage, 'LiveGallery/' + galleryImage_Encoded);
+                const galleryImagePathToEncode = datetime + fileName;
+                const galleryImage_Encoded = galleryImagePathToEncode.replace(/\//g, "Ø");
 
-            uploadBytes(imagesRef, files[0]).then(() => {
-                getLiveGalleryImages();
-                enablePopUpWindow("Gallery Image added!");
-            });
+                const storage = getStorage();
+                const imagesRef = refStorage(storage, 'LiveGallery/' + galleryImage_Encoded);
+
+                uploadBytes(imagesRef, files[0]).then(() => {
+                    getLiveGalleryImages();
+                    enablePopUpWindow("Gallery Image added!");
+                });
+            }
         }
         reader.readAsDataURL((files[0]));
     }
     input.click();
-
 }
 
 document.getElementById("deleteLiveImage").onclick = function () {
@@ -457,7 +471,7 @@ async function confirmDeleteGalleryImage() {
  * General info (date,place, eventname etc...)
  * The hyperlink to the ticket sales site
  * */
-function addNewTicketButton(){
+function addNewTicketButton() {
 
 
 }
@@ -467,13 +481,10 @@ function addNewTicketButton(){
  * FB is called and the info is removed.
  * The original hyperlink is used as the identifier for which button to remove.
  * */
-function deleteTicketButton(){
+function deleteTicketButton() {
 
 
 }
-
-
-
 
 
 function enablePopUpWindow(text) {
