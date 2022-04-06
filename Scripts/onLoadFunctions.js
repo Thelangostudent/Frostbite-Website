@@ -33,6 +33,8 @@ function getInfoFromServer() {
     getTextColour();
     checkConsentStatus();
     getTicketButtonLink();
+    getTicketButtonLink2();
+    getTicketButtonLink3();
 }
 
 let isMobile = false;
@@ -309,7 +311,7 @@ function getTicketButtonLinks() {
  * Backup method to getTicketButtonLinks in case
  * implemementing multiple buttons takes too long
  * */
-function getTicketButtonLink() {
+async function getTicketButtonLink() {
 
 
 
@@ -328,22 +330,26 @@ function getTicketButtonLink() {
         }
     );
 
-    if (document.getElementById("ticketButton").innerHTML == "Invisible") {
+    if (document.getElementById("ticketButton").innerHTML === "Invisible") {
 
         document.getElementById("ticketButton").style.display = "none";
 
+    }
+
+    else {
+        document.getElementById("ticketButton").style.display = "block";
     }
 
 
 
 }
 
-function getTicketButtonLink2() {
+async function getTicketButtonLink2() {
 
 
 
-    const buttonHyperLinkRef =   ref(db,'ticketButtons/ticketButton/hyperlink');
-    const buttonDescriptionRef = ref(db,'ticketButtons/ticketButton/description');
+    const buttonHyperLinkRef =   ref(db,'ticketButtons/ticketButton2/hyperlink');
+    const buttonDescriptionRef = ref(db,'ticketButtons/ticketButton2/Description');
 
 
     onValue(buttonHyperLinkRef, (snapshot) => {
@@ -357,21 +363,23 @@ function getTicketButtonLink2() {
         }
     );
 
-    if (document.getElementById("ticketButton2").innerHTML == "Invisible") {
+    if (document.getElementById("ticketButton2").innerHTML === "Invisible") {
 
         document.getElementById("ticketButton2").style.display = "none";
 
     }
 
+
+
 }
 
 
-function getTicketButtonLink3() {
+async function getTicketButtonLink3() {
 
 
 
-    const buttonHyperLinkRef =   ref(db,'ticketButtons/ticketButton/hyperlink');
-    const buttonDescriptionRef = ref(db,'ticketButtons/ticketButton/description');
+    const buttonHyperLinkRef =   ref(db,'ticketButtons/ticketButton3/hyperlink');
+    const buttonDescriptionRef = ref(db,'ticketButtons/ticketButton3/description');
 
 
     onValue(buttonHyperLinkRef, (snapshot) => {
@@ -385,11 +393,13 @@ function getTicketButtonLink3() {
         }
     );
 
-    if (document.getElementById("ticketButton3").innerHTML == "Invisible") {
+    if (document.getElementById("ticketButton3").innerHTML === "Invisible") {
 
         document.getElementById("ticketButton3").style.display = "none";
 
     }
+
+
 
 }
 
