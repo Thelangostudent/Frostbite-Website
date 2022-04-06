@@ -1250,7 +1250,7 @@ body {
 
     z-index: 1;
     width: 50vw;
-    height: 10vw;
+
 
     font-size: 1.5vw;
 
@@ -1293,7 +1293,8 @@ body {
     border: 0.2vw solid var(--outlineColor);
     padding: 0.5vw;
     border-radius: 0.5vw;
-    margin-left: 5vw;
+    margin-left: 1vw;
+    margin-bottom: 1vw;
 }
 
 #enterValueButton1:hover {
@@ -1311,7 +1312,8 @@ body {
     border: 0.2vw solid var(--outlineColor);
     padding: 0.5vw;
     border-radius: 0.5vw;
-    margin-left: 5vw;
+    margin-left: 1vw;
+    margin-bottom: 1vw;
 }
 
 #enterValueButton2:hover {
@@ -1329,7 +1331,8 @@ body {
     border: 0.2vw solid var(--outlineColor);
     padding: 0.5vw;
     border-radius: 0.5vw;
-    margin-left: 5vw;
+    margin-left: 1vw;
+    margin-bottom: 1vw;
 }
 
 #enterValueButton3:hover {
