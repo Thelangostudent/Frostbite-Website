@@ -327,18 +327,18 @@ async function getTicketButtonLink() {
     onValue(buttonDescriptionRef, (snapshot) => {
 
         document.getElementById("ticketButton").innerHTML = snapshot.val();
+
+        if (document.getElementById("ticketButton").innerHTML === "Invisible") {
+
+            document.getElementById("ticketButton").style.display = "none";
+
         }
+        }
+
     );
 
-    if (document.getElementById("ticketButton").innerHTML === "Invisible") {
+  
 
-        document.getElementById("ticketButton").style.display = "none";
-
-    }
-
-    else {
-        document.getElementById("ticketButton").style.display = "block";
-    }
 
 
 
@@ -360,14 +360,14 @@ async function getTicketButtonLink2() {
     onValue(buttonDescriptionRef, (snapshot) => {
 
             document.getElementById("ticketButton2").innerHTML = snapshot.val();
+
+        if (document.getElementById("ticketButton2").innerHTML === "Invisible") {
+
+            document.getElementById("ticketButton2").style.display = "none";
+
+        }
         }
     );
-
-    if (document.getElementById("ticketButton2").innerHTML === "Invisible") {
-
-        document.getElementById("ticketButton2").style.display = "none";
-
-    }
 
 
 
@@ -390,14 +390,16 @@ async function getTicketButtonLink3() {
     onValue(buttonDescriptionRef, (snapshot) => {
 
             document.getElementById("ticketButton3").innerHTML = snapshot.val();
+
+
+        if (document.getElementById("ticketButton3").innerHTML === "Invisible") {
+
+            document.getElementById("ticketButton3").style.display = "none";
+
+        }
         }
     );
 
-    if (document.getElementById("ticketButton3").innerHTML === "Invisible") {
-
-        document.getElementById("ticketButton3").style.display = "none";
-
-    }
 
 
 
