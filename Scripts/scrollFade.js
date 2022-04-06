@@ -1,18 +1,14 @@
-// ScrollFade 0.1
+// ScrollFade 0.2
 
-var fadeElements = document.getElementsByClassName('scrollFade');
+const fadeElements = document.getElementsByClassName('scrollFade');
 
 function scrollFade() {
-	var viewportBottom = window.scrollY + window.innerHeight;
+	for (let index = 0; index < fadeElements.length; index++) {
+		const element = fadeElements[index];
+		const rect = element.getBoundingClientRect();
 
-	for (var index = 0; index < fadeElements.length; index++) {
-		var element = fadeElements[index];
-		var rect = element.getBoundingClientRect();
-
-		var elementFourth = rect.height/4;
-		var fadeInPoint = window.innerHeight - elementFourth;
-		var fadeOutPoint = -(rect.height/2);
-
+		const elementFourth = rect.height / 4;
+		const fadeInPoint = window.innerHeight - elementFourth;
 		if (rect.top <= fadeInPoint) {
 			element.classList.add('scrollFade--visible');
 			element.classList.add('scrollFade--animate');

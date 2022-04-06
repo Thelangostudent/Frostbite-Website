@@ -3,18 +3,50 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Frostbite</title>
+
+    <!-- favicon element is defined and set in the "updateBackgroundColour" function in the onLoadFunctions file
+         The colour of the favicon is automatically updated based on the outline colour fetched from firebase -->
     <link id="favicon" rel="icon" type="image/x-icon">
+
+    <!-- The CSS file defines the looks of the styling, design and overall layout to the webpage -->
     <link rel="stylesheet" href="Styling/mainStyle.css" type="text/css"/>
 
+    <!-- The scrollFade javascript file adds a fade effect to the main website elements when the user scroll
+      down the page, this code is adapted from "https://github.com/meddlenz/ScrollFade" to only feature the fade
+      animation when scrolling down, compared to the original code that activates the animation while scrolling upwards
+      and downwards, the constrains are changed to activate the animation later than what it originally did -->
     <script src="Scripts/scrollFade.js"></script>
 
+    <!-- The parallax effect is a multi-layered image effect that gives the website a sense of depth while
+         scrolling downwards. This effect is accomplished by moving the front layer faster than the back layer -->
     <script type="module" src="Scripts/parallaxEffect.js"></script>
+
+    <!-- The firebase initialization javascript file is a file that initializes the main connection to the backend server,
+         it defines multiple constants such as database and storage references, then exports said constants to functions that use
+         firebase calls, usually set/update/delete admin functions -->
     <script type="module" src="Scripts/firebaseInitialization.js"></script>
+
+    <!-- The onLoadFunctions javascript file is a file that contains multiple functions that are run when the page is loaded,
+         these functions include crucial information in regards to CSS, images and style, the information regarding this is fetched
+         from firebase, then applied to the relevant parts of the website in the relevant onLoad functions -->
     <script type="module" src="Scripts/onLoadFunctions.js"></script>
+
+    <!-- The adminFunctions javascript file contains all of the admin functions, these functions
+         are features that can drastically change the design and layout of the page (such as colour, images and links).
+         The functions are only usable by authorized admins that have logged in with the relevant and correct admin information -->
     <script type="module" src="Scripts/adminFunctions.js"></script>
+
+    <!-- The authorizationLogic javascript file handles everything that has to do with authorizing users, this website only has
+         one main user which is the admin account. Therefore there is no option to create a new user for visitors, since there no need to do so -->
     <script type="module" src="Scripts/authorizationLogic.js"></script>
+
+    <!-- The cookieLogic javascript file handles everything that has to do with data collection, firebase is connected to the data analytics service
+         known as google analytics, this service is only activated if the visitor agrees with the cookies/privacy policy pop-up. The choice "agree/disagree" is
+         saved in the localStorage, which means the visitors will not see the cookie pop-up again unless they clear their local browser cache. However, the choice can be updated
+         by the visitors at any time via the "cookie settings" button found in the footer of the website, this button is present at all times. If any visitors change their minds,
+         they can easily turn off data collection through this menu. The data that is collected can be observed by an admin in the firebase control panel
+         under the "analytics" tab on the firebase website -->
     <script type="module" src="Scripts/cookieLogic.js"></script>
 
 </head>
@@ -22,76 +54,126 @@
 
 <!---------------------------------------------------------------- ADMIN MENU -------------------------------------------------------------------------------------------->
 
+<!-- The admin container is a window with admin functions that is only visible to an admin that has successfully logged in with the relevant information,
+     the buttons are only usable to an authorized admin, the authorization is checked whenever a button is pressed. A person without a valid admin session can not
+     make any "set/update/delete" calls to the backend server even if they reverse engineered the website.
+     All of the admin functions are locked behind our strict firebase security -->
 <div id="adminContainer">
 
     <h3 id="adminTitle">Admin menu</h3>
 
+    <!-- The changeBackgroundColour button activates the corresponding function in the adminFunctions javascript file when it is pressed. It allows an
+         authorized admin to make changes to the background colour of the page by entering a new HEX colour code. The HEX code is saved in firebase and automatically applied
+         to the page after it has been set, this is accomplished in the onLoadFunctions javascript file. -->
     <div class="alignInMiddle">
         <button id="changeBackgroundColour">Change Background Colour</button>
     </div>
 
+    <!-- The changeOutlineColour button activates the corresponding function in the adminFunctions javascript file when it is pressed. It allows an
+         authorized admin to make changes to the outline colour of the page by entering a new HEX colour code. The HEX code is saved in firebase and automatically applied
+         to the page after it has been set, this is accomplished in the onLoadFunctions javascript file. -->
     <div class="alignInMiddle">
         <button id="changeOutlineColour">Change Outline/Button Colour</button>
     </div>
 
+    <!-- The changeTextColour button activates the corresponding function in the adminFunctions javascript file when it is pressed. It allows an
+         authorized admin to make changes to the test colour of the page by entering a new HEX colour code. The HEX code is saved in firebase and automatically applied
+         to the page after it has been set, this is accomplished in the onLoadFunctions javascript file. -->
     <div class="alignInMiddle">
         <button id="changeTextColour">Change Text/Hover Colour</button>
     </div>
 
+    <!-- The toggleBannerText button activates the corresponding function in the adminFunctions javascript file when it is pressed. It allows an
+         authorized admin to toggle the large banner headline "Frostbite" on/off. This is useful in case the band wants to apply other information directly on the background
+         image instead, it allows admins to turn the banner headline off if it comes in the way for such a case -->
     <div class="alignInMiddle">
         <button id="toggleBannerText">Overlay: ON</button>
     </div>
 
+    <!-- The changeBackgroundImage button activates the corresponding function in the adminFunctions javascript file when it is pressed. It allows an
+         authorized admin to change the background banner by uploading a new image, the recommended image size for the banner is 1920x480, this resolution can be doubled or halved,
+         but it is recommended to stay on the 1920x480 size, as it gives the best visuals without taking too much space, the image size limit is only 200kb since we are using
+         a free firebase plan, this size limit makes us avoid hitting firebase's daily free threshold, images with higher resolutions can easily be downscaled to fit this requirement
+         without sacrificing any visible image quality -->
     <div class="alignInMiddle">
         <button id="changeBackgroundImage">Change Banner</button>
         <button id="backgroundToolTip">Recommended size is 1920x480</button>
     </div>
 
+    <!-- The changeText button activates the corresponding function in the adminFunctions javascript file when it is pressed. It allows an
+         authorized admin to change the story by pasting a new story text in the corresponding input field that is displayed when the button is pressed.
+         The Frostbite story is basically the "about us" section of the page -->
     <div class="alignInMiddle">
         <button id="changeText">Change Story</button>
     </div>
 
+    <!-- The addAlbumCover button activates the corresponding function in the adminFunctions javascript file when it is pressed. It allows an
+         authorized admin to add a new single/album cover by first entering the link to a new single/album, then uploading an image of the single/album cover
+         the file size limit is 200kb here as well in order to stay within our firebase plan. A single/album cannot be added twice, a pop-up with relevant feedback
+          is displayed to the admin if this happens  -->
     <div class="alignInMiddle">
         <button id="addAlbumCover">Add Single/Album Cover</button>
     </div>
 
+    <!-- The deleteAlbumCover button activates the corresponding function in the adminFunctions javascript file when it is pressed. It allows an
+         authorized admin to delete a single/album cover by simply pasting the spotify link that is connected to said single/album. -->
     <div class="alignInMiddle">
         <button id="deleteAlbumCover">Delete Single/Album Cover</button>
     </div>
 
+    <!-- The changeYouTubeURL button activates the corresponding function in the adminFunctions javascript file when it is pressed. It allows an
+         authorized admin to update the youtube video that is displayed in the video section of the page, the admin must first find the URL ID to the new video, which
+         can be found in the full URL after 'watch?v='. So the URL ID to "https://www.youtube.com/watch?v=rykIs0XlA8Q" would be "rykIs0XlA8Q" -->
     <div class="alignInMiddle">
         <button id="changeYouTubeURL">Change YT Video</button>
     </div>
 
-    <div class="alignInMiddle" >
+    <!-- The addLiveImage button activates the corresponding function in the adminFunctions javascript file when it is pressed. It allows an
+         authorized admin to add a new gallery image to the image carousel, the file size limit on image uploads is 200kb here as well, this limit is required to
+         stay far within firebase's free plan. -->
+    <div class="alignInMiddle">
         <button id="addLiveImage">Add Gallery Image</button>
     </div>
 
-    <div class="alignInMiddle" >
+    <!-- The deleteLiveImage button activates the corresponding function in the adminFunctions javascript file when it is pressed. It allows an
+         authorized admin to delete a new gallery image from the image carousel, this is accomplished by simply right clicking on the image the admin wants to delete, then
+          clicking on "copy image link", then pasting said link in the pop-up that is provided when the admin clicks this button, simply hit "accept" and the image is deleted! -->
+    <div class="alignInMiddle">
         <button id="deleteLiveImage">Delete Gallery Image</button>
     </div>
 
+    <!-- The addTicketButton button activates the corresponding function in the adminFunctions javascript file when it is pressed. It allows an
+         authorized admin to add a new ticket button, the ticket button redirects the visitors to the relevant concert/ticket pages when it is clicked, the button itself displays
+          relevant concert info such as time, date and place, this is of course decided by the admin through input fields when a new button is created -->
     <div class="alignInMiddle">
-        <button id="addTicketButton"> Change Ticket Button </button>
+        <button id="addTicketButton"> Change Ticket Button</button>
     </div>
 
+    <!-- The deleteTicketButton button activates the corresponding function in the adminFunctions javascript file when it is pressed. It allows an
+         authorized admin to delete a ticket button, this button is relevant when the concert to the corresponding ticket button becomes outdated  -->
     <div class="alignInMiddle">
         <button id="deleteTicketButton">Delete Ticket Button</button>
     </div>
 
+    <!-- The logOutButton activates the corresponding function in the adminFunctions javascript file when it is pressed. It allows an
+         authorized admin to log out of the admin account, once logged out, the website is updated to treat the logged out admin as a visitor  -->
     <div class="alignInMiddle">
         <button id="logOutButton">Log Out</button>
     </div>
 
     <br>
-
 </div>
 
 <!---------------------------------------------------------------- COOKIE POPUP ------------------------------------------------------------------------------------------>
 
+<!-- The cookieContainer is shown when a visitor visits the page for the first time, it allows them to choose their cookie preference, if they press the "reject all" button,
+     no cookies or data will be collected by Frostbite. If they click "Accept all", relevant information such as time, location and device will be collected and displayed in firebase's
+     google analytics section. Their choice is saved in their local browser cache so they are not faced with this notification again (unless they empty their cache), they
+      can however update their preferences at any time in the cookie settings tab found at the bottom of the page -->
 <div id="cookieContainer">
     <div class="alignInMiddle">
-        <h2> This website uses cookies. By clicking 'Accept', you agree to the storing of cookies on your device for analytical purposes.</h2>
+        <h2> This website uses cookies. By clicking 'Accept', you agree to the storing of cookies on your device for
+            analytical purposes.</h2>
         <h2> Read more about how your data is used <a id="cookiePreferenceButton">here</a>.</h2>
 
         <button id="consentCookieDenyButton">Reject All</button>
@@ -99,27 +181,34 @@
     </div>
 </div>
 
-    <div id="privacyPolicyContainer">
-        <div class="alignInMiddle">
+<!-- The privacyPolicyContainer is a container that displays the privacy policy to the page, it informs the visitors about how their data and information is handled and collected,
+     as well as giving them an option to opt in/out of our data collection services. -->
+<div id="privacyPolicyContainer">
+    <div class="alignInMiddle">
 
-            <div id="privacyText">
-                <h2> Privacy Policy</h2>
-                <h2> We use cookies, web beacons and other similar technologies from Google for measurement services and marketing purposes. We collect information such as what
-                     browser/device you use, your location, and the total amount of time you have spent on our website. The information is collected through Google Analytics.
-                     You can opt out of this at any time by clicking on the "Reject all" button found below.</h2>
-            </div>
+        <div id="privacyText">
+            <h2> Privacy Policy</h2>
+            <h2> We use cookies, web beacons and other similar technologies from Google for measurement services and
+                marketing purposes. We collect information such as what
+                browser/device you use, your location, and the total amount of time you have spent on our website. The
+                information is collected through Google Analytics.
+                You can opt out of this at any time by clicking on the "Reject all" button found below.</h2>
+        </div>
 
         <button id="consentCookieDenyButtonPrivacyTab">Reject All</button>
         <button id="consentCookieAcceptButtonPrivacyTab">Accept All</button>
-       </div>
     </div>
-
+</div>
 
 
 <!------------------------------------------------------------------- NAVBAR --------------------------------------------------------------------------------------------->
 
+<!-- The fixed navbar allows the visitors to quickly jump between different sections of the page without having to scroll, it also features a quick way to Frostbite's other
+     social media services, such as their Facebook, Instagram and Youtube profiles-->
 <div class="navigation-bar">
-    <a id="logoFloat" href="index.html" class="navMenuSelectable"><canvas id="logo" draggable="false" width="100" height="100"></canvas></a>
+    <a id="logoFloat" href="index.html" class="navMenuSelectable">
+        <canvas id="logo" draggable="false" width="100" height="100"></canvas>
+    </a>
     <h3><a id="logoText" href="index.html"> FROSTBITE </a></h3>
 
     <div id="backgroundSquare"></div>
@@ -146,6 +235,8 @@
 
 <!--------------------------------------------------------------- LOGIN POP-UP ----------------------------------------------------------------------------------------->
 
+<!-- The pop-up login window is displayed if the "admin login" button is pressed, this button can be found at the bottom of the page, it allows admins to successfully log in if
+     they want to edit any part of the website without having to go to an external control panel or even touch the source code. -->
 <div id="popUpLogin">
 
     <h3 id="signInText"> Sign in: </h3>
@@ -169,6 +260,8 @@
 
 <!--------------------------------------------------------- ADMIN-EDIT (VALUE) POP-UP ------------------------------------------------------------------------------------------->
 
+<!-- The admin pop-up windows are re-used for different admin functions that needs an input, its a simple input field with an accept and a cancel option, it is adjusted
+     to display relevant information based on the admin button that gets activated -->
 <div id="popUpAdminValue">
 
     <div class="alignInMiddle">
@@ -200,9 +293,9 @@
         </div>
 
         <button id="cancelValueButton">Cancel</button>
-        <button id="enterValueButton1">Button 1 </button>
-        <button id="enterValueButton2">Button 2 </button>
-        <button id="enterValueButton3">Button 3 </button>
+        <button id="enterValueButton1">Button 1</button>
+        <button id="enterValueButton2">Button 2</button>
+        <button id="enterValueButton3">Button 3</button>
 
     </div>
 
@@ -210,6 +303,8 @@
 
 <!---------------------------------------------------------------- INFO POP-UP ------------------------------------------------------------------------------------------->
 
+<!-- The pop-up info window displays a brief 3 second feedback message with relevant information to the user whenever an operation has been successful or failed.
+     If an admin enters the wrong credentials for example, the pop-up info window will be called to display "wrong username/password!", and so on -->
 <div id="popUpInfo">
     <div class="alignInMiddle">
         <h3 id="popUpInfoText"></h3>
@@ -221,14 +316,17 @@
 </div>
 
 <!--------------------------------------------------------------- MAIN CONTAINER ----------------------------------------------------------------------------------------->
-
+<!-- The main container contains the main content and main components of the page, things such as the banner, story, singles, albums, spotify and youtube is all displayed here -->
 <div id="mainContent">
 
+    <!-- The banner text is the main headline to the page, it is displayed over the parallax background and can be toggled on/off by an authorized admin -->
     <div id="bannerText">
         <h3 id="frostbiteBannerNameBackground">FROSTBITE</h3>
         <h3 id="frostbiteBannerName">FROSTBITE</h3>
     </div>
 
+    <!-- The aboutContainer displays the "about us" section of the page, a brief introduction to the band is displayed here as an introduction to visitors, this story is located
+         directly below the main banner to give visitors a quick and easy way to get to know the band -->
     <div id="aboutContainer">
         <div class="item scrollFade">
             <h3 id="aboutTitle">FROSTBITE: THE STORY</h3>
@@ -236,17 +334,18 @@
         </div>
     </div>
 
+    <!-- The single/album covers are icons of Frostbite's albums, these can be deleted and added by an authorized admin, if a visitor clicks on any of these singles/albums,
+         the visitor will be redirected to the corresponding spotify album in a new tab. The singles/albums are automatically sorted based on the upload date -->
     <div id="albumCovers">
         <div class="item scrollFade">
-
             <h3 id="ourAlbums"> SINGLES & ALBUMS </h3>
-
             <div id="gridContainer">
             </div>
-
         </div>
     </div>
 
+    <!-- The youtube container contains an embedded youtube video usually displaying the latest song to the band, the video that is displayed in the embedded window can be updated
+         at any time by an authorized admin -->
     <br id="scrollToVideo">
     <div id="youtubePreviewContainer">
         <div class="item scrollFade">
@@ -254,12 +353,17 @@
             <h3 id="youtubePreviewTitle"> VIDEO </h3>
 
             <div class="alignInMiddle">
-                <iframe id="youtubePreviewVideo" src="https://www.youtube.com/embed/rykIs0XlA8Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
+                <iframe id="youtubePreviewVideo" src="https://www.youtube.com/embed/rykIs0XlA8Q"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
 
+            </div>
         </div>
     </div>
 
+    <!-- The socials container contains a quick and easy way for visitors to get familiar with the bands other musical profiles, this section specifically targets music and video
+         sites such as spotify and youtube -->
     <br id="scrollToSocials">
     <div id="socialsContainer">
         <div class="item scrollFade">
@@ -270,38 +374,44 @@
                 <div id="socialsSquareYoutube"></div>
                 <div id="socialsSquareSpotify"></div>
 
-                <a href="https://www.youtube.com/channel/UCmt3wU22pVtUPqhoHVcOQ-g" target="_blank"><canvas id="socialsYoutube" draggable="false" width="1000" height="1000"></canvas></a>
-                <a href="https://open.spotify.com/artist/0rIROc9qyjwndVoDFa2WD0" target="_blank"><canvas id="socialsSpotify" draggable="false" width="1000" height="1000"></canvas></a>
+                <a href="https://www.youtube.com/channel/UCmt3wU22pVtUPqhoHVcOQ-g" target="_blank">
+                    <canvas id="socialsYoutube" draggable="false" width="1000" height="1000"></canvas>
+                </a>
+                <a href="https://open.spotify.com/artist/0rIROc9qyjwndVoDFa2WD0" target="_blank">
+                    <canvas id="socialsSpotify" draggable="false" width="1000" height="1000"></canvas>
+                </a>
 
             </div>
         </div>
     </div>
 
+    <!-- The spotify embed section of the page contains the bands latest hits, visitors can listen to snippets of the song directly on the webpage (full if they are logged in on their
+         spotify account), or get redirected to the song of their choice if they choose to do so -->
     <br id="scrollToListen">
     <div class="item scrollFade">
         <div class="alignInMiddle">
             <h3 id="listenTitle"> LISTEN </h3>
-            <iframe id="spotifyEmbed" style="border-radius:12px" src="https://open.spotify.com/embed/artist/0rIROc9qyjwndVoDFa2WD0?utm_source=generator&theme=0" height="400" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            <iframe id="spotifyEmbed" style="border-radius:12px"
+                    src="https://open.spotify.com/embed/artist/0rIROc9qyjwndVoDFa2WD0?utm_source=generator&theme=0"
+                    height="400" frameBorder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
         </div>
     </div>
 
+    <!-- The gallery displays images of the band in a simple yet efficient image carousel, the images are automatically changed every third second, but can also be manually changed
+         by clicking on the dots found below the gallery. The images are automatically sorted based on the upload date -->
     <br id="scrollToGallery">
     <div id="gallery">
 
-            <h3 id="gallery_title"> GALLERY </h3>
+        <h3 id="gallery_title"> GALLERY </h3>
+        <div id="galleryImages"></div>
+        <div id="dots" style="text-align:center">
 
-                <!--This gallery will be a slideshow of images.
-                Site visitor should be able to click on a dot (back and forth between images).
-                Otherwise change image on a timer.-->
-
-            <div id="galleryImages">
-            </div>
-
-            <div id="dots" style="text-align:center">
-
-            </div>
+        </div>
     </div>
 
+    <!-- The ticket section of the page allows visitors to quickly get an easy overview over upcoming concerts, clicking on any of the ticket buttons will redirect the visitor to
+         the corresponding concert site, which allows the visitors to order tickets if they wish to do so -->
     <br id="scrollToTickets">
     <div id="tickets">
         <div class="item scrollFade">
@@ -310,25 +420,31 @@
 
             <div class="alignInMiddle">
                 <h2 id="ticket_placeholder"> TBA </h2>
-                <form id = "ticketButtonList">
-                    <button id ="ticketButton"  >TEST</button>
-                    <button class="ticketButton" onclick="location.href='https://github.com/Thelangostudent/Frostbite-Website/tree/Develop'" type="button">TEST</button>
-                    <button class="ticketButton" onclick="location.href='https://github.com/Thelangostudent/Frostbite-Website/tree/Develop'" type="button">TEST</button>
+                <form id="ticketButtonList">
+                    <button id="ticketButton">TEST</button>
+                    <button class="ticketButton"
+                            onclick="location.href='https://github.com/Thelangostudent/Frostbite-Website/tree/Develop'"
+                            type="button">TEST
+                    </button>
+                    <button class="ticketButton"
+                            onclick="location.href='https://github.com/Thelangostudent/Frostbite-Website/tree/Develop'"
+                            type="button">TEST
+                    </button>
                 </form>
             </div>
-
         </div>
     </div>
-
 </div>
 
 <!--------------------------------------------------------------- FOOTER --------------------------------------------------------------------------------------------->
-
+<!-- The footer includes copyright information based on the website design and contents, as well as giving quick and easy access to the cookie settings and admin login, it is also
+     possible to send emails directly to frostbite by clicking on the corresponding email in the footer, which in return opens the email app on the visitors device -->
 <div class="item scrollFade">
     <footer id="footer">
 
         <h3 class="footerText">© Copyright 2022 Frostbite. All rights reserved.</h3>
-        <h3 class="footerText"><a id="emailLink" href="mailto:frostbite.band@hotmail.com">post@frostbiteband.com</a></h3>
+        <h3 class="footerText"><a id="emailLink" href="mailto:frostbite.band@hotmail.com">post@frostbiteband.com</a>
+        </h3>
 
         <div id="cookieSettingsButton"><h3 class="footerText">cookie settings</h3></div>
         <div id="adminLogin"><h3 class="footerText">admin login</h3></div>
