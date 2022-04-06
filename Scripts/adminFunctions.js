@@ -480,6 +480,18 @@ function ticketButtonPopUp() {
     }
 
 
+
+    document.getElementById("enterValueButton1").onclick = function () {
+
+    }
+    document.getElementById("enterValueButton2").onclick = function () {
+
+    }
+    document.getElementById("enterValueButton3").onclick = function () {
+
+    }
+
+
 }
 
 document.getElementById("addTicketButton").onclick = function (){
@@ -489,9 +501,72 @@ document.getElementById("addTicketButton").onclick = function (){
 /**
  * Recieves the info from the popup screen.
  * General info (date,place, eventname etc...)
- * The hyperlink to the ticket sales site
+ * The hyperlink to the ticket sales site.
+ * Method might be redundant as the function below sends info to FB.
  * */
 function changeTicketButton(buttonText,hyperLink) {
+
+
+}
+
+/**
+ * confirms and sends the information to FB.
+ * */
+function confirmTicketButtonChange(buttonid) {
+    let newURL = document.getElementById("newTicketValueContainerValue").value;
+    let newDescription = document.getElementById("newTicketDescriptionContainerValue").value;
+
+    if (buttonid === 1) {
+        if (newURL === "") {
+            enablePopUpWindow("Field cannot be empty!");
+        } else {
+            set(ref(db, 'ticketButtons/ticketButton'), {
+                hyperlink: newURL,
+                description : newDescription,
+
+            });
+            closeNewValueContainerWindow();
+            resetNewAdminValue();
+
+            enablePopUpWindow("Ticket Button updated!");
+        }
+
+    }
+
+    if (buttonid === 2) {
+        if (newURL === "") {
+            enablePopUpWindow("Field cannot be empty!");
+        } else {
+            set(ref(db, 'ticketButtons/ticketButton2'), {
+                hyperlink: newURL,
+                Description : newDescription,
+
+            });
+            closeNewValueContainerWindow();
+            resetNewAdminValue();
+
+            enablePopUpWindow("Ticket Button updated!");
+        }
+
+    }
+
+    if (buttonid === 3) {
+        if (newURL === "") {
+            enablePopUpWindow("Field cannot be empty!");
+        } else {
+            set(ref(db, 'ticketButtons/ticketButton3'), {
+                hyperlink: newURL,
+                description : newDescription,
+
+            });
+            closeNewValueContainerWindow();
+            resetNewAdminValue();
+
+            enablePopUpWindow("Ticket Button updated!");
+        }
+
+    }
+
 
 
 }
@@ -529,11 +604,14 @@ document.getElementById("cancelNewValueButton").onclick = function () {
 
 function closeNewValueContainerWindow() {
     document.getElementById("popUpAdminValue").style.display = "none";
+    document.getElementById("popUpTicketValue").style.display = "none";
     resetNewAdminValue();
 }
 
 function resetNewAdminValue() {
     document.getElementById("newValueContainerValue").value = "";
+    document.getElementById("newTicketValueContainerValue").value = "";
+    document.getElementById("newTicketDescriptionContainerValue").value ="";
 }
 
 //<----------------------------------------------------------- EXPORTS ------------------------------------------------------------------------------------------>
