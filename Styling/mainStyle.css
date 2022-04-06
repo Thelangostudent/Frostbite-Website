@@ -1213,6 +1213,134 @@ body {
     transition-duration: 0.3s;
 }
 
+
+
+
+
+
+
+#popUpTicketValue {
+    color: var(--textColour);
+    background-color: var(--backgroundColour);
+    border: 0.35vw solid var(--outlineColor);
+    border-radius: 0.5vw;
+    display: none;
+
+    position: fixed;
+
+    z-index: 1;
+    width: 50vw;
+    height: 10vw;
+
+    font-size: 1.5vw;
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#newTicketValueContainer {
+    margin-bottom: -0.8vw;
+}
+
+#popUpTicketLink {
+    margin-top: 1vw;
+    margin-bottom: 0.7vw;
+}
+
+#popUpTicketDescription {
+    margin-top: 1vw;
+    margin-bottom: 0.7vw;
+}
+
+#newTicketValueContainerValue {
+    height: 1.5vw;
+    font-size: 1vw;
+    width: 40vw;
+}
+
+#newTicketDescriptionContainerValue {
+    height: 1.5vw;
+    font-size: 1vw;
+    width: 40vw;
+}
+
+#enterValueButton1 {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-left: 5vw;
+}
+
+#enterValueButton1:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.3s;
+}
+
+#enterValueButton2{
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-left: 5vw;
+}
+
+#enterValueButton2:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.3s;
+}
+
+#enterValueButton3 {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-left: 5vw;
+}
+
+#enterValueButton3:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.3s;
+}
+
+#cancelValueButton {
+    background-color: var(--backgroundColour);
+    color: var(--outlineColor);
+    font-size: 1vw;
+    width: 8.1vw;
+    border: 0.2vw solid var(--outlineColor);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-right: 5vw;
+}
+
+#cancelValueButton:hover {
+    cursor: pointer;
+    border-color: var(--textColour);
+    color: var(--textColour);
+    transition-duration: 0.3s;
+}
+
+
+
+
+
 /* POP UP ADMIN VALUE ENDS HERE */
 
 
