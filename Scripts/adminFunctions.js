@@ -491,7 +491,7 @@ document.getElementById("addTicketButton").onclick = function (){
  * General info (date,place, eventname etc...)
  * The hyperlink to the ticket sales site
  * */
-function changeTicketButton(buttonText,hyperLink,whichButton) {
+function changeTicketButton(buttonText,hyperLink) {
 
 
 }
