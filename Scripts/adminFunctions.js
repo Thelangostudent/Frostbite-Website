@@ -473,8 +473,17 @@ async function confirmDeleteGalleryImage() {
  */
 
 function ticketButtonPopUp() {
+    document.getElementById("popUpTicketValue").style.display = "block";
+
+    document.getElementById("cancelValueButton").onclick = function (){
+        document.getElementById("popUpTicketValue").style.display = "none";
+    }
 
 
+}
+
+document.getElementById("addTicketButton").onclick = function (){
+    ticketButtonPopUp();
 }
 
 /**

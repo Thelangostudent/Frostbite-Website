@@ -337,7 +337,7 @@ async function getTicketButtonLink() {
 
     );
 
-  
+
 
 
 
