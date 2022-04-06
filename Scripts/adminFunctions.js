@@ -483,11 +483,17 @@ function ticketButtonPopUp() {
 
     document.getElementById("enterValueButton1").onclick = function () {
 
+       confirmTicketButtonChange(1);
+
     }
     document.getElementById("enterValueButton2").onclick = function () {
 
+        confirmTicketButtonChange(2);
+
     }
     document.getElementById("enterValueButton3").onclick = function () {
+
+        confirmTicketButtonChange(3);
 
     }
 
