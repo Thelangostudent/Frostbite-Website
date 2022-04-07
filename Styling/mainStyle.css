@@ -564,44 +564,46 @@ body {
 
 }
 
-.ticketButton {
-    color: var(--textColour);
-    background-color: black;
-    border: solid black;
-    font-size: 1.2vw;
-    padding: 0.5vw;
-    border-radius: 2vw;
-    margin-top: 1vw;
-}
-
 #ticketButton {
     color: var(--textColour);
-    background-color: black;
-    border: solid black;
+    background-color: var(--backgroundColour);
+    border: 0.25vw solid var(--outlineColor);
     font-size: 1.2vw;
-    padding: 0.5vw;
+    padding: 1vw;
     border-radius: 2vw;
     margin-top: 1vw;
 }
 
 #ticketButton2 {
     color: var(--textColour);
-    background-color: black;
-    border: solid black;
+    background-color: var(--backgroundColour);
+    border: 0.25vw solid var(--outlineColor);
     font-size: 1.2vw;
-    padding: 0.5vw;
+    padding: 1vw;
     border-radius: 2vw;
     margin-top: 1vw;
 }
 
 #ticketButton3 {
     color: var(--textColour);
-    background-color: black;
-    border: solid black;
+    background-color: var(--backgroundColour);
+    border: 0.25vw solid var(--outlineColor);
     font-size: 1.2vw;
-    padding: 0.5vw;
+    padding: 1vw;
     border-radius: 2vw;
     margin-top: 1vw;
+}
+
+#ticketButton:hover {
+    cursor: pointer;
+}
+
+#ticketButton2:hover {
+    cursor: pointer;
+}
+
+#ticketButton3:hover {
+    cursor: pointer;
 }
 
 
@@ -1214,12 +1216,6 @@ body {
     color: var(--textColour);
     transition-duration: 0.3s;
 }
-
-
-
-
-
-
 
 #popUpTicketValue {
     color: var(--textColour);

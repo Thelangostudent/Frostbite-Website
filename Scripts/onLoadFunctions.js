@@ -281,7 +281,7 @@ function getYouTubeVideoURL() {
     });
 }
 
-// array of ticketbuttons, is to be sourced from FB. See getTicketButtonLinks.
+// array of ticketButtons, is to be sourced from firebase. See getTicketButtonLinks.
 let ticketButtonArray = [];
 
 /**
@@ -309,100 +309,63 @@ function getTicketButtonLinks() {
 
 /**
  * Backup method to getTicketButtonLinks in case
- * implemementing multiple buttons takes too long
+ * implementing multiple buttons takes too long
  * */
 async function getTicketButtonLink() {
 
-
-
     const buttonHyperLinkRef =   ref(db,'ticketButtons/ticketButton/hyperlink');
     const buttonDescriptionRef = ref(db,'ticketButtons/ticketButton/description');
-
 
     onValue(buttonHyperLinkRef, (snapshot) => {
         document.getElementById("ticketButton").setAttribute("formaction",snapshot.val()) ;
     });
 
-
     onValue(buttonDescriptionRef, (snapshot) => {
 
         document.getElementById("ticketButton").innerHTML = snapshot.val();
 
-        if (document.getElementById("ticketButton").innerHTML === "Invisible") {
-
+        if (document.getElementById("ticketButton").innerHTML.toLowerCase() === "remove") {
             document.getElementById("ticketButton").style.display = "none";
-
         }
-        }
-
-    );
-
-
-
-
-
-
+    });
 }
 
 async function getTicketButtonLink2() {
 
-
-
     const buttonHyperLinkRef =   ref(db,'ticketButtons/ticketButton2/hyperlink');
     const buttonDescriptionRef = ref(db,'ticketButtons/ticketButton2/Description');
-
 
     onValue(buttonHyperLinkRef, (snapshot) => {
         document.getElementById("ticketButton2").setAttribute("formaction",snapshot.val()) ;
     });
-
 
     onValue(buttonDescriptionRef, (snapshot) => {
 
             document.getElementById("ticketButton2").innerHTML = snapshot.val();
 
         if (document.getElementById("ticketButton2").innerHTML === "Invisible") {
-
             document.getElementById("ticketButton2").style.display = "none";
-
         }
-        }
-    );
-
-
-
+    });
 }
-
 
 async function getTicketButtonLink3() {
 
-
-
     const buttonHyperLinkRef =   ref(db,'ticketButtons/ticketButton3/hyperlink');
     const buttonDescriptionRef = ref(db,'ticketButtons/ticketButton3/description');
-
 
     onValue(buttonHyperLinkRef, (snapshot) => {
         document.getElementById("ticketButton3").setAttribute("formaction",snapshot.val()) ;
     });
 
-
     onValue(buttonDescriptionRef, (snapshot) => {
 
             document.getElementById("ticketButton3").innerHTML = snapshot.val();
 
-
         if (document.getElementById("ticketButton3").innerHTML === "Invisible") {
-
             document.getElementById("ticketButton3").style.display = "none";
-
         }
-        }
-    );
-
-
-
-
+    });
 }
 
 //gets the user status (logged in/logged out) and displays the admin menu accordingly

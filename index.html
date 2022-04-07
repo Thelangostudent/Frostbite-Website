@@ -274,16 +274,15 @@
 <div id="popUpTicketValue">
 
     <div class="alignInMiddle">
-        <h3 id="popUpTicketLink">Enter the new hyperlink for one of the buttons (direct link to ticket purchase). If
-            none write "Blank".</h3>
+        <h3 id="popUpTicketLink">Enter the URL to the ticket website</h3>
 
         <div id="newTicketValueContainer">
             <label id="newTicketValueContainerLabel" for="newTicketValueContainerValue"></label>
-            <input type="text" id="newTicketValueContainerValue" name="newValueContainerValue"><br><br>
-            <h3 id="popUpTicketDescription">Enter the new description for the ticket button. If you wish to remove the
-                button type "Invisible" (case sensitive).</h3>
+            <input type="text" placeholder="example: www.buyTicketsHere.com" id="newTicketValueContainerValue" name="newValueContainerValue"><br><br>
+            <h3 id="popUpTicketDescription">Enter the description to the ticket button.
+                <br> If you wish to remove a button, type "remove" in both fields.</h3>
             <label id="newTicketDescriptionContainerLabel" for="newTicketDescriptionContainerValue"></label>
-            <input type="text" id="newTicketDescriptionContainerValue" name="newValueContainerValue"><br><br>
+            <input type="text" placeholder="example: Oslo, Norway 30/04/22" id="newTicketDescriptionContainerValue" name="newValueContainerValue"><br><br>
         </div>
 
         <button id="cancelValueButton">Cancel</button>
@@ -410,11 +409,11 @@
             <h3 id="ticket_title"> TICKETS </h3>
 
             <div class="alignInMiddle">
-                <h2 id="ticket_placeholder"> TBA </h2>
+                <h2 id="ticket_placeholder" style="display: none"> No tickets available </h2>
                 <form id="ticketButtonList">
-                    <button id="ticketButton">TEST</button>
-                    <button id="ticketButton2">TEST</button>
-                    <button id="ticketButton3">TEST</button>
+                    <button id="ticketButton"></button>
+                    <button id="ticketButton2"></button>
+                    <button id="ticketButton3"></button>
                 </form>
             </div>
         </div>
