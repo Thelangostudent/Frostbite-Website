@@ -2,8 +2,15 @@
 /* Relevant variables, constants and functions are imported in the "imports" section of the code, these are used by the relevant functions found below */
 
 import {db, storage, popUpInfoWindow, popUpWindowText} from './firebaseInitialization.js'
-import {albumArray, galleryArray, getAlbums, getLiveGalleryImages} from './onLoadFunctions.js'
-
+import {
+    albumArray,
+    galleryArray,
+    getAlbums,
+    getLiveGalleryImages,
+    getTicketButtonLink,
+    getTicketButtonLink2,
+    getTicketButtonLink3
+} from './onLoadFunctions.js'
 import {ref, set} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
 import {
     getStorage,
@@ -522,6 +529,7 @@ function confirmTicketButtonChange(buttonid) {
             });
             closeNewValueContainerWindow();
             resetNewAdminValue();
+            getTicketButtonLink();
 
             enablePopUpWindow("Ticket Button updated!");
         }
@@ -538,6 +546,7 @@ function confirmTicketButtonChange(buttonid) {
             });
             closeNewValueContainerWindow();
             resetNewAdminValue();
+            getTicketButtonLink2();
 
             enablePopUpWindow("Ticket Button updated!");
         }
@@ -554,6 +563,7 @@ function confirmTicketButtonChange(buttonid) {
             });
             closeNewValueContainerWindow();
             resetNewAdminValue();
+            getTicketButtonLink3();
 
             enablePopUpWindow("Ticket Button updated!");
         }

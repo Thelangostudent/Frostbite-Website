@@ -311,7 +311,7 @@ function getTicketButtonLinks() {
  * Backup method to getTicketButtonLinks in case
  * implementing multiple buttons takes too long
  * */
-async function getTicketButtonLink() {
+function getTicketButtonLink() {
 
     const buttonHyperLinkRef =   ref(db,'ticketButtons/ticketButton/hyperlink');
     const buttonDescriptionRef = ref(db,'ticketButtons/ticketButton/description');
@@ -330,7 +330,7 @@ async function getTicketButtonLink() {
     });
 }
 
-async function getTicketButtonLink2() {
+function getTicketButtonLink2() {
 
     const buttonHyperLinkRef =   ref(db,'ticketButtons/ticketButton2/hyperlink');
     const buttonDescriptionRef = ref(db,'ticketButtons/ticketButton2/Description');
@@ -349,7 +349,7 @@ async function getTicketButtonLink2() {
     });
 }
 
-async function getTicketButtonLink3() {
+function getTicketButtonLink3() {
 
     const buttonHyperLinkRef =   ref(db,'ticketButtons/ticketButton3/hyperlink');
     const buttonDescriptionRef = ref(db,'ticketButtons/ticketButton3/description');
@@ -482,4 +482,4 @@ function hex_to_RGB(hex) {
 
 //<----------------------------------------------------------- EXPORTS ------------------------------------------------------------------------------------------>
 
-export {isMobile, albumArray, getAlbums, getLiveGalleryImages, galleryArray};
+export {isMobile, albumArray, getAlbums, getLiveGalleryImages, galleryArray, getTicketButtonLink, getTicketButtonLink2, getTicketButtonLink3};
