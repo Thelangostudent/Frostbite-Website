@@ -297,10 +297,11 @@ function getTicketButtonLink(ticketButton) {
 
             if (snapshot.val().toLowerCase() === "remove") {
                 document.getElementById(ticketButton).style.display = "none";
+
             } else {
                 document.getElementById(ticketButton).style.display = "block";
+                document.getElementById("ticket_placeholder").style.display = "none";
                 document.getElementById(ticketButton).innerHTML = snapshot.val();
-
             }
         });
     });
