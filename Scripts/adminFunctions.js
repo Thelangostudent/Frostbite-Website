@@ -1,4 +1,5 @@
 //<----------------------------------------------------------- IMPORTS ------------------------------------------------------------------------------------------>
+/* Relevant variables, constants and functions are imported in the "imports" section of the code, these are used by the relevant functions found below */
 
 import {db, storage, popUpInfoWindow, popUpWindowText} from './firebaseInitialization.js'
 import {albumArray, galleryArray, getAlbums, getLiveGalleryImages} from './onLoadFunctions.js'
@@ -475,15 +476,14 @@ async function confirmDeleteGalleryImage() {
 function ticketButtonPopUp() {
     document.getElementById("popUpTicketValue").style.display = "block";
 
-    document.getElementById("cancelValueButton").onclick = function (){
+    document.getElementById("cancelValueButton").onclick = function () {
         document.getElementById("popUpTicketValue").style.display = "none";
     }
 
 
-
     document.getElementById("enterValueButton1").onclick = function () {
 
-       confirmTicketButtonChange(1);
+        confirmTicketButtonChange(1);
 
     }
     document.getElementById("enterValueButton2").onclick = function () {
@@ -500,23 +500,12 @@ function ticketButtonPopUp() {
 
 }
 
-document.getElementById("addTicketButton").onclick = function (){
+document.getElementById("addTicketButton").onclick = function () {
     ticketButtonPopUp();
 }
 
 /**
- * Recieves the info from the popup screen.
- * General info (date,place, eventname etc...)
- * The hyperlink to the ticket sales site.
- * Method might be redundant as the function below sends info to FB.
- * */
-function changeTicketButton(buttonText,hyperLink) {
-
-
-}
-
-/**
- * confirms and sends the information to FB.
+ * confirms and sends the information to Firebase.
  * */
 function confirmTicketButtonChange(buttonid) {
     let newURL = document.getElementById("newTicketValueContainerValue").value;
@@ -528,7 +517,7 @@ function confirmTicketButtonChange(buttonid) {
         } else {
             set(ref(db, 'ticketButtons/ticketButton'), {
                 hyperlink: newURL,
-                description : newDescription,
+                description: newDescription,
 
             });
             closeNewValueContainerWindow();
@@ -536,7 +525,6 @@ function confirmTicketButtonChange(buttonid) {
 
             enablePopUpWindow("Ticket Button updated!");
         }
-
     }
 
     if (buttonid === 2) {
@@ -545,7 +533,7 @@ function confirmTicketButtonChange(buttonid) {
         } else {
             set(ref(db, 'ticketButtons/ticketButton2'), {
                 hyperlink: newURL,
-                Description : newDescription,
+                Description: newDescription,
 
             });
             closeNewValueContainerWindow();
@@ -553,7 +541,6 @@ function confirmTicketButtonChange(buttonid) {
 
             enablePopUpWindow("Ticket Button updated!");
         }
-
     }
 
     if (buttonid === 3) {
@@ -562,7 +549,7 @@ function confirmTicketButtonChange(buttonid) {
         } else {
             set(ref(db, 'ticketButtons/ticketButton3'), {
                 hyperlink: newURL,
-                description : newDescription,
+                description: newDescription,
 
             });
             closeNewValueContainerWindow();
@@ -570,23 +557,8 @@ function confirmTicketButtonChange(buttonid) {
 
             enablePopUpWindow("Ticket Button updated!");
         }
-
     }
-
-
-
 }
-
-/**
- * Removes a ticket button by removing the info related to a button.
- * FB is called and the info is removed.
- * The original hyperlink is used as the identifier for which button to remove.
- * */
-function deleteTicketButton() {
-
-
-}
-
 
 function enablePopUpWindow(text) {
     popUpWindowText.innerHTML = text;
@@ -617,7 +589,7 @@ function closeNewValueContainerWindow() {
 function resetNewAdminValue() {
     document.getElementById("newValueContainerValue").value = "";
     document.getElementById("newTicketValueContainerValue").value = "";
-    document.getElementById("newTicketDescriptionContainerValue").value ="";
+    document.getElementById("newTicketDescriptionContainerValue").value = "";
 }
 
 //<----------------------------------------------------------- EXPORTS ------------------------------------------------------------------------------------------>
