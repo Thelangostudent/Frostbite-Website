@@ -341,7 +341,7 @@ function getTicketButtonLink2() {
 
             document.getElementById("ticketButton2").innerHTML = snapshot.val();
 
-        if (document.getElementById("ticketButton2").innerHTML === "Invisible") {
+        if (document.getElementById("ticketButton2").innerHTML.toLowerCase() === "remove") {
             document.getElementById("ticketButton2").style.display = "none";
         }
     });
@@ -360,7 +360,7 @@ function getTicketButtonLink3() {
 
             document.getElementById("ticketButton3").innerHTML = snapshot.val();
 
-        if (document.getElementById("ticketButton3").innerHTML === "Invisible") {
+        if (document.getElementById("ticketButton3").innerHTML.toLowerCase() === "remove") {
             document.getElementById("ticketButton3").style.display = "none";
         }
     });
