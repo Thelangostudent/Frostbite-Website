@@ -282,8 +282,7 @@ function getYouTubeVideoURL() {
 }
 
 /**
- * Backup method to getTicketButtonLinks in case
- * implementing multiple buttons takes too long
+ * Gets the button details to a specified ticket button from firebase, then updates the button accordingly
  * */
 function getTicketButtonLink(ticketButton) {
 
