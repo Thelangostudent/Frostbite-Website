@@ -7,10 +7,8 @@ import {
     galleryArray,
     getAlbums,
     getLiveGalleryImages,
-    getTicketButtonLink,
-    getTicketButtonLink2,
-    getTicketButtonLink3
 } from './onLoadFunctions.js'
+
 import {ref, set} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
 import {
     getStorage,
@@ -479,7 +477,6 @@ async function confirmDeleteGalleryImage() {
  * The admin will be able to choose which button this will apply to.
  *
  */
-
 function ticketButtonPopUp() {
     document.getElementById("popUpTicketValue").style.display = "block";
 
@@ -487,24 +484,17 @@ function ticketButtonPopUp() {
         document.getElementById("popUpTicketValue").style.display = "none";
     }
 
-
     document.getElementById("enterValueButton1").onclick = function () {
-
         confirmTicketButtonChange(1);
-
     }
+
     document.getElementById("enterValueButton2").onclick = function () {
-
         confirmTicketButtonChange(2);
-
     }
+
     document.getElementById("enterValueButton3").onclick = function () {
-
         confirmTicketButtonChange(3);
-
     }
-
-
 }
 
 document.getElementById("addTicketButton").onclick = function () {
@@ -525,11 +515,9 @@ function confirmTicketButtonChange(buttonid) {
             set(ref(db, 'ticketButtons/ticketButton'), {
                 hyperlink: newURL,
                 description: newDescription,
-
             });
             closeNewValueContainerWindow();
             resetNewAdminValue();
-            getTicketButtonLink();
 
             enablePopUpWindow("Ticket Button updated!");
         }
@@ -541,12 +529,10 @@ function confirmTicketButtonChange(buttonid) {
         } else {
             set(ref(db, 'ticketButtons/ticketButton2'), {
                 hyperlink: newURL,
-                Description: newDescription,
-
+                description: newDescription,
             });
             closeNewValueContainerWindow();
             resetNewAdminValue();
-            getTicketButtonLink2();
 
             enablePopUpWindow("Ticket Button updated!");
         }
@@ -563,7 +549,6 @@ function confirmTicketButtonChange(buttonid) {
             });
             closeNewValueContainerWindow();
             resetNewAdminValue();
-            getTicketButtonLink3();
 
             enablePopUpWindow("Ticket Button updated!");
         }

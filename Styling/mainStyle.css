@@ -561,7 +561,6 @@ body {
     grid-template-columns: repeat(1,0fr);
     place-content: center;
     row-gap: 20px;
-
 }
 
 #ticketButton {

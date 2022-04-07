@@ -32,9 +32,9 @@ function getInfoFromServer() {
     checkIfMobile();
     getTextColour();
     checkConsentStatus();
-    getTicketButtonLink();
-    getTicketButtonLink2();
-    getTicketButtonLink3();
+    getTicketButtonLink("ticketButton");
+    getTicketButtonLink("ticketButton2");
+    getTicketButtonLink("ticketButton3");
 }
 
 let isMobile = false;
@@ -281,88 +281,28 @@ function getYouTubeVideoURL() {
     });
 }
 
-// array of ticketButtons, is to be sourced from firebase. See getTicketButtonLinks.
-let ticketButtonArray = [];
-
-/**
- * Gets all the ticket buttons from FB.
- * The info stored on FB regarding the tickets is:
- * Relevant text (date, place and other info).
- * The Hyperlink that sends you to the ticket sales site.
- * */
-function getTicketButtonLinks() {
-    ticketButtonArray = [];
-    const buttonText = "placeHolder";
-    const buttonLink = "placeHolder.com";
-
-    const buttonRef =   ref(db,'ticketButtons');
-
-    /***
-    onValue(buttonRef,(snapshot) =>{
-        ticketButtonArray = snapshot.
-
-    })
-   ***/
-}
-
 /**
  * Backup method to getTicketButtonLinks in case
  * implementing multiple buttons takes too long
  * */
-function getTicketButtonLink() {
+function getTicketButtonLink(ticketButton) {
 
-    const buttonHyperLinkRef =   ref(db,'ticketButtons/ticketButton/hyperlink');
-    const buttonDescriptionRef = ref(db,'ticketButtons/ticketButton/description');
-
+    const buttonHyperLinkRef =   ref(db,'ticketButtons/' + ticketButton + '/hyperlink');
     onValue(buttonHyperLinkRef, (snapshot) => {
-        document.getElementById("ticketButton").setAttribute("formaction",snapshot.val()) ;
-    });
 
-    onValue(buttonDescriptionRef, (snapshot) => {
+        document.getElementById(ticketButton).setAttribute("formaction",snapshot.val()) ;
 
-        document.getElementById("ticketButton").innerHTML = snapshot.val();
+        const buttonDescriptionRef = ref(db,'ticketButtons/' + ticketButton + '/description');
+        onValue(buttonDescriptionRef, (snapshot) => {
 
-        if (document.getElementById("ticketButton").innerHTML.toLowerCase() === "remove") {
-            document.getElementById("ticketButton").style.display = "none";
-        }
-    });
-}
+            if (snapshot.val().toLowerCase() === "remove") {
+                document.getElementById(ticketButton).style.display = "none";
+            } else {
+                document.getElementById(ticketButton).style.display = "block";
+                document.getElementById(ticketButton).innerHTML = snapshot.val();
 
-function getTicketButtonLink2() {
-
-    const buttonHyperLinkRef =   ref(db,'ticketButtons/ticketButton2/hyperlink');
-    const buttonDescriptionRef = ref(db,'ticketButtons/ticketButton2/Description');
-
-    onValue(buttonHyperLinkRef, (snapshot) => {
-        document.getElementById("ticketButton2").setAttribute("formaction",snapshot.val()) ;
-    });
-
-    onValue(buttonDescriptionRef, (snapshot) => {
-
-            document.getElementById("ticketButton2").innerHTML = snapshot.val();
-
-        if (document.getElementById("ticketButton2").innerHTML.toLowerCase() === "remove") {
-            document.getElementById("ticketButton2").style.display = "none";
-        }
-    });
-}
-
-function getTicketButtonLink3() {
-
-    const buttonHyperLinkRef =   ref(db,'ticketButtons/ticketButton3/hyperlink');
-    const buttonDescriptionRef = ref(db,'ticketButtons/ticketButton3/description');
-
-    onValue(buttonHyperLinkRef, (snapshot) => {
-        document.getElementById("ticketButton3").setAttribute("formaction",snapshot.val()) ;
-    });
-
-    onValue(buttonDescriptionRef, (snapshot) => {
-
-            document.getElementById("ticketButton3").innerHTML = snapshot.val();
-
-        if (document.getElementById("ticketButton3").innerHTML.toLowerCase() === "remove") {
-            document.getElementById("ticketButton3").style.display = "none";
-        }
+            }
+        });
     });
 }
 
@@ -480,4 +420,4 @@ function hex_to_RGB(hex) {
 
 //<----------------------------------------------------------- EXPORTS ------------------------------------------------------------------------------------------>
 
-export {isMobile, albumArray, getAlbums, getLiveGalleryImages, galleryArray, getTicketButtonLink, getTicketButtonLink2, getTicketButtonLink3};
+export {isMobile, albumArray, getAlbums, getLiveGalleryImages, galleryArray};
