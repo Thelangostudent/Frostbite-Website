@@ -303,8 +303,6 @@ function getTicketButtonLinks() {
 
     })
    ***/
-
-
 }
 
 /**
