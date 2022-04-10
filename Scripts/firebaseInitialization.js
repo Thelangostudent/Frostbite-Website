@@ -8,6 +8,7 @@ import {
 
 //<----------------------------------------------------- DATABASE CONFIGURATION ------------------------------------------------------------------------------------->
 
+// Firebase connection details such as apiKey and authDomain
 const firebaseConfig = {
     apiKey: "AIzaSyDdmHsJu_s8rE1dkcB3oLyyTLJQOI1ZVAg",
     authDomain: "frostbite-backend.firebaseapp.com",
@@ -24,7 +25,7 @@ const firebase = initializeApp(firebaseConfig);
 const db = getDatabase();
 const storage = getStorage();
 
-// gets the pop up window (drop-down)
+// gets the pop up window and text (animated to drop down for 3 seconds) and creates globally exported constraints of said elements, this is basically the "feedback" window
 const popUpInfoWindow = document.getElementById("popUpInfo");
 const popUpWindowText = document.getElementById("popUpInfoText");
 

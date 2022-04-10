@@ -559,7 +559,8 @@ body {
     display: grid;
     grid-template-columns: repeat(1,0fr);
     place-content: center;
-    row-gap: 20px;
+    row-gap: 1vw;
+    justify-items: center;
 }
 
 #ticketButton {
@@ -570,6 +571,7 @@ body {
     padding: 1vw;
     border-radius: 2vw;
     margin-top: 1vw;
+    width: max-content;
 }
 
 #ticketButton2 {
@@ -580,6 +582,7 @@ body {
     padding: 1vw;
     border-radius: 2vw;
     margin-top: 1vw;
+    width: max-content;
 }
 
 #ticketButton3 {
@@ -590,6 +593,7 @@ body {
     padding: 1vw;
     border-radius: 2vw;
     margin-top: 1vw;
+    width: max-content;
 }
 
 #ticketButton:hover {
