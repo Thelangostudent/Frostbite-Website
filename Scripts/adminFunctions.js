@@ -809,7 +809,7 @@ function showPopUpAdminValueWindow(descriptionOfFeature) {
     popUpAdminValueText.innerHTML = descriptionOfFeature;
 }
 
-/** Code that fetches the cancelNewValueButton button in the admin menu and adds the relevant function to it, in this case the button simply closes the admin input window */
+/** Code that fetches the cancelNewValueButton button in the admin menu and adds the relevant function to it, in this case the button simply closes/hides the admin input window */
 document.getElementById("cancelNewValueButton").onclick = function () {
     closeNewValueContainerWindow();
 }
