@@ -756,7 +756,7 @@ function confirmTicketButtonChange(buttonId) {
 
     //defines the ticket button to request from firebase, as well as defining it as just "ticketButton" if it is the first button that gets called
     let ticketButton = "ticketButton" + buttonId;
-    if (buttonId === 1){
+    if (buttonId === 1) {
         ticketButton = "ticketButton";
     }
 
@@ -764,25 +764,25 @@ function confirmTicketButtonChange(buttonId) {
     if (newURL === "" || newDescription === "") {
         enablePopUpWindow("Field cannot be empty!");
     } else {
-            //updates the corresponding ticket button value through firebase calls if the inputs are filled in with relevant information
-            set(ref(db, 'ticketButtons/' + ticketButton), {
-                hyperlink: newURL,
-                description: newDescription,
-            });
+        //updates the corresponding ticket button value through firebase calls if the inputs are filled in with relevant information
+        set(ref(db, 'ticketButtons/' + ticketButton), {
+            hyperlink: newURL,
+            description: newDescription,
+        });
 
-            //calls a function that closes the reusable input field window by using display: none
-            closeNewValueContainerWindow();
+        //calls a function that closes the reusable input field window by using display: none
+        closeNewValueContainerWindow();
 
-            //calls a function that resets the values within the input fields in the reusable input window, as well as preparing it for its next use
-            resetNewAdminValue();
+        //calls a function that resets the values within the input fields in the reusable input window, as well as preparing it for its next use
+        resetNewAdminValue();
 
-            //returns a "ticket button updated" message to the admin through the reusable feedback window after successfully updating a ticket button
-            enablePopUpWindow("Ticket Button updated!");
+        //returns a "ticket button updated" message to the admin through the reusable feedback window after successfully updating a ticket button
+        enablePopUpWindow("Ticket Button updated!");
     }
 }
 
 /** The function "enablePopUpWindow" displays a feedback message through a reusable feedback message window, the window is displayed to the user for 3.25 seconds before disappearing via a short
-    animation that sends it down and back up again, the "text" parameter decides what is says, for example enablePopUpWindow(Hello!) */
+ animation that sends it down and back up again, the "text" parameter decides what is says, for example enablePopUpWindow(Hello!) */
 function enablePopUpWindow(textToDisplay) {
     //assigns the new value to the reusable feedback window via the parameter
     popUpWindowText.innerHTML = textToDisplay;
@@ -796,8 +796,8 @@ function enablePopUpWindow(textToDisplay) {
 }
 
 /** The function "showPopUpAdminValueWindow" displays a reusable input field window that uses a custom description based on the parameter, as well as
-    showing an "accept" and "cancel" button to confirm the admins input choice, this function is useful for admin functions that aims to make changes to the website through
-    server calls and adjustments */
+ showing an "accept" and "cancel" button to confirm the admins input choice, this function is useful for admin functions that aims to make changes to the website through
+ server calls and adjustments */
 function showPopUpAdminValueWindow(descriptionOfFeature) {
 
     //gets the popUpAdminValue window and makes it visible to the admin by applying display: block CSS
