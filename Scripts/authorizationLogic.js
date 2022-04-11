@@ -17,7 +17,7 @@ document.getElementById("acceptSignInButton").onclick = function () {
 }
 
 /** The "getEmailAndPassword" function gets the user inputs from the login window, checks if the input is empty or not, and then initializes
-    a login attempt based on the given inputs in a new final login function */
+ a login attempt based on the given inputs in a new final login function */
 function getEmailAndPassword() {
 
     //defines the user input
@@ -36,8 +36,8 @@ function getEmailAndPassword() {
 }
 
 /** The "logIn" function takes the user input from the parameter values that gets defined in the "getEmailAndPassword" function, then checks if the information
-    provided in the parameters matches the email and password connected to an account in firebase, there is only one account, and that is the admin account, so the admin
-    menu is displayed if the login is successful. Only the admin account is authorized in firebase to make changes to the database */
+ provided in the parameters matches the email and password connected to an account in firebase, there is only one account, and that is the admin account, so the admin
+ menu is displayed if the login is successful. Only the admin account is authorized in firebase to make changes to the database */
 function logIn(email, password) {
 
     //gets a reference to the authorization in firebase

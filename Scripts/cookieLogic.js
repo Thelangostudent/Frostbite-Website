@@ -1,4 +1,5 @@
 //<----------------------------------------------------------- IMPORTS ------------------------------------------------------------------------------------------>
+/** Relevant variables, constants and functions are imported in the "imports" section of the code, these are used by the relevant functions found below */
 
 import {firebase} from './firebaseInitialization.js'
 
@@ -8,13 +9,8 @@ import {getAnalytics} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-an
 
 function checkConsentStatus() {
 
-    //test reset
-    //localStorage.clear();
-
     const consentStatus = localStorage.getItem('consent');
     const cookieContainer = document.getElementById("cookieContainer");
-
-    //console.log(consentStatus);
 
     if (consentStatus === "accepted") {
 

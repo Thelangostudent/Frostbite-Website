@@ -1,4 +1,5 @@
 //<----------------------------------------------------------- IMPORTS ------------------------------------------------------------------------------------------>
+/** Relevant variables, constants and functions are imported in the "imports" section of the code, these are used by the relevant backend calls and registration found below */
 
 import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
 import {getDatabase} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
@@ -25,7 +26,8 @@ const firebase = initializeApp(firebaseConfig);
 const db = getDatabase();
 const storage = getStorage();
 
-// gets the pop up window and text (animated to drop down for 3 seconds) and creates globally exported constraints of said elements, this is basically the "feedback" window
+// gets the pop up window and text (animated to drop down for 3 seconds) and creates globally exported constraints of said elements
+// this is basically the reusable feedback window
 const popUpInfoWindow = document.getElementById("popUpInfo");
 const popUpWindowText = document.getElementById("popUpInfoText");
 
