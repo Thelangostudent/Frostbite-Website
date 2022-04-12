@@ -1,4 +1,5 @@
 //<----------------------------------------------------------- IMPORTS ------------------------------------------------------------------------------------------>
+/** Relevant variables, constants and functions are imported in the "imports" section of the code, these are used by the relevant functions found below */
 
 import {isMobile} from './onLoadFunctions.js'
 
