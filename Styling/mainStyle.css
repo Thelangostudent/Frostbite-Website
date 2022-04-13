@@ -178,7 +178,7 @@ body {
     margin-top: -23vw;
 }
 
-@media only screen and (max-device-width: 768px){
+@media only screen and (max-device-width: 768px) {
     #frostbiteBannerNameBackground {
         font-family: mainFont, sans-serif;
         text-align: center;
@@ -521,8 +521,12 @@ body {
 }
 
 @keyframes fade {
-    from {opacity: .5}
-    to {opacity: 1}
+    from {
+        opacity: .5
+    }
+    to {
+        opacity: 1
+    }
 }
 
 .galleryImage {
@@ -530,6 +534,7 @@ body {
     max-height: 30vw;
 
 }
+
 /*LIVE IMAGE GALLERY END HERE*/
 
 
@@ -557,7 +562,7 @@ body {
 
 #ticketButtonList {
     display: grid;
-    grid-template-columns: repeat(1,0fr);
+    grid-template-columns: repeat(1, 0fr);
     place-content: center;
     row-gap: 1vw;
     justify-items: center;
@@ -948,6 +953,7 @@ body {
     color: var(--textColour);
     transition-duration: 0.3s;
 }
+
 /* ADMIN-CONTAINER ENDS HERE */
 
 
@@ -1284,7 +1290,7 @@ body {
     transition-duration: 0.3s;
 }
 
-#enterValueButton2{
+#enterValueButton2 {
     background-color: var(--backgroundColour);
     color: var(--outlineColor);
     font-size: 1vw;
