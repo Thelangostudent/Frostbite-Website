@@ -100,8 +100,24 @@ document.getElementById("cookiePreferenceButton").onclick = function () {
 /** The "showPrivacyPolicy" function displays a window featuring the privacy policy to the page, this function is called whenever a user wants to update the cookie
  choice and clicks on the "cookie settings" button of the bottom of the page, or the "read more" option in the fixed cookie window */
 function showPrivacyPolicy() {
+    //hides the cookie popup and shows the privacy window
     document.getElementById("privacyPolicyContainer").style.display = "block";
     document.getElementById("cookieContainer").style.display = "none";
+
+    //gets the localstorage value made by the user
+    const consentStatus = localStorage.getItem('consent');
+
+    //creates a relevant feedback variable of the current choice
+    let consentFeedback = "not set"
+    if (consentStatus === "accepted") {
+        consentFeedback = "accept all";
+    } else if (consentStatus === "denied") {
+        consentFeedback = "reject all";
+    }
+
+    //adds the current choice at the end of the privacy window
+    const currentText = " We use cookies, web beacons and other similar technologies from Google for measurement services and marketing purposes. We collect information such as what browser/device you use, your location, and the total amount of time you have spent on our website. The information is collected through Google Analytics. You can opt out of this at any time by clicking on the \"Reject all\" button found below.";
+    document.getElementById("currentCookieSettings").innerHTML = currentText + " Your current choice is: '" + consentFeedback + "'";
 }
 
 /** Code that fetches the cookieSettingsButton button in the login panel and adds the relevant function to it */
