@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5b25f6b6-fd8a-4125-95c1-f5029390abff" name="Default Changelist" comment="updated directory">
-      <change beforePath="$PROJECT_DIR$/Scripts/cookieLogic.js" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/cookieLogic.js" afterDir="false" />
+    <list default="true" id="5b25f6b6-fd8a-4125-95c1-f5029390abff" name="Default Changelist" comment="added cookie consent status at the end of the privacy container text">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,7 +33,8 @@
       <option name="presentableId" value="Default" />
       <updated>1650387838521</updated>
       <workItem from="1650387840838" duration="75000" />
-      <workItem from="1650431479296" duration="1250000" />
+      <workItem from="1650431479296" duration="1531000" />
+      <workItem from="1650638331687" duration="1625000" />
     </task>
     <task id="LOCAL-00001" summary="updated directory">
       <created>1650387877158</created>
@@ -42,7 +43,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650387877158</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added cookie consent status at the end of the privacy container text">
+      <created>1650432987207</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1650432987207</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -62,6 +70,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="updated directory" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated directory" />
+    <MESSAGE value="added cookie consent status at the end of the privacy container text" />
+    <option name="LAST_COMMIT_MESSAGE" value="added cookie consent status at the end of the privacy container text" />
   </component>
 </project>

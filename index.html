@@ -274,11 +274,11 @@
 <div id="popUpTicketValue">
 
     <div class="alignInMiddle">
-        <h3 id="popUpTicketLink">Enter the URL to the ticket website</h3>
+        <h3 id="popUpTicketLink">Enter the URL to the ticket website (include HTTP/HTTPS)</h3>
 
         <div id="newTicketValueContainer">
             <label id="newTicketValueContainerLabel" for="newTicketValueContainerValue"></label>
-            <input type="text" placeholder="example: www.buyTicketsHere.com" id="newTicketValueContainerValue" name="newValueContainerValue"><br><br>
+            <input type="text" placeholder="example: https://www.ticketmaster.com/" id="newTicketValueContainerValue" name="newValueContainerValue"><br><br>
             <h3 id="popUpTicketDescription">Enter the description to the ticket button.
                 <br> If you wish to remove a button, type "remove" in both fields.</h3>
             <label id="newTicketDescriptionContainerLabel" for="newTicketDescriptionContainerValue"></label>
@@ -410,7 +410,7 @@
 
             <div class="alignInMiddle" style="margin-bottom: 20vw">
                 <h2 id="ticket_placeholder" style="display: block"> No tickets available </h2>
-                <form id="ticketButtonList">
+                <form id="ticketButtonList" target="_blank">
                     <button id="ticketButton"></button>
                     <button id="ticketButton2"></button>
                     <button id="ticketButton3"></button>
