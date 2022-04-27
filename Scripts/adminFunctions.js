@@ -29,12 +29,15 @@ document.getElementById("changeBackgroundColour").onclick = function () {
 }
 
 /** Function that displays the reusable input overlay to an authorized admin after clicking on the "changeBackgroundColour" button in the admin menu,
- * the function then calls the "confirmColourChangeBackground" function, which takes the input and changes the background colour of the page to the HEX colour,
- ONLY if the input is a valid HEX colour, a relevant "wrong input" feedback message will be displayed otherwise */
+ * the function then calls the "confirmColourChangeBackground" function, which takes the input and changes the background colour of the page to the selected colour */
 function changeBackgroundColour() {
 
+    //changes the text input field to a colour input field
+    let inputField = document.getElementById("newValueContainerValue");
+    inputField.type = "color";
+
     //calls the reusable input overlay function with the relevant input information
-    showPopUpAdminValueWindow("Enter the new HEX colour code (example: #141414)")
+    showPopUpAdminValueWindow("Please select the new background colour (example: 33, 36, 31)")
 
     //adds an onclick feature to the "acceptNewValueButton" button that calls the relevant function within the javascript modules
     document.getElementById("acceptNewValueButton").onclick = function () {
@@ -42,33 +45,19 @@ function changeBackgroundColour() {
     }
 }
 
-/** The "confirmColourChangeBackground" function validates the admin input and checks whether the input is a valid HEX colour or not.
- * It then updates the background colour value in firebase if the input is a valid hex colour
-
- *  If the input field is empty, a relevant "input cannot be empty" message will be returned and displayed to the admin.
- *  If the input field is filled in, but is not a valid HEX colour, a relevant "Not a valid HEX colour" message will be returned and displayed to the admin,
- *  If the input field is filled in with a valid HEX colour, the "backgroundColour" value stored in the backend will be updated to match the admin input, the page
- will apply the new background colour instantly */
+/** The "confirmColourChangeBackground" function validates the admin input and updates the background colour value in firebase.
+ *  This will apply the new background colour instantly */
 function confirmColourChangeBackground() {
     //gets the new input value submitted by the admin
     let newBackgroundColour = document.getElementById("newValueContainerValue").value;
 
-    //checks if the input is a valid hex colour
-    const reg = /^#([0-9a-f]{3}){1,2}$/i;
-    const isValidHex = reg.test(newBackgroundColour);
-
-    if (newBackgroundColour === "") {
-        //returns a "field cannot be empty" message if the input field is empty
-        enablePopUpWindow("Field cannot be empty!");
-    } else if (isValidHex === true) {
-
         //checks if the colour value already is used
-        if (newBackgroundColour === outlineColourGlobal || newBackgroundColour === textColourGlobal || newBackgroundColour === textColourGlobal){
+        if (newBackgroundColour === outlineColourGlobal || newBackgroundColour === textColourGlobal || newBackgroundColour === backgroundColourGlobal){
             //displays a "Colour already in use!" message if the colour is used by the same or other components
             enablePopUpWindow("Colour already in use!");
         } else {
 
-            //updates the firebase backgroundColour value if the input is a valid HEX colour
+            //updates the firebase backgroundColour value
             set(ref(db, 'backgroundColour'), {
                 HexCode: newBackgroundColour,
             });
@@ -82,11 +71,6 @@ function confirmColourChangeBackground() {
             //calls the "resetNewAdminValue" function which resets the input fields within the reusable input field window
             resetNewAdminValue();
         }
-
-    } else {
-        //displays a "not a valid hex colour!" message if the input is not a valid hex colour
-        enablePopUpWindow("Not a valid HEX colour!");
-    }
 }
 
 /** Code that fetches the changeOutlineColour button in the admin menu and adds the relevant function to it */
@@ -95,12 +79,15 @@ document.getElementById("changeOutlineColour").onclick = function () {
 }
 
 /** Function that displays the reusable input overlay to an authorized admin after clicking on the "changeOutlineColour" button in the admin menu,
- * the function then calls the "confirmColourChange" function, which takes the input and changes the background colour of the page to the HEX colour,
- ONLY if the input is a valid HEX colour, a relevant "wrong input" feedback message will be displayed otherwise */
+ * the function then calls the "confirmColourChange" function, which takes the input and changes the outline colour of the page to the selected colour */
 function changeOutlineColour() {
 
+    //changes the text input field to a colour input field
+    let inputField = document.getElementById("newValueContainerValue");
+    inputField.type = "color";
+
     //calls the reusable input overlay function with the relevant input information
-    showPopUpAdminValueWindow("Enter the new HEX colour code (example: #a14a95)");
+    showPopUpAdminValueWindow("Please select the new outline colour (example: 161, 74, 149)")
 
     //adds an onclick feature to the "acceptNewValueButton" button that calls the relevant function within the javascript modules
     document.getElementById("acceptNewValueButton").onclick = function () {
@@ -108,33 +95,19 @@ function changeOutlineColour() {
     }
 }
 
-/** The "confirmColourChange" function validates the admin input and checks whether the input is a valid HEX colour or not.
- * It then updates the outline colour value in firebase if the input is a valid hex colour
-
- *  If the input field is empty, a relevant "input cannot be empty" message will be returned and displayed to the admin.
- *  If the input field is filled in, but is not a valid HEX colour, a relevant "Not a valid HEX colour" message will be returned and displayed to the admin,
- *  If the input field is filled in with a valid HEX colour, the "outlineColour" value stored in the backend will be updated to match the admin input, the page
- will apply the new outline colour instantly */
+/** The "confirmColourChange" function validates the admin input and updates the outline colour value in firebase.
+ *  This will apply the new background colour instantly */
 function confirmColourChange() {
     //gets the new input value submitted by the admin
     let newOutlineColour = document.getElementById("newValueContainerValue").value;
 
-    //checks if the input is a valid hex colour
-    const reg = /^#([0-9a-f]{3}){1,2}$/i;
-    const isValidHex = reg.test(newOutlineColour);
-
-    if (newOutlineColour === "") {
-        //returns a "field cannot be empty" message if the input field is empty
-        enablePopUpWindow("Field cannot be empty!");
-    } else if (isValidHex === true) {
-
         //checks if the colour value already is used
-        if (newOutlineColour === outlineColourGlobal || newOutlineColour === textColourGlobal || newOutlineColour === textColourGlobal) {
+        if (newOutlineColour === outlineColourGlobal || newOutlineColour === textColourGlobal || newOutlineColour === backgroundColourGlobal) {
             //displays a "Colour already in use!" message if the colour is used by the same or other components
             enablePopUpWindow("Colour already in use!");
         } else {
 
-            //updates the firebase outlineColour value if the input is a valid HEX colour
+            //updates the firebase outlineColour value
             set(ref(db, 'outlineColour'), {
                 HexCode: newOutlineColour,
             });
@@ -148,11 +121,6 @@ function confirmColourChange() {
             //calls the "resetNewAdminValue" function which resets the input fields within the reusable input field window
             resetNewAdminValue();
         }
-
-    } else {
-        //displays a "not a valid hex colour!" message if the input is not a valid hex colour
-        enablePopUpWindow("Not a valid HEX colour!");
-    }
 }
 
 /** Code that fetches the changeTextColour button in the admin menu and adds the relevant function to it */
@@ -160,13 +128,16 @@ document.getElementById("changeTextColour").onclick = function () {
     changeTextColour();
 }
 
-/** Function that displays the reusable input overlay to an authorized admin after clicking on the "changeTextColour" button in the admin menu,
- * the function then calls the "confirmColourChangeOnText" function, which takes the input and changes the background colour of the page to the HEX colour,
- ONLY if the input is a valid HEX colour, a relevant "wrong input" feedback message will be displayed otherwise */
+/** The "changeTextColour" function validates the admin input and updates the text colour value in firebase.
+ *  This will apply the new text colour instantly */
 function changeTextColour() {
 
+    //changes the text input field to a colour input field
+    let inputField = document.getElementById("newValueContainerValue");
+    inputField.type = "color";
+
     //calls the reusable input overlay function with the relevant input information
-    showPopUpAdminValueWindow("Enter the new HEX colour code (example: #ffffff)");
+    showPopUpAdminValueWindow("Please select the new text colour (example: 255, 255, 255)")
 
     //adds an onclick feature to the "acceptNewValueButton" button that calls the relevant function within the javascript modules
     document.getElementById("acceptNewValueButton").onclick = function () {
@@ -174,33 +145,19 @@ function changeTextColour() {
     }
 }
 
-/** The "confirmColourChangeOnText" function validates the admin input and checks whether the input is a valid HEX colour or not.
- * It then updates the text colour value in firebase if the input is a valid hex colour
-
- *  If the input field is empty, a relevant "input cannot be empty" message will be returned and displayed to the admin.
- *  If the input field is filled in, but is not a valid HEX colour, a relevant "Not a valid HEX colour" message will be returned and displayed to the admin,
- *  If the input field is filled in with a valid HEX colour, the "textColour" value stored in the backend will be updated to match the admin input, the page
- will apply the new text colour instantly */
+/** The "confirmColourChangeOnText" function validates the admin input and updates the text colour value in firebase.
+ *  This will apply the new text colour instantly */
 function confirmColourChangeOnText() {
     //gets the new input value submitted by the admin
     let newTextColour = document.getElementById("newValueContainerValue").value;
 
-    //checks if the input is a valid hex colour
-    const reg = /^#([0-9a-f]{3}){1,2}$/i;
-    const isValidHex = reg.test(newTextColour);
-
-    if (newTextColour === "") {
-        //returns a "field cannot be empty" message if the input field is empty
-        enablePopUpWindow("Field cannot be empty!");
-    } else if (isValidHex === true) {
-
         //checks if the colour value already is used
-        if (newTextColour === outlineColourGlobal || newTextColour === textColourGlobal || newTextColour === textColourGlobal) {
+        if (newTextColour === outlineColourGlobal || newTextColour === textColourGlobal || newTextColour === backgroundColourGlobal) {
             //displays a "Colour already in use!" message if the colour is used by the same or other components
             enablePopUpWindow("Colour already in use!");
         } else {
 
-            //updates the firebase textColour value if the input is a valid HEX colour
+            //updates the firebase textColour value
             set(ref(db, 'textColour'), {
                 HexCode: newTextColour,
             });
@@ -214,11 +171,6 @@ function confirmColourChangeOnText() {
             //calls the "resetNewAdminValue" function which resets the input fields within the reusable input field window
             resetNewAdminValue();
         }
-
-    } else {
-        //displays a "not a valid hex colour!" message if the input is not a valid hex colour
-        enablePopUpWindow("Not a valid HEX colour!");
-    }
 }
 
 /** Code that fetches the changeBackgroundImage button in the admin menu and adds the relevant function to it */
@@ -320,6 +272,11 @@ document.getElementById("changeText").onclick = function () {
  text into the input field that gets displayed when the "changeText" button is pressed, then hitting "accept", the text is updated instantly */
 function changeText() {
 
+    //changes the color input field to a text input field (if it is selected as colour and the user clicks another button without closing the window)
+    let inputField = document.getElementById("newValueContainerValue");
+    inputField.type = "text";
+    inputField.value = "";
+
     //calls the reusable input overlay function with the relevant input information
     showPopUpAdminValueWindow("Please copy & paste your new story text here")
 
@@ -387,6 +344,11 @@ Date.prototype.timeNow = function () {
 
 /** Code that fetches the addAlbumCover button in the admin menu and adds the relevant function to it */
 document.getElementById("addAlbumCover").onclick = function () {
+
+    //changes the color input field to a text input field (if it is selected as colour and the user clicks another button without closing the window)
+    let inputField = document.getElementById("newValueContainerValue");
+    inputField.type = "text";
+    inputField.value = "";
 
     //calls the reusable input overlay function with the relevant input information
     showPopUpAdminValueWindow("Enter the full spotify URL to the single/album you want to add:")
@@ -514,6 +476,11 @@ document.getElementById("deleteAlbumCover").onclick = function () {
  to the single/album the admin wants to delete into the input field, the single/album is then instantly removed from both of them */
 function deleteAlbum() {
 
+    //changes the color input field to a text input field (if it is selected as colour and the user clicks another button without closing the window)
+    let inputField = document.getElementById("newValueContainerValue");
+    inputField.type = "text";
+    inputField.value = "";
+
     //calls the reusable input overlay function with the relevant input information
     showPopUpAdminValueWindow("Enter the full URL to the single/album you want to delete:")
 
@@ -590,6 +557,11 @@ document.getElementById("changeYouTubeURL").onclick = function () {
 /** The "changeYouTubeURL" function allows an authorized admin to change the youtube vide that is displayed in the "video" section of the page by entering a new
  youtube video URL-ID into the input field in the reusable input window */
 function changeYouTubeURL() {
+
+    //changes the color input field to a text input field (if it is selected as colour and the user clicks another button without closing the window)
+    let inputField = document.getElementById("newValueContainerValue");
+    inputField.type = "text";
+    inputField.value = "";
 
     //calls the reusable input window and displays the relevant message for this function, as well as including some instructions on how to get the URL-ID from a youtube link
     showPopUpAdminValueWindow("Enter the new YouTube URL-ID (the letters after 'watch?v=')")
@@ -706,6 +678,11 @@ document.getElementById("deleteLiveImage").onclick = function () {
 /** The "deleteGalleryImage" function allows an authorized admin to delete an image in the gallery by simply pasting the gallery image link into the input field within the
  reusable input window, the gallery gets automatically updated without having to refresh the page */
 function deleteGalleryImage() {
+
+    //changes the color input field to a text input field (if it is selected as colour and the user clicks another button without closing the window)
+    let inputField = document.getElementById("newValueContainerValue");
+    inputField.type = "text";
+    inputField.value = "";
 
     //calls the reusable input window and displays the relevant message for this function
     showPopUpAdminValueWindow('Enter the full URL to the gallery image you want to delete:');
@@ -877,8 +854,12 @@ document.getElementById("cancelNewValueButton").onclick = function () {
 
 /** The function "closeNewValueContainerWindow" simply gets and closes the currently open admin input window */
 function closeNewValueContainerWindow() {
+    let inputField = document.getElementById("newValueContainerValue");
+    inputField.type = "text";
+
     document.getElementById("popUpAdminValue").style.display = "none";
     document.getElementById("popUpTicketValue").style.display = "none";
+
     resetNewAdminValue();
 }
 
