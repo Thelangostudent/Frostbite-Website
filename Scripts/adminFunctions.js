@@ -214,28 +214,37 @@ function changeBackgroundImage() {
         reader = new FileReader();
         reader.onload = function () {
 
-            //checks the file size limit
-            if (files[0].size > 200000) {
-                enablePopUpWindow("File too large! Max 200kb");
+            //checks if the file is an image
+            const isImage = files[0] && files[0]['type'].split('/')[0] === 'image';
+
+            if (isImage === true) {
+
+                //checks the file size limit
+                if (files[0].size > 200000) {
+                    enablePopUpWindow("File too large! Max 200kb");
+                } else {
+
+                    //gets a reference to the file storage to the bannerImage in firebase
+                    const storage = getStorage();
+                    const imagesRef = refStorage(storage, 'bannerImage');
+
+                    //uploads the new image to firebase
+                    uploadBytes(imagesRef, files[0]).then(() => {
+
+                        //gets the new image from firebase and updates the banner
+                        getDownloadURL(refStorage(storage, 'bannerImage'))
+                            .then((url) => {
+                                const backgroundPara = document.getElementById('backgroundPara');
+                                backgroundPara.style.backgroundImage = "url('" + url + "')";
+
+                                //returns a "banner updated" feedback message to the admin
+                                enablePopUpWindow("Banner updated!");
+                            })
+                    });
+                }
             } else {
-
-                //gets a reference to the file storage to the bannerImage in firebase
-                const storage = getStorage();
-                const imagesRef = refStorage(storage, 'bannerImage');
-
-                //uploads the new image to firebase
-                uploadBytes(imagesRef, files[0]).then(() => {
-
-                    //gets the new image from firebase and updates the banner
-                    getDownloadURL(refStorage(storage, 'bannerImage'))
-                        .then((url) => {
-                            const backgroundPara = document.getElementById('backgroundPara');
-                            backgroundPara.style.backgroundImage = "url('" + url + "')";
-
-                            //returns a "banner updated" feedback message to the admin
-                            enablePopUpWindow("Banner updated!");
-                        })
-                });
+                //returns a "Not an image!" feedback message to the admin when the admin uploads an invalid file type
+                enablePopUpWindow("Not an image!");
             }
         }
         reader.readAsDataURL((files[0]));
@@ -414,40 +423,49 @@ function uploadNewAlbumImage() {
                 reader = new FileReader();
                 reader.onload = function () {
 
-                    //checks if the chosen file goes over the 200kb limit or not
-                    if (files[0].size > 200000) {
-                        enablePopUpWindow("File too large! Max 200kb");
+                    //checks if the file is an image
+                    const isImage = files[0] && files[0]['type'].split('/')[0] === 'image';
+
+                    if (isImage === true) {
+
+                        //checks if the chosen file goes over the 200kb limit or not
+                        if (files[0].size > 200000) {
+                            enablePopUpWindow("File too large! Max 200kb");
+                        } else {
+
+                            //creates a new string that consist of the uploadDate and uploadTime, this is used to sort the single/albums in the correct order
+                            const newDate = new Date();
+                            const datetime = newDate.today() + " " + newDate.timeNow();
+
+                            //the string that is to be saved in the database is then encoded to use the letter "Ø" instead of "/" slashes to avoid confusing google's database logic
+                            //since the "/" is a key symbol that automatically creates new folders in googles system, the letter "Ø" is used because no valid global HTTP string
+                            //will ever contain that letter
+                            const albumPathToEncode = datetime + newAlbumURL;
+                            const albumURL_Encoded = albumPathToEncode.replace(/\//g, "Ø");
+
+                            //a new reference is then created in the database based on the new encoded string that contains the single/album URL, as well as the upload date and time
+                            const storage = getStorage();
+                            const imagesRef = refStorage(storage, 'AlbumCovers/' + albumURL_Encoded);
+
+                            //once the image has been successfully uploaded, the singles/albums on the page are automatically refreshed and the reusable input window is closed and cleared
+                            uploadBytes(imagesRef, files[0]).then(() => {
+
+                                //gets the albums with updated values from the database
+                                getAlbums();
+
+                                //function that closes the newValueContainer window by using display: none
+                                closeNewValueContainerWindow();
+
+                                //function that clears the previous inputs in the reusable input window by using innerHTML = "";
+                                resetNewAdminValue();
+
+                                //displays a "single/album added!" message to the admin upon successfully uploading a new single/album to the firebase backend server
+                                enablePopUpWindow("Single/Album added!");
+                            });
+                        }
                     } else {
-
-                        //creates a new string that consist of the uploadDate and uploadTime, this is used to sort the single/albums in the correct order
-                        const newDate = new Date();
-                        const datetime = newDate.today() + " " + newDate.timeNow();
-
-                        //the string that is to be saved in the database is then encoded to use the letter "Ø" instead of "/" slashes to avoid confusing google's database logic
-                        //since the "/" is a key symbol that automatically creates new folders in googles system, the letter "Ø" is used because no valid global HTTP string
-                        //will ever contain that letter
-                        const albumPathToEncode = datetime + newAlbumURL;
-                        const albumURL_Encoded = albumPathToEncode.replace(/\//g, "Ø");
-
-                        //a new reference is then created in the database based on the new encoded string that contains the single/album URL, as well as the upload date and time
-                        const storage = getStorage();
-                        const imagesRef = refStorage(storage, 'AlbumCovers/' + albumURL_Encoded);
-
-                        //once the image has been successfully uploaded, the singles/albums on the page are automatically refreshed and the reusable input window is closed and cleared
-                        uploadBytes(imagesRef, files[0]).then(() => {
-
-                            //gets the albums with updated values from the database
-                            getAlbums();
-
-                            //function that closes the newValueContainer window by using display: none
-                            closeNewValueContainerWindow();
-
-                            //function that clears the previous inputs in the reusable input window by using innerHTML = "";
-                            resetNewAdminValue();
-
-                            //displays a "single/album added!" message to the admin upon successfully uploading a new single/album to the firebase backend server
-                            enablePopUpWindow("Single/Album added!");
-                        });
+                        //returns a "Not an image!" feedback message to the admin when the admin uploads an invalid file type
+                        enablePopUpWindow("Not an image!");
                     }
                 }
                 reader.readAsDataURL((files[0]));
@@ -603,37 +621,46 @@ function uploadGalleryImage() {
         reader = new FileReader();
         reader.onload = function () {
 
-            //checks if the uploaded file has a size that is less than 200kb, returns a relevant error message if this criteria is not met
-            if (files[0].size > 200000) {
-                enablePopUpWindow("File too large! Max 200kb");
+            //checks if the file is an image
+            const isImage = files[0] && files[0]['type'].split('/')[0] === 'image';
+
+            if (isImage === true) {
+
+                //checks if the uploaded file has a size that is less than 200kb, returns a relevant error message if this criteria is not met
+                if (files[0].size > 200000) {
+                    enablePopUpWindow("File too large! Max 200kb");
+                } else {
+
+                    //creates a new constant that consists of today's date, as well as the current time at the moment of the button click
+                    //this is used to sort the gallery images correctly, as directly fetched images might be fetched in different orders due to file size, internet speed
+                    //and other unforeseen external interruptions between the client and the server
+                    const newDate = new Date();
+                    const datetime = newDate.today() + " " + newDate.timeNow();
+
+                    //defines the fileName to the galleryImage
+                    const fileName = "GalleryImage"
+
+                    //encodes the gallery image by mixing the date and the file name, as well as replacing the "/" slashes in the date with "Ø"s to avoid confusion with googles systems
+                    // since the backend firebase server creates new folders with the key symbol "/", which will mix with the upload dates and URLs
+                    const galleryImagePathToEncode = datetime + fileName;
+                    const galleryImage_Encoded = galleryImagePathToEncode.replace(/\//g, "Ø");
+
+                    //creates a firebase reference to the newly encoded gallery image
+                    const storage = getStorage();
+                    const imagesRef = refStorage(storage, 'LiveGallery/' + galleryImage_Encoded);
+
+                    //uploads the new gallery image to the backend firebase server and refreshes the gallery
+                    uploadBytes(imagesRef, files[0]).then(() => {
+                        //calls the "getLiveGalleryImages" function that refreshes the gallery images on the site without having to refresh the whole page
+                        getLiveGalleryImages();
+
+                        //displays the feedback message "gallery image added!" to the admin upon successfully uploading a new gallery image by using the reusable feedback window and function
+                        enablePopUpWindow("Gallery Image added!");
+                    });
+                }
             } else {
-
-                //creates a new constant that consists of today's date, as well as the current time at the moment of the button click
-                //this is used to sort the gallery images correctly, as directly fetched images might be fetched in different orders due to file size, internet speed
-                //and other unforeseen external interruptions between the client and the server
-                const newDate = new Date();
-                const datetime = newDate.today() + " " + newDate.timeNow();
-
-                //defines the fileName to the galleryImage
-                const fileName = "GalleryImage"
-
-                //encodes the gallery image by mixing the date and the file name, as well as replacing the "/" slashes in the date with "Ø"s to avoid confusion with googles systems
-                // since the backend firebase server creates new folders with the key symbol "/", which will mix with the upload dates and URLs
-                const galleryImagePathToEncode = datetime + fileName;
-                const galleryImage_Encoded = galleryImagePathToEncode.replace(/\//g, "Ø");
-
-                //creates a firebase reference to the newly encoded gallery image
-                const storage = getStorage();
-                const imagesRef = refStorage(storage, 'LiveGallery/' + galleryImage_Encoded);
-
-                //uploads the new gallery image to the backend firebase server and refreshes the gallery
-                uploadBytes(imagesRef, files[0]).then(() => {
-                    //calls the "getLiveGalleryImages" function that refreshes the gallery images on the site without having to refresh the whole page
-                    getLiveGalleryImages();
-
-                    //displays the feedback message "gallery image added!" to the admin upon successfully uploading a new gallery image by using the reusable feedback window and function
-                    enablePopUpWindow("Gallery Image added!");
-                });
+                //returns a "Not an image!" feedback message to the admin when the admin uploads an invalid file type
+                enablePopUpWindow("Not an image!");
             }
         }
         reader.readAsDataURL((files[0]));

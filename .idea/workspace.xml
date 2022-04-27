@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b25f6b6-fd8a-4125-95c1-f5029390abff" name="Default Changelist" comment="added cookie consent status at the end of the privacy container text">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/adminFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/adminFunctions.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -11,6 +12,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="ProjectId" id="281d4Wjv2SKcRTbPu0OxqtIeQGw" />
   <component name="ProjectViewState">
