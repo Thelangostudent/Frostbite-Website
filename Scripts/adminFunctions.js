@@ -7,6 +7,9 @@ import {
     galleryArray,
     getAlbums,
     getLiveGalleryImages,
+    outlineColourGlobal,
+    textColourGlobal,
+    backgroundColourGlobal
 } from './onLoadFunctions.js'
 
 import {ref, set} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
@@ -58,19 +61,28 @@ function confirmColourChangeBackground() {
         //returns a "field cannot be empty" message if the input field is empty
         enablePopUpWindow("Field cannot be empty!");
     } else if (isValidHex === true) {
-        //updates the firebase backgroundColour value if the input is a valid HEX colour
-        set(ref(db, 'backgroundColour'), {
-            HexCode: newBackgroundColour,
-        });
 
-        //displays a "colour updated" feedback message to the admin
-        enablePopUpWindow("Colour updated!");
+        //checks if the colour value already is used
+        if (newBackgroundColour === outlineColourGlobal || newBackgroundColour === textColourGlobal || newBackgroundColour === textColourGlobal){
+            //displays a "Colour already in use!" message if the colour is used by the same or other components
+            enablePopUpWindow("Colour already in use!");
+        } else {
 
-        //calls the "closeNewValueContainerWindow" function which closes the reusable input field window
-        closeNewValueContainerWindow();
+            //updates the firebase backgroundColour value if the input is a valid HEX colour
+            set(ref(db, 'backgroundColour'), {
+                HexCode: newBackgroundColour,
+            });
 
-        //calls the "resetNewAdminValue" function which resets the input fields within the reusable input field window
-        resetNewAdminValue();
+            //displays a "colour updated" feedback message to the admin
+            enablePopUpWindow("Colour updated!");
+
+            //calls the "closeNewValueContainerWindow" function which closes the reusable input field window
+            closeNewValueContainerWindow();
+
+            //calls the "resetNewAdminValue" function which resets the input fields within the reusable input field window
+            resetNewAdminValue();
+        }
+
     } else {
         //displays a "not a valid hex colour!" message if the input is not a valid hex colour
         enablePopUpWindow("Not a valid HEX colour!");
@@ -115,19 +127,28 @@ function confirmColourChange() {
         //returns a "field cannot be empty" message if the input field is empty
         enablePopUpWindow("Field cannot be empty!");
     } else if (isValidHex === true) {
-        //updates the firebase outlineColour value if the input is a valid HEX colour
-        set(ref(db, 'outlineColour'), {
-            HexCode: newOutlineColour,
-        });
 
-        //displays a "colour updated" feedback message to the admin
-        enablePopUpWindow("Colour updated!");
+        //checks if the colour value already is used
+        if (newOutlineColour === outlineColourGlobal || newOutlineColour === textColourGlobal || newOutlineColour === textColourGlobal) {
+            //displays a "Colour already in use!" message if the colour is used by the same or other components
+            enablePopUpWindow("Colour already in use!");
+        } else {
 
-        //calls the "closeNewValueContainerWindow" function which closes the reusable input field window
-        closeNewValueContainerWindow();
+            //updates the firebase outlineColour value if the input is a valid HEX colour
+            set(ref(db, 'outlineColour'), {
+                HexCode: newOutlineColour,
+            });
 
-        //calls the "resetNewAdminValue" function which resets the input fields within the reusable input field window
-        resetNewAdminValue();
+            //displays a "colour updated" feedback message to the admin
+            enablePopUpWindow("Colour updated!");
+
+            //calls the "closeNewValueContainerWindow" function which closes the reusable input field window
+            closeNewValueContainerWindow();
+
+            //calls the "resetNewAdminValue" function which resets the input fields within the reusable input field window
+            resetNewAdminValue();
+        }
+
     } else {
         //displays a "not a valid hex colour!" message if the input is not a valid hex colour
         enablePopUpWindow("Not a valid HEX colour!");
@@ -172,19 +193,28 @@ function confirmColourChangeOnText() {
         //returns a "field cannot be empty" message if the input field is empty
         enablePopUpWindow("Field cannot be empty!");
     } else if (isValidHex === true) {
-        //updates the firebase textColour value if the input is a valid HEX colour
-        set(ref(db, 'textColour'), {
-            HexCode: newTextColour,
-        });
 
-        //displays a "colour updated" feedback message to the admin
-        enablePopUpWindow("Colour updated!");
+        //checks if the colour value already is used
+        if (newTextColour === outlineColourGlobal || newTextColour === textColourGlobal || newTextColour === textColourGlobal) {
+            //displays a "Colour already in use!" message if the colour is used by the same or other components
+            enablePopUpWindow("Colour already in use!");
+        } else {
 
-        //calls the "closeNewValueContainerWindow" function which closes the reusable input field window
-        closeNewValueContainerWindow();
+            //updates the firebase textColour value if the input is a valid HEX colour
+            set(ref(db, 'textColour'), {
+                HexCode: newTextColour,
+            });
 
-        //calls the "resetNewAdminValue" function which resets the input fields within the reusable input field window
-        resetNewAdminValue();
+            //displays a "colour updated" feedback message to the admin
+            enablePopUpWindow("Colour updated!");
+
+            //calls the "closeNewValueContainerWindow" function which closes the reusable input field window
+            closeNewValueContainerWindow();
+
+            //calls the "resetNewAdminValue" function which resets the input fields within the reusable input field window
+            resetNewAdminValue();
+        }
+
     } else {
         //displays a "not a valid hex colour!" message if the input is not a valid hex colour
         enablePopUpWindow("Not a valid HEX colour!");

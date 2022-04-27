@@ -15,6 +15,11 @@ import {
 
 //<--------------------------------------------------------- ONLOAD FUNCTIONS ---------------------------------------------------------------------------------------->
 
+let backgroundColourGlobal = "";
+let outlineColourGlobal = "";
+let textColourGlobal = "";
+
+
 /** The onload function calls a wide variety of functions at startup that makes various different calls to the backend server, this allows the page to always stay up-to-date
  with the newest images, CSS and other page-changing data that has been adjusted by the admin user. It allows the page to be changed by external admins without having to
  edit the source code itself.
@@ -472,6 +477,7 @@ function getOutlineColour() {
         //when fetched, applies the HEX colour code to the global outline variable in the CSS file, then updates the site according to the new style
         const bodyElement = document.getElementsByTagName("BODY")[0];
         bodyElement.style.setProperty('--outlineColor', snapshot.val());
+        outlineColourGlobal = snapshot.val();
 
         //defines a reference to the frostbite logo
         let frostbiteLogo = "./Pictures/frostbiteLogo.png";
@@ -496,6 +502,7 @@ function getBackgroundColour() {
         //once fetched, applies the HEX colour code to the global background variable in the CSS file, then updates the site according to the new style
         const bodyElement = document.getElementsByTagName("BODY")[0];
         bodyElement.style.setProperty('--backgroundColour', snapshot.val());
+        backgroundColourGlobal = snapshot.val();
     });
 }
 
@@ -509,6 +516,7 @@ function getTextColour() {
         //once fetched, applies the HEX colour code to the global text variable in the CSS file, then updates the site according to the new style
         const bodyElement = document.getElementsByTagName("BODY")[0];
         bodyElement.style.setProperty('--textColour', snapshot.val());
+        textColourGlobal = snapshot.val();
     });
 }
 
@@ -596,4 +604,4 @@ function hex_to_RGB(hex) {
 
 //<----------------------------------------------------------- EXPORTS ------------------------------------------------------------------------------------------>
 
-export {isMobile, albumArray, getAlbums, getLiveGalleryImages, galleryArray};
+export {isMobile, albumArray, getAlbums, getLiveGalleryImages, galleryArray, outlineColourGlobal, textColourGlobal, backgroundColourGlobal};
