@@ -753,6 +753,8 @@ function confirmTicketButtonChange(buttonId) {
     //creates references to the URL and description field to the selected button (from the parameter)
     let newURL = document.getElementById("newTicketValueContainerValue").value;
     let newDescription = document.getElementById("newTicketDescriptionContainerValue").value;
+    let isValid = isValidHttpUrl(newURL);
+
 
     //defines the ticket button to request from firebase, as well as defining it as just "ticketButton" if it is the first button that gets called
     let ticketButton = "ticketButton" + buttonId;
@@ -763,6 +765,8 @@ function confirmTicketButtonChange(buttonId) {
     //returns the error message "field cannot be empty" in the reusable feedback window if the input field is empty
     if (newURL === "" || newDescription === "") {
         enablePopUpWindow("Field cannot be empty!");
+    } else if (isValid === false && newURL !== "remove") {
+        enablePopUpWindow("URL is invalid!");
     } else {
         //updates the corresponding ticket button value through firebase calls if the inputs are filled in with relevant information
         set(ref(db, 'ticketButtons/' + ticketButton), {
