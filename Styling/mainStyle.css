@@ -420,32 +420,25 @@ body {
     letter-spacing: 0.03vw;
 }
 
-#socialsYoutube {
-    width: 16vw;
-    height: 15vw;
-    padding-right: 1vw;
-}
-
 #socialsSpotify {
-    width: 15vw;
-    height: 15vw;
-    padding-left: 1vw;
-}
-
-#socialsSquareYoutube {
-    margin-left: 33.7vw;
-    margin-bottom: -11vw;
-    width: 13vw;
-    height: 10vw;
-    background-color: var(--outlineColor);
-}
-
-#socialsSquareSpotify {
-    margin-left: 52.5vw;
-    margin-bottom: -13vw;
     width: 12vw;
     height: 12vw;
-    background-color: var(--outlineColor);
+}
+
+#socialsFacebook {
+    width: 12vw;
+    height: 12vw;
+}
+
+#socialsInstagram {
+    width: 12vw;
+    height: 12vw;
+    margin-right: 1vw;
+}
+
+#socialsYoutube {
+    width: 12vw;
+    height: 12vw;
 }
 
 /*SOCIALS ENDS HERE*/

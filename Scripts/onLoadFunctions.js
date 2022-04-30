@@ -38,7 +38,6 @@ function getInfoFromServer() {
     getOutlineColour();
     getTextColour();
     getBackgroundColour();
-    getBackgroundColourForImages();
     getBannerTextStatus();
     getTitleText();
     getUserStatus();
@@ -468,7 +467,7 @@ function getUserStatus() {
 }
 
 /** The "getOutlineColour" function fetches the outline colour to the website from the server, the colour is saved as a HEX colour code and is applied to all elements that
-    corresponds with the outline */
+ corresponds with the outline */
 function getOutlineColour() {
     //creates an outlineColour reference to firebase
     const newOutlineColour = ref(db, 'outlineColour/HexCode');
@@ -482,6 +481,12 @@ function getOutlineColour() {
         //defines a reference to the frostbite logo
         let frostbiteLogo = "./Pictures/frostbiteLogo.png";
 
+        //defines references to the socials images in the socials section of the page
+        let spotifySocials = "./Pictures/socialsSpotifyImage.png";
+        let facebookSocials = "./Pictures/socialsFacebookImage.png";
+        let instagramSocials = "./Pictures/socialsInstagramImage.png";
+        let youtubeSocials = "./Pictures/socialsYoutubeImage.png";
+
         //defines rgb values
         const r = hex_to_RGB(snapshot.val()).r
         const g = hex_to_RGB(snapshot.val()).g;
@@ -489,6 +494,13 @@ function getOutlineColour() {
 
         //calls a function that updates the colours in the frostbite logo to correspond with the fetched HEX colour code
         updateBackgroundColour(frostbiteLogo, r, g, b, "logo");
+
+        //calls a function that updates the colours in the socials images to correspond with the fetched HEX colour code
+
+        updateBackgroundColour(spotifySocials, r, g, b, "socialsSpotify");
+        updateBackgroundColour(facebookSocials, r, g, b, "socialsFacebook");
+        updateBackgroundColour(instagramSocials, r, g, b, "socialsInstagram");
+        updateBackgroundColour(youtubeSocials, r, g, b, "socialsYoutube");
     });
 }
 
@@ -503,6 +515,7 @@ function getBackgroundColour() {
         const bodyElement = document.getElementsByTagName("BODY")[0];
         bodyElement.style.setProperty('--backgroundColour', snapshot.val());
         backgroundColourGlobal = snapshot.val();
+        getBackgroundColourForImages(snapshot.val());
     });
 }
 
@@ -521,41 +534,27 @@ function getTextColour() {
 }
 
 /** The "getBackgroundColourForImages" function fetches and applies the background colour to the images on the page, this is accomplished by manipulating the pixels in the
-    images through the "updateBackgroundColour" function*/
-function getBackgroundColourForImages() {
+ images through the "updateBackgroundColour" function*/
+function getBackgroundColourForImages(colour) {
 
     //defines references to the socials images in the navbar
     let youtubeImage = "./Pictures/YoutubeInverted.png";
     let instagramImage = "./Pictures/InstagramInverted.png";
     let facebookImage = "./Pictures/FacebookInverted.png";
 
-    //defines references to the socials images in the socials section of the page
-    let youtubeSocials = "./Pictures/socialsYoutubeImage.png";
-    let spotifySocials = "./Pictures/socialsSpotifyImage.png";
+    //converts the HEX colour code fetched from firebase to RGB values
+    const r = hex_to_RGB(colour).r
+    const g = hex_to_RGB(colour).g;
+    const b = hex_to_RGB(colour).b;
 
-    //creates a firebase reference to the background colour of the page
-    const newBackgroundColour = ref(db, 'backgroundColour/HexCode');
-    onValue(newBackgroundColour, (snapshot) => {
-        //once fetched, the new colour is applied to all of the images through the "updateBackgroundColour" function
-
-        //converts the HEX colour code fetched from firebase to RGB values
-        const r = hex_to_RGB(snapshot.val()).r
-        const g = hex_to_RGB(snapshot.val()).g;
-        const b = hex_to_RGB(snapshot.val()).b;
-
-        //manipulates the pixels in the navbar social images section to correspond with the fetched colour by redrawing the images using new canvases
-        updateBackgroundColour(youtubeImage, r, g, b, "youtubeLogo");
-        updateBackgroundColour(instagramImage, r, g, b, "instagramLogo");
-        updateBackgroundColour(facebookImage, r, g, b, "facebookLogo");
-
-        //manipulates the pixels in the musical socials section to correspond with the fetched colour by redrawing the images using new canvases
-        updateBackgroundColour(youtubeSocials, r, g, b, "socialsYoutube");
-        updateBackgroundColour(spotifySocials, r, g, b, "socialsSpotify");
-    });
+    //manipulates the pixels in the navbar social images section to correspond with the fetched colour by redrawing the images using new canvases
+    updateBackgroundColour(youtubeImage, r, g, b, "youtubeLogo");
+    updateBackgroundColour(instagramImage, r, g, b, "instagramLogo");
+    updateBackgroundColour(facebookImage, r, g, b, "facebookLogo");
 }
 
 /** The "updateBackgroundColour" function manipulates the colour of a given image based on the parameter values, this is accomplished by redrawing the image with the newly defined
-    colours in a fresh canvas, then adding the data to an image object and updating it accordingly*/
+ colours in a fresh canvas, then adding the data to an image object and updating it accordingly*/
 function updateBackgroundColour(imgSrc, R, G, B, canvasElement) {
     //defines a reference to the canvasElement defined in the parameter
     const canvas = document.getElementById(canvasElement);
@@ -604,4 +603,13 @@ function hex_to_RGB(hex) {
 
 //<----------------------------------------------------------- EXPORTS ------------------------------------------------------------------------------------------>
 
-export {isMobile, albumArray, getAlbums, getLiveGalleryImages, galleryArray, outlineColourGlobal, textColourGlobal, backgroundColourGlobal};
+export {
+    isMobile,
+    albumArray,
+    getAlbums,
+    getLiveGalleryImages,
+    galleryArray,
+    outlineColourGlobal,
+    textColourGlobal,
+    backgroundColourGlobal
+};
