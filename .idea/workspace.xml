@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5b25f6b6-fd8a-4125-95c1-f5029390abff" name="Default Changelist" comment="completely revamped colour-selector based on feedback">
-      <change afterPath="$PROJECT_DIR$/Pictures/socialsFacebookImage.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pictures/socialsInstagramImage.png" afterDir="false" />
+    <list default="true" id="5b25f6b6-fd8a-4125-95c1-f5029390abff" name="Default Changelist" comment="added Instagram and Facebook to socials">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/socialsSpotifyImage.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/socialsSpotifyImage.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/socialsYoutubeImage.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/socialsYoutubeImage.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/onLoadFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/onLoadFunctions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Styling/mainStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/Styling/mainStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +49,9 @@
       <workItem from="1650638331687" duration="1625000" />
       <workItem from="1651073315586" duration="298000" />
       <workItem from="1651297635437" duration="3961000" />
+      <workItem from="1651301963313" duration="110000" />
+      <workItem from="1651914962741" duration="1260000" />
+      <workItem from="1652101132000" duration="602000" />
     </task>
     <task id="LOCAL-00001" summary="updated directory">
       <created>1650387877158</created>
